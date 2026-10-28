@@ -2,7 +2,7 @@
 
 Swift 原生 macOS 开发环境管理器的规划与实验项目。目标：每个受管理环境用一个可写 APFS 卷保存 SDK/runtime、工具管理器、状态、依赖和缓存；支持固定路径挂载、跨盘转移、检查点、回滚和停用压缩归档。
 
-当前为**文档与实验阶段**，没有 Swift CLI、MCP Server 或 SwiftUI 应用实现。Miniconda 在本机固定挂载点的单卷副本通过三轮各 23 项验证；原安装未切换，实验卷已卸载。
+当前有 Swift CLI `devstore` 与 MCP Server `devstore-mcp` 的 0.1.0 版（仅 Miniconda 适配器，见 [CLI 与 MCP](docs/CLI与MCP.md)），尚无 SwiftUI GUI。Miniconda 在本机固定挂载点的单卷副本通过三轮各 23 项验证；原安装未切换，实验卷已卸载。
 
 ## 开始阅读
 
@@ -11,7 +11,8 @@ Swift 原生 macOS 开发环境管理器的规划与实验项目。目标：每�
 3. [当前单卷方案 v3](docs/reports/单卷独立环境挂载方案-v3.md)
    - [v3 数据模型草案](docs/design/v3数据模型.md)
 4. [Miniconda 实验报告](docs/reports/Miniconda单卷实验结果-20261029.md)
-5. [文档索引](docs/README.md)
+5. [CLI 与 MCP](docs/CLI与MCP.md)
+6. [文档索引](docs/README.md)
 
 ## 目录
 

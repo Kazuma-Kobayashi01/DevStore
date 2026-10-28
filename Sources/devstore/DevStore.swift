@@ -52,13 +52,7 @@ func describe(_ plan: Plan) -> String {
 /// environment, or an interactive confirmation right now. Self-reported flags are never accepted.
 func authorizeAndExecute(_ plan: Plan, ops: Operations) throws {
     let auth = Authorizer(paths: ops.library.paths)
-    if let g = try auth.usableGrant(for: plan) {
-        try auth.consume(plan, grantId: g.id)
-        print(try ops.execute(plan))
-        return
-    }
-    if let envId = plan.targets["environmentId"], try auth.policyAllows(environmentId: envId, action: plan.action) {
-        try auth.consume(plan, grantId: "policy")
+    if try auth.authorizeAndConsume(plan) != nil {
         print(try ops.execute(plan))
         return
     }

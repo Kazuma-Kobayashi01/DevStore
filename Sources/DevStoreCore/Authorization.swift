@@ -47,6 +47,25 @@ public struct Authorizer: Sendable {
         }
     }
 
+    public func isConsumed(_ plan: Plan) throws -> Bool {
+        try events().contains { $0.type == .consume && $0.planId == plan.planId }
+    }
+
+    /// The single authorization path for CLI and MCP. Plans are single-use whatever the source;
+    /// returns nil when the user has not authorized the plan.
+    public func authorizeAndConsume(_ plan: Plan) throws -> String? {
+        if try isConsumed(plan) { throw DevStoreError("plan \(plan.planId) was already executed; create a new plan") }
+        if let g = try usableGrant(for: plan) {
+            try consume(plan, grantId: g.id)
+            return "grant \(g.id)"
+        }
+        if let envId = plan.targets["environmentId"], try policyAllows(environmentId: envId, action: plan.action) {
+            try consume(plan, grantId: "policy")
+            return "policy"
+        }
+        return nil
+    }
+
     public func consume(_ plan: Plan, grantId: String) throws {
         try JSONIO.appendLine(GrantEvent(type: .consume, id: grantId, planId: plan.planId, planDigest: plan.planDigest,
                                          createdAt: timestamp(), via: "executor"), to: paths.grants)

@@ -166,14 +166,10 @@ public struct MCPServer {
                                                        slot: a["slot"] as? String ?? "current", name: try string(a, "name")))
         case "devstore_apply":
             let plan = try ops.loadPlan(try string(a, "planId"))
-            if let g = try auth.usableGrant(for: plan) {
-                try auth.consume(plan, grantId: g.id)
-            } else if let envId = plan.targets["environmentId"], try auth.policyAllows(environmentId: envId, action: plan.action) {
-                try auth.consume(plan, grantId: "policy")
-            } else {
+            guard let authority = try auth.authorizeAndConsume(plan) else {
                 throw DevStoreError("not authorized: the user must run `devstore approve \(plan.planId)` in a terminal first")
             }
-            return ["result": try ops.execute(plan)]
+            return ["result": try ops.execute(plan), "authorizedBy": authority]
         case "devstore_run":
             let r = try library.resolve(try string(a, "environment"))
             guard let command = a["command"] as? [String], !command.isEmpty else { throw DevStoreError("command must be a non-empty string array") }

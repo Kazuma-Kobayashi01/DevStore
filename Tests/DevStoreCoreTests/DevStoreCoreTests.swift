@@ -71,6 +71,15 @@ final class DevStoreCoreTests: XCTestCase {
         XCTAssertFalse(try auth.policyAllows(environmentId: "e1", action: .mount))
     }
 
+    func testConsumedPlanCannotReplayEvenUnderPolicy() throws {
+        let auth = Authorizer(paths: paths)
+        let p = try samplePlan()
+        XCTAssertNil(try auth.authorizeAndConsume(p))
+        try auth.setPolicy(environmentId: "e1", allow: true, via: "test")
+        XCTAssertEqual(try auth.authorizeAndConsume(p), "policy")
+        XCTAssertThrowsError(try auth.authorizeAndConsume(p))
+    }
+
     func testMinicondaBuiltMountPathFromShebang() throws {
         let vol = root.appendingPathComponent("vol")
         let bin = vol.appendingPathComponent("miniconda3/bin")

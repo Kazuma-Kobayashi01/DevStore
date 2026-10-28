@@ -8,6 +8,8 @@ DevStore 处于规划和实验阶段。当前方案是每个环境一个可写 A
 
 ## 已完成
 
+- 2026-10-29：实现 Swift CLI `devstore` 与 MCP Server `devstore-mcp` 0.1.0（Miniconda 适配器），以 `miniconda/current` 导入实验映像的克隆并通过实机测试，见 [CLI 与 MCP](CLI与MCP.md)。环境当前未挂载，已设置挂载/卸载常驻策略。
+
 - 只读盘点了本机 Go、Rust、.NET、Flutter、Android 的主要安装和缓存位置，记录版本、架构、体积、权限、链接及依赖风险。
 - v1 曾采用只读 SDK/可写缓存双卷；v2 取消只读；v3 根据用户选择及 Miniconda 实验，改为每环境单卷。只用 v3 作为当前默认。
 - 本机为 macOS 15.7.9、arm64；原 Miniconda 在 `~/miniconda3`，conda 25.11.1，base + 三个子环境。
