@@ -4,3 +4,4 @@
 artifacts/
 *.dmg
 *.sparsebundle/
+build/

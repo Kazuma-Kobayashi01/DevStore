@@ -8,8 +8,8 @@ public struct Session: Sendable {
     public init(library: Library = Library()) { self.library = library }
 
     public func environment(for r: ResolvedEnvironment) throws -> [String: String] {
-        guard let adapter = Adapters.forKind(r.environment.kind) else {
-            throw DevStoreError("no adapter for kind \(r.environment.kind)")
+        guard let adapter = Adapters.named(r.environment.adapter.id) else {
+            throw DevStoreError("unknown adapter \(r.environment.adapter.id)")
         }
         guard library.identityVerified(r) else {
             throw DevStoreError("\(r.environment.kind)/\(r.environment.slot) is not mounted with a verified identity; run `devstore mount` first")
@@ -21,8 +21,8 @@ public struct Session: Sendable {
 
     /// Sandbox profile denying reads of the adapter's origin paths (and optionally network).
     public func confinementProfile(for r: ResolvedEnvironment, denyNetwork: Bool) -> String {
-        let adapter = Adapters.forKind(r.environment.kind)!
-        let deny = adapter.originPathsToDeny(home: NSHomeDirectory()) + ["/opt/homebrew", "/usr/local"]
+        let origin = Adapters.named(r.environment.adapter.id)?.originPathsToDeny(home: NSHomeDirectory()) ?? []
+        let deny = origin + ["/opt/homebrew", "/usr/local"]
         let rules = deny.map { "  (subpath \"\($0)\")" }.joined(separator: "\n")
         return "(version 1)\n(allow default)\n" + (denyNetwork ? "(deny network*)\n" : "")
             + "(deny file-read*\n\(rules))\n"

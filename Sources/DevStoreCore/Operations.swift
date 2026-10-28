@@ -9,8 +9,13 @@ public struct Precondition: Sendable {
 /// Authorization is checked by the caller (see `Authorizer`) before `execute`.
 public struct Operations: Sendable {
     public var library: Library
+    /// Where deleted environments go; tests substitute a temporary directory.
+    public var trash: @Sendable (URL) throws -> URL
 
-    public init(library: Library = Library()) { self.library = library }
+    public init(library: Library = Library(), trash: @escaping @Sendable (URL) throws -> URL = Operations.moveToTrash) {
+        self.library = library
+        self.trash = trash
+    }
 
     var fm: FileManager { .default }
 
@@ -49,8 +54,8 @@ public struct Operations: Sendable {
     // MARK: import
 
     public func planImport(source: String, storeQuery: String, kind: String, slot: String, name: String) throws -> Plan {
-        guard Adapters.forKind(kind) != nil else { throw DevStoreError("no adapter for kind \(kind)") }
-        guard slot.range(of: "^[a-z0-9][a-z0-9.-]*$", options: .regularExpression) != nil, slot != ".devstore" else {
+        guard Adapters.forImport(kind: kind) != nil else { throw DevStoreError("importing kind \(kind) is not supported (only miniconda)") }
+        guard Adapters.validName(slot) else {
             throw DevStoreError("invalid slot name \(slot): use lowercase letters, digits, '-' and '.'")
         }
         let store = try library.resolveStore(storeQuery)
@@ -165,8 +170,10 @@ public struct Operations: Sendable {
     public func recheck(_ plan: Plan) throws -> [Precondition] {
         switch plan.action {
         case .importImage: try importChecks(plan.targets)
+        case .create: try createChecks(plan.targets)
         case .mount: try mountChecks(plan.targets)
         case .unmount: try unmountChecks(plan.targets)
+        case .delete: try deleteChecks(plan.targets)
         }
     }
 
@@ -182,8 +189,10 @@ public struct Operations: Sendable {
             let result: String
             switch plan.action {
             case .importImage: result = try executeImport(plan, journal)
+            case .create: result = try executeCreate(plan, journal)
             case .mount: result = try executeMount(plan, journal)
             case .unmount: result = try executeUnmount(plan, journal)
+            case .delete: result = try executeDelete(plan, journal)
             }
             journal.log("committed")
             return result
@@ -195,7 +204,7 @@ public struct Operations: Sendable {
 
     func executeImport(_ plan: Plan, _ journal: Journal) throws -> String {
         let t = plan.targets
-        let adapter = Adapters.forKind(t["kind"]!)!
+        let adapter = Adapters.forImport(kind: t["kind"]!)!
         let dest = t["destination"]!, slotPath = t["slotPath"]!
         let imageDir = URL(fileURLWithPath: dest).deletingLastPathComponent()
         var cloned = false, attached = false

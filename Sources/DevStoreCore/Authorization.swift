@@ -1,6 +1,6 @@
 import Foundation
 
-public enum GrantEventType: String, Codable, Sendable { case grant, consume, policy, revoke }
+public enum GrantEventType: String, Codable, Sendable { case grant, consume, policy, revoke, reject }
 
 /// One line of `grants.jsonl`. Grants bind a plan digest and are single-use;
 /// policies (mount/unmount only) bind one environment.
@@ -38,7 +38,7 @@ public struct Authorizer: Sendable {
 
     public func usableGrant(for plan: Plan, now: Date = Date()) throws -> GrantEvent? {
         let all = try events()
-        let consumed = Set(all.filter { $0.type == .consume }.compactMap(\.planId))
+        let consumed = Set(all.filter { $0.type == .consume || $0.type == .reject }.compactMap(\.planId))
         let f = ISO8601DateFormatter()
         return all.last { g in
             g.type == .grant && g.planId == plan.planId && g.planDigest == plan.planDigest
@@ -47,8 +47,21 @@ public struct Authorizer: Sendable {
         }
     }
 
+    /// Consumed or rejected plans can never run.
     public func isConsumed(_ plan: Plan) throws -> Bool {
-        try events().contains { $0.type == .consume && $0.planId == plan.planId }
+        try events().contains { ($0.type == .consume || $0.type == .reject) && $0.planId == plan.planId }
+    }
+
+    public func reject(_ plan: Plan, via: String) throws {
+        try JSONIO.appendLine(GrantEvent(type: .reject, id: newId(), planId: plan.planId, planDigest: plan.planDigest,
+                                         createdAt: timestamp(), via: via), to: paths.grants)
+    }
+
+    public enum PlanState: String, Codable, Sendable { case pending, approved, done }
+
+    public func state(of plan: Plan) throws -> PlanState {
+        if try isConsumed(plan) { return .done }
+        return try usableGrant(for: plan) != nil ? .approved : .pending
     }
 
     /// The single authorization path for CLI and MCP. Plans are single-use whatever the source;

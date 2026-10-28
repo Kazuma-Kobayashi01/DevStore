@@ -7,8 +7,9 @@ struct DevStore: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "devstore",
         abstract: "Manage development environments that live in mountable APFS volumes.",
-        subcommands: [StoreCommand.self, Import.self, Status.self, Inspect.self, Mount.self, Unmount.self,
-                      Approve.self, Apply.self, Policy.self, Run.self, Env.self, Verify.self, JournalCommand.self])
+        subcommands: [StoreCommand.self, Create.self, Import.self, Status.self, Inspect.self, Mount.self, Unmount.self,
+                      Delete.self, Plans.self, Approve.self, Reject.self, Apply.self, Policy.self, Run.self, Env.self,
+                      Verify.self, JournalCommand.self])
 }
 
 // MARK: helpers
@@ -61,10 +62,20 @@ func authorizeAndExecute(_ plan: Plan, ops: Operations) throws {
         throw DevStoreError("not authorized: the user must run `devstore approve \(plan.planId)` in a terminal, then `devstore apply \(plan.planId)`")
     }
     print(describe(plan))
-    guard Terminal.confirm("\nProceed? [y/N]") else { throw DevStoreError("cancelled") }
+    guard confirmInTerminal(plan) else { throw DevStoreError("cancelled") }
     let g = try auth.grant(plan, via: "cli-tty")
     try auth.consume(plan, grantId: g.id)
     print(try ops.execute(plan))
+}
+
+/// Destructive plans require typing kind/slot; everything else a y/N answer.
+func confirmInTerminal(_ plan: Plan) -> Bool {
+    if plan.level == .destructive, let kind = plan.targets["kind"], let slot = plan.targets["slot"] {
+        print("\nThis is destructive. Type \(kind)/\(slot) to confirm:", terminator: " ")
+        fflush(stdout)
+        return readLine()?.trimmingCharacters(in: .whitespaces) == "\(kind)/\(slot)"
+    }
+    return Terminal.confirm("\nProceed? [y/N]")
 }
 
 struct PlanOptions: ParsableArguments {
@@ -153,11 +164,61 @@ struct Approve: ParsableCommand {
         let ops = Operations()
         let plan = try ops.loadPlan(planId)
         print(describe(plan))
-        guard Terminal.confirm("\nApprove this plan for the next \(Int(Authorizer.grantLifetime / 60)) minutes? [y/N]") else {
-            throw DevStoreError("not approved")
-        }
+        print("\nApproval is valid for \(Int(Authorizer.grantLifetime / 60)) minutes.")
+        guard confirmInTerminal(plan) else { throw DevStoreError("not approved") }
         let g = try Authorizer(paths: ops.library.paths).grant(plan, via: "cli-tty")
         print("approved: grant \(g.id), expires \(g.expiresAt ?? "?")")
+    }
+}
+
+struct Create: ParsableCommand {
+    static let configuration = CommandConfiguration(abstract: "Create a new empty environment (empty APFS sparse bundle).")
+    @Option var store: String
+    @Option var kind: String
+    @Option var slot = "current"
+    @Option var name: String
+    @Option(help: "Maximum size in GiB; the bundle grows on demand.") var size = 20
+    @OptionGroup var options: PlanOptions
+    func run() throws {
+        let ops = Operations()
+        try handle(try ops.planCreate(storeQuery: store, kind: kind, slot: slot, name: name, sizeGiB: size), options, ops)
+    }
+}
+
+struct Delete: ParsableCommand {
+    static let configuration = CommandConfiguration(
+        abstract: "Delete an unmounted environment: move its directory (all images) to the Trash and unbind its slot.")
+    @Argument var environment: String
+    @OptionGroup var options: PlanOptions
+    func run() throws {
+        let ops = Operations()
+        try handle(try ops.planDelete(environment), options, ops)
+    }
+}
+
+struct Plans: ParsableCommand {
+    static let configuration = CommandConfiguration(abstract: "List saved plans that have not run or been rejected.")
+    @Flag var json = false
+    func run() throws {
+        let entries = try Operations().pendingPlans()
+        if json { try printJSON(entries.map(\.plan)); return }
+        if entries.isEmpty { print("no pending plans") }
+        for e in entries {
+            let t = e.plan.targets
+            print("\(e.plan.planId.prefix(8))  \(e.state.rawValue)  \(e.plan.action.rawValue)  \(t["kind"].map { "\($0)/\(t["slot"] ?? "")" } ?? t["slotPath"] ?? "")  \(e.plan.createdAt)")
+        }
+    }
+}
+
+struct Reject: ParsableCommand {
+    static let configuration = CommandConfiguration(abstract: "Reject a saved plan so it can never run (interactive terminal only).")
+    @Argument var planId: String
+    func run() throws {
+        try Terminal.requireInteractive("rejecting a plan")
+        let ops = Operations()
+        let plan = try ops.loadPlan(planId)
+        try Authorizer(paths: ops.library.paths).reject(plan, via: "cli-tty")
+        print("rejected \(plan.planId)")
     }
 }
 

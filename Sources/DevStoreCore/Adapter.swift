@@ -11,8 +11,9 @@ public struct DataClass: Codable, Sendable {
 /// Only small, versioned pieces of logic live here (prefix detection, component discovery).
 public protocol EnvironmentAdapter: Sendable {
     var ref: AdapterRef { get }
-    var kind: String { get }
     var dataClasses: [DataClass] { get }
+    /// Whether existing images can be imported (content must be recognizable).
+    var supportsImport: Bool { get }
     var knownWarnings: [String] { get }
     func sessionEnvironment(mount: String) -> [String: String]
     func originPathsToDeny(home: String) -> [String]
@@ -22,17 +23,62 @@ public protocol EnvironmentAdapter: Sendable {
 }
 
 public enum Adapters {
-    public static func forKind(_ kind: String) -> (any EnvironmentAdapter)? {
-        switch kind {
+    /// Adapter recorded on an environment (`EnvironmentRecord.adapter.id`).
+    public static func named(_ id: String) -> (any EnvironmentAdapter)? {
+        switch id {
         case "miniconda": MinicondaAdapter()
+        case "empty": EmptyAdapter()
         default: nil
+        }
+    }
+
+    /// Adapter used to import existing images of a kind; only kinds with recognizable content.
+    public static func forImport(kind: String) -> (any EnvironmentAdapter)? {
+        kind == "miniconda" ? MinicondaAdapter() : nil
+    }
+
+    public static func validName(_ s: String) -> Bool {
+        s.range(of: "^[a-z0-9][a-z0-9.-]{0,63}$", options: .regularExpression) != nil && s != ".devstore"
+    }
+}
+
+/// A new, empty writable volume with a conventional layout. The user installs tools into it.
+public struct EmptyAdapter: EnvironmentAdapter {
+    public let ref = AdapterRef(id: "empty", version: "0.1.0")
+    public let supportsImport = false
+    public let knownWarnings: [String] = []
+    public static let layout = ["bin", "deps", "state/home", "state/config", "state/share", "cache", "tmp"]
+
+    public let dataClasses = [
+        DataClass(id: "tools", paths: ["bin", "deps"], rebuildable: false, backup: true),
+        DataClass(id: "state", paths: ["state"], rebuildable: false, backup: true),
+        DataClass(id: "cacheRebuildable", paths: ["cache"], rebuildable: true, backup: false),
+        DataClass(id: "tmp", paths: ["tmp"], rebuildable: true, backup: false),
+    ]
+
+    public init() {}
+
+    public func sessionEnvironment(mount: String) -> [String: String] {
+        ["HOME": mount + "/state/home", "USER": NSUserName(), "LOGNAME": NSUserName(), "LANG": "en_US.UTF-8",
+         "PATH": mount + "/bin:/usr/bin:/bin:/usr/sbin:/sbin", "TMPDIR": mount + "/tmp",
+         "XDG_CACHE_HOME": mount + "/cache", "XDG_CONFIG_HOME": mount + "/state/config",
+         "XDG_DATA_HOME": mount + "/state/share", "DEVSTORE_ENVIRONMENT": mount]
+    }
+
+    public func originPathsToDeny(home: String) -> [String] { [] }
+    public func builtMountPath(volumeRoot: String) -> String? { nil }
+    public func discoverComponents(mount: String) -> [Component] { [] }
+
+    public func prepareLayout(mount: String) throws {
+        for d in Self.layout {
+            try FileManager.default.createDirectory(atPath: mount + "/" + d, withIntermediateDirectories: true)
         }
     }
 }
 
 public struct MinicondaAdapter: EnvironmentAdapter {
     public let ref = AdapterRef(id: "miniconda", version: "0.1.0")
-    public let kind = "miniconda"
+    public let supportsImport = true
 
     public let dataClasses = [
         DataClass(id: "sdk", paths: ["miniconda3"], rebuildable: false, backup: true),

@@ -95,6 +95,16 @@ public struct MCPServer {
          "inputSchema": schema(["source": ["type": "string"], "store": ["type": "string", "description": "Store id prefix or path"],
                                 "kind": ["type": "string", "default": "miniconda"], "slot": ["type": "string", "default": "current"],
                                 "name": ["type": "string"]], required: ["source", "store", "name"])],
+        ["name": "devstore_plan_create",
+         "description": "Create a plan for a new empty environment (empty APFS sparse bundle). Does not create.",
+         "inputSchema": schema(["store": ["type": "string"], "kind": ["type": "string"],
+                                "slot": ["type": "string", "default": "current"], "name": ["type": "string"],
+                                "sizeGiB": ["type": "integer", "default": 20]], required: ["store", "kind", "name"])],
+        ["name": "devstore_plan_delete",
+         "description": "Create a plan to delete an unmounted environment (moves it to the Trash). Destructive: only the user can approve, in the app or a terminal; no policy covers it.",
+         "inputSchema": schema(["environment": envProp], required: ["environment"])],
+        ["name": "devstore_plans", "description": "Saved plans that have not run or been rejected, with their approval state.",
+         "inputSchema": schema([:], required: []), "annotations": ["readOnlyHint": true]],
         ["name": "devstore_apply",
          "description": "Execute a saved plan. Succeeds only if the user approved it in a terminal or a mount policy covers it.",
          "inputSchema": schema(["planId": ["type": "string"]], required: ["planId"])],
@@ -145,7 +155,7 @@ public struct MCPServer {
         return ["plan": try jsonObject(plan),
                 "approval": covered
                     ? "A standing policy covers this action; call devstore_apply with this planId."
-                    : "Ask the user to run `devstore approve \(plan.planId)` in a terminal, then call devstore_apply."]
+                    : "Ask the user to approve plan \(plan.planId) in the DevStore app (Pending plans) or with `devstore approve \(plan.planId)` in a terminal, then call devstore_apply."]
     }
 
     func dispatch(_ name: String, _ a: [String: Any]) throws -> Any {
@@ -164,6 +174,14 @@ public struct MCPServer {
             return try planResponse(try ops.planImport(source: try string(a, "source"), storeQuery: try string(a, "store"),
                                                        kind: a["kind"] as? String ?? "miniconda",
                                                        slot: a["slot"] as? String ?? "current", name: try string(a, "name")))
+        case "devstore_plan_create":
+            return try planResponse(try ops.planCreate(storeQuery: try string(a, "store"), kind: try string(a, "kind"),
+                                                       slot: a["slot"] as? String ?? "current", name: try string(a, "name"),
+                                                       sizeGiB: a["sizeGiB"] as? Int ?? 20))
+        case "devstore_plan_delete":
+            return try planResponse(try ops.planDelete(try string(a, "environment")))
+        case "devstore_plans":
+            return try ops.pendingPlans().map { ["state": $0.state.rawValue, "plan": try jsonObject($0.plan)] }
         case "devstore_apply":
             let plan = try ops.loadPlan(try string(a, "planId"))
             guard let authority = try auth.authorizeAndConsume(plan) else {

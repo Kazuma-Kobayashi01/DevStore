@@ -36,10 +36,56 @@ public struct Verifier: Sendable {
     public init(library: Library = Library()) { self.library = library }
 
     public func verify(_ r: ResolvedEnvironment, stage: String, progress: (String, Bool) -> Void = { _, _ in }) throws -> VerificationRun {
-        guard r.environment.kind == "miniconda", let adapter = Adapters.forKind("miniconda") else {
-            throw DevStoreError("no verification suite for kind \(r.environment.kind)")
+        switch r.environment.adapter.id {
+        case "miniconda": return try verifyMiniconda(r, stage: stage, progress: progress)
+        case "empty": return try verifyEmpty(r, stage: stage, progress: progress)
+        default: throw DevStoreError("no verification suite for adapter \(r.environment.adapter.id)")
         }
-        guard library.identityVerified(r), var image = r.image else {
+    }
+
+    func record(_ run: VerificationRun, _ r: ResolvedEnvironment) throws {
+        guard var image = r.image else { return }
+        try JSONIO.writeAtomically(run, to: r.imageDir!.appendingPathComponent("verifications/\(run.runId).json"))
+        image.lastVerification = VerificationRef(runId: run.runId, stage: run.stage, passed: run.passed, total: run.total, at: run.finishedAt)
+        image.mutatedSinceVerification = false
+        try library.saveImage(image, in: r)
+    }
+
+    /// Basic suite for an empty environment: layout, writability, session variables.
+    func verifyEmpty(_ r: ResolvedEnvironment, stage: String, progress: (String, Bool) -> Void) throws -> VerificationRun {
+        guard library.identityVerified(r), let image = r.image else {
+            throw DevStoreError("environment must be mounted with a verified identity")
+        }
+        let mount = r.slotPath, startedAt = timestamp()
+        let env = EmptyAdapter().sessionEnvironment(mount: mount)
+        var checks: [CheckResult] = []
+        func add(_ name: String, _ ok: Bool, _ detail: String? = nil) {
+            checks.append(CheckResult(name: name, passed: ok, stderr: detail))
+            progress(name, ok)
+        }
+        add("identity-verified", true)
+        let missing = EmptyAdapter.layout.filter { !FileManager.default.fileExists(atPath: mount + "/" + $0) }
+        add("layout-present", missing.isEmpty, missing.isEmpty ? nil : "missing: \(missing)")
+        let probe = mount + "/tmp/.devstore-probe-\(newId())"
+        let wrote = (try? "probe\n".write(toFile: probe, atomically: true, encoding: .utf8)) != nil
+        add("volume-writable", wrote && (try? String(contentsOfFile: probe, encoding: .utf8)) == "probe\n")
+        try? FileManager.default.removeItem(atPath: probe)
+        let shell = try? Shell.run("/bin/sh", ["-c", "printf '%s|%s' \"$HOME\" \"$TMPDIR\""], environment: env)
+        add("session-variables", shell?.stdout == mount + "/state/home|" + mount + "/tmp", shell?.stdout)
+        let passed = checks.filter(\.passed).count
+        let run = VerificationRun(
+            runId: newId(), target: ["environmentId": r.environment.environmentId, "imageId": image.imageId],
+            stage: stage, suite: AdapterRef(id: "empty-basic", version: "1"), adapterVersion: EmptyAdapter().ref.version,
+            host: .current(), confinement: [:], negativeControlPassed: true, checks: checks,
+            passed: passed, total: checks.count, startedAt: startedAt, finishedAt: timestamp(),
+            notCovered: ["tool installation", "external SSD", "cross-Mac"])
+        try record(run, r)
+        return run
+    }
+
+    func verifyMiniconda(_ r: ResolvedEnvironment, stage: String, progress: (String, Bool) -> Void) throws -> VerificationRun {
+        let adapter = MinicondaAdapter()
+        guard library.identityVerified(r), let image = r.image else {
             throw DevStoreError("environment must be mounted with a verified identity")
         }
         let mount = r.slotPath, base = mount + "/miniconda3", home = NSHomeDirectory()
@@ -166,10 +212,7 @@ public struct Verifier: Sendable {
             negativeControlPassed: true, checks: checks, passed: passed, total: checks.count,
             startedAt: startedAt, finishedAt: timestamp(),
             notCovered: ["GPU/MPS", "GUI Python", "online update", "external SSD", "cross-Mac", "all third-party packages"])
-        try JSONIO.writeAtomically(run, to: r.imageDir!.appendingPathComponent("verifications/\(run.runId).json"))
-        image.lastVerification = VerificationRef(runId: run.runId, stage: stage, passed: passed, total: checks.count, at: run.finishedAt)
-        image.mutatedSinceVerification = false
-        try library.saveImage(image, in: r)
+        try record(run, r)
         return run
     }
 }

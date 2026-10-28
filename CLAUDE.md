@@ -7,8 +7,8 @@
 - 每个环境一个**可写** APFS 卷；SDK、工具管理器、状态和缓存同卷。取消 SDK 只读和强制双卷。
 - 固定挂载路径为 `~/.local/dev/<kind>/<slot>`，默认槽位 `current`，同 kind 可多槽；镜像可以放在外置 SSD。数据模型及已决事项见 `docs/design/v3数据模型.md`。
 - 未来使用 Swift CLI + MCP Server 供 Agent 调用，SwiftUI GUI 供用户管理。
-- 不默认迁移、删除或替换现有环境。2026-10-29 用户授权实现 Swift CLI 与 MCP（已完成 0.1.0，见 `docs/CLI与MCP.md`）；GUI 与其他适配器尚未授权。
-- 授权模型：计划只能由用户在交互式终端 `devstore approve`；Agent 不得伪造 TTY 或替用户确认，也不得改写 `grants.jsonl`、计划文件或映像记录来绕过检查。
+- 不默认迁移、删除或替换现有环境。2026-10-29 用户授权实现 Swift CLI、MCP 与 SwiftUI 桌面应用（均为 0.1.0，见 `docs/CLI与MCP.md`）；其他语言的导入适配器尚未授权。
+- 授权模型：计划只能由用户在交互式终端 `devstore approve`；Agent 不得伪造 TTY、操作桌面应用的批准按钮替用户确认，也不得改写 `grants.jsonl`、计划文件或映像记录来绕过检查。
 
 已完成的 Miniconda 实验不是全量迁移：原安装、原 shell 配置保持不变，日常 conda 未切换；实验映像已卸载。不要把下面的待办清单视为新执行授权，后续按用户明确指定的阶段继续。
 

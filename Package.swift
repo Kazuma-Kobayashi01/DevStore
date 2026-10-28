@@ -7,6 +7,7 @@ let package = Package(
     products: [
         .executable(name: "devstore", targets: ["devstore"]),
         .executable(name: "devstore-mcp", targets: ["devstore-mcp"]),
+        .executable(name: "DevStoreApp", targets: ["DevStoreApp"]),
         .library(name: "DevStoreCore", targets: ["DevStoreCore"]),
     ],
     dependencies: [
@@ -16,6 +17,7 @@ let package = Package(
         .target(name: "DevStoreCore"),
         .target(name: "DevStoreMCP", dependencies: ["DevStoreCore"]),
         .executableTarget(name: "devstore-mcp", dependencies: ["DevStoreMCP"]),
+        .executableTarget(name: "DevStoreApp", dependencies: ["DevStoreCore"]),
         .executableTarget(
             name: "devstore",
             dependencies: [

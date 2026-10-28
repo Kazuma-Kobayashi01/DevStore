@@ -150,13 +150,16 @@ public enum CapabilityLevel: String, Codable, Sendable, Comparable {
 
 public enum PlanAction: String, Codable, Sendable, CaseIterable {
     case importImage = "import"
+    case create
     case mount
     case unmount
+    case delete
 
     public var level: CapabilityLevel {
         switch self {
-        case .importImage: .mutate
+        case .importImage, .create: .mutate
         case .mount, .unmount: .mount
+        case .delete: .destructive
         }
     }
 }

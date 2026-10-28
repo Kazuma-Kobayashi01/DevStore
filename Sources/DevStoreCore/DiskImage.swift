@@ -65,6 +65,13 @@ public enum DiskImage {
         guard r.status == 0 else { throw DiskImageError.command("hdiutil attach", r) }
     }
 
+    /// New empty APFS sparse bundle (grows on demand up to `sizeGiB`).
+    public static func create(bundle: String, sizeGiB: Int, volumeName: String) throws {
+        let r = try Shell.run("/usr/bin/hdiutil", ["create", "-type", "SPARSEBUNDLE", "-fs", "APFS",
+                                                   "-size", "\(sizeGiB)g", "-volname", volumeName, bundle])
+        guard r.status == 0 else { throw DiskImageError.command("hdiutil create", r) }
+    }
+
     public static func detach(mountPoint: String) throws {
         guard isMountPoint(mountPoint) else { throw DiskImageError.notMounted(mountPoint) }
         _ = try Shell.run("/bin/sync", [])
@@ -78,7 +85,10 @@ public enum DiskImage {
         let mounted = withUnsafeBytes(of: &s.f_mntonname) { raw in
             String(decoding: raw.prefix { $0 != 0 }, as: UTF8.self)
         }
-        return mounted == URL(fileURLWithPath: path).standardizedFileURL.path
+        // Compare resolved paths: standardizedFileURL would turn /private/tmp into /tmp.
+        guard let resolved = realpath(path, nil) else { return false }
+        defer { free(resolved) }
+        return mounted == String(cString: resolved)
     }
 
     public static func isSparseBundle(_ path: String) -> Bool {
