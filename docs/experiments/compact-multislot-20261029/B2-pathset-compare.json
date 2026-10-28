@@ -1,0 +1,61 @@
+{
+ "currentEntries": 103093,
+ "labEntries": 103093,
+ "onlyInCurrent": 0,
+ "onlyInCurrentSample": [],
+ "onlyInLab": 0,
+ "onlyInLabSample": [],
+ "contentDiffers": 400,
+ "contentDiffersByTop": [
+  [
+   "envs/python3.10",
+   190
+  ],
+  [
+   "lib",
+   62
+  ],
+  [
+   "bin",
+   49
+  ],
+  [
+   "envs/neocloud",
+   45
+  ],
+  [
+   "envs/llama-cpp",
+   44
+  ],
+  [
+   "share",
+   5
+  ],
+  [
+   "etc",
+   3
+  ],
+  [
+   "condabin",
+   1
+  ],
+  [
+   "shell",
+   1
+  ]
+ ],
+ "metaDiffers": 1,
+ "metaSample": [
+  [
+   "miniconda3/pkgs/cache",
+   {
+    "mode": 1533,
+    "type": "d"
+   },
+   {
+    "mode": 509,
+    "type": "d"
+   }
+  ]
+ ]
+}

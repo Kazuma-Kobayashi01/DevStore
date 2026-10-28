@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "source": "/Users/jackson-hao/miniconda3",
+  "mountPoint": "/Users/jackson-hao/.local/dev/miniconda/current",
+  "singleMountedAPFSVolume": true,
+  "virtualCapacityGiB": 8,
+  "phases": {
+    "initial": {
+      "passed": 23,
+      "total": 23,
+      "failed": []
+    },
+    "remounted": {
+      "passed": 23,
+      "total": 23,
+      "failed": []
+    },
+    "restored": {
+      "passed": 23,
+      "total": 23,
+      "failed": []
+    }
+  },
+  "sourceIntegrity": {
+    "sourceEntriesChecked": 103075,
+    "sourceChanges": [],
+    "hostConfigChanges": [],
+    "sourceUnchanged": true,
+    "hostConfigUnchanged": true
+  },
+  "restoreIntegrity": {
+    "entriesChecked": 103105,
+    "changes": [],
+    "matched": true
+  },
+  "artifacts": {
+    "miniconda.sparsebundle": {
+      "allocatedBytes": 2538987520
+    },
+    "miniconda-checkpoint.dmg": {
+      "allocatedBytes": 671092736,
+      "fileBytes": 660660631,
+      "sha256": "61d8c5e27c73af6286c156a1ba75cbc41b8a99cfd515eafcdbaea6705bcdb5ba"
+    },
+    "miniconda-restored.sparsebundle": {
+      "allocatedBytes": 2597453824
+    }
+  },
+  "compression": {
+    "format": "ULFO/LZFSE",
+    "conversionWallSeconds": 4.94,
+    "restoreWallSeconds": 3.93,
+    "imageChecksumVerified": true,
+    "ratioBasis": "checkpoint file bytes / allocated bytes of original writable sparsebundle",
+    "reductionPercent": 73.98
+  },
+  "finalMounted": false
+}

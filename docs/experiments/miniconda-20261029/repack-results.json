@@ -1,0 +1,9 @@
+{
+  "environment": "python3.10",
+  "format": "tar",
+  "expectedUniquePaths": 53449,
+  "archiveMembers": 53469,
+  "missingAfterExtraction": 0,
+  "archiveBytes": 1257379840,
+  "reason": "no-archive mode suppressed an existing-target exception for overlapping package entries"
+}

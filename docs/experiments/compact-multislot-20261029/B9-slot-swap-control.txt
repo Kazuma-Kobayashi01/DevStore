@@ -1,0 +1,14 @@
+$ /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/bin/python -I -B -c 'import sys;print(sys.prefix)'
+/Users/jackson-hao/.local/dev/miniconda/current/miniconda3
+exit=0
+$ /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/bin/conda --version
+/bin/sh: /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/bin/conda: /Users/jackson-hao/.local/dev/miniconda/lab/miniconda3/bin/python: bad interpreter: No such file or directory
+exit=0
+$ /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud/bin/python -I -B -m pip --version
+pip 26.1.2 from /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud/lib/python3.11/site-packages/pip (python 3.11)
+exit=0
+$ /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10/bin/python -I -B -c 'import numpy,torch;print(numpy.__version__,torch.__version__)'
+2.2.5 2.5.1
+exit=0
+
+NOTE: the "exit=" lines above are the exit status of `tail`, not of the command. conda --version failed with "bad interpreter".

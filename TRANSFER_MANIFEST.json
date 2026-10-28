@@ -1,0 +1,4122 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "project": "/Users/jackson-hao/Documents/Code/DevStore",
+  "sourceWorkspace": "/Users/jackson-hao/Documents/Codex/2026-10-28/referenced-chatgpt-conversation-this-is-an",
+  "copyPolicy": "preserve originals; APFS clone where supported; distinct file identities; SHA-256 checked",
+  "allCopiedFilesVerified": true,
+  "entries": 685,
+  "logicalFileBytes": 5841850172,
+  "files": [
+    {
+      "path": ".gitignore",
+      "type": "file",
+      "bytes": 61,
+      "sha256": "1d478de371f6baea413271952291161a1990d5ca65d5f180d649d92f3a358ff3"
+    },
+    {
+      "path": "CLAUDE.md",
+      "type": "file",
+      "bytes": 1548,
+      "sha256": "2def45336aa0484f8d6e61b935964f4de0195f64e8fd7d81bbf3c6dae6385279"
+    },
+    {
+      "path": "README.md",
+      "type": "file",
+      "bytes": 1529,
+      "sha256": "3df73714bdb407582fd6ad61411c6edd6a62bac7f7a607dc9c666c565c0ad4f3"
+    },
+    {
+      "path": "docs/CLAUDE_HANDOFF.md",
+      "type": "file",
+      "bytes": 5236,
+      "sha256": "90829adb0b50269e3de94ae70819c7f46ca01903c89b52b829d4e5b520a51b43"
+    },
+    {
+      "path": "docs/README.md",
+      "type": "file",
+      "bytes": 2003,
+      "sha256": "7921220df5bc2afd7734d6c9fac13f0eaa8a023be7f5140eb4e7e179f3d29a2d"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/checkpoint-content-manifest.json",
+      "type": "file",
+      "bytes": 24467744,
+      "sha256": "525a95e4867614d8a9acea99a94ca221661b928ce8a87c3948955a891f702ef4"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/copy-completeness-initial.json",
+      "type": "file",
+      "bytes": 670,
+      "sha256": "cf31e7eb1e82c2b82b672400c36f0886e956785d0edfc8e03ebdf2c52f2a53de"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/experiment-summary.json",
+      "type": "file",
+      "bytes": 1437,
+      "sha256": "cd6ff52920487896ca7f7ef296a190e91126b111e024873b1b4dd9355ef53fa6"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/host-config-before.json",
+      "type": "file",
+      "bytes": 318,
+      "sha256": "4f92d63eeb9437f203784ca3c9b2e78a02c2d8372dc28ec13ecd1d6867fe4e41"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/packing-results.json",
+      "type": "file",
+      "bytes": 1098,
+      "sha256": "10c582d8b9d54dc19a2b144c8f9b83d787092c9e17605c31484999036a69b13e"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/pre-remount-integrity.json",
+      "type": "file",
+      "bytes": 175,
+      "sha256": "2a5db1846a5d6e5ad6b863422132c546798d0fd65401f5f5a1a9ab0a50d7ab0d"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/repack-results.json",
+      "type": "file",
+      "bytes": 275,
+      "sha256": "b655a314bdf3fb44b75762d8de3015a8e9f730dd266943502dc20a4561ea0668"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/restore-content-verification.json",
+      "type": "file",
+      "bytes": 66,
+      "sha256": "9f20e093fcd136f6c42ea3f6e52e4b88eb1a8c362a9b4e9afde2a2f8113cb08b"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/source-external-links.json",
+      "type": "file",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/source-inventory.json",
+      "type": "file",
+      "bytes": 35157,
+      "sha256": "9919b5f3cc73198980716af56f543f3570cb15f2b9e9c1284073ab7351a4aba3"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/source-manifest-before.json",
+      "type": "file",
+      "bytes": 23328823,
+      "sha256": "c31a764f1147621caca044737b62656296202e7e3ad7981fe121656ab70b478c"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/source-verification-after.json",
+      "type": "file",
+      "bytes": 144,
+      "sha256": "5c530ec51585bc389120d479e99db112c1a77ec56ada3cd851fcb2a9c280d19d"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/verification-initial-attempt.json",
+      "type": "file",
+      "bytes": 25725,
+      "sha256": "ac60a935b497436140c7f7bdcd6389b67239c8bfbd3ab1f698b60d86ce9dada0"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/verification-initial.json",
+      "type": "file",
+      "bytes": 19416,
+      "sha256": "9868d04d237c1d6fd98bd4198e563e250b4b9631efbabd2a546861c368cff798"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/verification-remounted.json",
+      "type": "file",
+      "bytes": 19420,
+      "sha256": "167a546a422be3f3eaff946fe3024b385c912a736876275efaff51553ec6f7d7"
+    },
+    {
+      "path": "docs/experiments/miniconda-20261029/verification-restored.json",
+      "type": "file",
+      "bytes": 19418,
+      "sha256": "45b0f78f959e2c17470efa3eb85c2ab9662859acdcd3da3d561e6f6c34b91414"
+    },
+    {
+      "path": "docs/reports/Miniconda单卷实验结果-20261029.md",
+      "type": "file",
+      "bytes": 7722,
+      "sha256": "6f6a2ba3b37dbc64dbc79a215f3e25ef303d5385d12b75e3025ab37cd51b5a1e"
+    },
+    {
+      "path": "docs/reports/SDK双镜像挂载与压缩方案-v1.md",
+      "type": "file",
+      "bytes": 18968,
+      "sha256": "ce0b071c58e6622f1f03f3a88ff07ff90e97def62fa065ff614b27adbe47e36e"
+    },
+    {
+      "path": "docs/reports/macOS开发环境迁移评估.md",
+      "type": "file",
+      "bytes": 22181,
+      "sha256": "c6d5918e58cc63ed8b5a649259d1cb38f49b469b6dee853e9e1e4a041bc633c2"
+    },
+    {
+      "path": "docs/reports/单卷独立环境挂载方案-v3.md",
+      "type": "file",
+      "bytes": 6014,
+      "sha256": "81e30ee3cf3abbbe6400e61fe57b916045b34ec6f2644e7021bdfa1cb1d6256f"
+    },
+    {
+      "path": "docs/reports/可写独立环境挂载与压缩方案-v2.md",
+      "type": "file",
+      "bytes": 15509,
+      "sha256": "c890c8c8a306cf13080a7f48711aeffebd63740063af1ee0bc2631e06848cac6"
+    },
+    {
+      "path": "docs/路径与材料位置.md",
+      "type": "file",
+      "bytes": 2320,
+      "sha256": "f3d8f5a06f4b6d7b7e79642f0302176fb3a4f83cefca1f650009e1a768f805ca"
+    },
+    {
+      "path": "docs/需求与决策记录.md",
+      "type": "file",
+      "bytes": 2385,
+      "sha256": "3b8c1b67b9a1fb4c1ed222aed821cf57a10e7601029dfb974a128f10f1b65ffc"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/base-strict-preflight.txt",
+      "type": "file",
+      "bytes": 522,
+      "sha256": "9788309f84b0acf39741b5e766a1155529332df9e2d1b60411ddc1066296b12e"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/conda-pack-pypi.json",
+      "type": "file",
+      "bytes": 28967,
+      "sha256": "4fa6c08bc9bf2b7dcab6f0b296b9cfb7695f4a97350e0f840171f89e49078e7d"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/conda_pack-0.9.2.whl",
+      "type": "file",
+      "bytes": 49828,
+      "sha256": "437c1acadcdfe3d4f44233513eb116129cde3911088f72ae00871802c7943e47"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/packing.log",
+      "type": "file",
+      "bytes": 28531,
+      "sha256": "e3c1c73b74c7e53550d3a9a1b88b8e48be1208d49008a230f33cccb13d675142"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/repack-python3.10.log",
+      "type": "file",
+      "bytes": 8737,
+      "sha256": "34397e1ab685a9a2fe0cad01e4b27a07aeab514df89236a143a91d02bac46db3"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/__init__.py",
+      "type": "file",
+      "bytes": 299,
+      "sha256": "1036adae01900f8300f21a7c96be21f17223242b8911d32756d63bc0ba01cc58"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/_progress.py",
+      "type": "file",
+      "bytes": 2920,
+      "sha256": "f280fc40a231e8ebf0f47cb39c2c6b6d3594b118e1ddf8bc02922b06f02eb3b1"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/_version.py",
+      "type": "file",
+      "bytes": 520,
+      "sha256": "107a5bf75ac6b5effad98d664bcd85e7179a4f2b17c6a3e7f03fadc64d07b2eb"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/cli.py",
+      "type": "file",
+      "bytes": 8966,
+      "sha256": "9f1448225a2f884fb3c0e39274e3f374c4fd28fadcfa689eb5129ccfbb5d6f3d"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/compat.py",
+      "type": "file",
+      "bytes": 1302,
+      "sha256": "714c7b490d32ba769a8914417bb010b68126ccdae7ff3339a369645be5b8179a"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/core.py",
+      "type": "file",
+      "bytes": 49603,
+      "sha256": "88c2f01e93b4b53fe566c7f0bf6700067ed7fec056fd5f8ff459c660a9671481"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/formats.py",
+      "type": "file",
+      "bytes": 19634,
+      "sha256": "3746f229204d8c29ce010a0c5b8bc7d3fcd0d0148df182c049cc3b4b1dd02f91"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/prefixes.py",
+      "type": "file",
+      "bytes": 8374,
+      "sha256": "bb54053d8d680aeeaf5164cd8cb06b9de5722137e4453eb1f4cc6cba4017501a"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/scripts/posix/activate",
+      "type": "file",
+      "bytes": 2364,
+      "sha256": "d25c0bee6db4d0891f4cdbcdec5d62fe507ac0fe6bb7bd52030dec2279a9e1b9"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/scripts/posix/activate.fish",
+      "type": "file",
+      "bytes": 1830,
+      "sha256": "d30eecb5a5a9f2afebb7e00fb413f5ed5244fbf7423d1658469c943aac473a6b"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/scripts/posix/deactivate",
+      "type": "file",
+      "bytes": 878,
+      "sha256": "4cbd0bc760f5d4e41ddab41d8d0c3ba8fb99e4f8623e16044a05103eb85ca47c"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/scripts/posix/parcel",
+      "type": "file",
+      "bytes": 387,
+      "sha256": "bf93a4a64e97df4fffe615fa8df9ea8df43d6633718eedee175c24fa568c24ba"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/scripts/windows/activate.bat",
+      "type": "file",
+      "bytes": 1906,
+      "sha256": "f030eeb933f882ae44a69cbe7ccd0746124c5fde4ec42f9f8521a853a1675f89"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/scripts/windows/deactivate.bat",
+      "type": "file",
+      "bytes": 1562,
+      "sha256": "a931e1e1e0d5ac5f340e1587b197549064b24ea243071c519641306ea2eb9d28"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/tests/__init__.py",
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/tests/conftest.py",
+      "type": "file",
+      "bytes": 747,
+      "sha256": "80a07eb0dd258f6af3098d82c7e4eff9ffba48d578fe5f0625d86ca41c48e013"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/tests/test_cli.py",
+      "type": "file",
+      "bytes": 4229,
+      "sha256": "1002d757297c2cc76f161768ce19629a1ca7afd895788f5a3a95cbf9a46236a7"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/tests/test_core.py",
+      "type": "file",
+      "bytes": 30457,
+      "sha256": "8fcf93d284b33604a654f3126598a0b45aebffad9ad126f0a69ab1b1460f6d42"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/tests/test_formats.py",
+      "type": "file",
+      "bytes": 9303,
+      "sha256": "2cd912f4558b8cb0f3d9fb52c7a406fb59b755ec2a522ebcba3e812af8f84e3b"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack/tests/test_prefixes.py",
+      "type": "file",
+      "bytes": 14738,
+      "sha256": "875d7ed7b27180fd4bcee5c6494cee78c06ac82fb63fcc10a740ea9e8d312659"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack-0.9.2.dist-info/METADATA",
+      "type": "file",
+      "bytes": 2801,
+      "sha256": "c64e1cc10162820a8ddbe1330ab1e1960c982f86f9ca8e23f7af84ceae24afd2"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack-0.9.2.dist-info/RECORD",
+      "type": "file",
+      "bytes": 2208,
+      "sha256": "0f2065c5e57e4ce2b404e810bd36dfdc6e274c1b2e01e0d812f03ee956703a51"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack-0.9.2.dist-info/WHEEL",
+      "type": "file",
+      "bytes": 91,
+      "sha256": "69e6228a0d35958183cc1812f07c565ce837b95eb51bd8a33acba9fa4f68d6c9"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack-0.9.2.dist-info/entry_points.txt",
+      "type": "file",
+      "bytes": 51,
+      "sha256": "71851810a3c3593e864028ef48f274be1c8d38cbaf2bcdc36ec451008ad1ec8e"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack-0.9.2.dist-info/licenses/LICENSE.txt",
+      "type": "file",
+      "bytes": 1509,
+      "sha256": "b0e95f386b21798f8a7a459336b8f1262a9723998d16956f582a0cff58df9270"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/tool/conda_pack-0.9.2.dist-info/top_level.txt",
+      "type": "file",
+      "bytes": 11,
+      "sha256": "cf2ce64365cce3c1c399f176f6ac2c80fce44fb8759faa8b64dcb11287dd1810"
+    },
+    {
+      "path": "artifacts/experiment-support/miniconda-20261029/verify_volume.py",
+      "type": "file",
+      "bytes": 8802,
+      "sha256": "8da02904c44055faf1680d99555f05e486de29bd6b479e39a0a98df471ea1f2a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/Info.bckup",
+      "type": "file",
+      "bytes": 497,
+      "sha256": "fa11417929974f1bdce07f25ff4df5e6964edf66905105278535129e9471393f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/Info.plist",
+      "type": "file",
+      "bytes": 497,
+      "sha256": "fa11417929974f1bdce07f25ff4df5e6964edf66905105278535129e9471393f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/0",
+      "type": "file",
+      "bytes": 3264512,
+      "sha256": "74f716bd69f95852e5e17f487b3e0909ee1424327d5037ca3a6f9be2efee5bd2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/100",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0f3a1bd42379ac5a0ac8c5fbf76f1788d6ffca1854b056121725edf1de531a23"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/101",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "95d07d849fa6829faf38dcc9f210e223dfef58f9b5ddc942702f4dd903177ec1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/102",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "075e4e3a67bb609c2ff738036ce12165c9517d37633196564301a0a7461fabea"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/103",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "8d6b6198c42df8ad56505fad6535fa5afee09a06f0ae996c289090bd20a31c24"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/104",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "898f441de73c975b6066e01eb6c640f52fae21af0a04e1e5f2580766176667de"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/105",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b96e71951e84bc5dc3a2262d67eb0b298088c0aa0808e807c66ddc2baa531ef9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/106",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "26f2d4ed742bc23df56106f0b2990c78ef3cbbe92f2537da10c1ebb7af70d3ab"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/107",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2441e3a9121463080a76d6e2f6f74d12977e1197bfec9185d4b5279832c5b1f4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/108",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "93153e235cdaed0079d21f8c6ea643c8034841df64cf704014c52e12a929649c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/109",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b4a5a3ac41c53c4f0bf6d8139bec32c8a5e9040c11761fe9c0a96cfa5347429c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/10a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f53c3b4e5a875b8ff5df3a83f3eca37a9f8aa95fa902d00358a4392b6dff2554"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/10b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0a1bbcacf4aad60d00a8801c59b7ec83cdc6d071c78a3833034929ddcba8ccac"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/10c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6b1b38fa8875a6662a500ea5ac985fd2e595edf4ad7dc872aa68ce96f3824cef"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/10d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0369640c4f4ad70aafffd1f481c595e49d99a3d16793d71ca42023c96e49c603"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/10e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bd09d758dc313ce6373d98d381c6857e1e6bcf2de208fcfe243f743a81d16e4a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/10f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "48f2076ed68b65bd071eef5ffca9d51c3b2c82c7a33066a9ef2fc2014b5c08b1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/110",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b4cbaab332d210a76f00f69b698e82b930cf05dbe1c0a789dc1eabdafe83be26"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/111",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0051c4d8a490d8230e3ae7503d69028ccb1eaca822be700bd2363bf53b987d62"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/112",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e215d3484816c8bfb91337600862c973628cfc2e2cef76ed0c470d17ac49cc11"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/113",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f84174886d706f840f49a6f50e5a13314638976664e5ea5bdc9bcc9bc1a78cde"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/114",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1b17a4e70d4ccc37ca80b1b85677e80d0c413b3ef8e054cdc589cf47d978ba83"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/115",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "05b2a247bd7b317886c81bf197039eb7141207d2fbf0f7d8c62baf6aecf2dd0e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/116",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d1be46d8039c6e7f447d4b32da2e89dd3d51c0e5713cac69ca211fb9b9294f4b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/117",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a566c3be44d73071c3bd242e005287b6692727b1504d95d92756948e21a8b084"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/118",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a211ec62d8bb5df9e067b085a6096d1aae6ff3a33c0438dd3f4584e544360e26"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/119",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "8753fbee3850f8b31f9a592510a29f339b84c373379687b6f5173d3104827b2c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/11a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7b958bd5bb626482576dd7588da55a32cebf9c67c2a750b6e23b575c43a69c07"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/11b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "54801d4e9af81bcb3384718bc22fdd637a75dd6731dc402939bdf2090b82676c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/11c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "867186fd3d4e2f3362187716414165b0c61756300c2df974bbc715b274cb5391"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/11d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "40422503bfc407199a8068302a14fe1a2568c2d3ddfdb21fc0565e7d79544e03"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/11e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "acd58c411602ccbb09a485b3279bfd42c45fed56775d7544e484f89ebb7eea34"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/11f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4e623b32e216806b16780cf0d1c70e7b15cdda430300d8c4908f4e82121720f8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/120",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2e89e772f1a5a486552b638deb4f8ebeb3c4fcdc68afa6934ba7a73bb8faac2b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/121",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "800736e0eeef20ee731e266f488ba96f27e00cea0f6be4ccfdd6b18f9b430224"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/122",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6525b130a7c90e72c5922a5d55fd6fb704be79804ab1d1be4efb7bc8bcf4c4e8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/123",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "860a78cfc08061b6c761221f338cef7b06d6c19b24101231504581d292c8500e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/124",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "295fc218e36bfd4f01e051583b878d414b24235a747a4fdc3dcd7be7ec9ab119"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/125",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "668d9e83ef26516b08fe898fefd8a3ff04d207f9cb8c5809abb089c327902572"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/126",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1f0e8dec2d7e5719478378c951892e7b70ae29ed7e83c4e4350dc9c2be91d267"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/127",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a16549a3879a10a476b32c1dab43c40a7709095a8a425ed5de624217de62aa36"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/128",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b3bc62d62064f039af0e90865835e5a2d3d3d61910d6dfbb3d7a3f3a496ea5ec"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/129",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2f8d703c563b8515b7dba413ae61c2f76ced3a0df0682e84da7dd7c0a30d4b6f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/12a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d93ef5aed84d216fd95934f3f0c98009b3422e5e861244ac3df8b762071ea0f5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/12b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7ca30a09e6bbbdb4701c52cffa1a6e840ac6e9f8ebdb4d6c79c54b4ab0dac608"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/12c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "dfdc97470203742bdc1ea1ebae0921431898d775a9df1af11b4e3ad78e662581"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/12d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "217dffea251e84cecde93e7f523d497783506b89db509022d8c1c987e601e100"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/12e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bcdc4a1bec59caab32820767b66a6416636e0c85edc65f89e3c43b4f29b52826"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/12f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e2278f73bfa777774698bd2c8697a20f65abea403740f5e73775fd2606982e25"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/130",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "50b4646ed76efb427cd9c71d883d1a7ec1d71e648c87abaea3d8f247ae62facb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/131",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "36632fd593e5ffe5d2f97f2c35e8dc1e0f8fac155c17104106c91dd37c4f573b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/132",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "af620a5014a813d2290034ae88a26c72d2dde6cc9c64db914910e934d84733e5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/133",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "96db2ebe12980ee50886976e4e4ac0c878179c6391a1e2991e30c5c9611f07de"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/134",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3bc4974496372a45480dafdf7fcb79c5c4ea2e39c619a4add23e33fbf1da9547"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/135",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9615e60564009a24ca0b0b90ee85002069b749cdcb2adec3067b3f742201b53b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/136",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4ea5e67f714ba237e964cc5af4cfc8ddab581592149139cd76f463cb1e554fca"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/137",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "59b40b0ad7b0df6dc629bd5296a774352eaf35f16570473b3d6c536e895d56db"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/138",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c8c89cb0660d5239670e5f69322c26d930f65ef1a04ce36d8b619278288386de"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/139",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6bfa1f99f38a1690d877bf1ee8dc699b13ad3fe95d9e305f9d57d10bb6e1480e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/13a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3bee50d5bbbf9d28542c8897b1902a01834857d4b1597f35a2389c0793a21fcd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/13b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "290dc877e12ac503f6b26533a1bddb0a3aa2806e5375693c1c0bb11f176d7f72"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/13c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6fabc74019aef8089a3db78f1e1e803738a5c7df1d9d4cbe2f870a402c62d5ee"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/13d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0d335c7f360aef8dfbf20a0038f17ae2c7ea9df45af44697cde64815e2e160a4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/13e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "20e8b8f487fbec6aeae23ce730d4c654c048a5c8cac58da1ad72c6b27ccfab22"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/13f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6f65d6dd7649598a1233f567905ed2985682dc5cffa177b747554a5d59eb2425"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/140",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1edeb6ad0ad3a3c157c370b0225f3690eef787797285bd484696873e4a94e671"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/141",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b4a84f31ce9fa055cb7f9ffee562703a57b5a6e2b2586543d8d3d07a0438568b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/142",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "57c13aabf142bf7d6f67e101c5579100a7067e94c41586f53a77f8e060887a4b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/143",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9fe09bf49fd9469e07430478bcf7d69490fbf61f9dfbc459d5d34f15bdcb60e5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/144",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6f72983e3b778f46f27c342576c3e9e77c15f7d33c4bfd49094447128c23ed25"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/145",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "245103650b9ac3598bf72f6687990412a57dd009c9085472a0461bf26262ff25"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/146",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e046b939d12e480fe037e8dedf4530c250ac90e5de4328a9a6fe4fe355ecc6dd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/147",
+      "type": "file",
+      "bytes": 6942720,
+      "sha256": "d393017e50137ddd1d9d0bbcc3c7e06c0ce80470cdbdb13fdd896d0405b31918"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/19",
+      "type": "file",
+      "bytes": 4427776,
+      "sha256": "c8bdaa114a9e486eb2eb334e6b98c3c24c5612ba4d63cd7fbf4151c7bba29d3f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/1c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1538e262f02b6038be93ed8dac70ab2b4d2ae05c80f8deae3616013b6e024744"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/1d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0114fd363b8faafeb2b321cc560e6df8a0a3045e6fdcf32a5650af405368e6b8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/1e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ca374a52c1c6d9a22941d94b8beed4a7a144b4e375eba1805c9d3bc671872ad9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/1f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "8df0410832839f4ab0e97819380fc1ab7505dcdfb1e40a45ec7c059147747b13"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/20",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c0509a7dd4a20be3ff5b8f44bd204a1f68034018564414d12c202bd199352e3a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/20c",
+      "type": "file",
+      "bytes": 4227072,
+      "sha256": "84ccff3c9a77bf3eb86ce59b248fc3647e92447308223faf4ad238438c1b0d8f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/21",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5d047629fe35820bead1b41edd8bdfa5f86a0ec5c383e9c53c4d73d86c33dec5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/22",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "231f1d27f3577ec18c51d3beda66713d02592f31a041a4a2cbea9d79c2d00e5c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/23",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b59a2377c764100877b5e4d3104dd55aab99cdf43fb06f654fb8d4e4b0348d8c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/24",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fb6c33d295b368c8b09a835165938681d2d4cb99a61126f7d722cf7ac134e254"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/25",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2c3cd29cc6e7906263be6ae276d584279f3153b9687593b15d2ca74b21fbf4c9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/26",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1e1631a20a03c879a44a3c5d8f4ea5b414aacf78940c65e0ce08238dce9082ff"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/27",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1817f7df88e17028cb5583031f1e70b0edd5c4875f261b9365ee3d1e603b2764"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/28",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "96185b81f78a5b765f7a6cffb187f464b0a0077c24c369fa100965bf3e4074cb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/29",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "727037cd3bc3bd765299da08fe2066ef98e38ed8d28c8053d85027a48e19a887"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/2a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4d0c7a4e800e2309277ad6ec7ba3ed22ffe894e82ab385a7529dc50fbd75c501"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/2b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c01e4d77259e85be5e4eda73fa6936d6400445018f0de885c244a14f76c82f14"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/2c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ee413a30058e19219d0acc3036bbdcd6f3559566c5de0c488c847adf27f6359a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/2d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "22c0db15616756da76303be341a87c81b00293843d2ed4cd0ecd27a27866e8db"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/2e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "79b2e1189a3006317ec4bbe88ba0c478d560db4984f83fab52c0714dce9ffd8f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/2f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f3cab9f461a87939ad73cedbecce3756b8a3bf4633655a0108f128982cb3701b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/30",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9acf77de5779592e82ec6a3be87c76e3ccd4cca07a77017d4df61a22f13b2ae5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/31",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e0d548370821095cf690cbc2cec01825187e428c34be5d90b2c82ee8754dafc2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/32",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d859db3022947b7e00faade32c4002006ea88859200cab8cfe06be5714662666"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/33",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bf42da09ce03dbe44e7510e848490e64636c314bbdf625aafe9f91439104f0fa"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/34",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "74d61a834f66255bfd9f00a51b98fe62ca2bc0224c73ec061c4c533b44426d42"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/35",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7f7e7db6ab9d932958c020d7046ff75c4d82ca76f0f81d1e8d5bcf6291348649"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/36",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6676aabc3732e845530a531d10cd0c60ccf7e672ffc9e20263d0770d8f41c492"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/37",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "54c6b03bfb2fcf028266bf3d8568e8c2178b07eef88a12b4779b313fa2c7e362"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/38",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2bb659af15dba10f3f9d24d3f04dc287c592e266232d18db3e45a02966162f59"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/39",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4e534fadeaad95d74ea2a29084be89e49ebd8f3c5a89e5a0a621ab68c1a1a065"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/3a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f0fa798925aa3ddfaa04b55e987754d6f220f11d73784bd1424c3db32a6021df"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/3b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "99e99cc45824d9b554f6cf4c185470004e3a721f7e65f7dd5f6daca06ebef943"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/3c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "90889e798f38e2d733d666270616740a550d8f8f7c7a336f2d2e846d41d824ba"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/3d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "567f84cc12775d166288dbf14df2bfa978fa9ce63967461569247f369c298e41"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/3e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "098bce96ece95a914fc0f953ce4415f014da74ed8f228e7348ce2f875bcf5e66"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/3f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7044995f6d6ca9ef69d907c4b8d9220d30457e8c46f6a65cac5ce933b9106148"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/3ff",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "60c8034d004d90ee50840273c68f540e1b37932840c2e98816c490d633fbcbec"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/40",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "96925876ccfe25c5669a6ccf5333dabe9942d034fbfb9e06234bbe939f0dd3fe"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/41",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c8b5922471337b08b524fc7618be2d725b79d78b547d3acbc03d2ce846c767cf"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/42",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "391b856b3ca40fa96a7bce06c7dc896882f98c86fd68a81f5a04bcba8717fc05"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/43",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c56d510b08229e6588ba6af38769874927fb73ff5342160853a2c5d560444102"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/44",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7e5cd3ec73b0bf541cf4abb033f763c056b5424f81b438a376080aacd1d6c68f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/45",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f104ccc190b8eb19e3ebb51cc586e288da954be16cb49c3e316bd492197a4c4e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/46",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "efc195a98498f37c669d857ced875fe7f7e5c880ac87381de7898406af09625a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/47",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f4917a23017e83451dd1f8bfc09b74599888a12a72f14b35b0ac34bb22a28bf1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/48",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5df4b1bc7a81e5beb1cebb7a146f779685b4f318103536386c9304639a9dcfb2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/49",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9601a2bb05aa2f3eb8757fe934e8e7c098ebecce344470143b0a9e26202e7f66"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/4a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c46ef471000a468db855d8534a1e7471ec16cec52874f11034313eb9f0487197"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/4b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ea16c15756492ca965cb3a8d720676ff21af3a6ceef0eb82736be1968873767d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/4c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "25cf077debb4caa54b60b07d207265e0da09d83a4a512e7c80ccd6e40005324d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/4d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3f8d1d4c07d0d7a022a004b84ed715a2c3ef6bcae797ca22c5e9a2fb2c737854"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/4e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ed915a1a0463b490f9987f27c0afcd08abfb1e4252e34c5f379519d8135fe00e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/4f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f659507d1dba44b1e201fe1c6aff432318ee430a9fde18165a3beef5a7fffc06"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/50",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7cd0200e12be7488833c3e6edf66c9a32e2a4d94e4c5d783048e38148fc08609"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/51",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5c066c0bd6d0d5b813121df8f4d8742a4c72436560db2f059beae917b63c1424"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/52",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4b7ccb557b2b0907ef9a92959d605580041d5bd9f921bd4a9eb36fbf11cbec5a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/53",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e2fbe8353b8188cf6d04b5708a944c7433ed6a6692b414a2dda87fe4890b5bd8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/54",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3d59ecc80737ce81843f8bad38a532f8d9ef826c787421bc97b61e9ae29056d3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/55",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a523ad5ea43059eff1f47989723425fd769c9e6e1a75294c0b49c786ab276cb2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/56",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3b8009a7ee1d28dbc650819785076a2306f194864b1f2b1b510c2d47c26ec527"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/57",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "aaf514606b80c8ca84bddeafcaa5d395ecf512d3484040bb023b20e626e74976"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/58",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7f284a925aaa8877f740ed54dcbf2608986738bb4b60bd38fe1861b59cf2ee60"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/59",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bb8cdbc651bd3cfb74dfe577b5256cc3c11509df151828e09e258dea5d2e4ff5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/5a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5fe1b203164ad6774d2733855ca6d586ae15be3918351af4b68043c4331babcc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/5b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c88ccddd740ed993e5b0a2ddcf7f11794425cfa8cc91fad3590167bda41d1120"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/5c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b7d9b161b48edc2062de5fa8689d1fbee71120dacf140cc4a5a90114ddb214cb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/5d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e8bd292e9217e551f572fe5b58b8ac8dab517c403d3b4f75b2b4deed2fdfdeff"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/5e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4e31b3e670b2b489a5eaeb1a8fe5579b8192d7b1cb909b39ebf2016e647e3e03"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/5f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "696b8312ab1495d0a79ef1ec03b7e7cab4beafd02a73923ce5cdb17a5549af33"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/60",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "06ffa1f1ee6f22a7e2b121e60a40a75089b2d4360a557f2e9546a599a6b896a2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/61",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "cd3bbb64b39eb5390ad391441703676f84373342363387243d219fa5ac35da4d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/62",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "758170096f8827c503e06c255a33308209a31f3157f1af9ac5713301abc9ebba"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/63",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "854a3dd0e6ced0a5c9bd2a30e4ccd5f06d64d7a7873e719584df832406d16547"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/64",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e5ccf7e2534bc0dd7dbf1776c82eb7e27a788900e4dbf7b76dd9a4044e76005c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/65",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fdb24fc32a4052de4b8b72f56e8a4f069d0925df5e02a6e1ba4d8e403950dc27"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/66",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bbf866afe5e6ca00ea083d361ada5af124441ff3d7c0c58bff843918675d957f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/67",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7f55d4842ce62f5df0cd34a3287f9727f4678b5b275436c08c39a9b8df36e301"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/68",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "65712470d17b4294920f2477cd152be3ae6b4a2ae9addb1547820bd3667efbb3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/69",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7cc162d6b42b47156a439a02c7a3b94f12a69ff1f5e675c8cce6247991f3df10"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/6a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "021e5f56a7c0e35eb6c22c713e7feb567f6be1e7ead769659f25873633f61cd1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/6b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ce9b1884ebb111bec279364c6d3be88f92c4ebf5e9ac7af497871e304c3ff8a3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/6c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "be7f86711a27a6c80c2dd6d785d14cc7ca43b32c6ef1d0ccf0301eac1235ac05"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/6d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "877a1a57d7ea1f41bd6a4003b2cf8c4810e52b9b5f10f1717ffd0423dbb5a8a1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/6e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c2c0254a2d4feaa1cd0026e1c7cb98d282c2d99851e982bb2ab1f4b86a544b31"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/6f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6663e84986c6938f4a23e4f12be22e7091c805ea4721536c5ae2da4823f519a5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/70",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0a330e886f7099e7e3608299840e81e029b3bab7cdeb2c12b2165a225b9b92e8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/71",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "deb50b734fe1a7b26d3002fcf6983daf3562717a6c700df05f137a4cc9043f79"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/72",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "838d14d636a06d8c4650782f9c258537addf2df9a8044676fde6f9d902a4e9cc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/73",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "cdd1656ffda081f485dbf5fe98fe92aaec17eeae561ac074a74f424b22364abf"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/74",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2d77399d465594a86dbd547b2f33845dc5c537d06de491475b474f02dd0d62f4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/75",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "24c56027d491f8e23be312e2d6e2eeefdbd3b07382dd9cbdce1f998680fa5c1c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/76",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d0b58461db7395df31c95dded8fb791b9a6aa13e539fee6d65b6f3b6d30388c1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/77",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a76ddd68bdb28f43c377de7fbec0b396db780bc7a9f3dcca03bda01bb6fc9b48"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/78",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e2e826246ecaf410e877d04afd00ae6d9b85b0ccb13364d4b15b8f04fad6bbb1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/79",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f93dc4c4495e63427adaf6be484e8ed95e82eaf6624d43f74ec6f49f0632609e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/7a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0e9fdc0ad82ff002a9150211fa5c73755325c3529a57bf10510a69739a9570cd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/7b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d6a893dc1360549ad0e7ad517471b4f21477c0abd895f0acd4a68a9e4e158063"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/7c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d1117ca5bdedb487136837c52a2429079dfece853ed9c624ace401b79ad9896c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/7d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "30f6de161edd74b59e69bd4ef8f3f26d9f268aeb233845cf60b4da2874e25b8c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/7e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d4e7fdf97322773681af93fbfddf2f7a1f9a157992a4aa693109f4c5037f43b2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/7f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5637b2bbe121914910324f903a19060d22e14e27646abe3b05cd66e2b9b19cf6"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/80",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5ba11751fc415e67e244c8688ae84dfd4bd18cab8023e1dbebd27cbf9573b652"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/81",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ee612b42ef94fd140a106b2d43c17203f4457856ecc93ee4c2dc5368efbe11a1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/82",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "da6a33e1da72da7e49bb6dc3b863bb54feb41430796e9ad5f89801ecf4d0ea15"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/83",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c30e987fa0464d4df9abab4d1e6ea046dff564ae34857503c6744ee4192d02cc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/84",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b3bab7769b27b554338163d2b5612e555b8c64da361f397126a992e0d7fa3303"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/85",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "33eb947489fb5be6c794db14b6d4477af41a34680267a5ac85fac3905d945094"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/86",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "762f07ab0f0895be2efc99b3a3a00d0393f2a2de7ce7f7bd88820c723e06cae1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/87",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ec84f80faa3d2a441ae6936a5ec3f09682324de2db9fd0bcd7ed6d59c884a37b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/88",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0ea870bb09857a80251599d8da636eb825798261b35e9ac41de3bb2591ea58cd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/89",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9086cdae1082a085a5348730c6cea70cca5ae2bf9d11898d897cbe43ac413c72"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/8a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "42be6d5661f31cec6120016317d37d44a2736d741652a04e78ef0d3f3c678b18"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/8b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "61400353fa3630a5e8473151404a7aa7df2360aeb2e7c7a6a8b90a9df464f64d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/8c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3e6bcce45668f72fbe5e8f851db84ef2d5dd9eab3a73cec20282115fff4ae237"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/8d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c232ecdefe4ea302d2e2a2d1b6dab41e563d631f7ffe1d86309c8048c3da6da2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/8e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "95d37260be52845974a18ca3f59b2b6571d030caa9709641d728100e4dfdde77"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/8f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "35eba34d9efbe8c3193b4c5e75e5d609592d3cfc6b5c43a0e3a40c882ad0e56d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/90",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4558f9f5946db69a5755a7511ab863f8613efee380dfcb3b25b4b5f594d09298"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/91",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "02cc27b8c0342e44f99a610be838f3e11f7ce7c27b67ef4ee82a6cbbaf3802d2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/92",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4bfd4f6d2e39c5ab1d27b54f132a798b0ff71de63ed5d137703d4263e7ea5e00"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/93",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "76f0ecc30b98731ff33d435fded5b13107fce7fd157818b1b0b31129816a87dd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/94",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b0b0f6fff5f6d4ad36941046e7943e9ef66d7b065dc557ea318e964977f7c601"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/95",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1d13fbbc1f3b970422b716d4abe52bdf9e089961d41edf8a54e4156eba817bfd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/96",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6249ffa3845d344652f80191d640ac999e96901c991a14a186d8ae095a20e0e5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/97",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e48beb995049e4a477335f70121c2470c6f275923537ae71aa0e7917816f71a1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/98",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4827070d0f0eeaff0111351dad643ea6ed3b30ceeb267a8d8530107e1b7730e2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/99",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c4d708f69f167efd1d019c4c7016c742d0079aaaf62bd64a5bcc52b98fe3ef8d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/9a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "04ccbdad2de7cf9cb2b07808c8e227461f6cb610b62c9ed837ab59b706f8a699"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/9b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "eded7623cfcfed5dc85dcd76333aead7eb2e989ff4bc8307c674284d379abced"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/9c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1c8b802e18da071861fee2941e8ce16c50b06ed69f5f1bfe1a21dfdab7a8c91d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/9d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "61e553c5e85dadf655fd2e870c82d59b050b8c2fd57c70c32e339ca18dd744dc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/9e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "36f0ab46beaec97e944ed38799d5bb147e01d931f628458a25873e4fbde35513"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/9f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1bfef84b23f3c4a0e23e41da159ffaeda9e3e6f501cb07f9f41014d0bfe082d3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "8f215168aff8bb4c31341f963c6f342c1886710f097c7754a981f98aa3094912"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "58ceacaf94930e3afee86d9db8c0bd07677759b10b0f71fa713f2c8703a7c8c8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9f88238d94eb3ab067efe6dc5b7178b23152672f5761ef742fc2f7ae8c9e6bb6"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2cd98f1eefa5a7dd793211a746970f100d0c46df31c8aac5aee4342c1f2ad691"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "02cbf2c85a31db5184a91056414280413f5389c0a55277b3f64db87752f9db5b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7012ee80528226812668fdd7b2d4b8b15c28d3142a9b06c4629fbf0923ffc9e7"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0597a86751407baf907ed974c8847f1c9b7c39d2050ac226fb38a8e998c9df33"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b8c9000490e94557ffe70e968985b79a3ba3bfa06db7931bd9cf085fa6dd2462"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "09a346e0da80017bf386e3508bc5049eae5ebb6ba5e84f496d2a3b9783db7313"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/a9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d24cdaaa1ce2ef15c5daa0bd52b0e758cec0e712fa5b2e0743caf33715d3785e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/aa",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ba87fc38162c26e5a48421e1b31de049cd2fe253fc8d9fac0d9c03fad6145aa0"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ab",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "517cb0598088b5a5807d91406c14820c993c441efaf9da892a3627a33656ce49"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ac",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4dcb23226ebdf180280782f5406e24d2f4e757d7cae4a9c0ccdf84533940b6e7"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ad",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "14161adf054e74e97ac9fb116c07c2213c0cab894ae8b40fc4803833d2bfb34f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ae",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "19a5d27a4fca9b093cb30d510c41b3e6a0c7871fd05dfff87ab27dcf77cca4eb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/af",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b00d5ba23e6e698db8b06a4b332186788155e8422328e6154635e77c24c7d9e8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9ae5f479ab8fcc7c6993197c66016782e0e8a7cf92e51f635db045eaeb19af3c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "55cc5074aa624ad027a4d59b70dd6a296bafb09d0719b0f6a76daef6a998effa"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9fe9f38717a8746f0c25b24b7f410c190ad4afba971848b1d54a0ebeea536c6e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "23b90f5dd90037ce91046da53e8eeda92f47a82b9b071210ce7324d420a4243f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3d2314bf6a5882e2f2be82e8aee10c249af1ef200f9a40582f2b9eb8dbedc108"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "93bfd6aa959e617f2e67c82fc6551f1b49c72ccbb09283217626d8e27da72c6b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "88746767a4c736da56d52e9ca9282ca37b11e6f5ae66d18a6b78d279a0f7fa3a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9c6cbaf9516356ede999a5f04f7341f03123bf1efff45c3b70d81c8cb3553830"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6cebdfd10900113914cce5da48ef200913eb170eff55c0f2eee7236ad76f04d9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/b9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ddca2f468523fbcac926e9201e46fa8daac568cd94288d3c9e85efd0ac391f51"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ba",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "916214ccf196450ee221ff83516c2222c6396beb15c563f9a38f87f7d2012025"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/bb",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "aaa71c02b9b616bc06969028030e1e5c04e67f2f07699a2ae717bfe08e655e09"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/bc",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ef85d225317b64589aba149266d30ec9c1106c2e08e987de257f2801e1f4cb71"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/bd",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0d09bf89b0d888435e7ce895154f22bb5128fbab6a6c462e3e1d9684a357112c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/be",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4f9a9c97e1acee33a2e9919518acc4cc6aac370546397d0413b10762fdcc455b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/bf",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c8afb7bb120caf26c93b318cb4b2aa66fac85a88001c10ac58a19d4251e8e128"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "17fea5f2f8b7cc4de482bf95710ac3da4f146862f4d423bc3381c999bf46ec57"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d2765d27e30e460671e49cf442f42b641ba7ddeee933a6ef9cd426c20682c072"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9847ca3be0ef9bbc568712d321f32b88bafc1e3038a8a0e2ebbc07d59e7e8d86"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2b76bb084e7fabf62aa00300e8eed27362ed7b25fd713a6daac088b9130e791f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4702322c376a8b5ef97f19372e85c2f640c62014a1fab05a9b40279fcc36f5b5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c4ccd89644569ba3a3970ffeb424cd5e9d2924824e778260cc062bb5f03219c4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "43fe1e3cff377346822d918658dfa9146bf30f0f7f0e93dd842c602b88e06f14"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bb99fece1a5623b615e856b6f2e47670835102dea54ab3a55a3d066f4f872921"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f9932d381aba272a7b02c02782ca0453c7271b494aac18883c6ccb22a3a158b7"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/c9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c133c992832f2eda91a59fed4446552cb9d534a417f41d2f866ce53d60d999e3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ca",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "93e60081f5074533dc4f7c6ac5391728a2039f54bb0c988967a9a7fcef65dff4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/cb",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a0d06922df3bd2da6f9825188841760528700214b1eb9a88a8a765cbf7cded19"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/cc",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f78212cc4708577f714eb15c235e65f0f43996fc51f0a3b7676d3129735de053"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/cd",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "20ef6c218a70cc044cfb79d0c44b335c44caa9e4149e3c5e53fd17f10162ec60"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ce",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7b41f530435d204388a47487f9ecd513966b01734c4b264715b25be782e0fa3f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/cf",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9b4b3682e1f2b4fc06358e43c007d71232dde6be97103bf549f70f105670e2a8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7ae0fe5d03618d835cd8811d80087023429d64cbe97d914c646cdfadaa4e29e9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "25c93dda88a6b7528bbbaa8c9e7ca6a07c2a218174e3934461bd59c9d36baea9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ed5c9241821c3aa69386964da8ad3dc324ce5aeb193fc1aa3516483f122f9e21"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fff8f7a03f3adecb454309e1bf8364147f75773c3441ff41e2127791ec49061d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ffbbd1c14cfb7f5123343c29894ec15686c57e1b297c490f71cc1e194ccd199c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fd571592bee851566c184264751b74902da2cb628c3d96a8f6893372f4c57ded"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5835506b182acb1a0f7b2109498264eb152396840b93f616f61d67c5c1a6dfdd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b7541a8bd1a88fcc30edc8ed02b1749dfbfc338e43d14d17d13b667ee9c42a49"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "35fb48ca61bbcd52ec02de4b88fa31d338c99f0352abf3ba0746899157f33dd8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/d9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2404b75db431d5eae16f922728b8ec87a5ea0a958a614ec58e30e627ec4e0933"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/da",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "869b133f7c47c47073e10d9d3f71e4b0b931f0827b71956c0faa64aeb0945073"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/db",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1076ee23b32dbd9acb4289e16aaf4ac88608a508909fdc96e2b1d903036015a1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/dc",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "65f550d0a42658006d7f50791418984f4b248a5a3f3821231900c2297405dfd1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/dd",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f119916d206c89b1ef13073db4288456cbfca82243779fca63fd9e92dbaade30"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/de",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0cb387ecc8007390a0d196d550e86d2fd842ee175df004a63909dbdb47c0394a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/df",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "470742cde702b4fe223258a8991ccb80b12a205634f49e69eb068248f199d18b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "14b8994969d4568de95535f08306735d8db934db49a5b9824fdc5ed613de9c18"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f82b35a6dca465fe60e5241aafffdeaee90e55174c50d74a760ccbe73a64f020"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f3086471e20a8ed3f8d073d5ff1c57487df1bd7509753b134ff237197085d6e6"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0c9a81b932cf3a6ef033b01d7c34bbac34e458940c657806f906e50d8de20dde"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "94726c7fc6be193bb31c6720416767431606dbe930476731bc6b9fb903c37136"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2e51a6e85c22828125f49b449107fa7c89b681e442e045de5980b48398ce8e8c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "43337402863ed73345dca8a07e692555613002d1053c43e244898abb7ac2c31c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "68c9d3624dafb64daa18d0ee4ca96bdb30a6f2f8b9cda35509f4e5f527e64b3d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a31c8c586c3bd71caff72a4551db33431220e0a28233de21fa099dc61e9474bc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/e9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2b5bda5946718edb2fa0f5b8bdfee97a12f23f0b18de4805ffa2394fa95f804c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ea",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9c38c12de871518dc651d498d5d4e9257ec40756faf1c18c7aeabda6c9b80bf8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/eb",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "37b5febcbd40a347894985c75840838e74d0d70d7228929ad4e8cd8e420e6ffb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ec",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6f4c3d0dfea6b936048b51311901754cf36550e55d5b9cd639e409345d3e30f1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ed",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2644bf216661d59889f033ecbb5ba706284e36f05539567062384b513d6fdc3f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ee",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a0a77552c7eb312d5652189f773e69e81414f1da709f7922572e848af41cc517"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ef",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d282c0f332001625fd78897abd643ffdb5841f81c12d50a6a9c1d424620bb3a3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "756328fb417fbc6778de48bd9cfe131b4f81c0b51d00086d6fdfce13af6d9662"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4e58ce8098f1e09c234cedf35bb45fe7e800539d0d32db479641502fa9c67843"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1ed258b4a77ad47eeeb7861834ed87aab7979d0519045a20c7317e9d2bd411f5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4d4e15afb56bf4444af3906b009194cbfd3cfd3ea0c07a083356be8046166265"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "87c088f2ce7aa835bd0bf9cc2f2dc11f81c245822b5212e9aa01beb79e888731"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2b969cd4f188a9a406e685f64a0d8571ddf22a83c6c48d91ff7adb9c5152397f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "579da62044b9b21b614dbf62c9928c7c86695e3ec0fef12fa2432eca9ec31a4f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "498d6575c36ba8ac0886406f628b4d9533e2f118bb2d40330ae19573ab25574b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5b055105de903d4ba080eda1f7052b2e30ced7c8cdd1f0c302e4383af0e2b8a7"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/f9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fcf3675e89c6cbb8e1cf03a6ed9b4282ed6cfcca20e750aed106d96361c04d35"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/fa",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c4d30a043d77344653582e60dae204bcee315f647dbc38bef810bb4e6186fabc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/fb",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0be053faaae730b7dfdf983fb0e8d106eacdcc98219fb9197be00cc47760c23a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/fc",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c387d38851e504b613277e23e8aced50fb96c25588627f274c9b99e48d6c6686"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/fd",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "165d7c111d97c1568b429d70a7aaebcf4c267b54388fad4b4b88f2efbdb46ad5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/fe",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e9cacc573673bf2389a141f9a34efbcca96b681da4a50b0492794e9ab3790cac"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/bands/ff",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2e8472041faa1388987df336f30c384c881ccc1be89bd8126c75e9c4e85cdf09"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/lock",
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda.sparsebundle/token",
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-checkpoint.dmg",
+      "type": "file",
+      "bytes": 660660631,
+      "sha256": "61d8c5e27c73af6286c156a1ba75cbc41b8a99cfd515eafcdbaea6705bcdb5ba"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/Info.bckup",
+      "type": "file",
+      "bytes": 497,
+      "sha256": "fa11417929974f1bdce07f25ff4df5e6964edf66905105278535129e9471393f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/Info.plist",
+      "type": "file",
+      "bytes": 497,
+      "sha256": "fa11417929974f1bdce07f25ff4df5e6964edf66905105278535129e9471393f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "07803021aba1bf09cd0dbf2ad654a1836f0ea15b651a5615c2c5f26483bc8adf"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/10",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/100",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0f3a1bd42379ac5a0ac8c5fbf76f1788d6ffca1854b056121725edf1de531a23"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/101",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "95d07d849fa6829faf38dcc9f210e223dfef58f9b5ddc942702f4dd903177ec1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/102",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "075e4e3a67bb609c2ff738036ce12165c9517d37633196564301a0a7461fabea"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/103",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "8d6b6198c42df8ad56505fad6535fa5afee09a06f0ae996c289090bd20a31c24"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/104",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "898f441de73c975b6066e01eb6c640f52fae21af0a04e1e5f2580766176667de"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/105",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b96e71951e84bc5dc3a2262d67eb0b298088c0aa0808e807c66ddc2baa531ef9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/106",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "26f2d4ed742bc23df56106f0b2990c78ef3cbbe92f2537da10c1ebb7af70d3ab"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/107",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2441e3a9121463080a76d6e2f6f74d12977e1197bfec9185d4b5279832c5b1f4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/108",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "93153e235cdaed0079d21f8c6ea643c8034841df64cf704014c52e12a929649c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/109",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b4a5a3ac41c53c4f0bf6d8139bec32c8a5e9040c11761fe9c0a96cfa5347429c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/10a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7a0bf83091e45e35701f165e300eede4885f3a3190e7b2acb1fb88314adca768"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/10b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0a1bbcacf4aad60d00a8801c59b7ec83cdc6d071c78a3833034929ddcba8ccac"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/10c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6b1b38fa8875a6662a500ea5ac985fd2e595edf4ad7dc872aa68ce96f3824cef"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/10d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0369640c4f4ad70aafffd1f481c595e49d99a3d16793d71ca42023c96e49c603"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/10e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bd09d758dc313ce6373d98d381c6857e1e6bcf2de208fcfe243f743a81d16e4a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/10f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "48f2076ed68b65bd071eef5ffca9d51c3b2c82c7a33066a9ef2fc2014b5c08b1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/11",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/110",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b4cbaab332d210a76f00f69b698e82b930cf05dbe1c0a789dc1eabdafe83be26"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/111",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0051c4d8a490d8230e3ae7503d69028ccb1eaca822be700bd2363bf53b987d62"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/112",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e215d3484816c8bfb91337600862c973628cfc2e2cef76ed0c470d17ac49cc11"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/113",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f84174886d706f840f49a6f50e5a13314638976664e5ea5bdc9bcc9bc1a78cde"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/114",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1b17a4e70d4ccc37ca80b1b85677e80d0c413b3ef8e054cdc589cf47d978ba83"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/115",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "05b2a247bd7b317886c81bf197039eb7141207d2fbf0f7d8c62baf6aecf2dd0e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/116",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d1be46d8039c6e7f447d4b32da2e89dd3d51c0e5713cac69ca211fb9b9294f4b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/117",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a566c3be44d73071c3bd242e005287b6692727b1504d95d92756948e21a8b084"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/118",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a211ec62d8bb5df9e067b085a6096d1aae6ff3a33c0438dd3f4584e544360e26"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/119",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "8753fbee3850f8b31f9a592510a29f339b84c373379687b6f5173d3104827b2c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/11a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7b958bd5bb626482576dd7588da55a32cebf9c67c2a750b6e23b575c43a69c07"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/11b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "54801d4e9af81bcb3384718bc22fdd637a75dd6731dc402939bdf2090b82676c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/11c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "867186fd3d4e2f3362187716414165b0c61756300c2df974bbc715b274cb5391"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/11d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "40422503bfc407199a8068302a14fe1a2568c2d3ddfdb21fc0565e7d79544e03"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/11e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "acd58c411602ccbb09a485b3279bfd42c45fed56775d7544e484f89ebb7eea34"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/11f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4e623b32e216806b16780cf0d1c70e7b15cdda430300d8c4908f4e82121720f8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/12",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/120",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2e89e772f1a5a486552b638deb4f8ebeb3c4fcdc68afa6934ba7a73bb8faac2b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/121",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "800736e0eeef20ee731e266f488ba96f27e00cea0f6be4ccfdd6b18f9b430224"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/122",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6525b130a7c90e72c5922a5d55fd6fb704be79804ab1d1be4efb7bc8bcf4c4e8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/123",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "860a78cfc08061b6c761221f338cef7b06d6c19b24101231504581d292c8500e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/124",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "295fc218e36bfd4f01e051583b878d414b24235a747a4fdc3dcd7be7ec9ab119"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/125",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "668d9e83ef26516b08fe898fefd8a3ff04d207f9cb8c5809abb089c327902572"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/126",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1f0e8dec2d7e5719478378c951892e7b70ae29ed7e83c4e4350dc9c2be91d267"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/127",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a16549a3879a10a476b32c1dab43c40a7709095a8a425ed5de624217de62aa36"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/128",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b3bc62d62064f039af0e90865835e5a2d3d3d61910d6dfbb3d7a3f3a496ea5ec"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/129",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2f8d703c563b8515b7dba413ae61c2f76ced3a0df0682e84da7dd7c0a30d4b6f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/12a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d93ef5aed84d216fd95934f3f0c98009b3422e5e861244ac3df8b762071ea0f5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/12b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7ca30a09e6bbbdb4701c52cffa1a6e840ac6e9f8ebdb4d6c79c54b4ab0dac608"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/12c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "dfdc97470203742bdc1ea1ebae0921431898d775a9df1af11b4e3ad78e662581"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/12d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "217dffea251e84cecde93e7f523d497783506b89db509022d8c1c987e601e100"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/12e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bcdc4a1bec59caab32820767b66a6416636e0c85edc65f89e3c43b4f29b52826"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/12f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e2278f73bfa777774698bd2c8697a20f65abea403740f5e73775fd2606982e25"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/13",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/130",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "50b4646ed76efb427cd9c71d883d1a7ec1d71e648c87abaea3d8f247ae62facb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/131",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "36632fd593e5ffe5d2f97f2c35e8dc1e0f8fac155c17104106c91dd37c4f573b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/132",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "af620a5014a813d2290034ae88a26c72d2dde6cc9c64db914910e934d84733e5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/133",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "96db2ebe12980ee50886976e4e4ac0c878179c6391a1e2991e30c5c9611f07de"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/134",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3bc4974496372a45480dafdf7fcb79c5c4ea2e39c619a4add23e33fbf1da9547"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/135",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9615e60564009a24ca0b0b90ee85002069b749cdcb2adec3067b3f742201b53b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/136",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4ea5e67f714ba237e964cc5af4cfc8ddab581592149139cd76f463cb1e554fca"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/137",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "59b40b0ad7b0df6dc629bd5296a774352eaf35f16570473b3d6c536e895d56db"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/138",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c8c89cb0660d5239670e5f69322c26d930f65ef1a04ce36d8b619278288386de"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/139",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6bfa1f99f38a1690d877bf1ee8dc699b13ad3fe95d9e305f9d57d10bb6e1480e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/13a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3bee50d5bbbf9d28542c8897b1902a01834857d4b1597f35a2389c0793a21fcd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/13b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "290dc877e12ac503f6b26533a1bddb0a3aa2806e5375693c1c0bb11f176d7f72"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/13c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6fabc74019aef8089a3db78f1e1e803738a5c7df1d9d4cbe2f870a402c62d5ee"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/13d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0d335c7f360aef8dfbf20a0038f17ae2c7ea9df45af44697cde64815e2e160a4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/13e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "20e8b8f487fbec6aeae23ce730d4c654c048a5c8cac58da1ad72c6b27ccfab22"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/13f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6f65d6dd7649598a1233f567905ed2985682dc5cffa177b747554a5d59eb2425"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/14",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/140",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1edeb6ad0ad3a3c157c370b0225f3690eef787797285bd484696873e4a94e671"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/141",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b4a84f31ce9fa055cb7f9ffee562703a57b5a6e2b2586543d8d3d07a0438568b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/142",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "57c13aabf142bf7d6f67e101c5579100a7067e94c41586f53a77f8e060887a4b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/143",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9fe09bf49fd9469e07430478bcf7d69490fbf61f9dfbc459d5d34f15bdcb60e5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/144",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6f72983e3b778f46f27c342576c3e9e77c15f7d33c4bfd49094447128c23ed25"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/145",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "245103650b9ac3598bf72f6687990412a57dd009c9085472a0461bf26262ff25"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/146",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e046b939d12e480fe037e8dedf4530c250ac90e5de4328a9a6fe4fe355ecc6dd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/147",
+      "type": "file",
+      "bytes": 6942720,
+      "sha256": "d393017e50137ddd1d9d0bbcc3c7e06c0ce80470cdbdb13fdd896d0405b31918"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/15",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/16",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/17",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/18",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/19",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1159e473395226c7de457c13bc1de925c6cc411e8bcdf6904ee591c5960d1bd3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/1a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/1b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/1c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ccbbbe4282271c8a49ceb3d707440b080fcac7ea69b2ce2334f8e89fd5e66a06"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/1d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0114fd363b8faafeb2b321cc560e6df8a0a3045e6fdcf32a5650af405368e6b8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/1e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ca374a52c1c6d9a22941d94b8beed4a7a144b4e375eba1805c9d3bc671872ad9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/1f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "8df0410832839f4ab0e97819380fc1ab7505dcdfb1e40a45ec7c059147747b13"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/20",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c0509a7dd4a20be3ff5b8f44bd204a1f68034018564414d12c202bd199352e3a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/21",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5d047629fe35820bead1b41edd8bdfa5f86a0ec5c383e9c53c4d73d86c33dec5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/22",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "231f1d27f3577ec18c51d3beda66713d02592f31a041a4a2cbea9d79c2d00e5c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/23",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b59a2377c764100877b5e4d3104dd55aab99cdf43fb06f654fb8d4e4b0348d8c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/24",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fb6c33d295b368c8b09a835165938681d2d4cb99a61126f7d722cf7ac134e254"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/25",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2c3cd29cc6e7906263be6ae276d584279f3153b9687593b15d2ca74b21fbf4c9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/26",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1e1631a20a03c879a44a3c5d8f4ea5b414aacf78940c65e0ce08238dce9082ff"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/27",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1817f7df88e17028cb5583031f1e70b0edd5c4875f261b9365ee3d1e603b2764"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/28",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "96185b81f78a5b765f7a6cffb187f464b0a0077c24c369fa100965bf3e4074cb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/29",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "727037cd3bc3bd765299da08fe2066ef98e38ed8d28c8053d85027a48e19a887"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/2a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4d0c7a4e800e2309277ad6ec7ba3ed22ffe894e82ab385a7529dc50fbd75c501"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/2b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c01e4d77259e85be5e4eda73fa6936d6400445018f0de885c244a14f76c82f14"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/2c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ee413a30058e19219d0acc3036bbdcd6f3559566c5de0c488c847adf27f6359a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/2d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "22c0db15616756da76303be341a87c81b00293843d2ed4cd0ecd27a27866e8db"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/2e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "79b2e1189a3006317ec4bbe88ba0c478d560db4984f83fab52c0714dce9ffd8f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/2f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f3cab9f461a87939ad73cedbecce3756b8a3bf4633655a0108f128982cb3701b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/30",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9acf77de5779592e82ec6a3be87c76e3ccd4cca07a77017d4df61a22f13b2ae5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/31",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e0d548370821095cf690cbc2cec01825187e428c34be5d90b2c82ee8754dafc2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/32",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d859db3022947b7e00faade32c4002006ea88859200cab8cfe06be5714662666"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/33",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bf42da09ce03dbe44e7510e848490e64636c314bbdf625aafe9f91439104f0fa"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/34",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "74d61a834f66255bfd9f00a51b98fe62ca2bc0224c73ec061c4c533b44426d42"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/35",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7f7e7db6ab9d932958c020d7046ff75c4d82ca76f0f81d1e8d5bcf6291348649"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/36",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6676aabc3732e845530a531d10cd0c60ccf7e672ffc9e20263d0770d8f41c492"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/37",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "54c6b03bfb2fcf028266bf3d8568e8c2178b07eef88a12b4779b313fa2c7e362"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/38",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2bb659af15dba10f3f9d24d3f04dc287c592e266232d18db3e45a02966162f59"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/39",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4e534fadeaad95d74ea2a29084be89e49ebd8f3c5a89e5a0a621ab68c1a1a065"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/3a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f0fa798925aa3ddfaa04b55e987754d6f220f11d73784bd1424c3db32a6021df"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/3b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "99e99cc45824d9b554f6cf4c185470004e3a721f7e65f7dd5f6daca06ebef943"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/3c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "90889e798f38e2d733d666270616740a550d8f8f7c7a336f2d2e846d41d824ba"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/3d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "567f84cc12775d166288dbf14df2bfa978fa9ce63967461569247f369c298e41"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/3e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "098bce96ece95a914fc0f953ce4415f014da74ed8f228e7348ce2f875bcf5e66"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/3f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7044995f6d6ca9ef69d907c4b8d9220d30457e8c46f6a65cac5ce933b9106148"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/3ff",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "60c8034d004d90ee50840273c68f540e1b37932840c2e98816c490d633fbcbec"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/40",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "96925876ccfe25c5669a6ccf5333dabe9942d034fbfb9e06234bbe939f0dd3fe"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/41",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c8b5922471337b08b524fc7618be2d725b79d78b547d3acbc03d2ce846c767cf"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/42",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "391b856b3ca40fa96a7bce06c7dc896882f98c86fd68a81f5a04bcba8717fc05"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/43",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c56d510b08229e6588ba6af38769874927fb73ff5342160853a2c5d560444102"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/44",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7e5cd3ec73b0bf541cf4abb033f763c056b5424f81b438a376080aacd1d6c68f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/45",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f104ccc190b8eb19e3ebb51cc586e288da954be16cb49c3e316bd492197a4c4e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/46",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "efc195a98498f37c669d857ced875fe7f7e5c880ac87381de7898406af09625a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/47",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f4917a23017e83451dd1f8bfc09b74599888a12a72f14b35b0ac34bb22a28bf1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/48",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5df4b1bc7a81e5beb1cebb7a146f779685b4f318103536386c9304639a9dcfb2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/49",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9601a2bb05aa2f3eb8757fe934e8e7c098ebecce344470143b0a9e26202e7f66"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/4a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c46ef471000a468db855d8534a1e7471ec16cec52874f11034313eb9f0487197"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/4b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ea16c15756492ca965cb3a8d720676ff21af3a6ceef0eb82736be1968873767d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/4c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "25cf077debb4caa54b60b07d207265e0da09d83a4a512e7c80ccd6e40005324d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/4d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3f8d1d4c07d0d7a022a004b84ed715a2c3ef6bcae797ca22c5e9a2fb2c737854"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/4e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ed915a1a0463b490f9987f27c0afcd08abfb1e4252e34c5f379519d8135fe00e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/4f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f659507d1dba44b1e201fe1c6aff432318ee430a9fde18165a3beef5a7fffc06"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/50",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7cd0200e12be7488833c3e6edf66c9a32e2a4d94e4c5d783048e38148fc08609"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/51",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5c066c0bd6d0d5b813121df8f4d8742a4c72436560db2f059beae917b63c1424"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/52",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4b7ccb557b2b0907ef9a92959d605580041d5bd9f921bd4a9eb36fbf11cbec5a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/53",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e2fbe8353b8188cf6d04b5708a944c7433ed6a6692b414a2dda87fe4890b5bd8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/54",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3d59ecc80737ce81843f8bad38a532f8d9ef826c787421bc97b61e9ae29056d3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/55",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a523ad5ea43059eff1f47989723425fd769c9e6e1a75294c0b49c786ab276cb2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/56",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3b8009a7ee1d28dbc650819785076a2306f194864b1f2b1b510c2d47c26ec527"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/57",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "aaf514606b80c8ca84bddeafcaa5d395ecf512d3484040bb023b20e626e74976"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/58",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7f284a925aaa8877f740ed54dcbf2608986738bb4b60bd38fe1861b59cf2ee60"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/59",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bb8cdbc651bd3cfb74dfe577b5256cc3c11509df151828e09e258dea5d2e4ff5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/5a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5fe1b203164ad6774d2733855ca6d586ae15be3918351af4b68043c4331babcc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/5b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c88ccddd740ed993e5b0a2ddcf7f11794425cfa8cc91fad3590167bda41d1120"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/5c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b7d9b161b48edc2062de5fa8689d1fbee71120dacf140cc4a5a90114ddb214cb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/5d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e8bd292e9217e551f572fe5b58b8ac8dab517c403d3b4f75b2b4deed2fdfdeff"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/5e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4e31b3e670b2b489a5eaeb1a8fe5579b8192d7b1cb909b39ebf2016e647e3e03"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/5f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "696b8312ab1495d0a79ef1ec03b7e7cab4beafd02a73923ce5cdb17a5549af33"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/60",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "06ffa1f1ee6f22a7e2b121e60a40a75089b2d4360a557f2e9546a599a6b896a2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/61",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "cd3bbb64b39eb5390ad391441703676f84373342363387243d219fa5ac35da4d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/62",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "758170096f8827c503e06c255a33308209a31f3157f1af9ac5713301abc9ebba"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/63",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "854a3dd0e6ced0a5c9bd2a30e4ccd5f06d64d7a7873e719584df832406d16547"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/64",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e5ccf7e2534bc0dd7dbf1776c82eb7e27a788900e4dbf7b76dd9a4044e76005c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/65",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fdb24fc32a4052de4b8b72f56e8a4f069d0925df5e02a6e1ba4d8e403950dc27"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/66",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bbf866afe5e6ca00ea083d361ada5af124441ff3d7c0c58bff843918675d957f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/67",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7f55d4842ce62f5df0cd34a3287f9727f4678b5b275436c08c39a9b8df36e301"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/68",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "65712470d17b4294920f2477cd152be3ae6b4a2ae9addb1547820bd3667efbb3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/69",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7cc162d6b42b47156a439a02c7a3b94f12a69ff1f5e675c8cce6247991f3df10"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/6a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "021e5f56a7c0e35eb6c22c713e7feb567f6be1e7ead769659f25873633f61cd1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/6b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ce9b1884ebb111bec279364c6d3be88f92c4ebf5e9ac7af497871e304c3ff8a3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/6c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "be7f86711a27a6c80c2dd6d785d14cc7ca43b32c6ef1d0ccf0301eac1235ac05"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/6d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "877a1a57d7ea1f41bd6a4003b2cf8c4810e52b9b5f10f1717ffd0423dbb5a8a1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/6e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c2c0254a2d4feaa1cd0026e1c7cb98d282c2d99851e982bb2ab1f4b86a544b31"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/6f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6663e84986c6938f4a23e4f12be22e7091c805ea4721536c5ae2da4823f519a5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/70",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0a330e886f7099e7e3608299840e81e029b3bab7cdeb2c12b2165a225b9b92e8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/71",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "deb50b734fe1a7b26d3002fcf6983daf3562717a6c700df05f137a4cc9043f79"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/72",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "838d14d636a06d8c4650782f9c258537addf2df9a8044676fde6f9d902a4e9cc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/73",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "cdd1656ffda081f485dbf5fe98fe92aaec17eeae561ac074a74f424b22364abf"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/74",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2d77399d465594a86dbd547b2f33845dc5c537d06de491475b474f02dd0d62f4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/75",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "24c56027d491f8e23be312e2d6e2eeefdbd3b07382dd9cbdce1f998680fa5c1c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/76",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d0b58461db7395df31c95dded8fb791b9a6aa13e539fee6d65b6f3b6d30388c1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/77",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a76ddd68bdb28f43c377de7fbec0b396db780bc7a9f3dcca03bda01bb6fc9b48"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/78",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e2e826246ecaf410e877d04afd00ae6d9b85b0ccb13364d4b15b8f04fad6bbb1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/79",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f93dc4c4495e63427adaf6be484e8ed95e82eaf6624d43f74ec6f49f0632609e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/7a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0e9fdc0ad82ff002a9150211fa5c73755325c3529a57bf10510a69739a9570cd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/7b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d6a893dc1360549ad0e7ad517471b4f21477c0abd895f0acd4a68a9e4e158063"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/7c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d1117ca5bdedb487136837c52a2429079dfece853ed9c624ace401b79ad9896c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/7d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "30f6de161edd74b59e69bd4ef8f3f26d9f268aeb233845cf60b4da2874e25b8c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/7e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d4e7fdf97322773681af93fbfddf2f7a1f9a157992a4aa693109f4c5037f43b2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/7f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5637b2bbe121914910324f903a19060d22e14e27646abe3b05cd66e2b9b19cf6"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/80",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5ba11751fc415e67e244c8688ae84dfd4bd18cab8023e1dbebd27cbf9573b652"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/81",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ee612b42ef94fd140a106b2d43c17203f4457856ecc93ee4c2dc5368efbe11a1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/82",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "da6a33e1da72da7e49bb6dc3b863bb54feb41430796e9ad5f89801ecf4d0ea15"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/83",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c30e987fa0464d4df9abab4d1e6ea046dff564ae34857503c6744ee4192d02cc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/84",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b3bab7769b27b554338163d2b5612e555b8c64da361f397126a992e0d7fa3303"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/85",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "33eb947489fb5be6c794db14b6d4477af41a34680267a5ac85fac3905d945094"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/86",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "762f07ab0f0895be2efc99b3a3a00d0393f2a2de7ce7f7bd88820c723e06cae1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/87",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ec84f80faa3d2a441ae6936a5ec3f09682324de2db9fd0bcd7ed6d59c884a37b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/88",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0ea870bb09857a80251599d8da636eb825798261b35e9ac41de3bb2591ea58cd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/89",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9086cdae1082a085a5348730c6cea70cca5ae2bf9d11898d897cbe43ac413c72"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/8a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "42be6d5661f31cec6120016317d37d44a2736d741652a04e78ef0d3f3c678b18"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/8b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "61400353fa3630a5e8473151404a7aa7df2360aeb2e7c7a6a8b90a9df464f64d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/8c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3e6bcce45668f72fbe5e8f851db84ef2d5dd9eab3a73cec20282115fff4ae237"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/8d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c232ecdefe4ea302d2e2a2d1b6dab41e563d631f7ffe1d86309c8048c3da6da2"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/8e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "95d37260be52845974a18ca3f59b2b6571d030caa9709641d728100e4dfdde77"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/8f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "35eba34d9efbe8c3193b4c5e75e5d609592d3cfc6b5c43a0e3a40c882ad0e56d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/90",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4558f9f5946db69a5755a7511ab863f8613efee380dfcb3b25b4b5f594d09298"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/91",
+      "type": "file",
+      "bytes": 3399680,
+      "sha256": "f68b707d3630df4e2db75cfc757d9b2d401916a63cd7c59857ad005d24ef59f9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/92",
+      "type": "file",
+      "bytes": 4702208,
+      "sha256": "f8e02fc6d230bc74f501582d0a45f82caa505e7fad5bfaf3db044a3092c59738"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/93",
+      "type": "file",
+      "bytes": 782336,
+      "sha256": "f1f7a726511a284bd717268282862e3df8862c15d978928242f89a89334d46be"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/95",
+      "type": "file",
+      "bytes": 6316032,
+      "sha256": "9cb5a2e8b03e04c4e31cd540a602e0966f649fde160ae63046c7e1027b44f649"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/a",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/a6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2a3fafb146af784af45cbb22bae40ec1226ba7f7e621ab57575d9dd63b58a612"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/a7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b8c9000490e94557ffe70e968985b79a3ba3bfa06db7931bd9cf085fa6dd2462"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/a8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "09a346e0da80017bf386e3508bc5049eae5ebb6ba5e84f496d2a3b9783db7313"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/a9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d24cdaaa1ce2ef15c5daa0bd52b0e758cec0e712fa5b2e0743caf33715d3785e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/aa",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ba87fc38162c26e5a48421e1b31de049cd2fe253fc8d9fac0d9c03fad6145aa0"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ab",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "517cb0598088b5a5807d91406c14820c993c441efaf9da892a3627a33656ce49"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ac",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4dcb23226ebdf180280782f5406e24d2f4e757d7cae4a9c0ccdf84533940b6e7"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ad",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "14161adf054e74e97ac9fb116c07c2213c0cab894ae8b40fc4803833d2bfb34f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ae",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "19a5d27a4fca9b093cb30d510c41b3e6a0c7871fd05dfff87ab27dcf77cca4eb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/af",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b00d5ba23e6e698db8b06a4b332186788155e8422328e6154635e77c24c7d9e8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9ae5f479ab8fcc7c6993197c66016782e0e8a7cf92e51f635db045eaeb19af3c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "55cc5074aa624ad027a4d59b70dd6a296bafb09d0719b0f6a76daef6a998effa"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9fe9f38717a8746f0c25b24b7f410c190ad4afba971848b1d54a0ebeea536c6e"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "23b90f5dd90037ce91046da53e8eeda92f47a82b9b071210ce7324d420a4243f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "3d2314bf6a5882e2f2be82e8aee10c249af1ef200f9a40582f2b9eb8dbedc108"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "93bfd6aa959e617f2e67c82fc6551f1b49c72ccbb09283217626d8e27da72c6b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "88746767a4c736da56d52e9ca9282ca37b11e6f5ae66d18a6b78d279a0f7fa3a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9c6cbaf9516356ede999a5f04f7341f03123bf1efff45c3b70d81c8cb3553830"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6cebdfd10900113914cce5da48ef200913eb170eff55c0f2eee7236ad76f04d9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/b9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ddca2f468523fbcac926e9201e46fa8daac568cd94288d3c9e85efd0ac391f51"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ba",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "916214ccf196450ee221ff83516c2222c6396beb15c563f9a38f87f7d2012025"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/bb",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "aaa71c02b9b616bc06969028030e1e5c04e67f2f07699a2ae717bfe08e655e09"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/bc",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ef85d225317b64589aba149266d30ec9c1106c2e08e987de257f2801e1f4cb71"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/bd",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0d09bf89b0d888435e7ce895154f22bb5128fbab6a6c462e3e1d9684a357112c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/be",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4f9a9c97e1acee33a2e9919518acc4cc6aac370546397d0413b10762fdcc455b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/bf",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c8afb7bb120caf26c93b318cb4b2aa66fac85a88001c10ac58a19d4251e8e128"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "17fea5f2f8b7cc4de482bf95710ac3da4f146862f4d423bc3381c999bf46ec57"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d2765d27e30e460671e49cf442f42b641ba7ddeee933a6ef9cd426c20682c072"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9847ca3be0ef9bbc568712d321f32b88bafc1e3038a8a0e2ebbc07d59e7e8d86"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2b76bb084e7fabf62aa00300e8eed27362ed7b25fd713a6daac088b9130e791f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4702322c376a8b5ef97f19372e85c2f640c62014a1fab05a9b40279fcc36f5b5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c4ccd89644569ba3a3970ffeb424cd5e9d2924824e778260cc062bb5f03219c4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "43fe1e3cff377346822d918658dfa9146bf30f0f7f0e93dd842c602b88e06f14"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "bb99fece1a5623b615e856b6f2e47670835102dea54ab3a55a3d066f4f872921"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f9932d381aba272a7b02c02782ca0453c7271b494aac18883c6ccb22a3a158b7"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/c9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c133c992832f2eda91a59fed4446552cb9d534a417f41d2f866ce53d60d999e3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ca",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "93e60081f5074533dc4f7c6ac5391728a2039f54bb0c988967a9a7fcef65dff4"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/cb",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a0d06922df3bd2da6f9825188841760528700214b1eb9a88a8a765cbf7cded19"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/cc",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f78212cc4708577f714eb15c235e65f0f43996fc51f0a3b7676d3129735de053"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/cd",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "20ef6c218a70cc044cfb79d0c44b335c44caa9e4149e3c5e53fd17f10162ec60"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ce",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7b41f530435d204388a47487f9ecd513966b01734c4b264715b25be782e0fa3f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/cf",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9b4b3682e1f2b4fc06358e43c007d71232dde6be97103bf549f70f105670e2a8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "7ae0fe5d03618d835cd8811d80087023429d64cbe97d914c646cdfadaa4e29e9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "25c93dda88a6b7528bbbaa8c9e7ca6a07c2a218174e3934461bd59c9d36baea9"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ed5c9241821c3aa69386964da8ad3dc324ce5aeb193fc1aa3516483f122f9e21"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fff8f7a03f3adecb454309e1bf8364147f75773c3441ff41e2127791ec49061d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "ffbbd1c14cfb7f5123343c29894ec15686c57e1b297c490f71cc1e194ccd199c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fd571592bee851566c184264751b74902da2cb628c3d96a8f6893372f4c57ded"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5835506b182acb1a0f7b2109498264eb152396840b93f616f61d67c5c1a6dfdd"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "b7541a8bd1a88fcc30edc8ed02b1749dfbfc338e43d14d17d13b667ee9c42a49"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "35fb48ca61bbcd52ec02de4b88fa31d338c99f0352abf3ba0746899157f33dd8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/d9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2404b75db431d5eae16f922728b8ec87a5ea0a958a614ec58e30e627ec4e0933"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/da",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "869b133f7c47c47073e10d9d3f71e4b0b931f0827b71956c0faa64aeb0945073"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/db",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1076ee23b32dbd9acb4289e16aaf4ac88608a508909fdc96e2b1d903036015a1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/dc",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "65f550d0a42658006d7f50791418984f4b248a5a3f3821231900c2297405dfd1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/dd",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f119916d206c89b1ef13073db4288456cbfca82243779fca63fd9e92dbaade30"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/de",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0cb387ecc8007390a0d196d550e86d2fd842ee175df004a63909dbdb47c0394a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/df",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "470742cde702b4fe223258a8991ccb80b12a205634f49e69eb068248f199d18b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "14b8994969d4568de95535f08306735d8db934db49a5b9824fdc5ed613de9c18"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f82b35a6dca465fe60e5241aafffdeaee90e55174c50d74a760ccbe73a64f020"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "f3086471e20a8ed3f8d073d5ff1c57487df1bd7509753b134ff237197085d6e6"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0c9a81b932cf3a6ef033b01d7c34bbac34e458940c657806f906e50d8de20dde"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "94726c7fc6be193bb31c6720416767431606dbe930476731bc6b9fb903c37136"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2e51a6e85c22828125f49b449107fa7c89b681e442e045de5980b48398ce8e8c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "43337402863ed73345dca8a07e692555613002d1053c43e244898abb7ac2c31c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "68c9d3624dafb64daa18d0ee4ca96bdb30a6f2f8b9cda35509f4e5f527e64b3d"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a31c8c586c3bd71caff72a4551db33431220e0a28233de21fa099dc61e9474bc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/e9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2b5bda5946718edb2fa0f5b8bdfee97a12f23f0b18de4805ffa2394fa95f804c"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ea",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "9c38c12de871518dc651d498d5d4e9257ec40756faf1c18c7aeabda6c9b80bf8"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/eb",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "37b5febcbd40a347894985c75840838e74d0d70d7228929ad4e8cd8e420e6ffb"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ec",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "6f4c3d0dfea6b936048b51311901754cf36550e55d5b9cd639e409345d3e30f1"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ed",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2644bf216661d59889f033ecbb5ba706284e36f05539567062384b513d6fdc3f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ee",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "a0a77552c7eb312d5652189f773e69e81414f1da709f7922572e848af41cc517"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ef",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "d282c0f332001625fd78897abd643ffdb5841f81c12d50a6a9c1d424620bb3a3"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f0",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "756328fb417fbc6778de48bd9cfe131b4f81c0b51d00086d6fdfce13af6d9662"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f1",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4e58ce8098f1e09c234cedf35bb45fe7e800539d0d32db479641502fa9c67843"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f2",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "1ed258b4a77ad47eeeb7861834ed87aab7979d0519045a20c7317e9d2bd411f5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f3",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "4d4e15afb56bf4444af3906b009194cbfd3cfd3ea0c07a083356be8046166265"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f4",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "87c088f2ce7aa835bd0bf9cc2f2dc11f81c245822b5212e9aa01beb79e888731"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f5",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2b969cd4f188a9a406e685f64a0d8571ddf22a83c6c48d91ff7adb9c5152397f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f6",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "579da62044b9b21b614dbf62c9928c7c86695e3ec0fef12fa2432eca9ec31a4f"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f7",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "498d6575c36ba8ac0886406f628b4d9533e2f118bb2d40330ae19573ab25574b"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f8",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "5b055105de903d4ba080eda1f7052b2e30ced7c8cdd1f0c302e4383af0e2b8a7"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/f9",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "fcf3675e89c6cbb8e1cf03a6ed9b4282ed6cfcca20e750aed106d96361c04d35"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/fa",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c4d30a043d77344653582e60dae204bcee315f647dbc38bef810bb4e6186fabc"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/fb",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "0be053faaae730b7dfdf983fb0e8d106eacdcc98219fb9197be00cc47760c23a"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/fc",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "c387d38851e504b613277e23e8aced50fb96c25588627f274c9b99e48d6c6686"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/fd",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "165d7c111d97c1568b429d70a7aaebcf4c267b54388fad4b4b88f2efbdb46ad5"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/fe",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "e9cacc573673bf2389a141f9a34efbcca96b681da4a50b0492794e9ab3790cac"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/bands/ff",
+      "type": "file",
+      "bytes": 8388608,
+      "sha256": "2e8472041faa1388987df336f30c384c881ccc1be89bd8126c75e9c4e85cdf09"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/lock",
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/miniconda-20261029/miniconda-restored.sparsebundle/token",
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

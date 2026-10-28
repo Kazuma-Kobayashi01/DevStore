@@ -1,0 +1,277 @@
+/Users/jackson-hao/Documents/Code/DevStore/artifacts/experiment-support/compact-multislot-20261029/../miniconda-20261029/tool/conda_pack/core.py:58: UserWarning: 
+Conda-managed packages were found without entries in the package cache. This
+is usually due to `conda clean -p` being unaware of symlinked or copied
+packages. Uncached packages:
+
+- nlohmann_json='3.11.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/nlohmann_json-3.11.2-h313beb8_0.conda
+- platformdirs='4.5.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/platformdirs-4.5.0-py313hca03da5_0.conda
+- pkce='1.0.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/pkce-1.0.3-py313hca03da5_0.conda
+- python-dotenv='1.1.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.1.0-py313hca03da5_0.conda
+- setuptools='80.9.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/setuptools-80.9.0-py313hca03da5_0.conda
+- typing_extensions='4.15.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/typing_extensions-4.15.0-py313hca03da5_0.conda
+- jsonpointer='3.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/jsonpointer-3.0.0-py313hca03da5_0.conda
+- anaconda-auth='0.12.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/anaconda-auth-0.12.3-py313hca03da5_0.conda
+- anaconda-cli-base='0.7.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/anaconda-cli-base-0.7.0-py313hca03da5_0.conda
+- tzdata='2025b'   https://repo.anaconda.com/pkgs/main/noarch/tzdata-2025b-h04d1e81_0.conda
+- jansson='2.14'   https://repo.anaconda.com/pkgs/main/osx-arm64/jansson-2.14-h80987f9_1.conda
+- tomli='2.2.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/tomli-2.2.1-py313hca03da5_0.conda
+- simdjson='3.10.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/simdjson-3.10.1-h48ca7d4_0.conda
+- yaml-cpp='0.8.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-cpp-0.8.0-h313beb8_1.conda
+- click='8.2.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/click-8.2.1-py313hca03da5_1.conda
+- llvm-openmp='20.1.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/llvm-openmp-20.1.8-he822017_0.conda
+- libffi='3.4.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/libffi-3.4.4-hca03da5_1.conda
+- pysocks='1.7.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/pysocks-1.7.1-py313hca03da5_1.conda
+- more-itertools='10.8.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/more-itertools-10.8.0-py313hca03da5_0.conda
+- openssl='3.0.18'   https://repo.anaconda.com/pkgs/main/osx-arm64/openssl-3.0.18-h9b4081a_0.conda
+- typing-inspection='0.4.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/typing-inspection-0.4.2-py313hca03da5_0.conda
+- cpp-expected='1.1.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/cpp-expected-1.1.0-h48ca7d4_0.conda
+- icu='73.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/icu-73.1-h313beb8_0.conda
+- frozendict='2.4.6'   https://repo.anaconda.com/pkgs/main/osx-arm64/frozendict-2.4.6-py313haa24f5a_0.conda
+- libcurl='8.16.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/libcurl-8.16.0-h01d3526_0.conda
+- libzlib='1.3.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/libzlib-1.3.1-h5f15de7_0.conda
+- libmamba='2.3.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libmamba-2.3.2-hcdddc3d_1.conda
+- libarchive='3.8.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libarchive-3.8.2-ha845c4f_0.conda
+- pcre2='10.46'   https://repo.anaconda.com/pkgs/main/osx-arm64/pcre2-10.46-h1dacb4a_0.conda
+- menuinst='2.4.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/menuinst-2.4.2-py313hca03da5_1.conda
+- idna='3.11'   https://repo.anaconda.com/pkgs/main/osx-arm64/idna-3.11-py313hca03da5_0.conda
+- python='3.13.11'   https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.13.11-hc7d8306_100_cp313.conda
+- brotlicffi='1.2.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/brotlicffi-1.2.0.0-py313h50f4ffc_0.conda
+- keyring='25.7.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/keyring-25.7.0-py313hca03da5_0.conda
+- bzip2='1.0.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/bzip2-1.0.8-h80987f9_6.conda
+- readchar='4.2.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py313hca03da5_0.conda
+- xz='5.6.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.6.4-h80987f9_1.conda
+- charset-normalizer='3.4.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/charset-normalizer-3.4.4-py313hca03da5_0.conda
+- tk='8.6.15'   https://repo.anaconda.com/pkgs/main/osx-arm64/tk-8.6.15-hcd8a7d5_0.conda
+- zstandard='0.24.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.24.0-py313hbc14757_0.conda
+- libxml2='2.13.9'   https://repo.anaconda.com/pkgs/main/osx-arm64/libxml2-2.13.9-h528a072_0.conda
+- packaging='25.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/packaging-25.0-py313hca03da5_1.conda
+- c-ares='1.34.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/c-ares-1.34.5-h2ca31fc_0.conda
+- reproc='14.2.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda
+- libnghttp2='1.67.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/libnghttp2-1.67.1-h8189af8_0.conda
+- certifi='2025.11.12'   https://repo.anaconda.com/pkgs/main/osx-arm64/certifi-2025.11.12-py313hca03da5_0.conda
+- libexpat='2.7.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/libexpat-2.7.3-h50f4ffc_4.conda
+- pycparser='2.23'   https://repo.anaconda.com/pkgs/main/osx-arm64/pycparser-2.23-py313hca03da5_0.conda
+- conda-anaconda-tos='0.2.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/conda-anaconda-tos-0.2.2-py313hca03da5_1.conda
+- annotated-types='0.6.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/annotated-types-0.6.0-py313hca03da5_1.conda
+- python.app='3'   https://repo.anaconda.com/pkgs/main/osx-arm64/python.app-3-py313h80987f9_2.conda
+- jaraco.functools='4.1.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.functools-4.1.0-py313hca03da5_0.conda
+- libunistring='1.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/libunistring-1.3-h1799b2a_0.conda
+- typer-slim='0.20.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/typer-slim-0.20.0-py313hca03da5_0.conda
+- markdown-it-py='4.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/markdown-it-py-4.0.0-py313hca03da5_0.conda
+- anaconda-anon-usage='0.7.5'   https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.5-pyhb46e38b_100.conda
+- mdurl='0.1.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/mdurl-0.1.2-py313hca03da5_0.conda
+- requests='2.32.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/requests-2.32.5-py313hca03da5_1.conda
+- typer-slim-standard='0.20.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/typer-slim-standard-0.20.0-py313hca03da5_0.conda
+- fmt='11.2.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/fmt-11.2.0-h643473a_0.conda
+- libsolv='0.7.30'   https://repo.anaconda.com/pkgs/main/osx-arm64/libsolv-0.7.30-ha443353_2.conda
+- readline='8.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
+- urllib3='2.6.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/urllib3-2.6.1-py313hca03da5_0.conda
+- jaraco.classes='3.4.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.classes-3.4.0-py313hca03da5_0.conda
+- pluggy='1.5.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/pluggy-1.5.0-py313hca03da5_0.conda
+- reproc-cpp='14.2.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda
+- conda-package-streaming='0.12.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/conda-package-streaming-0.12.0-py313hca03da5_1.conda
+- pip='25.3'   https://repo.anaconda.com/pkgs/main/noarch/pip-25.3-pyhc872135_0.conda
+- truststore='0.10.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/truststore-0.10.1-py313hca03da5_1.conda
+- gettext='0.21.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/gettext-0.21.0-hbdbcc25_2.conda
+- wheel='0.45.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.45.1-py313hca03da5_0.conda
+- cffi='2.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/cffi-2.0.0-py313h73c2a22_1.conda
+- libssh2='1.11.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/libssh2-1.11.1-h3e2b118_0.conda
+- sqlite='3.51.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/sqlite-3.51.0-hab6afd1_0.conda
+- semver='3.0.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/semver-3.0.4-py313hca03da5_0.conda
+- shellingham='1.5.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/shellingham-1.5.4-py313hca03da5_0.conda
+- archspec='0.2.5'   https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda
+- boltons='25.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/boltons-25.0.0-py313hca03da5_0.conda
+- pydantic='2.12.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-2.12.4-py313hca03da5_0.conda
+- lz4-c='1.9.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/lz4-c-1.9.4-h313beb8_1.conda
+- python_abi='3.13'   https://repo.anaconda.com/pkgs/main/osx-arm64/python_abi-3.13-3_cp313.conda
+- tqdm='4.67.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/tqdm-4.67.1-py313h7eb115d_1.conda
+- libidn2='2.3.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/libidn2-2.3.8-h9681e36_0.conda
+- conda-package-handling='2.4.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/conda-package-handling-2.4.0-py313hca03da5_1.conda
+- ca-certificates='2025.12.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/ca-certificates-2025.12.2-hca03da5_0.conda
+- pycosat='0.6.6'   https://repo.anaconda.com/pkgs/main/osx-arm64/pycosat-0.6.6-py313h80987f9_2.conda
+- conda-libmamba-solver='25.11.0'   https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-25.11.0-pyhdf14ebd_0.conda
+- conda-content-trust='0.2.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/conda-content-trust-0.2.0-py313hca03da5_1.conda
+- cryptography='46.0.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/cryptography-46.0.3-py313h81b0bee_0.conda
+- pyjwt='2.10.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/pyjwt-2.10.1-py313hca03da5_1.conda
+- msgpack-python='1.1.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/msgpack-python-1.1.1-py313h313beb8_0.conda
+- pybind11-abi='5'   https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-5-hd3eb1b0_0.conda
+- zlib='1.3.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-h5f15de7_0.conda
+- libmpdec='4.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/libmpdec-4.0.0-h80987f9_0.conda
+- zstd='1.5.7'   https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
+- typing-extensions='4.15.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/typing-extensions-4.15.0-py313hca03da5_0.conda
+- jsonpatch='1.33'   https://repo.anaconda.com/pkgs/main/osx-arm64/jsonpatch-1.33-py313hca03da5_1.conda
+- pydantic-core='2.41.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-core-2.41.5-py313h931abed_1.conda
+- rich='14.2.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py313hca03da5_0.conda
+- ncurses='6.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/ncurses-6.5-hee39554_0.conda
+- libiconv='1.16'   https://repo.anaconda.com/pkgs/main/osx-arm64/libiconv-1.16-h80987f9_3.conda
+- jaraco.context='6.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.context-6.0.0-py313hca03da5_0.conda
+- conda='25.11.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/conda-25.11.1-py313hca03da5_0.conda
+- ruamel.yaml='0.18.16'   https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py313h091b9d3_0.conda
+- pydantic-settings='2.12.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-settings-2.12.0-py313hca03da5_0.conda
+- distro='1.9.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/distro-1.9.0-py313hca03da5_0.conda
+- libcxx='20.1.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/libcxx-20.1.8-hd7fd590_1.conda
+- conda-anaconda-telemetry='0.3.0'   https://repo.anaconda.com/pkgs/main/noarch/conda-anaconda-telemetry-0.3.0-pyhd3eb1b0_1.conda
+- typer='0.20.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/typer-0.20.0-py313hca03da5_0.conda
+- libmambapy='2.3.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libmambapy-2.3.2-py313h678a34b_1.conda
+- pygments='2.19.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/pygments-2.19.2-py313hca03da5_0.conda
+- libev='4.33'   https://repo.anaconda.com/pkgs/main/osx-arm64/libev-4.33-h1a28f6b_1.conda
+- ruamel.yaml.clib='0.2.14'   https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py313h091b9d3_0.conda
+
+Continuing with packing, treating these packages as if they were unmanaged
+files (e.g. from `pip`). This is usually fine, but may cause issues as
+prefixes aren't being handled as robustly.
+  warnings.warn(msg)
+{"environment": "base", "source": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3", "destPrefix": "/Users/jackson-hao/.local/dev/miniconda/lab/miniconda3", "archive": "/Users/jackson-hao/Documents/Code/DevStore/artifacts/experiments/multislot-20261029/staging/base.tar", "files": 18081, "archiveBytes": 581724160, "seconds": 3.441, "note": "python.app post-link layout: added 8 actual python.app entries; recorded pythonapp paths ignored"}
+/Users/jackson-hao/Documents/Code/DevStore/artifacts/experiment-support/compact-multislot-20261029/../miniconda-20261029/tool/conda_pack/core.py:58: UserWarning: 
+Conda-managed packages were found without entries in the package cache. This
+is usually due to `conda clean -p` being unaware of symlinked or copied
+packages. Uncached packages:
+
+- zlib='1.3.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.2-hb4cf58c_0.conda
+- python='3.10.20'   https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.10.20-h478e877_1.conda
+- packaging='26.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/packaging-26.0-py310hca03da5_0.conda
+- libexpat='2.8.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libexpat-2.8.2-h50f4ffc_1.conda
+- bzip2='1.0.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/bzip2-1.0.8-h80987f9_6.conda
+- tk='8.6.15'   https://repo.anaconda.com/pkgs/main/osx-arm64/tk-8.6.15-hcd8a7d5_0.conda
+- libffi='3.4.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/libffi-3.4.8-h4a3ca97_3.conda
+- sqlite='3.53.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/sqlite-3.53.2-h1cce5ff_0.conda
+- openssl='3.5.7'   https://repo.anaconda.com/pkgs/main/osx-arm64/openssl-3.5.7-ha0b305a_0.conda
+- ca-certificates='2026.7.16'   https://repo.anaconda.com/pkgs/main/osx-arm64/ca-certificates-2026.7.16-hca03da5_0.conda
+- xz='5.8.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.8.2-h8bbcb1d_0.conda
+- pip='26.1.2'   https://repo.anaconda.com/pkgs/main/noarch/pip-26.1.2-pyhc872135_0.conda
+- readline='8.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
+- libcxx='22.1.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libcxx-22.1.2-hf894667_0.conda
+- setuptools='83.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/setuptools-83.0.0-py310hca03da5_0.conda
+- libzlib='1.3.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libzlib-1.3.2-hb4cf58c_0.conda
+- ncurses='6.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/ncurses-6.5-hee39554_0.conda
+- tzdata='2026c'   https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026c-he532380_0.conda
+- wheel='0.47.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.47.0-py310hca03da5_0.conda
+
+Continuing with packing, treating these packages as if they were unmanaged
+files (e.g. from `pip`). This is usually fine, but may cause issues as
+prefixes aren't being handled as robustly.
+  warnings.warn(msg)
+{"environment": "llama-cpp", "source": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp", "destPrefix": "/Users/jackson-hao/.local/dev/miniconda/lab/miniconda3/envs/llama-cpp", "archive": "/Users/jackson-hao/Documents/Code/DevStore/artifacts/experiments/multislot-20261029/staging/llama-cpp.tar", "files": 9278, "archiveBytes": 147855360, "seconds": 1.267, "note": null}
+/Users/jackson-hao/Documents/Code/DevStore/artifacts/experiment-support/compact-multislot-20261029/../miniconda-20261029/tool/conda_pack/core.py:58: UserWarning: 
+Conda-managed packages were found without entries in the package cache. This
+is usually due to `conda clean -p` being unaware of symlinked or copied
+packages. Uncached packages:
+
+- zlib='1.3.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.2-hb4cf58c_0.conda
+- libexpat='2.8.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libexpat-2.8.2-h50f4ffc_1.conda
+- packaging='26.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/packaging-26.1-py311hca03da5_0.conda
+- bzip2='1.0.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/bzip2-1.0.8-h80987f9_6.conda
+- tk='8.6.15'   https://repo.anaconda.com/pkgs/main/osx-arm64/tk-8.6.15-hcd8a7d5_0.conda
+- libffi='3.4.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/libffi-3.4.8-h4a3ca97_3.conda
+- sqlite='3.53.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/sqlite-3.53.2-h1cce5ff_0.conda
+- openssl='3.5.7'   https://repo.anaconda.com/pkgs/main/osx-arm64/openssl-3.5.7-ha0b305a_0.conda
+- ca-certificates='2026.7.16'   https://repo.anaconda.com/pkgs/main/osx-arm64/ca-certificates-2026.7.16-hca03da5_0.conda
+- xz='5.8.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.8.2-h8bbcb1d_0.conda
+- pip='26.1.2'   https://repo.anaconda.com/pkgs/main/noarch/pip-26.1.2-pyhc872135_0.conda
+- readline='8.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
+- libcxx='22.1.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libcxx-22.1.2-hf894667_0.conda
+- wheel='0.47.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.47.0-py311hca03da5_0.conda
+- python='3.11.15'   https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.11.15-h478e877_1.conda
+- libzlib='1.3.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/libzlib-1.3.2-hb4cf58c_0.conda
+- ncurses='6.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/ncurses-6.5-hee39554_0.conda
+- tzdata='2026c'   https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026c-he532380_0.conda
+- setuptools='83.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/setuptools-83.0.0-py311hca03da5_0.conda
+
+Continuing with packing, treating these packages as if they were unmanaged
+files (e.g. from `pip`). This is usually fine, but may cause issues as
+prefixes aren't being handled as robustly.
+  warnings.warn(msg)
+{"environment": "neocloud", "source": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud", "destPrefix": "/Users/jackson-hao/.local/dev/miniconda/lab/miniconda3/envs/neocloud", "archive": "/Users/jackson-hao/Documents/Code/DevStore/artifacts/experiments/multislot-20261029/staging/neocloud.tar", "files": 11264, "archiveBytes": 211435520, "seconds": 2.198, "note": null}
+/Users/jackson-hao/Documents/Code/DevStore/artifacts/experiment-support/compact-multislot-20261029/../miniconda-20261029/tool/conda_pack/core.py:58: UserWarning: 
+Conda-managed packages were found without entries in the package cache. This
+is usually due to `conda clean -p` being unaware of symlinked or copied
+packages. Uncached packages:
+
+- markupsafe='3.0.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/markupsafe-3.0.2-py310h80987f9_0.conda
+- sympy='1.14.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/sympy-1.14.0-py310hca03da5_1.conda
+- pixman='0.46.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/pixman-0.46.4-h09dc60e_0.conda
+- charset-normalizer='3.4.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/charset-normalizer-3.4.4-py310hca03da5_0.conda
+- gmp='6.3.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/gmp-6.3.0-h313beb8_0.conda
+- brotlicffi='1.2.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/brotlicffi-1.2.0.0-py310h50f4ffc_0.conda
+- libtiff='4.7.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/libtiff-4.7.1-h367c460_0.conda
+- giflib='5.2.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/giflib-5.2.2-h80987f9_0.conda
+- numpy-base='2.2.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/numpy-base-2.2.5-py310h855c928_2.conda
+- graphite2='1.3.14'   https://repo.anaconda.com/pkgs/main/osx-arm64/graphite2-1.3.14-hc377ac9_1.conda
+- idna='3.11'   https://repo.anaconda.com/pkgs/main/osx-arm64/idna-3.11-py310hca03da5_0.conda
+- libffi='3.4.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/libffi-3.4.4-hca03da5_1.conda
+- fontconfig='2.15.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/fontconfig-2.15.0-h29935d0_0.conda
+- libwebp='1.6.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/libwebp-1.6.0-h30d73d9_0.conda
+- libxcb='1.17.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/libxcb-1.17.0-h3fc13f7_0.conda
+- libdeflate='1.22'   https://repo.anaconda.com/pkgs/main/osx-arm64/libdeflate-1.22-h80987f9_0.conda
+- gmpy2='2.2.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/gmpy2-2.2.2-py310hbcc4bda_0.conda
+- packaging='25.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/packaging-25.0-py310hca03da5_1.conda
+- expat='2.7.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/expat-2.7.3-h50f4ffc_4.conda
+- networkx='3.4.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/networkx-3.4.2-py310hca03da5_0.conda
+- icu='73.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/icu-73.1-h313beb8_0.conda
+- pycparser='2.23'   https://repo.anaconda.com/pkgs/main/osx-arm64/pycparser-2.23-py310hca03da5_0.conda
+- cairo='1.18.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/cairo-1.18.4-h191e429_0.conda
+- lcms2='2.17'   https://repo.anaconda.com/pkgs/main/osx-arm64/lcms2-2.17-h7418793_0.conda
+- tzdata='2025c'   https://repo.anaconda.com/pkgs/main/noarch/tzdata-2025c-he532380_0.conda
+- libzlib='1.3.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/libzlib-1.3.1-h5f15de7_0.conda
+- libavif='1.3.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/libavif-1.3.0-h839b4eb_0.conda
+- typing_extensions='4.15.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/typing_extensions-4.15.0-py310hca03da5_0.conda
+- openssl='3.0.19'   https://repo.anaconda.com/pkgs/main/osx-arm64/openssl-3.0.19-ha0b305a_0.conda
+- pcre2='10.46'   https://repo.anaconda.com/pkgs/main/osx-arm64/pcre2-10.46-h1dacb4a_0.conda
+- libjpeg-turbo='2.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/libjpeg-turbo-2.0.0-h1a28f6b_0.conda
+- llvm-openmp='14.0.6'   https://repo.anaconda.com/pkgs/main/osx-arm64/llvm-openmp-14.0.6-hc6e5704_0.conda
+- aom='3.12.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/aom-3.12.1-ha237518_0.conda
+- mpmath='1.3.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/mpmath-1.3.0-py310hca03da5_0.conda
+- bzip2='1.0.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/bzip2-1.0.8-h80987f9_6.conda
+- xz='5.6.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.6.4-h80987f9_1.conda
+- tk='8.6.15'   https://repo.anaconda.com/pkgs/main/osx-arm64/tk-8.6.15-hcd8a7d5_0.conda
+- pyyaml='6.0.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/pyyaml-6.0.3-py310h091b9d3_0.conda
+- libxml2='2.13.9'   https://repo.anaconda.com/pkgs/main/osx-arm64/libxml2-2.13.9-h528a072_0.conda
+- libpng='1.6.54'   https://repo.anaconda.com/pkgs/main/osx-arm64/libpng-1.6.54-h5c318fc_0.conda
+- harfbuzz='12.3.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/harfbuzz-12.3.0-h9837a22_1.conda
+- pysocks='1.7.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/pysocks-1.7.1-py310hca03da5_1.conda
+- libglib='2.86.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/libglib-2.86.3-hcacd345_0.conda
+- libexpat='2.7.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/libexpat-2.7.3-h50f4ffc_4.conda
+- wheel='0.46.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.46.3-py310hca03da5_0.conda
+- libcxx='21.1.8'   https://repo.anaconda.com/pkgs/main/osx-arm64/libcxx-21.1.8-hb4ce287_0.conda
+- libopenblas='0.3.30'   https://repo.anaconda.com/pkgs/main/osx-arm64/libopenblas-0.3.30-hf2bb037_2.conda
+- fribidi='1.0.16'   https://repo.anaconda.com/pkgs/main/osx-arm64/fribidi-1.0.16-h8859324_0.conda
+- urllib3='2.6.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/urllib3-2.6.3-py310hca03da5_0.conda
+- blas='1.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/blas-1.0-openblas.conda
+- xorg-libxau='1.0.12'   https://repo.anaconda.com/pkgs/main/osx-arm64/xorg-libxau-1.0.12-h3fc13f7_0.conda
+- certifi='2026.01.04'   https://repo.anaconda.com/pkgs/main/osx-arm64/certifi-2026.01.04-py310hca03da5_0.conda
+- pthread-stubs='0.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/pthread-stubs-0.3-h1a28f6b_1.conda
+- readline='8.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda
+- pytorch='2.5.1'   https://conda.anaconda.org/pytorch/osx-arm64/pytorch-2.5.1-py3.10_0.tar.bz2
+- yaml='0.2.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-0.2.5-h1a28f6b_0.conda
+- gettext='0.21.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/gettext-0.21.0-hbdbcc25_2.conda
+- torchvision='0.20.1'   https://conda.anaconda.org/pytorch/osx-arm64/torchvision-0.20.1-py310_cpu.tar.bz2
+- lerc='4.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/lerc-4.0.0-h313beb8_0.conda
+- libgfortran5='15.2.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/libgfortran5-15.2.0-hb654fa1_1.conda
+- libopenjpeg='2.5.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/libopenjpeg-2.5.4-haa24f5a_1.conda
+- lz4-c='1.9.4'   https://repo.anaconda.com/pkgs/main/osx-arm64/lz4-c-1.9.4-h313beb8_1.conda
+- python='3.10.19'   https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.10.19-hf701271_0.conda
+- ca-certificates='2025.12.2'   https://repo.anaconda.com/pkgs/main/osx-arm64/ca-certificates-2025.12.2-hca03da5_0.conda
+- requests='2.32.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/requests-2.32.5-py310hca03da5_1.conda
+- jinja2='3.1.6'   https://repo.anaconda.com/pkgs/main/osx-arm64/jinja2-3.1.6-py310hca03da5_0.conda
+- jpeg='9f'   https://repo.anaconda.com/pkgs/main/osx-arm64/jpeg-9f-h2f69dba_0.conda
+- sqlite='3.51.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/sqlite-3.51.1-hab6afd1_0.conda
+- zlib='1.3.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-h5f15de7_0.conda
+- dav1d='1.2.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/dav1d-1.2.1-h80987f9_0.conda
+- libwebp-base='1.6.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/libwebp-base-1.6.0-h92b2d59_0.conda
+- zstd='1.5.7'   https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda
+- xorg-libxdmcp='1.1.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/xorg-libxdmcp-1.1.5-h3fc13f7_0.conda
+- filelock='3.20.3'   https://repo.anaconda.com/pkgs/main/osx-arm64/filelock-3.20.3-py310hca03da5_0.conda
+- cffi='2.0.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/cffi-2.0.0-py310h73c2a22_1.conda
+- ncurses='6.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/ncurses-6.5-hee39554_0.conda
+- libiconv='1.16'   https://repo.anaconda.com/pkgs/main/osx-arm64/libiconv-1.16-h80987f9_3.conda
+- pillow='12.1.0'   https://repo.anaconda.com/pkgs/main/osx-arm64/pillow-12.1.0-py310h7b5562e_0.conda
+- mpc='1.3.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/mpc-1.3.1-h80987f9_0.conda
+- numpy='2.2.5'   https://repo.anaconda.com/pkgs/main/osx-arm64/numpy-2.2.5-py310h40d09ce_2.conda
+- mpfr='4.2.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/mpfr-4.2.1-h80987f9_0.conda
+- freetype='2.14.1'   https://repo.anaconda.com/pkgs/main/osx-arm64/freetype-2.14.1-h7cdc921_0.conda
+
+Continuing with packing, treating these packages as if they were unmanaged
+files (e.g. from `pip`). This is usually fine, but may cause issues as
+prefixes aren't being handled as robustly.
+  warnings.warn(msg)
+{"environment": "python3.10", "source": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10", "destPrefix": "/Users/jackson-hao/.local/dev/miniconda/lab/miniconda3/envs/python3.10", "archive": "/Users/jackson-hao/Documents/Code/DevStore/artifacts/experiments/multislot-20261029/staging/python3.10.tar", "files": 53467, "archiveBytes": 1257390080, "seconds": 9.339, "note": null}

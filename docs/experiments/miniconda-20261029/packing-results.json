@@ -1,0 +1,33 @@
+[
+  {
+    "environment": "base",
+    "source": "/Users/jackson-hao/miniconda3",
+    "destination": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3",
+    "status": "packed",
+    "note": "Actual python.app post-link tree included; missing original package cache reported"
+  },
+  {
+    "environment": "llama-cpp",
+    "source": "/Users/jackson-hao/miniconda3/envs/llama-cpp",
+    "destination": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp",
+    "files": 9276,
+    "elapsedSeconds": 1.918,
+    "status": "packed"
+  },
+  {
+    "environment": "neocloud",
+    "source": "/Users/jackson-hao/miniconda3/envs/neocloud",
+    "destination": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud",
+    "files": 11262,
+    "elapsedSeconds": 2.64,
+    "status": "packed"
+  },
+  {
+    "environment": "python3.10",
+    "source": "/Users/jackson-hao/miniconda3/envs/python3.10",
+    "destination": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10",
+    "files": 53466,
+    "elapsedSeconds": 1.265,
+    "status": "packed"
+  }
+]

@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-29",
+  "experimentA_compact": {
+    "image": "artifacts/experiments/compact-20261029/work.sparsebundle (APFS clone of miniconda.sparsebundle)",
+    "A1_baseline": {
+      "bands": 304,
+      "allocatedBytes": 2535456768
+    },
+    "A2_compactWithoutChanges": {
+      "bands": 286,
+      "allocatedBytes": 2370269184,
+      "hdiutil": "Reclaimed 157.5 MB, 0.41 s"
+    },
+    "A4_after2GiBFill": {
+      "bands": 542,
+      "allocatedBytes": 4518801408
+    },
+    "A5_afterDeleteNoCompact": {
+      "bands": 542,
+      "allocatedBytes": 4518801408
+    },
+    "A5_autoReleased": false,
+    "A6_afterCompact": {
+      "bands": 286,
+      "allocatedBytes": 2371088384,
+      "hdiutil": "Reclaimed 2.0 GB, 0.46 s"
+    },
+    "A7_contentIdentical": true,
+    "A7_entries": 103109,
+    "A9_afterTwoVerificationRuns": "Reclaimed 0 bytes; rebuildable cache held only a 4 KB marker",
+    "A10_interruptTest": "not run (requires separate authorization)"
+  },
+  "experimentB_multislot": {
+    "slots": {
+      "current": "artifacts/experiments/multislot-20261029/current-src.sparsebundle (clone, UUID 91FF58B2-…)",
+      "lab": "artifacts/experiments/multislot-20261029/lab.sparsebundle (new, UUID A5805F2A-…)"
+    },
+    "relocation": [
+      {
+        "environment": "base",
+        "archiveMembers": 18081,
+        "uniquePaths": 18048,
+        "missingAfterExtraction": 0,
+        "missingSample": []
+      },
+      {
+        "environment": "llama-cpp",
+        "archiveMembers": 9281,
+        "uniquePaths": 9280,
+        "missingAfterExtraction": 0,
+        "missingSample": []
+      },
+      {
+        "environment": "neocloud",
+        "archiveMembers": 11267,
+        "uniquePaths": 11266,
+        "missingAfterExtraction": 0,
+        "missingSample": []
+      },
+      {
+        "environment": "python3.10",
+        "archiveMembers": 53470,
+        "uniquePaths": 53452,
+        "missingAfterExtraction": 0,
+        "missingSample": []
+      }
+    ],
+    "pathSetsIdentical": true,
+    "filesRewritten": 400,
+    "residue": {
+      "lab": {
+        "/.local/dev/miniconda/current": {
+          "files": 2,
+          "byKind": {
+            "text": 2
+          },
+          "executableNonBinary": []
+        },
+        "/Users/jackson-hao/miniconda3": {
+          "files": 8490,
+          "byKind": {
+            "binary": 703,
+            "pyc": 7784,
+            "conda-meta": 3
+          },
+          "executableNonBinary": []
+        }
+      },
+      "currentBaseline": {
+        "/Users/jackson-hao/miniconda3": {
+          "files": 8491,
+          "byKind": {
+            "text": 1,
+            "binary": 703,
+            "pyc": 7784,
+            "conda-meta": 3
+          },
+          "executableNonBinary": []
+        }
+      }
+    },
+    "B8_longJob": {
+      "iterations": 65908,
+      "seconds": 25.0,
+      "finite": true
+    },
+    "B9_slotSwap": "python/pip/numpy/torch ran; conda entry point failed: bad interpreter (shebang points to lab path)",
+    "B10_currentSrcUnchangedNet": true
+  },
+  "verification": {
+    "A7-compacted": {
+      "passed": 23,
+      "total": 23,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local"
+      ]
+    },
+    "A8-compacted-remounted": {
+      "passed": 23,
+      "total": 23,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local"
+      ]
+    },
+    "B4-lab-alone": {
+      "passed": 23,
+      "total": 23,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local",
+        "/Users/jackson-hao/.local/dev/miniconda/current"
+      ]
+    },
+    "B6-both-current": {
+      "passed": 24,
+      "total": 24,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local",
+        "/Users/jackson-hao/.local/dev/miniconda/lab"
+      ]
+    },
+    "B6-both-lab": {
+      "passed": 24,
+      "total": 24,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local",
+        "/Users/jackson-hao/.local/dev/miniconda/current"
+      ]
+    },
+    "B7-concurrent-current": {
+      "passed": 24,
+      "total": 24,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local",
+        "/Users/jackson-hao/.local/dev/miniconda/lab"
+      ]
+    },
+    "B7-concurrent-lab": {
+      "passed": 24,
+      "total": 24,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local",
+        "/Users/jackson-hao/.local/dev/miniconda/current"
+      ]
+    },
+    "B8-current-reattached": {
+      "passed": 24,
+      "total": 24,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local",
+        "/Users/jackson-hao/.local/dev/miniconda/lab"
+      ]
+    },
+    "B8-lab-after-current-detached": {
+      "passed": 23,
+      "total": 23,
+      "failed": [],
+      "negativeControlPassed": true,
+      "deniedReadTrees": [
+        "/Users/jackson-hao/miniconda3",
+        "/Users/jackson-hao/.conda",
+        "/opt/homebrew",
+        "/usr/local",
+        "/Users/jackson-hao/.local/dev/miniconda/current"
+      ]
+    }
+  },
+  "sourceIntegrity": {
+    "entries": 103075,
+    "unchanged": true,
+    "hostConfigUnchanged": true
+  },
+  "finalMounted": false
+}

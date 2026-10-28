@@ -1,0 +1,24 @@
+{"stage": "B7-concurrent-current", "name": "negative-control-original-install-blocked", "passed": true}
+{"stage": "B7-concurrent-current", "name": "negative-control-1-blocked", "passed": true}
+{"stage": "B7-concurrent-current", "name": "base-python-stdlib-prefix", "passed": true}
+{"stage": "B7-concurrent-current", "name": "base-pip", "passed": true}
+{"stage": "B7-concurrent-current", "name": "llama-cpp-python-stdlib-prefix", "passed": true}
+{"stage": "B7-concurrent-current", "name": "llama-cpp-pip", "passed": true}
+{"stage": "B7-concurrent-current", "name": "neocloud-python-stdlib-prefix", "passed": true}
+{"stage": "B7-concurrent-current", "name": "neocloud-pip", "passed": true}
+{"stage": "B7-concurrent-current", "name": "python3.10-python-stdlib-prefix", "passed": true}
+{"stage": "B7-concurrent-current", "name": "python3.10-pip", "passed": true}
+{"stage": "B7-concurrent-current", "name": "conda-console-script", "passed": true}
+{"stage": "B7-concurrent-current", "name": "conda-info-isolated", "passed": true}
+{"stage": "B7-concurrent-current", "name": "conda-info-native-plugins", "passed": true}
+{"stage": "B7-concurrent-current", "name": "conda-env-discovery", "passed": true}
+{"stage": "B7-concurrent-current", "name": "conda-shell-activate", "passed": true}
+{"stage": "B7-concurrent-current", "name": "conda-run", "passed": true}
+{"stage": "B7-concurrent-current", "name": "neocloud-packages", "passed": true}
+{"stage": "B7-concurrent-current", "name": "llama-cpp-httpx", "passed": true}
+{"stage": "B7-concurrent-current", "name": "python3.10-numpy-pytorch", "passed": true}
+{"stage": "B7-concurrent-current", "name": "offline-create-environment", "passed": true}
+{"stage": "B7-concurrent-current", "name": "offline-install-local-package", "passed": true}
+{"stage": "B7-concurrent-current", "name": "offline-package-content", "passed": true}
+{"stage": "B7-concurrent-current", "name": "offline-remove-test-environment", "passed": true}
+{"stage": "B7-concurrent-current", "passed": 24, "total": 24, "failed": []}

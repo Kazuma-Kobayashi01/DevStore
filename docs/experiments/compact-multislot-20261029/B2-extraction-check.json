@@ -1,0 +1,30 @@
+[
+ {
+  "environment": "base",
+  "archiveMembers": 18081,
+  "uniquePaths": 18048,
+  "missingAfterExtraction": 0,
+  "missingSample": []
+ },
+ {
+  "environment": "llama-cpp",
+  "archiveMembers": 9281,
+  "uniquePaths": 9280,
+  "missingAfterExtraction": 0,
+  "missingSample": []
+ },
+ {
+  "environment": "neocloud",
+  "archiveMembers": 11267,
+  "uniquePaths": 11266,
+  "missingAfterExtraction": 0,
+  "missingSample": []
+ },
+ {
+  "environment": "python3.10",
+  "archiveMembers": 53470,
+  "uniquePaths": 53452,
+  "missingAfterExtraction": 0,
+  "missingSample": []
+ }
+]

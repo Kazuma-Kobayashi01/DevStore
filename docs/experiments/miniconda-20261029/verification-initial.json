@@ -1,0 +1,182 @@
+[
+  {
+    "name": "negative-control-original-install-blocked",
+    "passed": true,
+    "exitCode": 1,
+    "seconds": 0.008,
+    "stdout": "",
+    "stderr": "cat: /Users/jackson-hao/miniconda3/conda-meta/history: Operation not permitted\n"
+  },
+  {
+    "name": "base-python-stdlib-prefix",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.146,
+    "stdout": "{\"python\": \"3.13.11\", \"prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\", \"executable\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/bin/python\", \"stdlib\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/lib/python3.13/os.py\", \"configPrefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "base-pip",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.47,
+    "stdout": "pip 25.3 from /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/lib/python3.13/site-packages/pip (python 3.13)\n",
+    "stderr": ""
+  },
+  {
+    "name": "llama-cpp-python-stdlib-prefix",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.123,
+    "stdout": "{\"python\": \"3.10.20\", \"prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\", \"executable\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp/bin/python\", \"stdlib\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp/lib/python3.10/os.py\", \"configPrefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "llama-cpp-pip",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.384,
+    "stdout": "pip 26.1.2 from /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp/lib/python3.10/site-packages/pip (python 3.10)\n",
+    "stderr": ""
+  },
+  {
+    "name": "neocloud-python-stdlib-prefix",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.121,
+    "stdout": "{\"python\": \"3.11.15\", \"prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\", \"executable\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud/bin/python\", \"stdlib\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud/lib/python3.11/os.py\", \"configPrefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "neocloud-pip",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.4,
+    "stdout": "pip 26.1.2 from /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud/lib/python3.11/site-packages/pip (python 3.11)\n",
+    "stderr": ""
+  },
+  {
+    "name": "python3.10-python-stdlib-prefix",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.092,
+    "stdout": "{\"python\": \"3.10.19\", \"prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10\", \"executable\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10/bin/python\", \"stdlib\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10/lib/python3.10/os.py\", \"configPrefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "python3.10-pip",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.136,
+    "stdout": "pip 26.0.1 from /Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10/lib/python3.10/site-packages/pip (python 3.10)\n",
+    "stderr": ""
+  },
+  {
+    "name": "conda-console-script",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 1.154,
+    "stdout": "conda 25.11.1\n",
+    "stderr": ""
+  },
+  {
+    "name": "conda-info-isolated",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 1.436,
+    "stdout": "{\n  \"platform\": \"osx-arm64\",\n  \"conda_version\": \"25.11.1\",\n  \"conda_env_version\": \"25.11.1\",\n  \"conda_build_version\": \"not installed\",\n  \"root_prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n  \"conda_prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n  \"av_data_dir\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/etc/conda\",\n  \"av_metadata_url_base\": null,\n  \"root_writable\": true,\n  \"pkgs_dirs\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/pkgs\"\n  ],\n  \"envs_dirs\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/state/home/.conda/envs\"\n  ],\n  \"default_prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n  \"active_prefix\": null,\n  \"active_prefix_name\": null,\n  \"conda_shlvl\": -1,\n  \"channels\": [\n    \"https://conda.anaconda.org/conda-forge/osx-arm64\",\n    \"https://conda.anaconda.org/conda-forge/noarch\"\n  ],\n  \"user_rc_path\": \"/Users/jackson-hao/.local/dev/miniconda/current/state/home/.condarc\",\n  \"rc_path\": \"/Users/jackson-hao/.local/dev/miniconda/current/state/home/.condarc\",\n  \"sys_rc_path\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/.condarc\",\n  \"offline\": true,\n  \"envs\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10\"\n  ],\n  \"python_version\": \"3.13.11.final.0\",\n  \"requests_version\": \"2.32.5\",\n  \"user_agent\": \"conda/25.11.1 requests/2.32.5 CPython/3.13.11 Darwin/24.6.0 OSX/15.7.9\",\n  \"conda_location\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/lib/python3.13/site-packages/conda\",\n  \"config_files\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/condarc.d/anaconda-auth.yml\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/state/condarc\"\n  ],\n  \"netrc_file\": null,\n  \"virtual_pkgs\": [\n    [\n      \"__archspec\",\n      \"1\",\n      \"m1\"\n    ],\n    [\n      \"__conda\",\n      \"25.11.1\",\n      \"0\"\n    ],\n    [\n      \"__osx\",\n      \"15.7.9\",\n      \"0\"\n    ],\n    [\n      \"__unix\",\n      \"0\",\n      \"0\"\n    ]\n  ],\n  \"solver\": {\n    \"name\": \"classic\",\n    \"user_agent\": \"solver/classic\",\n    \"default\": false\n  },\n  \"UID\": 501,\n  \"GID\": 20,\n  \"sys.version\": \"3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]\",\n  \"sys.prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n  \"sys.executable\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/bin/python\",\n  \"site_dirs\": [],\n  \"env_vars\": {\n    \"LD_PRELOAD\": \"<not set>\",\n    \"REQUESTS_CA_BUNDLE\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/ssl/cert.pem\",\n    \"CONDA_PKGS_DIRS\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/pkgs\",\n    \"CONDA_OFFLINE\": \"true\",\n    \"CONDA_ENVS_PATH\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs\",\n    \"CONDA_AUTO_UPDATE_CONDA\": \"false\",\n    \"PYTHONDONTWRITEBYTECODE\": \"1\",\n    \"CONDARC\": \"/Users/jackson-hao/.local/dev/miniconda/current/state/condarc\",\n    \"CONDA_NO_PLUGINS\": \"true\",\n    \"PYTHONNOUSERSITE\": \"1\",\n    \"CURL_CA_BUNDLE\": \"<not set>\",\n    \"CONDA_ROOT\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n    \"SSL_CERT_FILE\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/ssl/cert.pem\",\n    \"CONDA_REPORT_ERRORS\": \"false\",\n    \"CONDA_SOLVER\": \"classic\",\n    \"CIO_TEST\": \"<not set>\",\n    \"PATH\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/bin:/usr/bin:/bin:/usr/sbin:/sbin\"\n  },\n  \"envs_details\": {\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\": {\n      \"name\": \"base\",\n      \"created\": \"2026-10-28T16:23:59.780696+00:00\",\n      \"last_modified\": \"2025-12-16T20:28:57.455040+00:00\",\n      \"active\": false,\n      \"base\": true,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\": {\n      \"name\": \"llama-cpp\",\n      \"created\": \"2026-10-28T16:25:29.865462+00:00\",\n      \"last_modified\": \"2026-08-04T05:05:13.199315+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\": {\n      \"name\": \"neocloud\",\n      \"created\": \"2026-10-28T16:25:31.770648+00:00\",\n      \"last_modified\": \"2026-08-07T12:45:48.038867+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10\": {\n      \"name\": \"python3.10\",\n      \"created\": \"2026-10-28T16:29:46.470319+00:00\",\n      \"last_modified\": \"2026-01-30T14:27:27.628148+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    }\n  }\n}",
+    "stderr": ""
+  },
+  {
+    "name": "conda-info-native-plugins",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 1.417,
+    "stdout": "{\n  \"platform\": \"osx-arm64\",\n  \"conda_version\": \"25.11.1\",\n  \"conda_env_version\": \"25.11.1\",\n  \"conda_build_version\": \"not installed\",\n  \"root_prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n  \"conda_prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n  \"av_data_dir\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/etc/conda\",\n  \"av_metadata_url_base\": null,\n  \"root_writable\": true,\n  \"pkgs_dirs\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/pkgs\"\n  ],\n  \"envs_dirs\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/state/home/.conda/envs\"\n  ],\n  \"default_prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n  \"active_prefix\": null,\n  \"active_prefix_name\": null,\n  \"conda_shlvl\": -1,\n  \"channels\": [\n    \"https://conda.anaconda.org/conda-forge/osx-arm64\",\n    \"https://conda.anaconda.org/conda-forge/noarch\"\n  ],\n  \"user_rc_path\": \"/Users/jackson-hao/.local/dev/miniconda/current/state/home/.condarc\",\n  \"rc_path\": \"/Users/jackson-hao/.local/dev/miniconda/current/state/home/.condarc\",\n  \"sys_rc_path\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/.condarc\",\n  \"offline\": true,\n  \"envs\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10\"\n  ],\n  \"python_version\": \"3.13.11.final.0\",\n  \"requests_version\": \"2.32.5\",\n  \"user_agent\": \"conda/25.11.1 requests/2.32.5 CPython/3.13.11 Darwin/24.6.0 OSX/15.7.9 aau/0.7.5 c/VEE0kST0mUdiCJkEW3ZVbv s/gAcJSGZlrmuz8sukXhY1sF e/4TLyIorRKkBWL2iXpG5O4k\",\n  \"conda_location\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/lib/python3.13/site-packages/conda\",\n  \"config_files\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/condarc.d/anaconda-auth.yml\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/state/condarc\"\n  ],\n  \"netrc_file\": null,\n  \"virtual_pkgs\": [\n    [\n      \"__archspec\",\n      \"1\",\n      \"m1\"\n    ],\n    [\n      \"__conda\",\n      \"25.11.1\",\n      \"0\"\n    ],\n    [\n      \"__osx\",\n      \"15.7.9\",\n      \"0\"\n    ],\n    [\n      \"__unix\",\n      \"0\",\n      \"0\"\n    ]\n  ],\n  \"solver\": {\n    \"name\": \"classic\",\n    \"user_agent\": \"solver/classic\",\n    \"default\": false\n  },\n  \"UID\": 501,\n  \"GID\": 20,\n  \"sys.version\": \"3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]\",\n  \"sys.prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n  \"sys.executable\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/bin/python\",\n  \"site_dirs\": [],\n  \"env_vars\": {\n    \"CONDA_ENVS_PATH\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs\",\n    \"CONDA_NO_PLUGINS\": \"false\",\n    \"SSL_CERT_FILE\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/ssl/cert.pem\",\n    \"PYTHONDONTWRITEBYTECODE\": \"1\",\n    \"CONDA_ROOT\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n    \"CONDA_REPORT_ERRORS\": \"false\",\n    \"CONDA_SOLVER\": \"classic\",\n    \"CONDA_OFFLINE\": \"true\",\n    \"PYTHONNOUSERSITE\": \"1\",\n    \"CURL_CA_BUNDLE\": \"<not set>\",\n    \"CIO_TEST\": \"<not set>\",\n    \"PATH\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/bin:/usr/bin:/bin:/usr/sbin:/sbin\",\n    \"CONDARC\": \"/Users/jackson-hao/.local/dev/miniconda/current/state/condarc\",\n    \"LD_PRELOAD\": \"<not set>\",\n    \"REQUESTS_CA_BUNDLE\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/ssl/cert.pem\",\n    \"CONDA_PKGS_DIRS\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/pkgs\",\n    \"CONDA_AUTO_UPDATE_CONDA\": \"false\"\n  },\n  \"envs_details\": {\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\": {\n      \"name\": \"base\",\n      \"created\": \"2026-10-28T16:23:59.780696+00:00\",\n      \"last_modified\": \"2025-12-16T20:28:57.455040+00:00\",\n      \"active\": false,\n      \"base\": true,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\": {\n      \"name\": \"llama-cpp\",\n      \"created\": \"2026-10-28T16:25:29.865462+00:00\",\n      \"last_modified\": \"2026-08-04T05:05:13.199315+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\": {\n      \"name\": \"neocloud\",\n      \"created\": \"2026-10-28T16:25:31.770648+00:00\",\n      \"last_modified\": \"2026-08-07T12:45:48.038867+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10\": {\n      \"name\": \"python3.10\",\n      \"created\": \"2026-10-28T16:29:46.470319+00:00\",\n      \"last_modified\": \"2026-01-30T14:27:27.628148+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    }\n  }\n}",
+    "stderr": ""
+  },
+  {
+    "name": "conda-env-discovery",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.946,
+    "stdout": "{\n  \"envs\": [\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\",\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10\"\n  ],\n  \"envs_details\": {\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3\": {\n      \"name\": \"base\",\n      \"created\": \"2026-10-28T16:23:59.780696+00:00\",\n      \"last_modified\": \"2025-12-16T20:28:57.455040+00:00\",\n      \"active\": false,\n      \"base\": true,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\": {\n      \"name\": \"llama-cpp\",\n      \"created\": \"2026-10-28T16:25:29.865462+00:00\",\n      \"last_modified\": \"2026-08-04T05:05:13.199315+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\": {\n      \"name\": \"neocloud\",\n      \"created\": \"2026-10-28T16:25:31.770648+00:00\",\n      \"last_modified\": \"2026-08-07T12:45:48.038867+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    },\n    \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10\": {\n      \"name\": \"python3.10\",\n      \"created\": \"2026-10-28T16:29:46.470319+00:00\",\n      \"last_modified\": \"2026-01-30T14:27:27.628148+00:00\",\n      \"active\": false,\n      \"base\": false,\n      \"frozen\": false,\n      \"writable\": true\n    }\n  }\n}",
+    "stderr": ""
+  },
+  {
+    "name": "conda-shell-activate",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 2.835,
+    "stdout": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/neocloud\n",
+    "stderr": ""
+  },
+  {
+    "name": "conda-run",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 2.885,
+    "stdout": "/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/llama-cpp\n",
+    "stderr": ""
+  },
+  {
+    "name": "neocloud-packages",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.57,
+    "stdout": "0.141.1 2.13.4 2.34.2\n",
+    "stderr": ""
+  },
+  {
+    "name": "llama-cpp-httpx",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.228,
+    "stdout": "0.28.1\n",
+    "stderr": ""
+  },
+  {
+    "name": "python3.10-numpy-pytorch",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.889,
+    "stdout": "2.2.5 2.5.1\n",
+    "stderr": ""
+  },
+  {
+    "name": "offline-create-environment",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 1.475,
+    "stdout": "{\n  \"success\": true,\n  \"actions\": {\n    \"FETCH\": [],\n    \"PREFIX\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/__single_volume_probe__\"\n  },\n  \"prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/__single_volume_probe__\"\n}",
+    "stderr": ""
+  },
+  {
+    "name": "offline-install-local-package",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.976,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "name": "offline-package-content",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.056,
+    "stdout": "local package content OK\n",
+    "stderr": ""
+  },
+  {
+    "name": "offline-remove-test-environment",
+    "passed": true,
+    "exitCode": 0,
+    "seconds": 0.977,
+    "stdout": "{\n  \"success\": true,\n  \"actions\": {\n    \"FETCH\": [],\n    \"PREFIX\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/__single_volume_probe__\",\n    \"UNLINK\": [\n      {\n        \"base_url\": null,\n        \"build_number\": 0,\n        \"build_string\": \"0\",\n        \"channel\": \"<unknown>\",\n        \"dist_name\": \"dev-volume-probe-0.0.1-0\",\n        \"name\": \"dev-volume-probe\",\n        \"platform\": \"noarch\",\n        \"version\": \"0.0.1\"\n      }\n    ]\n  },\n  \"prefix\": \"/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/__single_volume_probe__\"\n}",
+    "stderr": ""
+  },
+  {
+    "name": "state-and-cache-persisted",
+    "passed": true
+  }
+]

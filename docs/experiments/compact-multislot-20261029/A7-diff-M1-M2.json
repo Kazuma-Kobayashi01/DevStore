@@ -1,0 +1,14 @@
+{
+  "entriesA": 103109,
+  "entriesB": 103109,
+  "addedCount": 0,
+  "removedCount": 0,
+  "changedCount": 0,
+  "added": [],
+  "removed": [],
+  "changed": [],
+  "identical": true,
+  "a": "/Users/jackson-hao/Documents/Code/DevStore/docs/experiments/compact-multislot-20261029/A3-manifest-M1.json.gz",
+  "b": "/Users/jackson-hao/Documents/Code/DevStore/docs/experiments/compact-multislot-20261029/A7-manifest-M2.json.gz",
+  "excludes": []
+}

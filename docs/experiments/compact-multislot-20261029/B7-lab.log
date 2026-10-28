@@ -1,0 +1,24 @@
+{"stage": "B7-concurrent-lab", "name": "negative-control-original-install-blocked", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "negative-control-1-blocked", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "base-python-stdlib-prefix", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "base-pip", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "llama-cpp-python-stdlib-prefix", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "llama-cpp-pip", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "neocloud-python-stdlib-prefix", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "neocloud-pip", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "python3.10-python-stdlib-prefix", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "python3.10-pip", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "conda-console-script", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "conda-info-isolated", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "conda-info-native-plugins", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "conda-env-discovery", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "conda-shell-activate", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "conda-run", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "neocloud-packages", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "llama-cpp-httpx", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "python3.10-numpy-pytorch", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "offline-create-environment", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "offline-install-local-package", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "offline-package-content", "passed": true}
+{"stage": "B7-concurrent-lab", "name": "offline-remove-test-environment", "passed": true}
+{"stage": "B7-concurrent-lab", "passed": 24, "total": 24, "failed": []}

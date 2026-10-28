@@ -1,0 +1,35 @@
+[
+  {
+    "name": "base",
+    "missingCount": 0,
+    "missingSample": []
+  },
+  {
+    "name": "llama-cpp",
+    "missingCount": 0,
+    "missingSample": []
+  },
+  {
+    "name": "neocloud",
+    "missingCount": 0,
+    "missingSample": []
+  },
+  {
+    "name": "python3.10",
+    "missingCount": 51930,
+    "missingSample": [
+      "lib/liblapack.dylib",
+      "lib/liblcms2.2.dylib",
+      "lib/liblcms2.dylib",
+      "lib/liblz4.1.9.4.dylib",
+      "lib/liblz4.1.dylib",
+      "lib/liblz4.dylib",
+      "lib/liblzma.5.6.4.dylib",
+      "lib/liblzma.5.dylib",
+      "lib/liblzma.dylib",
+      "lib/libmenu.6.dylib",
+      "lib/libmenu.a",
+      "lib/libmenu.dylib"
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "externalSymlinks": [],
+  "condaPackageCountsMatched": {
+    "base": 113,
+    "llama-cpp": 19,
+    "neocloud": 19,
+    "python3.10": 82
+  },
+  "volumeDevice": "16777240"
+}
