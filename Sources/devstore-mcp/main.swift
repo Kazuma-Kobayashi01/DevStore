@@ -1,0 +1,3 @@
+import DevStoreMCP
+
+MCPServer().serve()
