@@ -11,7 +11,7 @@ struct DevStoreApp: App {
     }
 
     var body: some Scene {
-        WindowGroup("DevStore") {
+        WindowGroup("DevStore", id: "main") {
             ContentView()
                 .environment(model)
                 .frame(minWidth: 960, minHeight: 620)
@@ -32,5 +32,12 @@ struct DevStoreApp: App {
         Settings {
             SettingsView().environment(model)
         }
+
+        MenuBarExtra {
+            MenuBarPanel().environment(model)
+        } label: {
+            MenuBarLabel().environment(model)
+        }
+        .menuBarExtraStyle(.window)
     }
 }

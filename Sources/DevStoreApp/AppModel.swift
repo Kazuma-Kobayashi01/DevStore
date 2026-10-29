@@ -173,6 +173,26 @@ final class AppModel {
         await refresh()
     }
 
+    /// Mounts every unmounted environment whose store is online, one by one.
+    func mountAll() async {
+        for row in snapshot.environments where !row.status.mounted && row.status.storeOnline {
+            await toggleMount(row)
+        }
+        notice = "已挂载 \(snapshot.environments.filter { $0.status.mounted }.count)/\(snapshot.environments.count) 个环境"
+    }
+
+    /// Ejects every mounted environment (never forced); busy volumes stay mounted and are reported.
+    func unmountAll() async {
+        var busyOnes: [String] = []
+        for row in snapshot.environments where row.status.mounted {
+            await toggleMount(row)
+            if errorMessage != nil { busyOnes.append("\(row.status.kind)/\(row.status.slot)"); errorMessage = nil }
+        }
+        let left = snapshot.environments.filter { $0.status.mounted }.count
+        if busyOnes.isEmpty { notice = "已弹出全部环境" }
+        else { errorMessage = "\(busyOnes.joined(separator: "、")) 正在使用中，未弹出（关闭使用它的终端或程序后再试）；仍挂载 \(left) 个" }
+    }
+
     func verify(_ row: EnvRow) async {
         let lib = library, id = row.id
         verifyProgress[id] = []
