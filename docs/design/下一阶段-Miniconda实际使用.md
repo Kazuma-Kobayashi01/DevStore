@@ -121,3 +121,23 @@
   - `~/Library/Caches/go-build` 移到 `~/.Trash/go-build-cache-20261029-161904`；
   - 删掉 go env 文件里的 GOPATH 行（备份为 `env.devstore-backup`）；`telemetry` 目录保留。
 - 清理后：验证 13/13（原 GOPATH 已不存在，Homebrew go 已卸载）。卸载卷后新开登录 shell 会自动挂载，`go run` 正常。Miniconda 复验 23/23，不受影响。
+
+### 2026-10-29 16:20–16:50：Flutter、Rust、.NET 迁移
+
+- 盘点（只读）：
+  - Flutter 3.47.2 stable / Dart 3.13.2，`~/.local/flutter` 是 git 仓库，3.9 GB。
+  - Rust：rustup 1.29.1 + stable 1.99.1 + 5 个交叉编译 target；`~/.rustup` 1.1 GB，`~/.cargo` 34 MB，含 `cargo-expand`、`flutter_rust_bridge_codegen`。
+  - .NET SDK 10.0.402 / runtime 10.0.13，装在 `/usr/local/share/dotnet`（Homebrew cask，root 所有）；`~/.nuget` 309 MB。
+- 用户选择"复制现有安装"。新增 `copy-sdk`（修改级，需批准），并新增 Rust、.NET、Flutter 三个适配器及验证套件。在临时卷上用真实复制品实测：Rust 18/18、.NET 12/12、Flutter 11/11。
+- 复制品里提到原路径的文件，都不是可执行脚本，已记入 knownWarnings：
+  - Rust 2 个：两个 cargo 工具里编译进去的源码路径。
+  - .NET 14 个：`dotnet`、`libhostfxr`、`libhostpolicy` 等文件里写死的默认安装位置 `/usr/local/share/dotnet`。只有没设置 `DOTNET_ROOT` 时才会用到；从 Finder 启动的 apphost 程序可能会去这个旧位置找运行时。
+  - Flutter 4 个：工具快照、一个 Gradle 历史文件、pub 的 active_roots。
+- 真实环境：`flutter/current`（最大 30 GiB）、`rust/current` 和 `dotnet/current`（各 20 GiB）。新建、挂载策略、复制都由用户在终端批准（Rust 第一次确认被拒，之后重新批准）。复制后验证：Flutter 11/11、Rust 18/18、.NET 12/12。
+- shell（`~/.zshrc`、`~/.zshenv` 已备份为 `*.devstore-backup-20261029-164111`）：
+  - `.zshrc:150` 的 Flutter PATH 换成 DevStore Flutter 块（`PUB_CACHE` 和 PATH）。
+  - 新增 .NET 块（`DOTNET_ROOT`、`NUGET_PACKAGES`、`DOTNET_CLI_HOME`、PATH）。
+  - `.zshenv:1` 的 `. "$HOME/.cargo/env"` 换成 DevStore Rust 块（`RUSTUP_HOME`、`CARGO_HOME`、PATH），非交互 shell 也生效。
+- 清理：上述六个原目录移到 `~/.Trash/*-20261029-164259`。保留 `~/.flutter`、`~/.dart-tool`、`~/.nuget/NuGet` 三个小配置，因为日常 shell 的 HOME 不变，还会用到它们。用户自行运行了 `brew uninstall --cask dotnet-sdk`。
+- 清理后验证：Flutter 10/10、Rust 17/17、.NET 10/10；新登录 shell 里所有工具都来自卷内。
+- 遗留：`/etc/dotnet/install_location*`（root 所有）仍指向已删除的 `/usr/local/share/dotnet`，不影响终端使用。
