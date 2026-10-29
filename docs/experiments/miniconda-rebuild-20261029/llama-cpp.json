@@ -1,0 +1,224 @@
+{
+ "prefix": "/Users/jackson-hao/miniconda3/envs/llama-cpp",
+ "sitePackages": "/Users/jackson-hao/miniconda3/envs/llama-cpp/lib/python3.10/site-packages",
+ "conda": [
+  {
+   "name": "bzip2",
+   "version": "1.0.8",
+   "build": "h80987f9_6",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/bzip2-1.0.8-h80987f9_6.conda"
+  },
+  {
+   "name": "ca-certificates",
+   "version": "2026.7.16",
+   "build": "hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/ca-certificates-2026.7.16-hca03da5_0.conda"
+  },
+  {
+   "name": "libcxx",
+   "version": "22.1.2",
+   "build": "hf894667_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libcxx-22.1.2-hf894667_0.conda"
+  },
+  {
+   "name": "libexpat",
+   "version": "2.8.2",
+   "build": "h50f4ffc_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libexpat-2.8.2-h50f4ffc_1.conda"
+  },
+  {
+   "name": "libffi",
+   "version": "3.4.8",
+   "build": "h4a3ca97_3",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libffi-3.4.8-h4a3ca97_3.conda"
+  },
+  {
+   "name": "libzlib",
+   "version": "1.3.2",
+   "build": "hb4cf58c_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libzlib-1.3.2-hb4cf58c_0.conda"
+  },
+  {
+   "name": "ncurses",
+   "version": "6.5",
+   "build": "hee39554_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/ncurses-6.5-hee39554_0.conda"
+  },
+  {
+   "name": "openssl",
+   "version": "3.5.7",
+   "build": "ha0b305a_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/openssl-3.5.7-ha0b305a_0.conda"
+  },
+  {
+   "name": "packaging",
+   "version": "26.0",
+   "build": "py310hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/packaging-26.0-py310hca03da5_0.conda"
+  },
+  {
+   "name": "pip",
+   "version": "26.1.2",
+   "build": "pyhc872135_0",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/pip-26.1.2-pyhc872135_0.conda"
+  },
+  {
+   "name": "python",
+   "version": "3.10.20",
+   "build": "h478e877_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.10.20-h478e877_1.conda"
+  },
+  {
+   "name": "readline",
+   "version": "8.3",
+   "build": "h0b18652_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda"
+  },
+  {
+   "name": "setuptools",
+   "version": "83.0.0",
+   "build": "py310hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/setuptools-83.0.0-py310hca03da5_0.conda"
+  },
+  {
+   "name": "sqlite",
+   "version": "3.53.2",
+   "build": "h1cce5ff_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/sqlite-3.53.2-h1cce5ff_0.conda"
+  },
+  {
+   "name": "tk",
+   "version": "8.6.15",
+   "build": "hcd8a7d5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/tk-8.6.15-hcd8a7d5_0.conda"
+  },
+  {
+   "name": "tzdata",
+   "version": "2026c",
+   "build": "he532380_0",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/tzdata-2026c-he532380_0.conda"
+  },
+  {
+   "name": "wheel",
+   "version": "0.47.0",
+   "build": "py310hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.47.0-py310hca03da5_0.conda"
+  },
+  {
+   "name": "xz",
+   "version": "5.8.2",
+   "build": "h8bbcb1d_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.8.2-h8bbcb1d_0.conda"
+  },
+  {
+   "name": "zlib",
+   "version": "1.3.2",
+   "build": "hb4cf58c_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.2-hb4cf58c_0.conda"
+  }
+ ],
+ "pip": [
+  {
+   "name": "anyio",
+   "version": "4.14.2",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "certifi",
+   "version": "2026.7.22",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "click",
+   "version": "8.4.2",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "exceptiongroup",
+   "version": "1.3.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "filelock",
+   "version": "3.32.2",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "fsspec",
+   "version": "2026.7.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "h11",
+   "version": "0.16.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "hf-xet",
+   "version": "1.6.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "httpcore",
+   "version": "1.0.9",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "httpx",
+   "version": "0.28.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "huggingface_hub",
+   "version": "1.26.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "idna",
+   "version": "3.18",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "packaging",
+   "version": "26.0",
+   "installer": "?",
+   "directUrl": false
+  },
+  {
+   "name": "PyYAML",
+   "version": "6.0.3",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "tqdm",
+   "version": "4.70.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "typing_extensions",
+   "version": "4.16.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "wheel",
+   "version": "0.47.0",
+   "installer": "?",
+   "directUrl": false
+  }
+ ]
+}

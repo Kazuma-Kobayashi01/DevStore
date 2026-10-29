@@ -1,0 +1,51 @@
+{
+ "base": {
+  "python": "3.13.11",
+  "conda": 113,
+  "pip": 36,
+  "channels": {
+   "https://repo.anaconda.com/pkgs/main": 113
+  },
+  "pipInstallers": {
+   "pip": 35,
+   "?": 1
+  }
+ },
+ "llama-cpp": {
+  "python": "3.10.20",
+  "conda": 19,
+  "pip": 17,
+  "channels": {
+   "https://repo.anaconda.com/pkgs/main": 19
+  },
+  "pipInstallers": {
+   "pip": 15,
+   "?": 2
+  }
+ },
+ "neocloud": {
+  "python": "3.11.15",
+  "conda": 19,
+  "pip": 49,
+  "channels": {
+   "https://repo.anaconda.com/pkgs/main": 19
+  },
+  "pipInstallers": {
+   "pip": 47,
+   "?": 2
+  }
+ },
+ "python3.10": {
+  "python": "3.10.19",
+  "conda": 82,
+  "pip": 79,
+  "channels": {
+   "https://repo.anaconda.com/pkgs/main": 80,
+   "https://conda.anaconda.org/pytorch/osx-arm64": 2
+  },
+  "pipInstallers": {
+   "pip": 78,
+   "?": 1
+  }
+ }
+}

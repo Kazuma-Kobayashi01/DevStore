@@ -1,6 +1,6 @@
 # 下一阶段：Miniconda 实际使用测试
 
-记录日期：2026-10-29。状态：**进行中**——第 1、2 步在真实环境完成；第 4–6 步（回收、压缩/加密、导出）已实现并在临时卷实测；真实环境已于 14:40 由用户删除，用户决定暂不重建。
+记录日期：2026-10-29。状态：**进行中**——第 1、2 步在真实环境完成；第 4–6 步（回收、压缩/加密、导出）已实现并在临时卷实测；15:40 起在新存储库重建，并按清单重建了用户原有的三个环境，验证 23/23，进入第 3 步日常试用。
 
 ## 目标
 
@@ -67,3 +67,20 @@
 - 导出冷备份：复制后 SHA-256 一致，附带 `.json` 记录；不覆盖已有文件；导出记录写回归档。
 - 发现 `hdiutil imageinfo` 等命令对加密映像会等待交互输入口令（测试因此卡住，已改用 `-stdinpass`）。DevStore 的执行路径始终经 stdin 传口令。
 - **真实环境状态**：事务日志显示，14:39:52 在应用里卸载了 `miniconda/current`「Miniconda 日常」（`via: gui`），14:40:19 删除了它（`via: gui-authenticated`，需要 Touch ID 或登录密码），随后废纸篓被清空。这不是 Agent 的操作：Agent 在 14:36 已释放对应用的控制，而删除必须通过本机身份验证。当前没有任何环境；安装器仍在 `artifacts/installers/`，可以随时重建。用户随后确认是自己删除的，并决定暂不重建。
+
+### 2026-10-29 15:39–15:55：全新安装 + 按清单重建原有环境
+
+- 清理：旧的主机登记整体移进废纸篓（`DevStore-registry-20261029-153915`），删除了空的旧存储库和空目录。
+- 新存储库：`~/.local/share/devstore`（`3ad896e4…`）。新环境 `miniconda/current`「Miniconda」：环境 `575e078a…`，最大 40 GiB。新建由用户在终端批准；挂载策略由用户设置；写入 SDK `4b6cbcc7` 由用户批准，耗时 14 秒，base 验证 14/14。
+- 清单导出：只读原安装各环境的 `conda-meta/*.json` 和 `site-packages/*.dist-info`，没有运行原安装的 conda。证据在 `docs/experiments/miniconda-rebuild-20261029/`。
+- 服务条款：用户同意由 Agent 在新环境里接受 Anaconda ToS，范围仅 `repo.anaconda.com/pkgs/main` 与 `pkgs/r`，记录写在卷内的 `state/home/.conda/tos`。
+- 重建：每个环境先 `conda create --file <env>-conda-explicit.txt`（精确 build），再 `pip install --no-deps -r <env>-pip-requirements.txt`。
+  - python3.10 的 pip 原本是 pip 自己装的，不在 conda 清单里，所以先用 `ensurepip` 引导；第一次下载时 PyPI 超时，加大超时后重试成功。
+- 结果：
+  - llama-cpp：conda 19/19、pip 17/17 与原环境完全一致。
+  - neocloud：conda 19/19、pip 49/49 完全一致。
+  - python3.10：conda 82/82、pip 79/79 完全一致。
+- 用户决定 base 里原有的 36 个 pip 包不迁移。
+- 验证 `rebuilt-envs`：**23/23**，含负向对照（禁读原安装），以及 FastAPI/Pydantic/Requests、HTTPX、NumPy 2.2.5/PyTorch 2.5.1 的包检查。
+- 卷内原安装路径**残留 0**。`miniconda3` 共 2.7 GB，其中包缓存 `pkgs` 1.9 GB，`cache` 156 MB；这些可重建的缓存是后续回收空间测试的对象。
+- `~/.zshrc`、`~/.condarc` 等摘要不变；原 `~/miniconda3` 只读，未改动。

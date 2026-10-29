@@ -1,0 +1,49 @@
+=== llama-cpp conda 15:46:17
+2 channel Terms of Service accepted
+Retrieving notices: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... WARNING conda.conda_pypi.main:notify_conda_pypi_tip(158): 
+  Did you know? You can install many PyPI packages with conda
+  using conda-pypi. Get started:
+    https://bit.ly/4xXYt0B
+
+done
+
+Channel "defaults" has the following notices:
+  [warning] -- Wed Sep 30 00:00:00 2026
+  Anaconda will stop building new Python 3.10 packages on the main channel after
+  October 31, 2026. Existing Python 3.10 packages will stay available but will
+  no longer get new builds or security fixes. We recommend upgrading to Python
+  3.11 or later. Details: https://www.anaconda.com/docs/reference/policies-pract
+  ices/python-version-support?utm_source=channel_notices
+
+  [info] -- Thu Aug  6 00:00:00 2026
+  main-x (Anaconda's new authenticated channel) is now generally available, with
+  thousands of additional packages from our secure supply chain. Get started at:
+  https://anaconda.com/docs/getting-started/main-x?utm_source=channel_notices
+
+=== llama-cpp pip 15:46:30
+=== llama-cpp done 15:46:43
+=== neocloud conda 15:46:43
+2 channel Terms of Service accepted
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... WARNING conda.conda_pypi.main:notify_conda_pypi_tip(158): 
+  Did you know? You can install many PyPI packages with conda
+  using conda-pypi. Get started:
+    https://bit.ly/4xXYt0B
+
+done
+=== neocloud pip 15:46:54
+=== neocloud done 15:47:29
+=== python3.10 conda 15:47:29
+2 channel Terms of Service accepted
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+=== python3.10 pip 15:48:13
+/Users/jackson-hao/.local/dev/miniconda/current/miniconda3/envs/python3.10/bin/python: No module named pip
+ERROR conda.cli.main_run:execute(149): `conda run python -m pip install -q --no-deps -r /Users/jackson-hao/Documents/Code/DevStore/artifacts/migration/python3.10-pip-requirements.txt` failed. (See above for error)
+FAIL pip python3.10
+=== python3.10 done 15:48:14

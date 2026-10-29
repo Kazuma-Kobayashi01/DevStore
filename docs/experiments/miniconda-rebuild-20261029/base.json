@@ -1,0 +1,902 @@
+{
+ "prefix": "/Users/jackson-hao/miniconda3",
+ "sitePackages": "/Users/jackson-hao/miniconda3/lib/python3.13/site-packages",
+ "conda": [
+  {
+   "name": "anaconda-anon-usage",
+   "version": "0.7.5",
+   "build": "pyhb46e38b_100",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/anaconda-anon-usage-0.7.5-pyhb46e38b_100.conda"
+  },
+  {
+   "name": "anaconda-auth",
+   "version": "0.12.3",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/anaconda-auth-0.12.3-py313hca03da5_0.conda"
+  },
+  {
+   "name": "anaconda-cli-base",
+   "version": "0.7.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/anaconda-cli-base-0.7.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "annotated-types",
+   "version": "0.6.0",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/annotated-types-0.6.0-py313hca03da5_1.conda"
+  },
+  {
+   "name": "archspec",
+   "version": "0.2.5",
+   "build": "pyhd3eb1b0_0",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/archspec-0.2.5-pyhd3eb1b0_0.conda"
+  },
+  {
+   "name": "boltons",
+   "version": "25.0.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/boltons-25.0.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "brotlicffi",
+   "version": "1.2.0.0",
+   "build": "py313h50f4ffc_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/brotlicffi-1.2.0.0-py313h50f4ffc_0.conda"
+  },
+  {
+   "name": "bzip2",
+   "version": "1.0.8",
+   "build": "h80987f9_6",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/bzip2-1.0.8-h80987f9_6.conda"
+  },
+  {
+   "name": "c-ares",
+   "version": "1.34.5",
+   "build": "h2ca31fc_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/c-ares-1.34.5-h2ca31fc_0.conda"
+  },
+  {
+   "name": "ca-certificates",
+   "version": "2025.12.2",
+   "build": "hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/ca-certificates-2025.12.2-hca03da5_0.conda"
+  },
+  {
+   "name": "certifi",
+   "version": "2025.11.12",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/certifi-2025.11.12-py313hca03da5_0.conda"
+  },
+  {
+   "name": "cffi",
+   "version": "2.0.0",
+   "build": "py313h73c2a22_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/cffi-2.0.0-py313h73c2a22_1.conda"
+  },
+  {
+   "name": "charset-normalizer",
+   "version": "3.4.4",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/charset-normalizer-3.4.4-py313hca03da5_0.conda"
+  },
+  {
+   "name": "click",
+   "version": "8.2.1",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/click-8.2.1-py313hca03da5_1.conda"
+  },
+  {
+   "name": "conda",
+   "version": "25.11.1",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/conda-25.11.1-py313hca03da5_0.conda"
+  },
+  {
+   "name": "conda-anaconda-telemetry",
+   "version": "0.3.0",
+   "build": "pyhd3eb1b0_1",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/conda-anaconda-telemetry-0.3.0-pyhd3eb1b0_1.conda"
+  },
+  {
+   "name": "conda-anaconda-tos",
+   "version": "0.2.2",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/conda-anaconda-tos-0.2.2-py313hca03da5_1.conda"
+  },
+  {
+   "name": "conda-content-trust",
+   "version": "0.2.0",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/conda-content-trust-0.2.0-py313hca03da5_1.conda"
+  },
+  {
+   "name": "conda-libmamba-solver",
+   "version": "25.11.0",
+   "build": "pyhdf14ebd_0",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/conda-libmamba-solver-25.11.0-pyhdf14ebd_0.conda"
+  },
+  {
+   "name": "conda-package-handling",
+   "version": "2.4.0",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/conda-package-handling-2.4.0-py313hca03da5_1.conda"
+  },
+  {
+   "name": "conda-package-streaming",
+   "version": "0.12.0",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/conda-package-streaming-0.12.0-py313hca03da5_1.conda"
+  },
+  {
+   "name": "cpp-expected",
+   "version": "1.1.0",
+   "build": "h48ca7d4_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/cpp-expected-1.1.0-h48ca7d4_0.conda"
+  },
+  {
+   "name": "cryptography",
+   "version": "46.0.3",
+   "build": "py313h81b0bee_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/cryptography-46.0.3-py313h81b0bee_0.conda"
+  },
+  {
+   "name": "distro",
+   "version": "1.9.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/distro-1.9.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "fmt",
+   "version": "11.2.0",
+   "build": "h643473a_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/fmt-11.2.0-h643473a_0.conda"
+  },
+  {
+   "name": "frozendict",
+   "version": "2.4.6",
+   "build": "py313haa24f5a_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/frozendict-2.4.6-py313haa24f5a_0.conda"
+  },
+  {
+   "name": "gettext",
+   "version": "0.21.0",
+   "build": "hbdbcc25_2",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/gettext-0.21.0-hbdbcc25_2.conda"
+  },
+  {
+   "name": "icu",
+   "version": "73.1",
+   "build": "h313beb8_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/icu-73.1-h313beb8_0.conda"
+  },
+  {
+   "name": "idna",
+   "version": "3.11",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/idna-3.11-py313hca03da5_0.conda"
+  },
+  {
+   "name": "jansson",
+   "version": "2.14",
+   "build": "h80987f9_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/jansson-2.14-h80987f9_1.conda"
+  },
+  {
+   "name": "jaraco.classes",
+   "version": "3.4.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.classes-3.4.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "jaraco.context",
+   "version": "6.0.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.context-6.0.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "jaraco.functools",
+   "version": "4.1.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/jaraco.functools-4.1.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "jsonpatch",
+   "version": "1.33",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/jsonpatch-1.33-py313hca03da5_1.conda"
+  },
+  {
+   "name": "jsonpointer",
+   "version": "3.0.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/jsonpointer-3.0.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "keyring",
+   "version": "25.7.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/keyring-25.7.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "libarchive",
+   "version": "3.8.2",
+   "build": "ha845c4f_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libarchive-3.8.2-ha845c4f_0.conda"
+  },
+  {
+   "name": "libcurl",
+   "version": "8.16.0",
+   "build": "h01d3526_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libcurl-8.16.0-h01d3526_0.conda"
+  },
+  {
+   "name": "libcxx",
+   "version": "20.1.8",
+   "build": "hd7fd590_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libcxx-20.1.8-hd7fd590_1.conda"
+  },
+  {
+   "name": "libev",
+   "version": "4.33",
+   "build": "h1a28f6b_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libev-4.33-h1a28f6b_1.conda"
+  },
+  {
+   "name": "libexpat",
+   "version": "2.7.3",
+   "build": "h50f4ffc_4",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libexpat-2.7.3-h50f4ffc_4.conda"
+  },
+  {
+   "name": "libffi",
+   "version": "3.4.4",
+   "build": "hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libffi-3.4.4-hca03da5_1.conda"
+  },
+  {
+   "name": "libiconv",
+   "version": "1.16",
+   "build": "h80987f9_3",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libiconv-1.16-h80987f9_3.conda"
+  },
+  {
+   "name": "libidn2",
+   "version": "2.3.8",
+   "build": "h9681e36_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libidn2-2.3.8-h9681e36_0.conda"
+  },
+  {
+   "name": "libmamba",
+   "version": "2.3.2",
+   "build": "hcdddc3d_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libmamba-2.3.2-hcdddc3d_1.conda"
+  },
+  {
+   "name": "libmambapy",
+   "version": "2.3.2",
+   "build": "py313h678a34b_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libmambapy-2.3.2-py313h678a34b_1.conda"
+  },
+  {
+   "name": "libmpdec",
+   "version": "4.0.0",
+   "build": "h80987f9_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libmpdec-4.0.0-h80987f9_0.conda"
+  },
+  {
+   "name": "libnghttp2",
+   "version": "1.67.1",
+   "build": "h8189af8_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libnghttp2-1.67.1-h8189af8_0.conda"
+  },
+  {
+   "name": "libsolv",
+   "version": "0.7.30",
+   "build": "ha443353_2",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libsolv-0.7.30-ha443353_2.conda"
+  },
+  {
+   "name": "libssh2",
+   "version": "1.11.1",
+   "build": "h3e2b118_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libssh2-1.11.1-h3e2b118_0.conda"
+  },
+  {
+   "name": "libunistring",
+   "version": "1.3",
+   "build": "h1799b2a_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libunistring-1.3-h1799b2a_0.conda"
+  },
+  {
+   "name": "libxml2",
+   "version": "2.13.9",
+   "build": "h528a072_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libxml2-2.13.9-h528a072_0.conda"
+  },
+  {
+   "name": "libzlib",
+   "version": "1.3.1",
+   "build": "h5f15de7_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/libzlib-1.3.1-h5f15de7_0.conda"
+  },
+  {
+   "name": "llvm-openmp",
+   "version": "20.1.8",
+   "build": "he822017_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/llvm-openmp-20.1.8-he822017_0.conda"
+  },
+  {
+   "name": "lz4-c",
+   "version": "1.9.4",
+   "build": "h313beb8_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/lz4-c-1.9.4-h313beb8_1.conda"
+  },
+  {
+   "name": "markdown-it-py",
+   "version": "4.0.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/markdown-it-py-4.0.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "mdurl",
+   "version": "0.1.2",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/mdurl-0.1.2-py313hca03da5_0.conda"
+  },
+  {
+   "name": "menuinst",
+   "version": "2.4.2",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/menuinst-2.4.2-py313hca03da5_1.conda"
+  },
+  {
+   "name": "more-itertools",
+   "version": "10.8.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/more-itertools-10.8.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "msgpack-python",
+   "version": "1.1.1",
+   "build": "py313h313beb8_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/msgpack-python-1.1.1-py313h313beb8_0.conda"
+  },
+  {
+   "name": "ncurses",
+   "version": "6.5",
+   "build": "hee39554_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/ncurses-6.5-hee39554_0.conda"
+  },
+  {
+   "name": "nlohmann_json",
+   "version": "3.11.2",
+   "build": "h313beb8_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/nlohmann_json-3.11.2-h313beb8_0.conda"
+  },
+  {
+   "name": "openssl",
+   "version": "3.0.18",
+   "build": "h9b4081a_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/openssl-3.0.18-h9b4081a_0.conda"
+  },
+  {
+   "name": "packaging",
+   "version": "25.0",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/packaging-25.0-py313hca03da5_1.conda"
+  },
+  {
+   "name": "pcre2",
+   "version": "10.46",
+   "build": "h1dacb4a_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pcre2-10.46-h1dacb4a_0.conda"
+  },
+  {
+   "name": "pip",
+   "version": "25.3",
+   "build": "pyhc872135_0",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/pip-25.3-pyhc872135_0.conda"
+  },
+  {
+   "name": "pkce",
+   "version": "1.0.3",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pkce-1.0.3-py313hca03da5_0.conda"
+  },
+  {
+   "name": "platformdirs",
+   "version": "4.5.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/platformdirs-4.5.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "pluggy",
+   "version": "1.5.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pluggy-1.5.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "pybind11-abi",
+   "version": "5",
+   "build": "hd3eb1b0_0",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/pybind11-abi-5-hd3eb1b0_0.conda"
+  },
+  {
+   "name": "pycosat",
+   "version": "0.6.6",
+   "build": "py313h80987f9_2",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pycosat-0.6.6-py313h80987f9_2.conda"
+  },
+  {
+   "name": "pycparser",
+   "version": "2.23",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pycparser-2.23-py313hca03da5_0.conda"
+  },
+  {
+   "name": "pydantic",
+   "version": "2.12.4",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-2.12.4-py313hca03da5_0.conda"
+  },
+  {
+   "name": "pydantic-core",
+   "version": "2.41.5",
+   "build": "py313h931abed_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-core-2.41.5-py313h931abed_1.conda"
+  },
+  {
+   "name": "pydantic-settings",
+   "version": "2.12.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pydantic-settings-2.12.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "pygments",
+   "version": "2.19.2",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pygments-2.19.2-py313hca03da5_0.conda"
+  },
+  {
+   "name": "pyjwt",
+   "version": "2.10.1",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pyjwt-2.10.1-py313hca03da5_1.conda"
+  },
+  {
+   "name": "pysocks",
+   "version": "1.7.1",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/pysocks-1.7.1-py313hca03da5_1.conda"
+  },
+  {
+   "name": "python",
+   "version": "3.13.11",
+   "build": "hc7d8306_100_cp313",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/python-3.13.11-hc7d8306_100_cp313.conda"
+  },
+  {
+   "name": "python-dotenv",
+   "version": "1.1.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/python-dotenv-1.1.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "python.app",
+   "version": "3",
+   "build": "py313h80987f9_2",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/python.app-3-py313h80987f9_2.conda"
+  },
+  {
+   "name": "python_abi",
+   "version": "3.13",
+   "build": "3_cp313",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/python_abi-3.13-3_cp313.conda"
+  },
+  {
+   "name": "readchar",
+   "version": "4.2.1",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/readchar-4.2.1-py313hca03da5_0.conda"
+  },
+  {
+   "name": "readline",
+   "version": "8.3",
+   "build": "h0b18652_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/readline-8.3-h0b18652_0.conda"
+  },
+  {
+   "name": "reproc",
+   "version": "14.2.4",
+   "build": "h313beb8_2",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-14.2.4-h313beb8_2.conda"
+  },
+  {
+   "name": "reproc-cpp",
+   "version": "14.2.4",
+   "build": "h313beb8_2",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/reproc-cpp-14.2.4-h313beb8_2.conda"
+  },
+  {
+   "name": "requests",
+   "version": "2.32.5",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/requests-2.32.5-py313hca03da5_1.conda"
+  },
+  {
+   "name": "rich",
+   "version": "14.2.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/rich-14.2.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "ruamel.yaml",
+   "version": "0.18.16",
+   "build": "py313h091b9d3_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml-0.18.16-py313h091b9d3_0.conda"
+  },
+  {
+   "name": "ruamel.yaml.clib",
+   "version": "0.2.14",
+   "build": "py313h091b9d3_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/ruamel.yaml.clib-0.2.14-py313h091b9d3_0.conda"
+  },
+  {
+   "name": "semver",
+   "version": "3.0.4",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/semver-3.0.4-py313hca03da5_0.conda"
+  },
+  {
+   "name": "setuptools",
+   "version": "80.9.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/setuptools-80.9.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "shellingham",
+   "version": "1.5.4",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/shellingham-1.5.4-py313hca03da5_0.conda"
+  },
+  {
+   "name": "simdjson",
+   "version": "3.10.1",
+   "build": "h48ca7d4_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/simdjson-3.10.1-h48ca7d4_0.conda"
+  },
+  {
+   "name": "sqlite",
+   "version": "3.51.0",
+   "build": "hab6afd1_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/sqlite-3.51.0-hab6afd1_0.conda"
+  },
+  {
+   "name": "tk",
+   "version": "8.6.15",
+   "build": "hcd8a7d5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/tk-8.6.15-hcd8a7d5_0.conda"
+  },
+  {
+   "name": "tomli",
+   "version": "2.2.1",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/tomli-2.2.1-py313hca03da5_0.conda"
+  },
+  {
+   "name": "tqdm",
+   "version": "4.67.1",
+   "build": "py313h7eb115d_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/tqdm-4.67.1-py313h7eb115d_1.conda"
+  },
+  {
+   "name": "truststore",
+   "version": "0.10.1",
+   "build": "py313hca03da5_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/truststore-0.10.1-py313hca03da5_1.conda"
+  },
+  {
+   "name": "typer",
+   "version": "0.20.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/typer-0.20.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "typer-slim",
+   "version": "0.20.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/typer-slim-0.20.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "typer-slim-standard",
+   "version": "0.20.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/typer-slim-standard-0.20.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "typing-extensions",
+   "version": "4.15.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/typing-extensions-4.15.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "typing-inspection",
+   "version": "0.4.2",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/typing-inspection-0.4.2-py313hca03da5_0.conda"
+  },
+  {
+   "name": "typing_extensions",
+   "version": "4.15.0",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/typing_extensions-4.15.0-py313hca03da5_0.conda"
+  },
+  {
+   "name": "tzdata",
+   "version": "2025b",
+   "build": "h04d1e81_0",
+   "url": "https://repo.anaconda.com/pkgs/main/noarch/tzdata-2025b-h04d1e81_0.conda"
+  },
+  {
+   "name": "urllib3",
+   "version": "2.6.1",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/urllib3-2.6.1-py313hca03da5_0.conda"
+  },
+  {
+   "name": "wheel",
+   "version": "0.45.1",
+   "build": "py313hca03da5_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/wheel-0.45.1-py313hca03da5_0.conda"
+  },
+  {
+   "name": "xz",
+   "version": "5.6.4",
+   "build": "h80987f9_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/xz-5.6.4-h80987f9_1.conda"
+  },
+  {
+   "name": "yaml-cpp",
+   "version": "0.8.0",
+   "build": "h313beb8_1",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/yaml-cpp-0.8.0-h313beb8_1.conda"
+  },
+  {
+   "name": "zlib",
+   "version": "1.3.1",
+   "build": "h5f15de7_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/zlib-1.3.1-h5f15de7_0.conda"
+  },
+  {
+   "name": "zstandard",
+   "version": "0.24.0",
+   "build": "py313hbc14757_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/zstandard-0.24.0-py313hbc14757_0.conda"
+  },
+  {
+   "name": "zstd",
+   "version": "1.5.7",
+   "build": "h817c040_0",
+   "url": "https://repo.anaconda.com/pkgs/main/osx-arm64/zstd-1.5.7-h817c040_0.conda"
+  }
+ ],
+ "pip": [
+  {
+   "name": "aiohappyeyeballs",
+   "version": "2.7.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "aiohttp",
+   "version": "3.14.3",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "aiosignal",
+   "version": "1.4.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "annotated-doc",
+   "version": "0.0.5",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "anyio",
+   "version": "4.14.2",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "attrs",
+   "version": "26.1.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "contourpy",
+   "version": "1.3.3",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "cycler",
+   "version": "0.12.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "fastapi",
+   "version": "0.141.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "fonttools",
+   "version": "4.61.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "frozenlist",
+   "version": "1.8.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "h11",
+   "version": "0.16.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "httptools",
+   "version": "0.8.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "kiwisolver",
+   "version": "1.4.9",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "lz4",
+   "version": "4.4.5",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "multidict",
+   "version": "6.7.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "numpy",
+   "version": "2.4.2",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "pillow",
+   "version": "12.1.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "propcache",
+   "version": "0.5.2",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "protobuf",
+   "version": "5.29.6",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "pymupdf",
+   "version": "1.28.2",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "pyparsing",
+   "version": "3.3.2",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "python-dateutil",
+   "version": "2.9.0.post0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "pytz",
+   "version": "2026.5",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "PyYAML",
+   "version": "6.0.3",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "regex",
+   "version": "2026.9.29",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "six",
+   "version": "1.17.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "sniffio",
+   "version": "1.3.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "starlette",
+   "version": "1.6.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "uv",
+   "version": "0.11.30",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "uvicorn",
+   "version": "0.52.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "uvloop",
+   "version": "0.22.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "watchfiles",
+   "version": "1.2.0",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "websockets",
+   "version": "17.0.1",
+   "installer": "pip",
+   "directUrl": false
+  },
+  {
+   "name": "wheel",
+   "version": "0.45.1",
+   "installer": "?",
+   "directUrl": false
+  },
+  {
+   "name": "yarl",
+   "version": "1.24.5",
+   "installer": "pip",
+   "directUrl": false
+  }
+ ]
+}
