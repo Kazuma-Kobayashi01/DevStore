@@ -126,13 +126,19 @@ public struct Verifier: Sendable {
         }
 
         let control = home + "/miniconda3/conda-meta/history"
-        guard FileManager.default.fileExists(atPath: control) else {
-            throw DevStoreError("negative control target \(control) is missing; cannot prove origin is blocked")
+        if FileManager.default.fileExists(atPath: control) {
+            run("negative-control-original-install-blocked", ["/bin/cat", control]) {
+                $0.status != 0 && $0.stderr.contains("Operation not permitted") && !$0.stderr.contains("sandbox_init")
+            }
+            guard checks[0].passed else { throw DevStoreError("negative control failed; run invalid") }
+        } else if FileManager.default.fileExists(atPath: home + "/miniconda3") {
+            throw DevStoreError("\(home)/miniconda3 exists but has no conda-meta/history; cannot prove origin is blocked")
+        } else {
+            // The original install was removed, so nothing can be borrowed from it.
+            checks.append(CheckResult(name: "negative-control-original-install-absent", passed: true,
+                                      stderr: "\(home)/miniconda3 does not exist; reads stay denied by the sandbox profile"))
+            progress("negative-control-original-install-absent", true)
         }
-        run("negative-control-original-install-blocked", ["/bin/cat", control]) {
-            $0.status != 0 && $0.stderr.contains("Operation not permitted") && !$0.stderr.contains("sandbox_init")
-        }
-        guard checks[0].passed else { throw DevStoreError("negative control failed; run invalid") }
 
         // Check every environment that exists on the volume (probe environments excluded).
         let envNames = ((try? FileManager.default.contentsOfDirectory(atPath: base + "/envs")) ?? [])

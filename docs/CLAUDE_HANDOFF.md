@@ -8,6 +8,8 @@ DevStore 处于规划和实验阶段。当前方案是每个环境一个可写 A
 
 ## 已完成
 
+- 2026-10-29 16:10：日常 conda 已切换到 DevStore 的 `miniconda/current`（存储库 `~/.local/share/devstore`），原 `~/miniconda3` 已移到废纸篓，`~/.zshrc` 已改；详见 [下一阶段](design/下一阶段-Miniconda实际使用.md) 末尾。
+
 - 2026-10-29：实现 Swift CLI `devstore` 与 MCP Server `devstore-mcp` 0.1.0（Miniconda 适配器），以 `miniconda/current` 导入实验映像的克隆并通过实机测试，见 [CLI 与 MCP](CLI与MCP.md)。环境当前未挂载，已设置挂载/卸载常驻策略。
 - 2026-10-29：新增 SwiftUI 桌面应用、新建空环境（`empty` 适配器）、删除环境（移到废纸篓，需本机身份验证）、计划拒绝与待批准列表。待批准列表里有一个界面测试生成的 `uitest/current` 新建计划，未批准。
 - 2026-10-29 下午：旧导入环境已删除；新增 `install-sdk`；全新 `miniconda/current`「Miniconda 日常」已挂载，装好 Miniconda py314_26.9.4，验证 14/14，原安装路径残留为 0。新建、挂载、写入 SDK 三个计划是 Agent 按用户对话授权代点批准的（仅此一次），详见 [下一阶段](design/下一阶段-Miniconda实际使用.md)。

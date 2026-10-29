@@ -84,3 +84,20 @@
 - 验证 `rebuilt-envs`：**23/23**，含负向对照（禁读原安装），以及 FastAPI/Pydantic/Requests、HTTPX、NumPy 2.2.5/PyTorch 2.5.1 的包检查。
 - 卷内原安装路径**残留 0**。`miniconda3` 共 2.7 GB，其中包缓存 `pkgs` 1.9 GB，`cache` 156 MB；这些可重建的缓存是后续回收空间测试的对象。
 - `~/.zshrc`、`~/.condarc` 等摘要不变；原 `~/miniconda3` 只读，未改动。
+
+### 2026-10-29 16:00–16:10：切换日常终端并删除原安装（用户要求）
+
+- 安装：`scripts/install.sh` 把应用装到 `/Applications/DevStore.app`，把 `devstore`、`devstore-mcp` 装到 `~/.local/bin`；MCP 改为用户级（全局）注册。
+- 验证器：原安装不存在时，负向对照记为 `negative-control-original-install-absent`；如果目录还在、却缺少 `conda-meta/history`，则拒绝继续。
+- `~/.zshrc`：备份为 `~/.zshrc.devstore-backup-20261029-160559`；把 `conda init` 块（原第 119–132 行）换成 DevStore 块：
+  - 卷未挂载时，按常驻策略调用 `~/.local/bin/devstore mount`；
+  - 加载卷内 conda 的 shell hook；
+  - HOME 不变，只设置 `CONDARC`（卷内 `state/condarc`）和 `PIP_CACHE_DIR`（卷内）。
+  - 卷内 condarc 改为 `auto_activate: true`，与原先默认激活 `(base)` 的习惯一致。
+- `~/.conda/environments.txt`：删掉了两条指向旧安装的路径，备份为 `environments.txt.devstore-backup`。`~/.condarc`（`channels: [conda-forge]`）和 `~/.conda` 的其余内容保留。
+- `~/miniconda3`（2.1 GB）移到 `~/.Trash/miniconda3-20261029-160639`，清空废纸篓之前都能找回。原 base 中未迁移的 36 个 pip 包也随之移走，清单在 `docs/experiments/miniconda-rebuild-20261029/base-pip-requirements.txt`。
+- 实测：
+  - 新登录 shell 里 HOME 不变，conda 26.9.4 和 4 个环境都来自卷内，`python3.10` 中 torch 2.5.1、numpy 2.2.5 可用。
+  - 卸载卷后打开新终端会自动挂载（约 1.9 秒）并激活 base，`python` 指向卷内的 Python 3.14.9。
+  - 原安装删除后验证 23/23。
+- 注意：卷所在的存储库必须在线（目前在内置盘），否则终端会提示未挂载；回退方法是用备份的 `.zshrc` 替换，并从废纸篓放回 `~/miniconda3`。
