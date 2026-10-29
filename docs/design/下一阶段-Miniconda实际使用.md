@@ -101,3 +101,23 @@
   - 卸载卷后打开新终端会自动挂载（约 1.9 秒）并激活 base，`python` 指向卷内的 Python 3.14.9。
   - 原安装删除后验证 23/23。
 - 注意：卷所在的存储库必须在线（目前在内置盘），否则终端会提示未挂载；回退方法是用备份的 `.zshrc` 替换，并从废纸篓放回 `~/miniconda3`。
+
+### 2026-10-29 16:10–16:20：Go 迁移（复用到第二种语言）
+
+- 盘点（只读）：Go 1.27.3 由 Homebrew 安装（没有其他 brew 包依赖它）；GOPATH `~/.local/go` 共 146 MB，含 `gomobile`、`gobind`、125 MB 模块缓存、`pkg/gomobile` 和 `pkg/sumdb`；GOCACHE `~/Library/Caches/go-build` 641 MB；`~/.zshrc` 第 166 行设置了 GOPATH，go env 文件里也有一条 GOPATH。
+- 新增 Go 支持：
+  - `install-sdk` 识别官方 `go*.darwin-*.tar.gz`，核对文件名、包内 `go/VERSION` 与 SHA-256。
+  - `GoAdapter`：GOROOT、GOPATH、GOMODCACHE、GOCACHE、GOENV 都在卷内。
+  - Go 验证套件：负向对照、版本、路径隔离、离线 build/test/vet/gofmt/install、cgo、迁移工具的构建信息、持久化标记。
+  - 应用里的"写入 SDK"支持 `.tar.gz`。
+  - 临时卷实测 13/13。
+- 安装包：`go1.27.3.darwin-arm64.tar.gz`（68,196,737 字节），SHA-256 `dd3908cf…99c2`，与 go.dev 一致。由用户同意下载。
+- 真实环境 `go/current`「Go」（`fc405c46…`，最大 20 GiB）：新建、挂载策略和写入 SDK 都由用户在终端批准。
+- 迁移：用 `ditto` 把 `~/.local/go/bin` 和 `~/.local/go/pkg` 复制到卷内 `gopath/`，`diff -rq` 结果一致。编译缓存不迁移（可重建）。验证 `migrated` 14/14，其中负向对照确认原 GOPATH 和 Homebrew go 都读不到。
+- shell：`~/.zshrc` 先备份为 `~/.zshrc.devstore-backup-20261029-161837`，再把 `export GOPATH=…` 一行换成 DevStore Go 块：卷未挂载时自动挂载，然后设置 GOPATH、GOMODCACHE、GOCACHE、GOENV，并把卷内 go 放在 PATH 最前。
+- 清理（测试通过后，按用户要求）：
+  - `brew uninstall go`，删除 240 MB；
+  - `~/.local/go` 移到 `~/.Trash/local-go-GOPATH-20261029-161904`；
+  - `~/Library/Caches/go-build` 移到 `~/.Trash/go-build-cache-20261029-161904`；
+  - 删掉 go env 文件里的 GOPATH 行（备份为 `env.devstore-backup`）；`telemetry` 目录保留。
+- 清理后：验证 13/13（原 GOPATH 已不存在，Homebrew go 已卸载）。卸载卷后新开登录 shell 会自动挂载，`go run` 正常。Miniconda 复验 23/23，不受影响。
