@@ -19,6 +19,11 @@ struct StoreRow: Identifiable, Sendable {
     var ref: StoreRef
     var online: Bool
     var environments: Int
+    var volumeName: String?
+    var totalBytes: Int64?
+    var freeBytes: Int64?
+    var imageBytes: Int64
+    var archiveBytes: Int64
 }
 
 struct Snapshot: Sendable {
@@ -37,12 +42,20 @@ struct Snapshot: Sendable {
                    policyAllowsMount: (try? auth.policyAllows(environmentId: r.environment.environmentId, action: .mount)) ?? false)
         }.sorted { ($0.status.kind, $0.status.slot) < ($1.status.kind, $1.status.slot) }
         let reg = try? lib.loadRegistry()
+        let checkpoints = (try? Operations(library: lib).checkpoints()) ?? []
         let stores = (reg?.stores ?? []).map { s in
-            StoreRow(ref: s, online: lib.isOnline(s), environments: (reg?.slots ?? []).filter { $0.storeId == s.storeId }.count)
+            let values = try? URL(fileURLWithPath: s.path).resourceValues(
+                forKeys: [.volumeTotalCapacityKey, .volumeAvailableCapacityForImportantUsageKey, .volumeNameKey])
+            return StoreRow(ref: s, online: lib.isOnline(s), environments: (reg?.slots ?? []).filter { $0.storeId == s.storeId }.count,
+                            volumeName: values?.volumeName, totalBytes: values?.volumeTotalCapacity.map(Int64.init),
+                            freeBytes: values?.volumeAvailableCapacityForImportantUsage,
+                            imageBytes: rows.filter { $0.status.storeId == s.storeId }.compactMap(\.bundleBytes).reduce(0, +),
+                            archiveBytes: checkpoints.filter { cp in rows.contains { $0.id == cp.environmentId && $0.status.storeId == s.storeId } }
+                                .map(\.fileBytes).reduce(0, +))
         }
         return Snapshot(environments: rows, stores: stores,
                         pending: (try? Operations(library: lib).pendingPlans()) ?? [],
-                        checkpoints: (try? Operations(library: lib).checkpoints()) ?? [],
+                        checkpoints: checkpoints,
                         journal: Array(((try? JSONIO.readLines(JournalEntry.self, from: lib.paths.journal)) ?? []).suffix(300).reversed()))
     }
 }

@@ -14,9 +14,11 @@ struct DevStoreApp: App {
         WindowGroup("DevStore") {
             ContentView()
                 .environment(model)
-                .frame(minWidth: 920, minHeight: 580)
+                .frame(minWidth: 960, minHeight: 620)
                 .task { model.start() }
         }
+        .defaultSize(width: 1180, height: 780)
+        .windowToolbarStyle(.unified)
         .commands {
             CommandGroup(after: .newItem) {
                 Button("新建空环境…") { model.sheet = .create }.keyboardShortcut("n")
@@ -25,6 +27,10 @@ struct DevStoreApp: App {
             CommandGroup(after: .toolbar) {
                 Button("刷新") { Task { await model.refresh() } }.keyboardShortcut("r")
             }
+        }
+
+        Settings {
+            SettingsView().environment(model)
         }
     }
 }

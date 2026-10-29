@@ -21,7 +21,7 @@ struct ContentView: View {
                 NavigationLink(value: SidebarItem.overview) { Label("总览", systemImage: "square.grid.2x2") }
                 Section("环境") {
                     if model.snapshot.environments.isEmpty {
-                        Text("还没有环境").foregroundStyle(.secondary).font(.callout)
+                        Text("无").foregroundStyle(.tertiary).font(.callout)
                     }
                     ForEach(model.snapshot.environments) { row in
                         NavigationLink(value: SidebarItem.environment(row.id)) {
@@ -46,7 +46,9 @@ struct ContentView: View {
                     NavigationLink(value: SidebarItem.journal) { Label("事务日志", systemImage: "list.bullet.rectangle") }
                 }
             }
-            .navigationSplitViewColumnWidth(min: 230, ideal: 260)
+            .listStyle(.sidebar)
+            .navigationSplitViewColumnWidth(min: 230, ideal: 250)
+            .safeAreaInset(edge: .bottom) { SidebarFooter() }
         } detail: {
             switch selection {
             case .overview, nil: OverviewView { selection = $0 }
@@ -118,4 +120,26 @@ struct Badge: View {
 
 func bytes(_ n: Int64?) -> String {
     n.map { ByteCountFormatter.string(fromByteCount: $0, countStyle: .file) } ?? "—"
+}
+
+/// Host summary pinned to the bottom of the sidebar.
+struct SidebarFooter: View {
+    @Environment(AppModel.self) private var model
+    static var hostLine: String {
+        let v = ProcessInfo.processInfo.operatingSystemVersion
+        return "macOS \(v.majorVersion).\(v.minorVersion).\(v.patchVersion) · \(HostBinding.current().arch)"
+    }
+    var body: some View {
+        let online = model.snapshot.stores.filter(\.online).count
+        HStack(spacing: 8) {
+            Circle().fill(online > 0 ? Color.green : Color.orange).frame(width: 7, height: 7)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(online > 0 ? "\(online) 个存储库在线" : "没有在线存储库").font(.caption.weight(.medium))
+                Text(Self.hostLine)
+                    .font(.caption2).foregroundStyle(.tertiary).lineLimit(1)
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 14).padding(.vertical, 10)
+    }
 }

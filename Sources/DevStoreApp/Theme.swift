@@ -63,23 +63,51 @@ struct Card<Content: View>: View {
 struct StatTile: View {
     var title: String
     var value: String
+    var caption: String
     var symbol: String
     var tint: Color
 
     var body: some View {
         Card {
-            HStack(spacing: 12) {
-                Image(systemName: symbol)
-                    .font(.title2)
-                    .foregroundStyle(tint)
-                    .frame(width: 36, height: 36)
-                    .background(tint.opacity(0.14), in: RoundedRectangle(cornerRadius: 9, style: .continuous))
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(value).font(.title2.weight(.semibold)).monospacedDigit()
-                    Text(title).font(.caption).foregroundStyle(.secondary)
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Text(title).font(.callout.weight(.medium)).foregroundStyle(.secondary)
+                    Spacer()
+                    Image(systemName: symbol)
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(tint)
+                        .frame(width: 26, height: 26)
+                        .background(tint.opacity(0.15), in: RoundedRectangle(cornerRadius: 7, style: .continuous))
                 }
+                Text(value).font(.system(size: 26, weight: .semibold, design: .rounded)).monospacedDigit()
+                    .lineLimit(1).minimumScaleFactor(0.7)
+                Text(caption).font(.caption).foregroundStyle(.secondary).lineLimit(1)
             }
         }
+    }
+}
+
+enum ActivityStyle {
+    static func symbol(_ a: PlanAction) -> String {
+        switch a {
+        case .importImage: "square.and.arrow.down"
+        case .create: "plus.rectangle.on.folder"
+        case .installSDK: "shippingbox"
+        case .mount: "externaldrive.badge.plus"
+        case .unmount: "eject"
+        case .compact: "arrow.down.right.and.arrow.up.left"
+        case .archive: "archivebox"
+        case .export: "square.and.arrow.up"
+        case .delete: "trash"
+        }
+    }
+
+    static func relative(_ iso: String) -> String {
+        guard let d = ISO8601DateFormatter().date(from: iso) else { return iso }
+        let f = RelativeDateTimeFormatter()
+        f.locale = Locale(identifier: "zh_CN")
+        f.unitsStyle = .short
+        return f.localizedString(for: d, relativeTo: Date())
     }
 }
 

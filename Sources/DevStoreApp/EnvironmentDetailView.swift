@@ -33,6 +33,7 @@ struct EnvironmentDetailView: View {
             .frame(maxWidth: 1100, alignment: .leading)
         }
         .navigationTitle(s.displayName)
+        .navigationSubtitle("\(s.kind)/\(s.slot)")
     }
 
     // MARK: header & actions

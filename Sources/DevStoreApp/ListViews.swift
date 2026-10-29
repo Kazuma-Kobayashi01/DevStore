@@ -31,6 +31,7 @@ struct PendingPlansView: View {
             }
         }
         .navigationTitle("待批准计划")
+        .navigationSubtitle(model.snapshot.pending.isEmpty ? "全部处理完毕" : "\(model.snapshot.pending.count) 个计划")
     }
 
     func target(_ p: Plan) -> String {
@@ -85,14 +86,29 @@ struct JournalView: View {
         Table(model.snapshot.journal.indices.map { IndexedEntry(index: $0, entry: model.snapshot.journal[$0]) }) {
             TableColumn("时间") { Text($0.entry.at) }.width(min: 150, ideal: 170)
             TableColumn("事务") { Text($0.entry.transactionId.prefix(8)).monospaced() }.width(80)
-            TableColumn("动作") { Text(AppModel.actionName($0.entry.action)) }.width(70)
+            TableColumn("动作") { e in
+                Label(AppModel.actionName(e.entry.action), systemImage: ActivityStyle.symbol(e.entry.action))
+            }.width(min: 90, ideal: 110)
             TableColumn("事件") { e in
-                Text(e.entry.event + (e.entry.step.map { " · \($0)" } ?? ""))
-                    .foregroundStyle(e.entry.event == "failed" || e.entry.event == "rolledBack" ? .red : .primary)
+                Text(Self.eventName(e.entry.event) + (e.entry.step.map { " · \($0)" } ?? ""))
+                    .foregroundStyle(e.entry.event == "failed" || e.entry.event == "rolledBack" ? .red
+                                     : (e.entry.event == "committed" ? .green : .primary))
             }.width(min: 120, ideal: 150)
             TableColumn("详情") { Text($0.entry.detail ?? "").textSelection(.enabled).lineLimit(2) }
         }
         .navigationTitle("事务日志")
+        .navigationSubtitle("\(model.snapshot.journal.count) 条记录")
+    }
+
+    static func eventName(_ e: String) -> String {
+        switch e {
+        case "started": "开始"
+        case "step": "步骤"
+        case "committed": "完成"
+        case "failed": "失败"
+        case "rolledBack": "已回滚"
+        default: e
+        }
     }
 
     struct IndexedEntry: Identifiable {
@@ -136,5 +152,6 @@ struct ArchivesView: View {
             }
         }
         .navigationTitle("归档")
+        .navigationSubtitle("\(model.snapshot.checkpoints.count) 个检查点")
     }
 }
