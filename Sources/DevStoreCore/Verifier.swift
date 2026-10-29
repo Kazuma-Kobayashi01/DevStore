@@ -40,6 +40,7 @@ public struct Verifier: Sendable {
         switch r.environment.adapter.id {
         case "miniconda": return try verifyMiniconda(r, stage: stage, progress: progress)
         case "empty": return try verifyEmpty(r, stage: stage, progress: progress)
+        case "go": return try verifyGo(r, stage: stage, progress: progress)
         default: throw DevStoreError("no verification suite for adapter \(r.environment.adapter.id)")
         }
     }
@@ -80,6 +81,103 @@ public struct Verifier: Sendable {
             host: .current(), confinement: [:], negativeControlPassed: true, checks: checks,
             passed: passed, total: checks.count, startedAt: startedAt, finishedAt: timestamp(),
             notCovered: ["tool installation", "external SSD", "cross-Mac"])
+        try record(run, r)
+        return run
+    }
+
+    /// Go suite: toolchain and every Go directory on the volume, offline build/test/vet/fmt/install,
+    /// cgo with the host compiler, build info of migrated tools, persistence. Origin installs unreadable.
+    func verifyGo(_ r: ResolvedEnvironment, stage: String, progress: (String, Bool) -> Void) throws -> VerificationRun {
+        guard library.identityVerified(r), let image = r.image else {
+            throw DevStoreError("environment must be mounted with a verified identity")
+        }
+        let adapter = GoAdapter(), fm = FileManager.default
+        let mount = r.slotPath, home = NSHomeDirectory(), startedAt = timestamp()
+        let denied = adapter.originPathsToDeny(home: home) + ["/opt/homebrew", "/usr/local"]
+        let profile = "(version 1)\n(allow default)\n(deny network*)\n(deny file-read*\n"
+            + denied.map { "  (subpath \"\($0)\")" }.joined(separator: "\n")
+            + ")\n(deny file-write*)\n(allow file-write*\n  (subpath \"\(mount)\")\n  (subpath \"/private/tmp\")\n"
+            + "  (subpath \"/private/var/folders\")\n  (literal \"/dev/null\"))\n"
+        var env = adapter.sessionEnvironment(mount: mount)
+        env.merge(["GOPROXY": "off", "GOTOOLCHAIN": "local", "GOFLAGS": "-mod=mod", "GONOSUMDB": "*", "GOSUMDB": "off"]) { _, n in n }
+        let probe = mount + "/tmp/devstore-go-probe"
+        try? fm.removeItem(atPath: probe)
+        try fm.createDirectory(atPath: probe, withIntermediateDirectories: true)
+        defer { try? fm.removeItem(atPath: probe) }
+        try "module devstoreprobe\n\ngo 1.21\n".write(toFile: probe + "/go.mod", atomically: true, encoding: .utf8)
+        try "package main\n\nimport \"fmt\"\n\nfunc add(a, b int) int { return a + b }\n\nfunc main() { fmt.Println(\"devstore-go-ok\", add(2, 3)) }\n"
+            .write(toFile: probe + "/main.go", atomically: true, encoding: .utf8)
+        try "package main\n\nimport \"testing\"\n\nfunc TestAdd(t *testing.T) {\n\tif add(2, 3) != 5 {\n\t\tt.Fatal(\"add\")\n\t}\n}\n"
+            .write(toFile: probe + "/main_test.go", atomically: true, encoding: .utf8)
+        let cgo = probe + "/cgo"
+        try fm.createDirectory(atPath: cgo, withIntermediateDirectories: true)
+        try "package main\n\n// int twice(int x) { return 2 * x; }\nimport \"C\"\nimport \"fmt\"\n\nfunc main() { fmt.Println(\"cgo\", C.twice(21)) }\n"
+            .write(toFile: cgo + "/main.go", atomically: true, encoding: .utf8)
+
+        var checks: [CheckResult] = []
+        func run(_ name: String, _ cmd: [String], cwd: String? = nil, extra: [String: String] = [:],
+                 accept: ((ShellResult) -> Bool)? = nil) {
+            let t0 = Date()
+            var e = env
+            e.merge(extra) { _, n in n }
+            do {
+                let res = try Shell.run("/usr/bin/sandbox-exec", ["-p", profile] + cmd, environment: e, currentDirectory: cwd ?? probe)
+                let ok = accept.map { $0(res) } ?? (res.status == 0)
+                checks.append(CheckResult(name: name, passed: ok, exitCode: res.status,
+                                          seconds: (Date().timeIntervalSince(t0) * 1000).rounded() / 1000,
+                                          stdout: String(res.stdout.suffix(4000)), stderr: String(res.stderr.suffix(4000))))
+            } catch {
+                checks.append(CheckResult(name: name, passed: false, stderr: String(describing: error)))
+            }
+            progress(name, checks.last!.passed)
+        }
+        let blocked: (ShellResult) -> Bool = { $0.status != 0 && $0.stderr.contains("Operation not permitted") }
+
+        let origin = home + "/.local/go"
+        if fm.fileExists(atPath: origin) {
+            run("negative-control-original-gopath-blocked", ["/bin/ls", origin], accept: blocked)
+            guard checks.last!.passed else { throw DevStoreError("negative control failed; run invalid") }
+        } else {
+            checks.append(CheckResult(name: "negative-control-original-gopath-absent", passed: true, stderr: "\(origin) does not exist"))
+            progress("negative-control-original-gopath-absent", true)
+        }
+        if fm.fileExists(atPath: "/opt/homebrew/bin/go") {
+            run("negative-control-homebrew-go-blocked", ["/opt/homebrew/bin/go", "version"], accept: blocked)
+        }
+        let go = mount + "/go/bin/go"
+        let want = image.sdk.map { "go" + $0.version } ?? "go"
+        run("go-version", [go, "version"]) { $0.status == 0 && $0.stdout.contains(want + " ") }
+        run("go-env-isolated", [go, "env", "-json", "GOROOT", "GOPATH", "GOMODCACHE", "GOCACHE", "GOENV"]) { r in
+            guard r.status == 0, let d = (try? JSONSerialization.jsonObject(with: r.stdoutData)) as? [String: String] else { return false }
+            return d.count == 5 && d.values.allSatisfy { $0.hasPrefix(mount + "/") }
+        }
+        run("go-build-run", ["/bin/sh", "-c", "\"\(go)\" build -o probe . && ./probe"]) { $0.status == 0 && $0.stdout.contains("devstore-go-ok 5") }
+        run("go-test", [go, "test", "./..."])
+        run("go-vet", [go, "vet", "."])
+        run("gofmt", [mount + "/go/bin/gofmt", "-l", "."]) { $0.status == 0 && $0.stdout.isEmpty }
+        run("go-install-to-gopath-bin", [go, "install", "."]) { _ in fm.isExecutableFile(atPath: mount + "/gopath/bin/devstoreprobe") }
+        try? fm.removeItem(atPath: mount + "/gopath/bin/devstoreprobe")
+        run("cgo-host-toolchain", ["/bin/sh", "-c", "\"\(go)\" run ."], cwd: cgo, extra: ["CGO_ENABLED": "1"]) { $0.status == 0 && $0.stdout.contains("cgo 42") }
+        for tool in ((try? fm.contentsOfDirectory(atPath: mount + "/gopath/bin")) ?? []).sorted() where !tool.hasPrefix(".") {
+            run("tool-\(tool)-buildinfo", [go, "version", "-m", mount + "/gopath/bin/" + tool]) { $0.status == 0 && $0.stdout.contains("path") }
+        }
+        let modules = ((try? fm.contentsOfDirectory(atPath: mount + "/gopath/pkg/mod/cache/download")) ?? []).count
+        checks.append(CheckResult(name: "module-cache-on-volume", passed: fm.fileExists(atPath: mount + "/gopath/pkg/mod"),
+                                  stdout: "\(modules) top-level module hosts cached"))
+        progress("module-cache-on-volume", checks.last!.passed)
+        let persisted = (try? String(contentsOfFile: mount + "/state/persistence-marker.txt", encoding: .utf8)) == "single-volume-persistence-20261029\n"
+            && (try? String(contentsOfFile: mount + "/cache/go-build/devstore-marker", encoding: .utf8)) == "go-build-cache-on-same-volume\n"
+        checks.append(CheckResult(name: "state-and-cache-persisted", passed: persisted))
+        progress("state-and-cache-persisted", persisted)
+
+        let passed = checks.filter(\.passed).count
+        let run = VerificationRun(
+            runId: newId(), target: ["environmentId": r.environment.environmentId, "imageId": image.imageId],
+            stage: stage, suite: AdapterRef(id: "go-core", version: "1"), adapterVersion: adapter.ref.version,
+            host: .current(), confinement: ["deniedReadTrees": denied, "network": ["denied"], "writeAllowed": [mount, "/private/tmp"]],
+            negativeControlPassed: true, checks: checks, passed: passed, total: checks.count,
+            startedAt: startedAt, finishedAt: timestamp(),
+            notCovered: ["network module download", "gomobile/gobind end-to-end (needs Android/iOS SDKs)", "external SSD", "cross-Mac"])
         try record(run, r)
         return run
     }

@@ -197,12 +197,12 @@ struct InstallSDKSheet: View {
     @State private var installer: URL?
     @State private var sha256 = ""
 
-    var header: [String: String] { installer.map { Operations.installerHeader($0.path) } ?? [:] }
+    var package: SDKPackage? { installer.flatMap { Operations.identifySDK($0.path) } }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("写入 SDK").font(.title2.bold())
-            Text("在卷内以批处理模式安装 Miniconda（不运行 conda init，不修改 shell 配置）。安装器在沙箱中运行：禁网、不能读原安装、只能写这个卷。")
+            Text("支持 Miniconda 安装器（.sh）和 Go 官方包（go*.darwin-*.tar.gz）。在沙箱中写入：禁网、不能读原安装、只能写这个卷，不修改 shell 配置。")
                 .foregroundStyle(.secondary)
             Form {
                 LabeledContent("安装器") {
@@ -212,9 +212,11 @@ struct InstallSDKSheet: View {
                     }
                 }
                 if installer != nil {
-                    LabeledContent("版本") { Text("\(header["NAME"] ?? "?") \(header["VER"] ?? "?") · \(header["PLAT"] ?? "?")") }
+                    LabeledContent("版本") {
+                        Text(package.map { "\($0.name) \($0.version) · \($0.platform)\($0.supportedHere ? "" : "（与本机不符）")" } ?? "无法识别")
+                    }
                 }
-                TextField("官方公布的 SHA-256", text: $sha256, prompt: Text("从 repo.anaconda.com/miniconda 复制"))
+                TextField("官方公布的 SHA-256", text: $sha256, prompt: Text("从 repo.anaconda.com/miniconda 或 go.dev/dl 复制"))
                     .monospaced()
             }
             .formStyle(.grouped)
@@ -226,7 +228,7 @@ struct InstallSDKSheet: View {
                     Task { await model.prepare("正在核对安装器…") { try $0.planInstallSDK(id, installer: path, sha256: sum) } }
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(installer == nil || sha256.trimmingCharacters(in: .whitespaces).count != 64)
+                .disabled(package?.supportedHere != true || sha256.trimmingCharacters(in: .whitespaces).count != 64)
                 .keyboardShortcut(.defaultAction)
             }
         }
@@ -236,7 +238,7 @@ struct InstallSDKSheet: View {
 
     func choose() {
         let panel = NSOpenPanel()
-        panel.allowedContentTypes = [UTType(filenameExtension: "sh") ?? .item]
+        panel.allowedContentTypes = [UTType(filenameExtension: "sh") ?? .item, .gzip]
         if panel.runModal() == .OK { installer = panel.url }
     }
 }

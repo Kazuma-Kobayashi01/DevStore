@@ -65,7 +65,7 @@ struct EnvironmentDetailView: View {
             if row.environment.adapter.id == "empty" {
                 Button { model.sheet = .installSDK(row.id) } label: { Label("写入 SDK…", systemImage: "square.and.arrow.down.on.square") }
                     .disabled(model.busy != nil || !mountedOK)
-                    .help(mountedOK ? "在卷内安装 Miniconda" : "请先挂载")
+                    .help(mountedOK ? "在卷内安装 Miniconda 或 Go" : "请先挂载")
             }
             Button { Task { await model.verify(row) } } label: { Label("验证", systemImage: "checkmark.seal") }
                 .disabled(model.busy != nil || !mountedOK)
@@ -165,7 +165,8 @@ struct EnvironmentDetailView: View {
                 if components.isEmpty { Text("暂无（写入 SDK 后显示）").foregroundStyle(.secondary).font(.callout) }
                 ForEach(components, id: \.name) { c in
                     LabeledContent(c.name) {
-                        Text([c.python.map { "Python \($0)" }, c.condaPackages.map { "\($0) 包" }].compactMap { $0 }.joined(separator: " · "))
+                        Text([c.version.map { $0 == "tool" ? "工具" : $0 }, c.python.map { "Python \($0)" }, c.condaPackages.map { "\($0) 包" }]
+                            .compactMap { $0 }.joined(separator: " · "))
                     }
                 }
                 if let v = s.lastVerification {

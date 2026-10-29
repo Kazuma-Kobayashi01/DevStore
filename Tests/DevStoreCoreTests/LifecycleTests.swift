@@ -184,6 +184,37 @@ final class LifecycleTests: XCTestCase {
     }
 }
 
+/// Go archive into an empty environment, then the Go suite. Set DEVSTORE_GO_ARCHIVE and
+/// DEVSTORE_GO_SHA256 to run; DEVSTORE_GO_TOOL optionally copies one tool into gopath/bin.
+final class GoInstallTests: XCTestCase {
+    func testInstallGoAndVerify() throws {
+        let e = ProcessInfo.processInfo.environment
+        guard let archive = e["DEVSTORE_GO_ARCHIVE"], let sum = e["DEVSTORE_GO_SHA256"] else { throw XCTSkip("set DEVSTORE_GO_ARCHIVE") }
+        let root = URL(fileURLWithPath: "/private/tmp/dsg-\(newId().prefix(8))")
+        defer {
+            let slot = root.path + "/slots/go/t1"
+            if DiskImage.isMountPoint(slot) { try? DiskImage.detach(mountPoint: slot) }
+            try? FileManager.default.removeItem(at: root)
+        }
+        let paths = DevStorePaths(hostRoot: root.appendingPathComponent("host"), slotRoot: root.appendingPathComponent("slots"))
+        let ops = Operations(library: Library(paths: paths)) { $0 }
+        let store = try ops.library.addStore(path: root.appendingPathComponent("store").path, create: true)
+        _ = try ops.execute(try ops.planCreate(storeQuery: store.storeId, kind: "go", slot: "t1", name: "Go test", sizeGiB: 8))
+        _ = try ops.execute(try ops.planMount("go/t1"))
+        XCTAssertNotNil(Operations.identifySDK(archive))
+        XCTAssertThrowsError(try ops.planInstallSDK("go/t1", installer: archive, sha256: String(repeating: "0", count: 64)))
+        print(try ops.execute(try ops.planInstallSDK("go/t1", installer: archive, sha256: sum)))
+        let r = try ops.library.resolve("go/t1")
+        XCTAssertEqual(r.environment.adapter.id, "go")
+        if let tool = e["DEVSTORE_GO_TOOL"] {
+            try FileManager.default.copyItem(atPath: tool, toPath: r.slotPath + "/gopath/bin/" + URL(fileURLWithPath: tool).lastPathComponent)
+        }
+        let run = try Verifier(library: ops.library).verify(r, stage: "test") { name, ok in print(ok ? "✓" : "✗", name) }
+        XCTAssertEqual(run.passed, run.total, "\(run.checks.filter { !$0.passed }.map { ($0.name, $0.stderr ?? "") })")
+        _ = try ops.execute(try ops.planUnmount("go/t1"))
+    }
+}
+
 /// Builds a throwaway demo registry for UI screenshots. Set DEVSTORE_DEMO_HOME=<dir> to run;
 /// leaves `<dir>/slots/go/current` mounted — detach and delete <dir> afterwards.
 final class DemoDataTests: XCTestCase {

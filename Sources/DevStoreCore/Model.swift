@@ -56,6 +56,7 @@ public struct Component: Codable, Sendable {
     public var name: String
     public var python: String?
     public var condaPackages: Int?
+    public var version: String? = nil
 }
 
 /// SDK written into an empty environment by `install-sdk`.

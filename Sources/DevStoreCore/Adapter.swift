@@ -28,6 +28,7 @@ public enum Adapters {
         switch id {
         case "miniconda": MinicondaAdapter()
         case "empty": EmptyAdapter()
+        case "go": GoAdapter()
         default: nil
         }
     }
@@ -155,5 +156,50 @@ public struct MinicondaAdapter: EnvironmentAdapter {
                              python: r?.status == 0 ? r?.stdout.trimmingCharacters(in: .whitespacesAndNewlines) : nil,
                              condaPackages: metas.filter { $0.hasSuffix(".json") }.count)
         }
+    }
+}
+
+/// Go SDK (official archive) with GOPATH, module cache, build cache and GOENV on the volume.
+/// The Go toolchain is relocatable, so no prefix rewriting is involved.
+public struct GoAdapter: EnvironmentAdapter {
+    public let ref = AdapterRef(id: "go", version: "0.1.0")
+    public let supportsImport = false
+    public let knownWarnings: [String] = []
+    public static let layout = ["gopath/bin", "gopath/pkg/mod", "cache/go-build", "state/home", "state/go", "tmp"]
+
+    public let dataClasses = [
+        DataClass(id: "sdk", paths: ["go"], rebuildable: false, backup: true),
+        DataClass(id: "tools", paths: ["gopath/bin"], rebuildable: false, backup: true),
+        DataClass(id: "cacheCostly", paths: ["gopath/pkg/mod"], rebuildable: true, backup: false),
+        DataClass(id: "cacheRebuildable", paths: ["cache/go-build"], rebuildable: true, backup: false),
+        DataClass(id: "state", paths: ["state"], rebuildable: false, backup: true),
+        DataClass(id: "tmp", paths: ["tmp"], rebuildable: true, backup: false),
+    ]
+
+    public init() {}
+
+    public func sessionEnvironment(mount: String) -> [String: String] {
+        ["HOME": mount + "/state/home", "USER": NSUserName(), "LOGNAME": NSUserName(), "LANG": "en_US.UTF-8",
+         "PATH": mount + "/go/bin:" + mount + "/gopath/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+         "GOPATH": mount + "/gopath", "GOMODCACHE": mount + "/gopath/pkg/mod", "GOCACHE": mount + "/cache/go-build",
+         "GOENV": mount + "/state/go/env", "TMPDIR": mount + "/tmp", "DEVSTORE_ENVIRONMENT": mount]
+    }
+
+    public func originPathsToDeny(home: String) -> [String] {
+        [home + "/.local/go", home + "/Library/Caches/go-build", home + "/Library/Application Support/go"]
+    }
+
+    public func builtMountPath(volumeRoot: String) -> String? { nil }
+
+    public func discoverComponents(mount: String) -> [Component] {
+        let env = sessionEnvironment(mount: mount)
+        let v = (try? Shell.run(mount + "/go/bin/go", ["env", "GOVERSION"], environment: env))?.stdout
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        var result = [Component(name: "go", python: nil, condaPackages: nil, version: v.map { String($0.dropFirst(2)) })]
+        let tools = (try? FileManager.default.contentsOfDirectory(atPath: mount + "/gopath/bin")) ?? []
+        for t in tools.sorted() where !t.hasPrefix(".") {
+            result.append(Component(name: t, python: nil, condaPackages: nil, version: "tool"))
+        }
+        return result
     }
 }
