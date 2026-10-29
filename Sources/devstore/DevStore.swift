@@ -222,9 +222,9 @@ struct InstallSDK: ParsableCommand {
 struct CopySDK: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "copy-sdk",
-        abstract: "Copy an existing local SDK (rust, dotnet, flutter) into a mounted empty environment; originals are only read.")
+        abstract: "Copy an existing local SDK (rust, dotnet, flutter, android) into a mounted empty environment; originals are only read.")
     @Argument var environment: String
-    @Option(help: "rust | dotnet | flutter") var adapter: String
+    @Option(help: "rust | dotnet | flutter | android") var adapter: String
     @OptionGroup var options: PlanOptions
     func run() throws {
         let ops = Operations()

@@ -45,7 +45,19 @@ struct SuiteRunner {
 
     /// Origins must be unreadable when present; absent origins are recorded as such.
     mutating func negativeControls(_ origins: [String]) throws {
-        let present = origins.filter { FileManager.default.fileExists(atPath: $0) }
+        let fm = FileManager.default
+        var present: [String] = []
+        var linked = 0
+        for o in origins {
+            if let target = try? fm.destinationOfSymbolicLink(atPath: o) {
+                // A compatibility link left after migration must point into this volume.
+                add("origin-is-link-into-volume:\(o)", target.hasPrefix(mount + "/"), target)
+                linked += 1
+            } else if fm.fileExists(atPath: o) {
+                present.append(o)
+            }
+        }
+        if linked == origins.count { return }
         for o in present {
             let res = run("negative-control-blocked:\(o)", ["/bin/ls", o], cwd: mount + "/tmp") {
                 $0.status != 0 && $0.stderr.contains("Operation not permitted")
@@ -191,5 +203,53 @@ extension Verifier {
         s.persistence()
         return try finishRun(s, r, stage: stage, suite: "flutter-core", adapter: a.ref, denied: denied, startedAt: startedAt,
                              notCovered: ["flutter create/pub get (network)", "iOS/Android/macOS app builds (Xcode, Android SDK)", "external SSD", "cross-Mac"])
+    }
+
+    func verifyAndroid(_ r: ResolvedEnvironment, stage: String, progress: @escaping (String, Bool) -> Void) throws -> VerificationRun {
+        guard library.identityVerified(r) else { throw DevStoreError("environment must be mounted with a verified identity") }
+        let a = AndroidAdapter(), mount = r.slotPath, startedAt = timestamp(), fm = FileManager.default
+        let origins = a.originPathsToDeny(home: NSHomeDirectory())
+        let denied = origins.filter { (try? fm.destinationOfSymbolicLink(atPath: $0)) == nil } + ["/opt/homebrew", "/usr/local"]
+        var s = SuiteRunner(mount: mount, denied: denied, env: a.sessionEnvironment(mount: mount), progress: progress)
+        let dir = try probeDir(mount, "android")
+        defer { try? fm.removeItem(atPath: dir) }
+        let sdk = mount + "/sdk"
+        try s.negativeControls(origins)
+        s.add("host-jdk-present", fm.isExecutableFile(atPath: AndroidAdapter.studioJDK + "/bin/java"), AndroidAdapter.studioJDK)
+        s.run("adb-version", [sdk + "/platform-tools/adb", "version"], cwd: dir) { $0.status == 0 && $0.stdout.contains(sdk + "/platform-tools/adb") }
+        s.run("sdkmanager-list-installed", [sdk + "/cmdline-tools/latest/bin/sdkmanager", "--list_installed", "--offline", "--sdk_root=" + sdk], cwd: dir) {
+            $0.status == 0 && $0.stdout.contains("platform-tools")
+        }
+        s.run("emulator-version", [sdk + "/emulator/emulator", "-version"], cwd: dir) { $0.status == 0 && $0.stdout.contains("Android emulator version") }
+        let avds = ((try? fm.contentsOfDirectory(atPath: mount + "/android-user/avd")) ?? []).filter { $0.hasSuffix(".ini") }.map { String($0.dropLast(4)) }
+        if !avds.isEmpty {
+            s.run("emulator-list-avds", [sdk + "/emulator/emulator", "-list-avds"], cwd: dir) { r in avds.allSatisfy { r.stdout.contains($0) } }
+        }
+        if let bt = ((try? fm.contentsOfDirectory(atPath: sdk + "/build-tools")) ?? []).filter({ !$0.hasPrefix(".") }).sorted().last {
+            s.run("aapt2-\(bt)", [sdk + "/build-tools/\(bt)/aapt2", "version"], cwd: dir)
+            s.run("apksigner-\(bt)", [sdk + "/build-tools/\(bt)/apksigner", "--version"], cwd: dir)
+        }
+        try "#include <stdio.h>\nint main(void) { printf(\"devstore-ndk-ok\\n\"); return 0; }\n".write(toFile: dir + "/hello.c", atomically: true, encoding: .utf8)
+        for ndk in ((try? fm.contentsOfDirectory(atPath: sdk + "/ndk")) ?? []).sorted() where !ndk.hasPrefix(".") {
+            let clang = sdk + "/ndk/\(ndk)/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android35-clang"
+            s.run("ndk-\(ndk)-cross-compile", [clang, "hello.c", "-o", "hello-\(ndk)"], cwd: dir) { r in
+                r.status == 0 && fm.fileExists(atPath: dir + "/hello-\(ndk)")
+            }
+        }
+        for cm in ((try? fm.contentsOfDirectory(atPath: sdk + "/cmake")) ?? []).sorted() where !cm.hasPrefix(".") {
+            s.run("cmake-\(cm)", [sdk + "/cmake/\(cm)/bin/cmake", "--version"], cwd: dir)
+        }
+        for d in ((try? fm.contentsOfDirectory(atPath: mount + "/gradle/wrapper/dists")) ?? []).sorted() where d.hasPrefix("gradle-") {
+            let version = d.replacingOccurrences(of: "-bin", with: "").replacingOccurrences(of: "-all", with: "")
+            if let h = ((try? fm.contentsOfDirectory(atPath: mount + "/gradle/wrapper/dists/\(d)")) ?? []).first(where: { !$0.hasPrefix(".") }) {
+                s.run("gradle-wrapper-\(version)", [mount + "/gradle/wrapper/dists/\(d)/\(h)/\(version)/bin/gradle", "--version", "--offline", "-q"], cwd: dir) {
+                    $0.status == 0 && $0.stdout.contains("Gradle")
+                }
+            }
+        }
+        s.add("android-user-home-on-volume", fm.fileExists(atPath: mount + "/android-user"))
+        s.persistence()
+        return try finishRun(s, r, stage: stage, suite: "android-core", adapter: a.ref, denied: denied, startedAt: startedAt,
+                             notCovered: ["Gradle project builds (network/plugins)", "booting the emulator", "device install", "Android Studio", "external SSD"])
     }
 }

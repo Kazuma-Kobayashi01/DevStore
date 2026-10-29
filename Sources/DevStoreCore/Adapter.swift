@@ -32,6 +32,7 @@ public enum Adapters {
         case "rust": RustAdapter()
         case "dotnet": DotnetAdapter()
         case "flutter": FlutterAdapter()
+        case "android": AndroidAdapter()
         default: nil
         }
     }
@@ -227,6 +228,7 @@ extension Adapters {
         case "rust": RustAdapter()
         case "dotnet": DotnetAdapter()
         case "flutter": FlutterAdapter()
+        case "android": AndroidAdapter()
         default: nil
         }
     }
@@ -352,5 +354,56 @@ public struct FlutterAdapter: CopyableAdapter {
               let d = (try? JSONSerialization.jsonObject(with: r.stdoutData)) as? [String: Any] else { return [] }
         return [Component(name: "flutter", python: nil, condaPackages: nil, version: d["frameworkVersion"] as? String),
                 Component(name: "dart", python: nil, condaPackages: nil, version: d["dartSdkVersion"] as? String)]
+    }
+}
+
+/// Android SDK (+ NDK, emulator, system images), Gradle user home and ~/.android on the volume.
+/// The JDK stays with Android Studio (host dependency). Fixed legacy paths can point here via symlinks.
+public struct AndroidAdapter: CopyableAdapter {
+    public let ref = AdapterRef(id: "android", version: "0.1.0")
+    public let supportsImport = false
+    public static let studioJDK = "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+    public let knownWarnings = [
+        "JDK is Android Studio's bundled JBR (host dependency, not on the volume).",
+        "The volume holds ~/.android secrets (adbkey, debug.keystore); encrypt archives and cold backups.",
+    ]
+    public let layout = ["state/home", "tmp"]
+    public let dataClasses = [
+        DataClass(id: "sdk", paths: ["sdk"], rebuildable: false, backup: true),
+        DataClass(id: "cacheRebuildable", paths: ["gradle/caches", "gradle/daemon", "gradle/native"], rebuildable: true, backup: false),
+        DataClass(id: "tools", paths: ["gradle/wrapper"], rebuildable: true, backup: false),
+        DataClass(id: "state", paths: ["android-user"], rebuildable: false, backup: true),
+        DataClass(id: "tmp", paths: ["tmp"], rebuildable: true, backup: false),
+    ]
+    public init() {}
+    public func copySources(home: String) -> [CopySource] {
+        [CopySource(from: home + "/Library/Android/sdk", to: "sdk", required: true),
+         CopySource(from: home + "/.gradle", to: "gradle", required: false),
+         CopySource(from: home + "/.android", to: "android-user", required: false)]
+    }
+    public func sessionEnvironment(mount: String) -> [String: String] {
+        let sdk = mount + "/sdk"
+        return ["HOME": mount + "/state/home", "USER": NSUserName(), "LOGNAME": NSUserName(), "LANG": "en_US.UTF-8",
+                "PATH": [sdk + "/platform-tools", sdk + "/emulator", sdk + "/cmdline-tools/latest/bin", Self.studioJDK + "/bin",
+                         "/usr/bin", "/bin", "/usr/sbin", "/sbin"].joined(separator: ":"),
+                "ANDROID_HOME": sdk, "ANDROID_SDK_ROOT": sdk,
+                "ANDROID_USER_HOME": mount + "/android-user", "ANDROID_AVD_HOME": mount + "/android-user/avd",
+                "GRADLE_USER_HOME": mount + "/gradle", "JAVA_HOME": Self.studioJDK, "TMPDIR": mount + "/tmp",
+                "DEVSTORE_ENVIRONMENT": mount]
+    }
+    public func originPathsToDeny(home: String) -> [String] { [home + "/Library/Android/sdk", home + "/.gradle", home + "/.android"] }
+    public func builtMountPath(volumeRoot: String) -> String? { nil }
+    public func discoverComponents(mount: String) -> [Component] {
+        let fm = FileManager.default
+        var out: [Component] = []
+        for (dir, label) in [("ndk", "ndk"), ("build-tools", "build-tools"), ("platforms", "platform"), ("cmake", "cmake"), ("system-images", "system-image")] {
+            for v in ((try? fm.contentsOfDirectory(atPath: mount + "/sdk/" + dir)) ?? []).sorted() where !v.hasPrefix(".") {
+                out.append(Component(name: label, python: nil, condaPackages: nil, version: v))
+            }
+        }
+        for avd in ((try? fm.contentsOfDirectory(atPath: mount + "/android-user/avd")) ?? []).sorted() where avd.hasSuffix(".ini") {
+            out.append(Component(name: "avd", python: nil, condaPackages: nil, version: String(avd.dropLast(4))))
+        }
+        return out
     }
 }

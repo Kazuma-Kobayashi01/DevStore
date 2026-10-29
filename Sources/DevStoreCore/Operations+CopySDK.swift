@@ -34,7 +34,7 @@ extension Operations {
 
     public func planCopySDK(_ query: String, adapter adapterId: String) throws -> Plan {
         guard let adapter = Adapters.copyable(adapterId) else {
-            throw DevStoreError("copy-sdk supports rust, dotnet and flutter (got \(adapterId))")
+            throw DevStoreError("copy-sdk supports rust, dotnet, flutter and android (got \(adapterId))")
         }
         let r = try library.resolve(query)
         let sources = adapter.copySources(home: NSHomeDirectory())

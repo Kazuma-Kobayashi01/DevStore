@@ -44,6 +44,7 @@ public struct Verifier: Sendable {
         case "rust": return try withoutActuallyEscaping(progress) { try verifyRust(r, stage: stage, progress: $0) }
         case "dotnet": return try withoutActuallyEscaping(progress) { try verifyDotnet(r, stage: stage, progress: $0) }
         case "flutter": return try withoutActuallyEscaping(progress) { try verifyFlutter(r, stage: stage, progress: $0) }
+        case "android": return try withoutActuallyEscaping(progress) { try verifyAndroid(r, stage: stage, progress: $0) }
         default: throw DevStoreError("no verification suite for adapter \(r.environment.adapter.id)")
         }
     }
