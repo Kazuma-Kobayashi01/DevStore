@@ -8,6 +8,7 @@
 swift build            # 调试版：.build/debug/devstore、.build/debug/devstore-mcp
 swift build -c release # 发布版：.build/release/…
 swift test             # 18 个测试；DEVSTORE_INTEGRATION=1 时额外用真实 hdiutil 跑新建→挂载→验证→卸载→删除
+scripts/install-agents.sh  # 把 skills/devstore/SKILL.md 装到 ~/.claude/skills 和 ~/.codex/skills，并为 Claude Code（用户级）与 Codex 注册 devstore MCP
 scripts/install.sh     # 构建并安装：/Applications/DevStore.app、~/.local/bin/devstore 与 devstore-mcp（MCP 已注册到后者）
 scripts/build-app.sh   # 生成 build/DevStore.app（ad-hoc 签名，未公证），内含 Contents/Helpers/devstore 与 devstore-mcp
 ```
