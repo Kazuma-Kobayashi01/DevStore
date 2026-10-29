@@ -2,51 +2,58 @@ import DevStoreCore
 import SwiftUI
 
 enum SidebarItem: Hashable {
+    case overview
     case environment(String)
     case pending
+    case archives
     case stores
     case journal
 }
 
 struct ContentView: View {
     @Environment(AppModel.self) private var model
-    @State private var selection: SidebarItem? = .pending
+    @State private var selection: SidebarItem? = .overview
 
     var body: some View {
         @Bindable var model = model
         NavigationSplitView {
             List(selection: $selection) {
+                NavigationLink(value: SidebarItem.overview) { Label("总览", systemImage: "square.grid.2x2") }
                 Section("环境") {
                     if model.snapshot.environments.isEmpty {
-                        Text("还没有环境").foregroundStyle(.secondary)
+                        Text("还没有环境").foregroundStyle(.secondary).font(.callout)
                     }
                     ForEach(model.snapshot.environments) { row in
                         NavigationLink(value: SidebarItem.environment(row.id)) {
-                            HStack {
-                                StateDot(row: row)
-                                VStack(alignment: .leading) {
-                                    Text(row.status.displayName)
+                            HStack(spacing: 9) {
+                                KindIcon(kind: row.status.kind, size: 22)
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text(row.status.displayName).lineLimit(1)
                                     Text("\(row.status.kind)/\(row.status.slot)").font(.caption).foregroundStyle(.secondary)
                                 }
+                                Spacer(minLength: 4)
+                                Circle().fill(row.stateColor).frame(width: 7, height: 7).help(row.stateLabel)
                             }
                         }
                     }
                 }
                 Section("管理") {
-                    NavigationLink(value: SidebarItem.pending) {
-                        Label("待批准计划", systemImage: "checkmark.shield")
-                    }
-                    .badge(model.snapshot.pending.filter { $0.state == .pending }.count)
+                    NavigationLink(value: SidebarItem.pending) { Label("待批准计划", systemImage: "checkmark.shield") }
+                        .badge(model.snapshot.pending.filter { $0.state == .pending }.count)
+                    NavigationLink(value: SidebarItem.archives) { Label("归档", systemImage: "archivebox") }
+                        .badge(model.snapshot.checkpoints.count)
                     NavigationLink(value: SidebarItem.stores) { Label("存储库", systemImage: "externaldrive") }
                     NavigationLink(value: SidebarItem.journal) { Label("事务日志", systemImage: "list.bullet.rectangle") }
                 }
             }
-            .navigationSplitViewColumnWidth(min: 220, ideal: 250)
+            .navigationSplitViewColumnWidth(min: 230, ideal: 260)
         } detail: {
             switch selection {
+            case .overview, nil: OverviewView { selection = $0 }
             case let .environment(id):
                 if let row = model.row(id) { EnvironmentDetailView(row: row) } else { ContentUnavailableView("环境已移除", systemImage: "tray") }
-            case .pending, nil: PendingPlansView()
+            case .pending: PendingPlansView()
+            case .archives: ArchivesView()
             case .stores: StoresView()
             case .journal: JournalView()
             }
@@ -54,8 +61,11 @@ struct ContentView: View {
         .toolbar {
             ToolbarItemGroup {
                 if let busy = model.busy {
-                    ProgressView().controlSize(.small)
-                    Text(busy).foregroundStyle(.secondary)
+                    HStack(spacing: 6) {
+                        ProgressView().controlSize(.small)
+                        Text(busy).foregroundStyle(.secondary).lineLimit(1)
+                    }
+                    .padding(.horizontal, 6)
                 }
                 Button { model.sheet = .create } label: { Label("新建空环境", systemImage: "plus.rectangle.on.folder") }
                     .disabled(model.snapshot.stores.isEmpty)
@@ -70,6 +80,7 @@ struct ContentView: View {
             case .create: CreateSheet()
             case .importImage: ImportSheet()
             case let .installSDK(id): InstallSDKSheet(environmentId: id)
+            case let .archive(id): ArchiveSheet(environmentId: id)
             case let .plan(plan, fromAgent): PlanSheet(plan: plan, fromAgent: fromAgent)
             }
         }
@@ -80,33 +91,19 @@ struct ContentView: View {
         }
         .safeAreaInset(edge: .bottom) {
             if let notice = model.notice {
-                HStack {
-                    Image(systemName: "info.circle")
+                HStack(spacing: 10) {
+                    Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
                     Text(notice).lineLimit(2).textSelection(.enabled)
                     Spacer()
-                    Button("关闭") { model.notice = nil }.buttonStyle(.borderless)
+                    Button { model.notice = nil } label: { Image(systemName: "xmark") }.buttonStyle(.borderless)
                 }
+                .padding(.horizontal, 14).padding(.vertical, 10)
+                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .padding(10)
-                .background(.thinMaterial)
+                .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
-    }
-}
-
-struct StateDot: View {
-    var row: EnvRow
-    var body: some View {
-        Circle().fill(color).frame(width: 9, height: 9).help(label)
-    }
-    var color: Color {
-        if !row.status.storeOnline { return .orange }
-        if row.status.mounted { return row.status.identityVerified == true ? .green : .red }
-        return .secondary
-    }
-    var label: String {
-        if !row.status.storeOnline { return "存储库离线" }
-        if row.status.mounted { return row.status.identityVerified == true ? "已挂载" : "已挂载（身份未核实）" }
-        return "未挂载"
+        .animation(.easeOut(duration: 0.2), value: model.notice)
     }
 }
 
@@ -115,7 +112,7 @@ struct Badge: View {
     var color: Color
     var body: some View {
         Text(text).font(.caption.weight(.semibold)).padding(.horizontal, 7).padding(.vertical, 2)
-            .background(color.opacity(0.18), in: Capsule()).foregroundStyle(color)
+            .background(color.opacity(0.16), in: Capsule()).foregroundStyle(color)
     }
 }
 

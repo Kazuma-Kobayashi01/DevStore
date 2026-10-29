@@ -125,4 +125,79 @@ final class LifecycleTests: XCTestCase {
         _ = try ops.execute(try ops.planUnmount("miniconda/t1"))
         _ = try ops.execute(try ops.planDelete("miniconda/t1"))
     }
+
+    /// Compact (clone → compact → digest compare → swap), archive (plain and AES-256) and export.
+    /// Real hdiutil in /private/tmp. Set DEVSTORE_INTEGRATION=1 to run.
+    func testCompactArchiveExport() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["DEVSTORE_INTEGRATION"] == "1", "set DEVSTORE_INTEGRATION=1")
+        let lib = ops.library
+        _ = try ops.execute(try ops.planCreate(storeQuery: storeRef.storeId, kind: "go", slot: "t2", name: "Archive test", sizeGiB: 2))
+        _ = try ops.execute(try ops.planMount("go/t2"))
+        let mount = try lib.resolve("go/t2").slotPath
+        try "keep me\n".write(toFile: mount + "/state/home/note.txt", atomically: true, encoding: .utf8)
+        let filler = mount + "/tmp/fill.bin"
+        XCTAssertEqual(try Shell.run("/bin/dd", ["if=/dev/urandom", "of=\(filler)", "bs=8m", "count=40"]).status, 0)
+        XCTAssertThrowsError(try ops.planCompact("go/t2"), "mounted environments cannot be compacted")
+        _ = try ops.execute(try ops.planUnmount("go/t2"))
+        _ = try ops.execute(try ops.planMount("go/t2"))
+        try FileManager.default.removeItem(atPath: filler)
+        _ = try ops.execute(try ops.planUnmount("go/t2"))
+
+        let bundle = try lib.resolve("go/t2").bundlePath!
+        let before = DiskImage.allocatedBytes(bundle)
+        let out = try ops.execute(try ops.planCompact("go/t2"))
+        print(out)
+        XCTAssertTrue(out.contains("reclaimed"), out)
+        XCTAssertLessThan(DiskImage.allocatedBytes(bundle), before)
+        XCTAssertNotNil(try lib.resolve("go/t2").image?.lastCompaction)
+        XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath: trashDir.path).filter { $0.hasSuffix(".sparsebundle") }.count, 1)
+
+        let plain = try ops.planArchive("go/t2", encrypt: false)
+        print(try ops.execute(plain))
+        let enc = try ops.planArchive("go/t2", encrypt: true)
+        XCTAssertThrowsError(try ops.execute(enc), "encrypted archive needs a passphrase")
+        let enc2 = try ops.planArchive("go/t2", encrypt: true)
+        print(try ops.execute(enc2, passphrase: "correct horse battery"))
+        let cps = try ops.checkpoints(environmentId: try lib.resolve("go/t2").environment.environmentId)
+        XCTAssertEqual(cps.count, 2)
+        XCTAssertTrue(cps.allSatisfy(\.imageChecksumVerified))
+        XCTAssertEqual(Set(cps.map(\.encryption)), ["none", "aes256"])
+        XCTAssertEqual(Set(cps.map(\.contentDigest)).count, 1, "both archives hold the same content")
+        // An encrypted archive cannot be attached without the passphrase.
+        let encrypted = try ops.checkpointLocation(cps.first { $0.encryption == "aes256" }!.checkpointId).dmg.path
+        XCTAssertNotEqual(try Shell.run("/usr/bin/hdiutil", ["imageinfo", "-stdinpass", encrypted], input: Data("wrong passphrase".utf8)).status, 0)
+
+        let cold = root.appendingPathComponent("cold")
+        try FileManager.default.createDirectory(at: cold, withIntermediateDirectories: true)
+        let exp = try ops.planExport(checkpoint: cps[0].checkpointId, to: cold.path)
+        print(try ops.execute(exp))
+        let copies = try FileManager.default.contentsOfDirectory(atPath: cold.path)
+        XCTAssertEqual(copies.filter { $0.hasSuffix(".dmg") }.count, 1)
+        XCTAssertEqual(copies.filter { $0.hasSuffix(".json") }.count, 1)
+        XCTAssertEqual(try ops.checkpoints().first { $0.checkpointId == cps[0].checkpointId }?.exports.count, 1)
+        XCTAssertThrowsError(try ops.planExport(checkpoint: cps[0].checkpointId, to: cold.path), "no overwrite")
+
+        // Content survived compaction.
+        _ = try ops.execute(try ops.planMount("go/t2"))
+        XCTAssertEqual(try String(contentsOfFile: mount + "/state/home/note.txt", encoding: .utf8), "keep me\n")
+        _ = try ops.execute(try ops.planUnmount("go/t2"))
+    }
+}
+
+/// Builds a throwaway demo registry for UI screenshots. Set DEVSTORE_DEMO_HOME=<dir> to run;
+/// leaves `<dir>/slots/go/current` mounted — detach and delete <dir> afterwards.
+final class DemoDataTests: XCTestCase {
+    func testMakeDemo() throws {
+        guard let dir = ProcessInfo.processInfo.environment["DEVSTORE_DEMO_HOME"] else { throw XCTSkip("set DEVSTORE_DEMO_HOME") }
+        let root = URL(fileURLWithPath: dir)
+        let paths = DevStorePaths(hostRoot: root.appendingPathComponent("host"), slotRoot: root.appendingPathComponent("slots"))
+        let ops = Operations(library: Library(paths: paths))
+        let store = try ops.library.addStore(path: root.appendingPathComponent("store").path, create: true)
+        _ = try ops.execute(try ops.planCreate(storeQuery: store.storeId, kind: "rust", slot: "current", name: "Rust stable", sizeGiB: 4))
+        _ = try ops.execute(try ops.planArchive("rust/current", encrypt: false))
+        _ = try ops.execute(try ops.planCreate(storeQuery: store.storeId, kind: "go", slot: "current", name: "Go 1.25", sizeGiB: 4))
+        _ = try ops.execute(try ops.planMount("go/current"))
+        _ = try Verifier(library: ops.library).verify(try ops.library.resolve("go/current"), stage: "demo")
+        _ = try ops.planCompact("rust/current")
+    }
 }

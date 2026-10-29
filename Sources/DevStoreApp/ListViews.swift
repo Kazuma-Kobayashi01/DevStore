@@ -101,3 +101,40 @@ struct JournalView: View {
         var id: Int { index }
     }
 }
+
+struct ArchivesView: View {
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        Group {
+            if model.snapshot.checkpoints.isEmpty {
+                ContentUnavailableView("还没有归档", systemImage: "archivebox",
+                                       description: Text("在环境详情页卸载后选择“压缩归档”。"))
+            } else {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 12) {
+                        ForEach(model.snapshot.checkpoints, id: \.checkpointId) { cp in
+                            Card {
+                                HStack(spacing: 12) {
+                                    KindIcon(kind: cp.kind, size: 34)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("\(cp.displayName)  ·  \(cp.kind)/\(cp.slot)").font(.headline)
+                                        Text("原映像 \(bytes(cp.sourceAllocatedBytes)) → 归档 \(bytes(cp.fileBytes)) · \(cp.contentEntries) 项内容 · SHA-256 \(cp.sha256.prefix(12))…")
+                                            .font(.caption.monospacedDigit()).foregroundStyle(.secondary)
+                                        if let last = cp.exports.last {
+                                            Text("最近导出：\(last.path)").font(.caption).foregroundStyle(.secondary).lineLimit(1).truncationMode(.middle)
+                                        }
+                                    }
+                                    Spacer()
+                                    CheckpointRow(cp: cp).frame(maxWidth: 330)
+                                }
+                            }
+                        }
+                    }
+                    .padding(24)
+                }
+            }
+        }
+        .navigationTitle("归档")
+    }
+}

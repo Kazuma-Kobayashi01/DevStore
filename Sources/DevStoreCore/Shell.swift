@@ -13,7 +13,8 @@ public enum Shell {
     @discardableResult
     public static func run(_ executable: String, _ arguments: [String],
                            environment: [String: String]? = nil,
-                           currentDirectory: String? = nil) throws -> ShellResult {
+                           currentDirectory: String? = nil,
+                           input: Data? = nil) throws -> ShellResult {
         let fm = FileManager.default
         let dir = fm.temporaryDirectory.appendingPathComponent("devstore-\(newId())")
         try fm.createDirectory(at: dir, withIntermediateDirectories: true)
@@ -30,10 +31,16 @@ public enum Shell {
         p.arguments = arguments
         if let environment { p.environment = environment }
         if let currentDirectory { p.currentDirectoryURL = URL(fileURLWithPath: currentDirectory) }
-        p.standardInput = FileHandle.nullDevice
+        let stdin = input.map { _ in Pipe() }
+        p.standardInput = stdin ?? FileHandle.nullDevice
         p.standardOutput = out
         p.standardError = err
         try p.run()
+        if let stdin, let input {
+            // Secrets (passphrases) go through stdin only, never through arguments or the environment.
+            stdin.fileHandleForWriting.write(input)
+            try stdin.fileHandleForWriting.close()
+        }
         p.waitUntilExit()
         try out.close()
         try err.close()

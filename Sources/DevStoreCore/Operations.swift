@@ -174,6 +174,9 @@ public struct Operations: Sendable {
         case .installSDK: try installSDKChecks(plan.targets)
         case .mount: try mountChecks(plan.targets)
         case .unmount: try unmountChecks(plan.targets)
+        case .compact: try compactChecks(plan.targets)
+        case .archive: try archiveChecks(plan.targets)
+        case .export: try exportChecks(plan.targets)
         case .delete: try deleteChecks(plan.targets)
         }
     }
@@ -181,7 +184,8 @@ public struct Operations: Sendable {
     // MARK: execute
 
     /// Re-checks preconditions, then runs the transaction. Caller must have authorized the plan.
-    public func execute(_ plan: Plan) throws -> String {
+    /// `passphrase` is only for encrypted archives; it is entered by the user and never persisted.
+    public func execute(_ plan: Plan, passphrase: String? = nil) throws -> String {
         var journal = Journal(url: library.paths.journal, plan: plan)
         journal.transactionId = newId()
         journal.log("started")
@@ -194,6 +198,9 @@ public struct Operations: Sendable {
             case .installSDK: result = try executeInstallSDK(plan, journal)
             case .mount: result = try executeMount(plan, journal)
             case .unmount: result = try executeUnmount(plan, journal)
+            case .compact: result = try executeCompact(plan, journal)
+            case .archive: result = try executeArchive(plan, journal, passphrase: passphrase)
+            case .export: result = try executeExport(plan, journal)
             case .delete: result = try executeDelete(plan, journal)
             }
             journal.log("committed")

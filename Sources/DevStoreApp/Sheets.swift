@@ -8,6 +8,11 @@ struct PlanSheet: View {
     @Environment(AppModel.self) private var model
     var plan: Plan
     var fromAgent: Bool
+    @State private var passphrase = ""
+    @State private var repeatPassphrase = ""
+
+    var encrypted: Bool { plan.targets["encryption"] == "aes256" }
+    var passphraseOK: Bool { !encrypted || (passphrase.count >= 8 && passphrase == repeatPassphrase) }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -35,21 +40,36 @@ struct PlanSheet: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
+            if encrypted {
+                VStack(alignment: .leading, spacing: 6) {
+                    Label("加密口令（至少 8 个字符）。DevStore 不保存口令，遗失后无法打开归档。", systemImage: "key.fill")
+                        .font(.callout).foregroundStyle(.orange)
+                    HStack {
+                        SecureField("口令", text: $passphrase)
+                        SecureField("再输一次", text: $repeatPassphrase)
+                    }
+                    if !passphrase.isEmpty && !passphraseOK {
+                        Text(passphrase.count < 8 ? "口令太短" : "两次输入不一致").font(.caption).foregroundStyle(.red)
+                    }
+                }
+            }
             HStack {
                 if fromAgent {
                     Button("拒绝", role: .destructive) { Task { await model.reject(plan) } }
                 }
                 Spacer()
                 Button("取消") { model.sheet = nil }.keyboardShortcut(.cancelAction)
-                if fromAgent {
+                if fromAgent && !encrypted {
                     Button("仅批准") { Task { await model.approve(plan, execute: false) } }
                         .help("交给 Agent 用 devstore_apply 执行")
                 }
                 Button(plan.level == .destructive ? "验证身份并执行" : "批准并执行") {
-                    Task { await model.approve(plan, execute: true) }
+                    let secret = encrypted ? passphrase : nil
+                    Task { await model.approve(plan, execute: true, passphrase: secret) }
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(plan.level == .destructive ? .red : .accentColor)
+                .disabled(!passphraseOK)
                 .keyboardShortcut(.defaultAction)
             }
         }
@@ -218,5 +238,43 @@ struct InstallSDKSheet: View {
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [UTType(filenameExtension: "sh") ?? .item]
         if panel.runModal() == .OK { installer = panel.url }
+    }
+}
+
+struct ArchiveSheet: View {
+    @Environment(AppModel.self) private var model
+    var environmentId: String
+    @State private var encrypt = false
+    @State private var lzma = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 12) {
+                Image(systemName: "archivebox.fill").font(.title).foregroundStyle(.orange)
+                Text("压缩归档").font(.title2.bold())
+            }
+            Text("把卸载状态的环境转换成压缩的只读磁盘映像，存入存储库的 checkpoints/。原映像不变。之后可以导出到冷备份位置。")
+                .foregroundStyle(.secondary)
+            Form {
+                Toggle("AES-256 加密", isOn: $encrypt)
+                Toggle("使用 LZMA（更小、更慢；默认 LZFSE）", isOn: $lzma)
+                if encrypt {
+                    Text("口令在批准执行时输入，不会被保存。").font(.caption).foregroundStyle(.secondary)
+                }
+            }
+            .formStyle(.grouped)
+            HStack {
+                Spacer()
+                Button("取消") { model.sheet = nil }.keyboardShortcut(.cancelAction)
+                Button("生成计划…") {
+                    let (id, e, l) = (environmentId, encrypt, lzma)
+                    Task { await model.prepare("正在生成归档计划…") { try $0.planArchive(id, encrypt: e, format: l ? "ULMO" : "ULFO") } }
+                }
+                .buttonStyle(.borderedProminent)
+                .keyboardShortcut(.defaultAction)
+            }
+        }
+        .padding(20)
+        .frame(width: 520)
     }
 }

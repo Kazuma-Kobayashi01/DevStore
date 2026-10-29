@@ -90,6 +90,7 @@ public struct ImageRecord: Codable, Sendable {
     public var components: [Component] = []
     public var knownWarnings: [String] = []
     public var sdk: SDKRecord?
+    public var lastCompaction: CompactionRecord?
     public var lastVerification: VerificationRef?
     public var mutatedSinceVerification = false
     public var createdAt: String
@@ -164,11 +165,14 @@ public enum PlanAction: String, Codable, Sendable, CaseIterable {
     case installSDK = "install-sdk"
     case mount
     case unmount
+    case compact
+    case archive
+    case export
     case delete
 
     public var level: CapabilityLevel {
         switch self {
-        case .importImage, .create, .installSDK: .mutate
+        case .importImage, .create, .installSDK, .compact, .archive, .export: .mutate
         case .mount, .unmount: .mount
         case .delete: .destructive
         }

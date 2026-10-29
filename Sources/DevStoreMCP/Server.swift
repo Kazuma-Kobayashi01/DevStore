@@ -104,6 +104,18 @@ public struct MCPServer {
          "description": "Create a plan to install an SDK (Miniconda installer .sh with its published SHA-256) into a mounted empty environment. Does not install.",
          "inputSchema": schema(["environment": envProp, "installer": ["type": "string"], "sha256": ["type": "string"]],
                                required: ["environment", "installer", "sha256"])],
+        ["name": "devstore_plan_compact",
+         "description": "Create a plan to reclaim free space of an unmounted environment (compacts a clone, verifies identical content, swaps).",
+         "inputSchema": schema(["environment": envProp], required: ["environment"])],
+        ["name": "devstore_plan_archive",
+         "description": "Create a plan for a compressed checkpoint of an unmounted environment. Encrypted archives can only be executed by the user (passphrase), not via devstore_apply.",
+         "inputSchema": schema(["environment": envProp, "encrypt": ["type": "boolean", "default": false],
+                                "lzma": ["type": "boolean", "default": false]], required: ["environment"])],
+        ["name": "devstore_plan_export",
+         "description": "Create a plan to copy a checkpoint to a directory (cold backup) and verify SHA-256.",
+         "inputSchema": schema(["checkpoint": ["type": "string"], "directory": ["type": "string"]], required: ["checkpoint", "directory"])],
+        ["name": "devstore_checkpoints", "description": "Checkpoints (archives) in online stores, with exports.",
+         "inputSchema": schema(["environment": envProp], required: []), "annotations": ["readOnlyHint": true]],
         ["name": "devstore_plan_delete",
          "description": "Create a plan to delete an unmounted environment (moves it to the Trash). Destructive: only the user can approve, in the app or a terminal; no policy covers it.",
          "inputSchema": schema(["environment": envProp], required: ["environment"])],
@@ -185,12 +197,25 @@ public struct MCPServer {
         case "devstore_plan_install_sdk":
             return try planResponse(try ops.planInstallSDK(try string(a, "environment"), installer: try string(a, "installer"),
                                                            sha256: try string(a, "sha256")))
+        case "devstore_plan_compact":
+            return try planResponse(try ops.planCompact(try string(a, "environment")))
+        case "devstore_plan_archive":
+            return try planResponse(try ops.planArchive(try string(a, "environment"), encrypt: a["encrypt"] as? Bool ?? false,
+                                                        format: (a["lzma"] as? Bool ?? false) ? "ULMO" : "ULFO"))
+        case "devstore_plan_export":
+            return try planResponse(try ops.planExport(checkpoint: try string(a, "checkpoint"), to: try string(a, "directory")))
+        case "devstore_checkpoints":
+            let envId = try (a["environment"] as? String).map { try library.resolve($0).environment.environmentId }
+            return try jsonObject(try ops.checkpoints(environmentId: envId))
         case "devstore_plan_delete":
             return try planResponse(try ops.planDelete(try string(a, "environment")))
         case "devstore_plans":
             return try ops.pendingPlans().map { ["state": $0.state.rawValue, "plan": try jsonObject($0.plan)] }
         case "devstore_apply":
             let plan = try ops.loadPlan(try string(a, "planId"))
+            guard plan.targets["encryption"] != "aes256" else {
+                throw DevStoreError("encrypted archives need the user's passphrase: the user runs it in the DevStore app or `devstore apply \(plan.planId)` in a terminal")
+            }
             guard let authority = try auth.authorizeAndConsume(plan) else {
                 throw DevStoreError("not authorized: the user must run `devstore approve \(plan.planId)` in a terminal first")
             }

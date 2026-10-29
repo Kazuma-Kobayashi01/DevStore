@@ -34,6 +34,10 @@ scripts/build-app.sh   # 生成 build/DevStore.app（ad-hoc 签名，未公证�
 | `status [--json]`、`inspect <env>`、`journal` | inspect | 只读 |
 | `install-sdk <env> --installer <sh> --sha256 <hex>` | mutate | 环境须已挂载且使用 empty 适配器。安装器名称/平台/SHA-256 核对通过后，以批处理模式在沙箱中安装（禁网、禁读原安装、只写卷）；装完写入卷内 condarc，转为 miniconda 适配器 |
 | `create --store <s> --kind <k> --name <n> [--slot current] [--size 20]` | mutate | 新建空的 APFS sparse bundle（按需增长），建立 `bin deps state/{home,config,share} cache tmp` 布局与卷内清单，登记槽位 |
+| `compact <env>` | mutate | 环境须已卸载、无租约。先 APFS 克隆映像，只对克隆执行 `hdiutil compact`；在临时挂载点只读挂载克隆，比较压实前后的内容摘要。内容一致且确实变小，才把原映像移到废纸篓、换上克隆；否则删除克隆，原映像不变 |
+| `archive <env> [--encrypt] [--lzma]` | mutate | 环境须已卸载。记录内容摘要后转换为压缩只读 DMG（默认 LZFSE），存到 `<store>/checkpoints/<envId>/<id>.dmg` 并附 `.json` 记录。加密为 AES-256，口令只在执行时从终端或应用输入，经 stdin 传给 hdiutil，不保存。记录 SHA-256，并跑 `hdiutil verify` |
+| `checkpoints [env]` | inspect | 列出在线存储库中的归档 |
+| `export <checkpoint> --to <dir>` | mutate | 复制归档及其记录到冷备份目录，重新计算 SHA-256 比对，不一致就删除副本；不覆盖已有文件；导出记录写回归档 |
 | `delete <env>` | destructive | 环境必须未挂载、无租约。把整个环境目录（所有映像、记录、验证结果）**移到废纸篓**，解除槽位，删除空占位目录。终端确认需输入 `kind/slot` |
 | `plans`、`reject <planId>` | — | 列出未执行的计划；拒绝后计划永远不能执行（拒绝仅限交互式终端或应用） |
 | `import <bundle> --store <s> --name <n> [--kind miniconda] [--slot current]` | mutate | 把未挂载的映像 APFS 克隆进存储库，写入卷内清单，登记槽位。内容必须是为该槽位路径构建的 |
@@ -70,6 +74,7 @@ scripts/build-app.sh   # 生成 build/DevStore.app（ad-hoc 签名，未公证�
 |---|---|
 | `devstore_status`、`devstore_inspect`、`devstore_env`、`devstore_journal` | 只读 |
 | `devstore_plan_mount`、`devstore_plan_unmount`、`devstore_plan_import` | 只生成计划，并告诉 Agent 需要用户执行什么 |
+| `devstore_plan_compact`、`devstore_plan_archive`、`devstore_plan_export`、`devstore_checkpoints` | 回收、归档、导出计划与归档列表；**加密归档不能经 `devstore_apply` 执行**（需要用户输入口令） |
 | `devstore_plan_create`、`devstore_plan_delete`、`devstore_plans` | 新建/删除计划与待批准列表；删除为破坏性，任何策略都不覆盖 |
 | `devstore_apply` | 只在有用户授权或策略时执行，返回 `authorizedBy` |
 | `devstore_run` | 捕获输出（各取最后 64 KB），默认 `confine: true` |
@@ -96,7 +101,12 @@ claude mcp add devstore -- /Users/jackson-hao/Documents/Code/DevStore/.build/rel
 
 ## 桌面应用（SwiftUI）
 
-`build/DevStore.app`，与 CLI/MCP 共用 `DevStoreCore`，每 4 秒刷新一次。
+`build/DevStore.app`，与 CLI/MCP 共用 `DevStoreCore`，每 4 秒刷新一次。图标由 `scripts/make-icon.swift` 渲染（`Resources/AppIcon.icns`）。
+
+- 总览（默认页）：统计卡片（环境数、已挂载、映像占用、归档数）、待批准提示、环境卡片（渐变类型图标、状态与验证徽章、占用、挂载/卸载、详情）。
+- 环境详情：头部卡片；操作栏（挂载/卸载、写入 SDK、验证、复制环境变量、Finder、删除）；卡片区：存储与空间（回收剩余空间、上次回收量）、归档与冷备份（压缩归档、每个归档的导出）、SDK、组件与最近验证、挂载授权、位置与身份、已知警告。
+- 归档页：所有归档的大小、压缩前后对比、SHA-256、最近导出位置。
+- 加密归档的计划确认页要求输入两次口令（≥ 8 个字符）后才能执行，且不提供"仅批准"。
 
 - 侧栏：环境（状态点：绿=已挂载且身份核实，红=挂载但身份不符，灰=未挂载，橙=存储库离线）、待批准计划（带角标）、存储库、事务日志。
 - 环境详情：挂载/卸载、运行验证（逐项进度）、复制会话环境变量（export 语句）、在 Finder 中显示、挂载策略开关、删除；位置与身份、组件、最近验证、已知警告。

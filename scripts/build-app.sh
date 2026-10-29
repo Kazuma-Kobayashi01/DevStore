@@ -10,6 +10,7 @@ cp .build/release/DevStoreApp "$APP/Contents/MacOS/DevStore"
 # CLI and MCP server ride along in Helpers/ (not MacOS/: "devstore" and "DevStore"
 # collide on case-insensitive APFS).
 cp .build/release/devstore .build/release/devstore-mcp "$APP/Contents/Helpers/"
+cp Resources/AppIcon.icns "$APP/Contents/Resources/AppIcon.icns"
 cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -19,6 +20,7 @@ cat > "$APP/Contents/Info.plist" <<PLIST
   <key>CFBundleIdentifier</key><string>local.devstore.app</string>
   <key>CFBundleName</key><string>DevStore</string>
   <key>CFBundleDisplayName</key><string>DevStore</string>
+  <key>CFBundleIconFile</key><string>AppIcon</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleShortVersionString</key><string>0.1.0</string>
   <key>CFBundleVersion</key><string>1</string>

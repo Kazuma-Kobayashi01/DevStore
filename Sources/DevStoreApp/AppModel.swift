@@ -25,6 +25,7 @@ struct Snapshot: Sendable {
     var environments: [EnvRow] = []
     var stores: [StoreRow] = []
     var pending: [Operations.PlanEntry] = []
+    var checkpoints: [CheckpointRecord] = []
     var journal: [JournalEntry] = []
 
     static func load(_ lib: Library) -> Snapshot {
@@ -41,6 +42,7 @@ struct Snapshot: Sendable {
         }
         return Snapshot(environments: rows, stores: stores,
                         pending: (try? Operations(library: lib).pendingPlans()) ?? [],
+                        checkpoints: (try? Operations(library: lib).checkpoints()) ?? [],
                         journal: Array(((try? JSONIO.readLines(JournalEntry.self, from: lib.paths.journal)) ?? []).suffix(300).reversed()))
     }
 }
@@ -49,6 +51,7 @@ enum ActiveSheet: Identifiable {
     case create
     case importImage
     case installSDK(String)
+    case archive(String)
     case plan(Plan, fromAgent: Bool)
 
     var id: String {
@@ -56,6 +59,7 @@ enum ActiveSheet: Identifiable {
         case .create: "create"
         case .importImage: "import"
         case let .installSDK(id): "install-\(id)"
+        case let .archive(id): "archive-\(id)"
         case let .plan(p, _): p.planId
         }
     }
@@ -113,7 +117,7 @@ final class AppModel {
     }
 
     /// The user confirmed in the app. Destructive plans also need device-owner authentication.
-    func approve(_ plan: Plan, execute: Bool) async {
+    func approve(_ plan: Plan, execute: Bool, passphrase: String? = nil) async {
         sheet = nil
         if plan.level == .destructive {
             guard await authenticate("确认删除 \(plan.targets["kind"] ?? "")/\(plan.targets["slot"] ?? "")") else {
@@ -127,7 +131,7 @@ final class AppModel {
             let g = try auth.grant(plan, via: plan.level == .destructive ? "gui-authenticated" : "gui")
             guard execute else { return "已批准计划 \(plan.planId.prefix(8))，有效期至 \(g.expiresAt ?? "?")" }
             guard try auth.authorizeAndConsume(plan) != nil else { throw DevStoreError("授权失败") }
-            return try Operations(library: lib).execute(plan)
+            return try Operations(library: lib).execute(plan, passphrase: passphrase)
         }
         if let result { notice = result }
         await refresh()
@@ -167,6 +171,15 @@ final class AppModel {
         }
         if let result { notice = result }
         await refresh()
+    }
+
+    func export(_ checkpoint: CheckpointRecord, to directory: URL) async {
+        let id = checkpoint.checkpointId, dir = directory.path
+        await prepare("正在生成导出计划…") { try $0.planExport(checkpoint: id, to: dir) }
+    }
+
+    func checkpoints(for id: String) -> [CheckpointRecord] {
+        snapshot.checkpoints.filter { $0.environmentId == id }
     }
 
     func setPolicy(_ row: EnvRow, allow: Bool) async {
@@ -210,6 +223,9 @@ final class AppModel {
         case .installSDK: "写入 SDK"
         case .mount: "挂载"
         case .unmount: "卸载"
+        case .compact: "回收空间"
+        case .archive: "压缩归档"
+        case .export: "导出"
         case .delete: "删除"
         }
     }

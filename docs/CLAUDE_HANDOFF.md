@@ -11,6 +11,7 @@ DevStore 处于规划和实验阶段。当前方案是每个环境一个可写 A
 - 2026-10-29：实现 Swift CLI `devstore` 与 MCP Server `devstore-mcp` 0.1.0（Miniconda 适配器），以 `miniconda/current` 导入实验映像的克隆并通过实机测试，见 [CLI 与 MCP](CLI与MCP.md)。环境当前未挂载，已设置挂载/卸载常驻策略。
 - 2026-10-29：新增 SwiftUI 桌面应用、新建空环境（`empty` 适配器）、删除环境（移到废纸篓，需本机身份验证）、计划拒绝与待批准列表。待批准列表里有一个界面测试生成的 `uitest/current` 新建计划，未批准。
 - 2026-10-29 下午：旧导入环境已删除；新增 `install-sdk`；全新 `miniconda/current`「Miniconda 日常」已挂载，装好 Miniconda py314_26.9.4，验证 14/14，原安装路径残留为 0。新建、挂载、写入 SDK 三个计划是 Agent 按用户对话授权代点批准的（仅此一次），详见 [下一阶段](design/下一阶段-Miniconda实际使用.md)。
+- 2026-10-29 15:30：新增 compact（克隆、比对、替换）、archive（LZFSE/LZMA，可选 AES-256）、export（SHA-256 校验）、总览页与图标，均已用临时卷实测。该环境在 14:40 被用户在应用里经身份验证删除，目前没有环境。
 
 - 只读盘点了本机 Go、Rust、.NET、Flutter、Android 的主要安装和缓存位置，记录版本、架构、体积、权限、链接及依赖风险。
 - v1 曾采用只读 SDK/可写缓存双卷；v2 取消只读；v3 根据用户选择及 Miniconda 实验，改为每环境单卷。只用 v3 作为当前默认。

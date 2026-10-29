@@ -7,7 +7,8 @@ struct DevStore: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "devstore",
         abstract: "Manage development environments that live in mountable APFS volumes.",
-        subcommands: [StoreCommand.self, Create.self, InstallSDK.self, Import.self, Status.self, Inspect.self, Mount.self, Unmount.self,
+        subcommands: [StoreCommand.self, Create.self, InstallSDK.self, Compact.self, Archive.self, Checkpoints.self,
+                      ExportCheckpoint.self, Import.self, Status.self, Inspect.self, Mount.self, Unmount.self,
                       Delete.self, Plans.self, Approve.self, Reject.self, Apply.self, Policy.self, Run.self, Env.self,
                       Verify.self, JournalCommand.self])
 }
@@ -22,6 +23,19 @@ enum Terminal {
         fflush(stdout)
         guard let line = readLine() else { return false }
         return ["y", "yes"].contains(line.trimmingCharacters(in: .whitespaces).lowercased())
+    }
+
+    /// Reads a passphrase twice from the terminal without echo.
+    static func newPassphrase() throws -> String {
+        func read(_ prompt: String) -> String {
+            var buf = [CChar](repeating: 0, count: 1024)
+            guard let p = readpassphrase(prompt, &buf, buf.count, RPP_REQUIRE_TTY) else { return "" }
+            return String(cString: p)
+        }
+        let a = read("Archive passphrase (≥ 8 characters): ")
+        guard a.count >= 8 else { throw DevStoreError("passphrase too short") }
+        guard read("Repeat passphrase: ") == a else { throw DevStoreError("passphrases do not match") }
+        return a
     }
 
     static func requireInteractive(_ what: String) throws {
@@ -53,8 +67,14 @@ func describe(_ plan: Plan) -> String {
 /// environment, or an interactive confirmation right now. Self-reported flags are never accepted.
 func authorizeAndExecute(_ plan: Plan, ops: Operations) throws {
     let auth = Authorizer(paths: ops.library.paths)
+    // Encrypted archives need the user's passphrase, so they only run interactively.
+    var passphrase: String?
+    if plan.targets["encryption"] == "aes256" {
+        try Terminal.requireInteractive("an encrypted archive (passphrase entry)")
+        passphrase = try Terminal.newPassphrase()
+    }
     if try auth.authorizeAndConsume(plan) != nil {
-        print(try ops.execute(plan))
+        print(try ops.execute(plan, passphrase: passphrase))
         return
     }
     guard Terminal.isInteractive else {
@@ -65,7 +85,7 @@ func authorizeAndExecute(_ plan: Plan, ops: Operations) throws {
     guard confirmInTerminal(plan) else { throw DevStoreError("cancelled") }
     let g = try auth.grant(plan, via: "cli-tty")
     try auth.consume(plan, grantId: g.id)
-    print(try ops.execute(plan))
+    print(try ops.execute(plan, passphrase: passphrase))
 }
 
 /// Destructive plans require typing kind/slot; everything else a y/N answer.
@@ -196,6 +216,58 @@ struct InstallSDK: ParsableCommand {
     func run() throws {
         let ops = Operations()
         try handle(try ops.planInstallSDK(environment, installer: installer, sha256: sha256), options, ops)
+    }
+}
+
+struct Compact: ParsableCommand {
+    static let configuration = CommandConfiguration(
+        abstract: "Reclaim free space of an unmounted environment (compacts a clone, verifies content, swaps).")
+    @Argument var environment: String
+    @OptionGroup var options: PlanOptions
+    func run() throws {
+        let ops = Operations()
+        try handle(try ops.planCompact(environment), options, ops)
+    }
+}
+
+struct Archive: ParsableCommand {
+    static let configuration = CommandConfiguration(
+        abstract: "Create a compressed read-only checkpoint of an unmounted environment.")
+    @Argument var environment: String
+    @Flag(help: "Encrypt with AES-256; the passphrase is asked at execution and never stored.") var encrypt = false
+    @Flag(help: "Use LZMA (smaller, slower) instead of LZFSE.") var lzma = false
+    @OptionGroup var options: PlanOptions
+    func run() throws {
+        let ops = Operations()
+        try handle(try ops.planArchive(environment, encrypt: encrypt, format: lzma ? "ULMO" : "ULFO"), options, ops)
+    }
+}
+
+struct Checkpoints: ParsableCommand {
+    static let configuration = CommandConfiguration(abstract: "List checkpoints (archives) in online stores.")
+    @Argument var environment: String?
+    @Flag var json = false
+    func run() throws {
+        let lib = Library()
+        let envId = try environment.map { try lib.resolve($0).environment.environmentId }
+        let all = try Operations(library: lib).checkpoints(environmentId: envId)
+        if json { try printJSON(all); return }
+        if all.isEmpty { print("no checkpoints") }
+        for c in all {
+            print("\(c.checkpointId.prefix(8))  \(c.kind)/\(c.slot)  \(ByteCountFormatter.string(fromByteCount: c.fileBytes, countStyle: .file))  \(c.format)  \(c.encryption)  exports=\(c.exports.count)  \(c.createdAt)")
+        }
+    }
+}
+
+struct ExportCheckpoint: ParsableCommand {
+    static let configuration = CommandConfiguration(
+        commandName: "export", abstract: "Copy a checkpoint to a cold-backup directory and verify its SHA-256.")
+    @Argument var checkpoint: String
+    @Option(help: "Destination directory, e.g. on an external disk.") var to: String
+    @OptionGroup var options: PlanOptions
+    func run() throws {
+        let ops = Operations()
+        try handle(try ops.planExport(checkpoint: checkpoint, to: to), options, ops)
     }
 }
 
