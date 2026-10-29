@@ -32,6 +32,7 @@ scripts/build-app.sh   # 生成 build/DevStore.app（ad-hoc 签名，未公证�
 |---|---|---|
 | `store add <path> [--create]`、`store list` | 登记 | 注册存储库 |
 | `status [--json]`、`inspect <env>`、`journal` | inspect | 只读 |
+| `install-sdk <env> --installer <sh> --sha256 <hex>` | mutate | 环境须已挂载且使用 empty 适配器。安装器名称/平台/SHA-256 核对通过后，以批处理模式在沙箱中安装（禁网、禁读原安装、只写卷）；装完写入卷内 condarc，转为 miniconda 适配器 |
 | `create --store <s> --kind <k> --name <n> [--slot current] [--size 20]` | mutate | 新建空的 APFS sparse bundle（按需增长），建立 `bin deps state/{home,config,share} cache tmp` 布局与卷内清单，登记槽位 |
 | `delete <env>` | destructive | 环境必须未挂载、无租约。把整个环境目录（所有映像、记录、验证结果）**移到废纸篓**，解除槽位，删除空占位目录。终端确认需输入 `kind/slot` |
 | `plans`、`reject <planId>` | — | 列出未执行的计划；拒绝后计划永远不能执行（拒绝仅限交互式终端或应用） |

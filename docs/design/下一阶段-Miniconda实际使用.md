@@ -1,6 +1,6 @@
 # 下一阶段：Miniconda 实际使用测试
 
-记录日期：2026-10-29。状态：**计划，尚未开始**。用户计划从第二天开始。
+记录日期：2026-10-29。状态：**进行中**——第 1、2 步已完成，进入第 3 步（正常使用）。
 
 ## 目标
 
@@ -39,3 +39,22 @@
 - 日常命令（`conda create/install/activate`、`pip`、`python`、Jupyter）都在卷内运行，验证时禁止读取原安装也全部通过。
 - 卸载后再挂载、compact 之后、归档恢复之后，环境都能继续使用。
 - 一段时间内没有工具在暗中依赖 `~/miniconda3`（对照前缀残留扫描的方法）。
+
+## 进展记录
+
+### 2026-10-29 下午：第 1、2 步完成
+
+- 用户批准删除旧的导入实验环境 `miniconda/current`（a1bcde03），环境目录已移到废纸篓，原始映像未受影响。
+- 安装器：`Miniconda3-latest-MacOSX-arm64.sh`，版本 py314_26.9.4-0，osx-arm64，174,567,687 字节。SHA-256 `266fdc66…cd0bec`，与 repo.anaconda.com 公布的一致。文件存放在 `artifacts/installers/`。
+- 新增 `install-sdk` 操作（修改级，需批准）。安装器以批处理模式运行，不执行 conda init；在沙箱中禁网、禁读原安装、只能写卷。装完后环境从 empty 适配器转为 miniconda 适配器。
+- 新环境 `miniconda/current`「Miniconda 日常」：环境 `cf98aa77…`，映像 `11a18525…`，卷 UUID `EC7DA556-…`，最大 40 GiB，按需增长。安装耗时 14 秒，得到 Python 3.14.9、conda 26.9.4、155 个 conda 包，`miniconda3` 占 841 MB。
+- 验证（fresh-install）14/14 通过，其中负向对照确认读取原安装会被拒绝。
+- **前缀残留扫描：卷内没有任何文件含原安装路径 `/Users/jackson-hao/miniconda3`。** 导入的旧映像里则有 703 个二进制和 7,784 个 pyc 含此路径。这是"可以代替真实路径"的一项正面证据。证据文件：`docs/experiments/compact-multislot-20261029/residue-fresh-install-20261029.json`。
+- `~/.zshrc`、`~/.condarc`、`~/.conda/environments.txt`、`~/.zprofile` 的摘要不变。
+- **代为批准**：用户在对话中明确授权"只限这一次"，以下三个计划由 Agent 在桌面应用里代点"批准并执行"：
+  - 新建 `ce2ceb3b`
+  - 挂载 `3d541ed5`
+  - 写入 SDK `01cd7796`
+
+  `grants.jsonl` 中这三条记为 `via: gui`，但并非用户亲手点击。此后仍按原规则：Agent 不代为批准。
+- 下一步：第 3 步正常使用。需要决定是否、何时修改 `~/.zshrc`，让日常终端使用这个环境。
