@@ -169,4 +169,4 @@
   - 三个原目录移到 `~/.Trash/{android-sdk,gradle,android-user}-20261029-*`；
   - 在原位置建符号链接，指向卷内的 `sdk`、`gradle`、`android-user`。
   - 之后验证 16/16，三条链接都确认指向卷内。
-- 未完成：在 `~/.zshrc` 加 Android 块时，被 Claude Code 的 auto mode 判定为持久化改动并拦截，需要用户自行添加或授权。
+- shell：在 `~/.zshrc` 加 Android 块时，被 Claude Code 的 auto mode 判定为持久化改动而拦截。用户随后明确授权，于 17:08 加入（备份为 `~/.zshrc.devstore-backup-20261029-170823`）。这个块在卷未挂载时自动挂载，把 `ANDROID_HOME` 设为兼容路径 `~/Library/Android/sdk`，并把 platform-tools、emulator、cmdline-tools 加进 PATH；不设 `GRADLE_USER_HOME` 和 `JAVA_HOME`。实测：先卸载再开新登录 shell，会自动挂载，adb、emulator、sdkmanager 都可用，AVD 可以列出。

@@ -1,6 +1,6 @@
 ---
 name: devstore
-description: "Manage this Mac's development environments with DevStore (Miniconda/conda, Go, Flutter/Dart, Rust/cargo, .NET/C#). Each environment is a writable APFS volume mounted at ~/.local/dev/<kind>/<slot>. Use for: checking environment state, installing packages or tools, running commands inside an environment, mounting/unmounting, verifying, creating a new language environment, reclaiming space, archiving/encrypting, exporting cold backups, or anything touching conda/go/cargo/flutter/dotnet installs, caches or PATH."
+description: "Manage this Mac's development environments with DevStore (Miniconda/conda, Go, Flutter/Dart, Rust/cargo, .NET/C#, Android SDK/NDK/Gradle). Each environment is a writable APFS volume mounted at ~/.local/dev/<kind>/<slot>. Use for: checking environment state, installing packages or tools, running commands inside an environment, mounting/unmounting, verifying, creating a new language environment, reclaiming space, archiving/encrypting, exporting cold backups, or anything touching conda/go/cargo/flutter/dotnet installs, caches or PATH."
 metadata:
   version: "0.1.0"
   cli: "~/.local/bin/devstore"
@@ -20,13 +20,14 @@ metadata:
 | `flutter/current` | Flutter 3.47.2 / Dart | `PUB_CACHE`、PATH |
 | `rust/current` | rustup + stable、交叉 target、cargo 工具 | `RUSTUP_HOME`、`CARGO_HOME`（在 `.zshenv`） |
 | `dotnet/current` | .NET SDK 10.0.402 | `DOTNET_ROOT`、`NUGET_PACKAGES`、`DOTNET_CLI_HOME` |
+| `android/current` | Android SDK/NDK/emulator、`~/.gradle`、`~/.android`（含 adbkey、debug.keystore） | `ANDROID_HOME=~/Library/Android/sdk`、PATH；`~/Library/Android/sdk`、`~/.gradle`、`~/.android` 是指向卷内的符号链接 |
 
 ## 基本原则
 
 1. **日常用法不变。** 在用户的终端里，`conda install`、`pip install`、`go get`/`go install`、`cargo add`/`cargo install`、`flutter pub get`、`dotnet add package` 都直接可用，结果自动落在对应卷里。不需要 DevStore 命令。
 2. **不要绕开 DevStore 重装 SDK。** 不要 `brew install go/rust/dotnet`、不要运行 Miniconda/rustup 安装器到 `~`、不要 `conda init`、不要重建 `~/miniconda3`、`~/.cargo`、`~/.rustup`、`~/.local/go`、`~/.local/flutter`。不要修改 `~/.zshrc` / `~/.zshenv` 里 `# >>> devstore … >>>` 到 `# <<< devstore … <<<` 之间的块。
 3. **改动走计划，批准属于用户。** 新建、写入 SDK、复制 SDK、回收空间、归档、导出、导入、删除都会先生成计划。Agent 只生成计划，然后把批准命令交给用户。**绝不**伪造 TTY（`script`、`expect`、管道喂 `y`）、绝不改写 `~/Library/Application Support/DevStore/`（`grants.jsonl`、`plans/`、`registry.json`）或映像记录、绝不替用户点 DevStore 应用里的"批准"按钮。
-4. **挂载/卸载**：五个环境都设了常驻挂载策略，`devstore mount|unmount <env>` 可直接执行。卸载从不强制；卷忙时会失败，先结束占用它的进程。
+4. **挂载/卸载**：六个环境都设了常驻挂载策略，`devstore mount|unmount <env>` 可直接执行。卸载从不强制；卷忙时会失败，先结束占用它的进程。
 5. **`devstore run` 只是选择环境，不是隔离。** 加 `--confine` 会禁止读取原安装、Homebrew 和 `/usr/local`；加 `--deny-network` 禁网。
 
 ## 常用命令
@@ -59,7 +60,7 @@ devstore approve <id> && devstore apply <id>
 |---|---|---|
 | 新建空环境 | `create --store ~/.local/share/devstore --kind <k> --slot current --name <n> --size <GiB>` | 槽位空闲 |
 | 写入官方 SDK | `install-sdk <env> --installer <file> --sha256 <hex>` | 已挂载、空环境；支持 Miniconda `.sh`、Go `go*.darwin-*.tar.gz` |
-| 复制本机已有 SDK | `copy-sdk <env> --adapter rust\|dotnet\|flutter` | 已挂载、空环境 |
+| 复制本机已有 SDK | `copy-sdk <env> --adapter rust\|dotnet\|flutter\|android` | 已挂载、空环境 |
 | 回收剩余空间 | `compact <env>` | 已卸载；在克隆上压实、比对内容后替换 |
 | 压缩归档 | `archive <env> [--encrypt] [--lzma]` | 已卸载；**加密归档只能由用户在终端/应用执行**（口令） |
 | 导出冷备份 | `export <checkpointId> --to <dir>` | 复制后校验 SHA-256 |
@@ -86,3 +87,5 @@ devstore approve <id> && devstore apply <id>
 - 不要删除 `~/.Trash` 中的旧安装或清空废纸篓。
 - 不要同时挂载同一映像的两个副本，也不要把映像挂到别的路径（前缀固定）。
 - 不要把加密口令写进命令行参数、文件或对话。
+- 不要把 `~/Library/Android/sdk`、`~/.gradle`、`~/.android` 这些符号链接换回真实目录；Android Studio 启动前卷必须已挂载（开一次终端或在 DevStore 应用里挂载）。
+- Android 环境含签名与 adb 私钥，归档和冷备份要加密。
