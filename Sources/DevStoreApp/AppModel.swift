@@ -234,6 +234,7 @@ final class AppModel {
         case .importImage: "导入"
         case .create: "新建空环境"
         case .installSDK: "写入 SDK"
+        case .copySDK: "复制 SDK"
         case .mount: "挂载"
         case .unmount: "卸载"
         case .compact: "回收空间"

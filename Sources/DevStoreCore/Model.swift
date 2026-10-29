@@ -164,6 +164,7 @@ public enum PlanAction: String, Codable, Sendable, CaseIterable {
     case importImage = "import"
     case create
     case installSDK = "install-sdk"
+    case copySDK = "copy-sdk"
     case mount
     case unmount
     case compact
@@ -173,7 +174,7 @@ public enum PlanAction: String, Codable, Sendable, CaseIterable {
 
     public var level: CapabilityLevel {
         switch self {
-        case .importImage, .create, .installSDK, .compact, .archive, .export: .mutate
+        case .importImage, .create, .installSDK, .copySDK, .compact, .archive, .export: .mutate
         case .mount, .unmount: .mount
         case .delete: .destructive
         }

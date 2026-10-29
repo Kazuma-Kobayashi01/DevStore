@@ -7,7 +7,7 @@ struct DevStore: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "devstore",
         abstract: "Manage development environments that live in mountable APFS volumes.",
-        subcommands: [StoreCommand.self, Create.self, InstallSDK.self, Compact.self, Archive.self, Checkpoints.self,
+        subcommands: [StoreCommand.self, Create.self, InstallSDK.self, CopySDK.self, Compact.self, Archive.self, Checkpoints.self,
                       ExportCheckpoint.self, Import.self, Status.self, Inspect.self, Mount.self, Unmount.self,
                       Delete.self, Plans.self, Approve.self, Reject.self, Apply.self, Policy.self, Run.self, Env.self,
                       Verify.self, JournalCommand.self])
@@ -216,6 +216,19 @@ struct InstallSDK: ParsableCommand {
     func run() throws {
         let ops = Operations()
         try handle(try ops.planInstallSDK(environment, installer: installer, sha256: sha256), options, ops)
+    }
+}
+
+struct CopySDK: ParsableCommand {
+    static let configuration = CommandConfiguration(
+        commandName: "copy-sdk",
+        abstract: "Copy an existing local SDK (rust, dotnet, flutter) into a mounted empty environment; originals are only read.")
+    @Argument var environment: String
+    @Option(help: "rust | dotnet | flutter") var adapter: String
+    @OptionGroup var options: PlanOptions
+    func run() throws {
+        let ops = Operations()
+        try handle(try ops.planCopySDK(environment, adapter: adapter), options, ops)
     }
 }
 

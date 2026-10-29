@@ -93,6 +93,7 @@ enum ActivityStyle {
         case .importImage: "square.and.arrow.down"
         case .create: "plus.rectangle.on.folder"
         case .installSDK: "shippingbox"
+        case .copySDK: "doc.on.doc"
         case .mount: "externaldrive.badge.plus"
         case .unmount: "eject"
         case .compact: "arrow.down.right.and.arrow.up.left"

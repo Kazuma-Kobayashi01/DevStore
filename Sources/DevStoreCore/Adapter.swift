@@ -29,6 +29,9 @@ public enum Adapters {
         case "miniconda": MinicondaAdapter()
         case "empty": EmptyAdapter()
         case "go": GoAdapter()
+        case "rust": RustAdapter()
+        case "dotnet": DotnetAdapter()
+        case "flutter": FlutterAdapter()
         default: nil
         }
     }
@@ -201,5 +204,153 @@ public struct GoAdapter: EnvironmentAdapter {
             result.append(Component(name: t, python: nil, condaPackages: nil, version: "tool"))
         }
         return result
+    }
+}
+
+/// A local directory that `copy-sdk` copies into the volume (`to` is relative to the mount).
+public struct CopySource: Codable, Sendable {
+    public var from: String
+    public var to: String
+    public var required: Bool
+}
+
+/// Adapters whose SDK can be copied from an existing local installation.
+public protocol CopyableAdapter: EnvironmentAdapter {
+    func copySources(home: String) -> [CopySource]
+    /// Directories to create after copying (relative to the mount).
+    var layout: [String] { get }
+}
+
+extension Adapters {
+    public static func copyable(_ id: String) -> (any CopyableAdapter)? {
+        switch id {
+        case "rust": RustAdapter()
+        case "dotnet": DotnetAdapter()
+        case "flutter": FlutterAdapter()
+        default: nil
+        }
+    }
+}
+
+func runVersion(_ exe: String, _ args: [String], _ env: [String: String]) -> String? {
+    guard let r = try? Shell.run(exe, args, environment: env), r.status == 0 else { return nil }
+    return r.stdout.split(separator: "\n").first.map { String($0).trimmingCharacters(in: .whitespaces) }
+}
+
+/// rustup + cargo with RUSTUP_HOME and CARGO_HOME on the volume (rustup supports relocating both).
+public struct RustAdapter: CopyableAdapter {
+    public let ref = AdapterRef(id: "rust", version: "0.1.0")
+    public let supportsImport = false
+    public let knownWarnings: [String] = []
+    public let layout = ["state/home", "tmp"]
+    public let dataClasses = [
+        DataClass(id: "sdk", paths: ["rustup/toolchains", "rustup/settings.toml"], rebuildable: false, backup: true),
+        DataClass(id: "tools", paths: ["cargo/bin"], rebuildable: false, backup: true),
+        DataClass(id: "cacheCostly", paths: ["cargo/registry", "cargo/git"], rebuildable: true, backup: false),
+        DataClass(id: "cacheRebuildable", paths: ["rustup/downloads", "rustup/tmp"], rebuildable: true, backup: false),
+        DataClass(id: "tmp", paths: ["tmp"], rebuildable: true, backup: false),
+    ]
+    public init() {}
+    public func copySources(home: String) -> [CopySource] {
+        [CopySource(from: home + "/.rustup", to: "rustup", required: true),
+         CopySource(from: home + "/.cargo", to: "cargo", required: true)]
+    }
+    public func sessionEnvironment(mount: String) -> [String: String] {
+        ["HOME": mount + "/state/home", "USER": NSUserName(), "LOGNAME": NSUserName(), "LANG": "en_US.UTF-8",
+         "PATH": mount + "/cargo/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+         "RUSTUP_HOME": mount + "/rustup", "CARGO_HOME": mount + "/cargo", "TMPDIR": mount + "/tmp",
+         "DEVSTORE_ENVIRONMENT": mount]
+    }
+    public func originPathsToDeny(home: String) -> [String] { [home + "/.rustup", home + "/.cargo"] }
+    public func builtMountPath(volumeRoot: String) -> String? { nil }
+    public func discoverComponents(mount: String) -> [Component] {
+        let env = sessionEnvironment(mount: mount)
+        var out: [Component] = []
+        if let v = runVersion(mount + "/cargo/bin/rustc", ["-V"], env) { out.append(Component(name: "rustc", python: nil, condaPackages: nil, version: v)) }
+        if let v = runVersion(mount + "/cargo/bin/cargo", ["-V"], env) { out.append(Component(name: "cargo", python: nil, condaPackages: nil, version: v)) }
+        if let r = try? Shell.run(mount + "/cargo/bin/rustup", ["target", "list", "--installed"], environment: env), r.status == 0 {
+            for t in r.stdout.split(separator: "\n") { out.append(Component(name: "target " + t, python: nil, condaPackages: nil, version: "target")) }
+        }
+        return out
+    }
+}
+
+/// .NET SDK with DOTNET_ROOT, NuGet packages and the CLI home on the volume.
+public struct DotnetAdapter: CopyableAdapter {
+    public let ref = AdapterRef(id: "dotnet", version: "0.1.0")
+    public let supportsImport = false
+    public let knownWarnings: [String] = []
+    public let layout = ["nuget/packages", "state/home/.nuget/NuGet", "state/dotnet-cli", "tmp"]
+    public let dataClasses = [
+        DataClass(id: "sdk", paths: ["dotnet"], rebuildable: false, backup: true),
+        DataClass(id: "cacheCostly", paths: ["nuget/packages"], rebuildable: true, backup: false),
+        DataClass(id: "state", paths: ["state"], rebuildable: false, backup: true),
+        DataClass(id: "tmp", paths: ["tmp"], rebuildable: true, backup: false),
+    ]
+    public init() {}
+    public func copySources(home: String) -> [CopySource] {
+        [CopySource(from: "/usr/local/share/dotnet", to: "dotnet", required: true),
+         CopySource(from: home + "/.nuget/packages", to: "nuget/packages", required: false),
+         CopySource(from: home + "/.nuget/NuGet", to: "state/home/.nuget/NuGet", required: false),
+         CopySource(from: home + "/.dotnet", to: "state/dotnet-cli/.dotnet", required: false)]
+    }
+    public func sessionEnvironment(mount: String) -> [String: String] {
+        ["HOME": mount + "/state/home", "USER": NSUserName(), "LOGNAME": NSUserName(), "LANG": "en_US.UTF-8",
+         "PATH": mount + "/dotnet:/usr/bin:/bin:/usr/sbin:/sbin",
+         "DOTNET_ROOT": mount + "/dotnet", "NUGET_PACKAGES": mount + "/nuget/packages",
+         "DOTNET_CLI_HOME": mount + "/state/dotnet-cli", "DOTNET_NOLOGO": "1", "TMPDIR": mount + "/tmp",
+         "DEVSTORE_ENVIRONMENT": mount]
+    }
+    public func originPathsToDeny(home: String) -> [String] { ["/usr/local/share/dotnet", home + "/.nuget", home + "/.dotnet"] }
+    public func builtMountPath(volumeRoot: String) -> String? { nil }
+    public func discoverComponents(mount: String) -> [Component] {
+        let env = sessionEnvironment(mount: mount)
+        var out: [Component] = []
+        for args in [["--list-sdks"], ["--list-runtimes"]] {
+            if let r = try? Shell.run(mount + "/dotnet/dotnet", args, environment: env), r.status == 0 {
+                for line in r.stdout.split(separator: "\n") {
+                    let parts = line.split(separator: " ")
+                    if args[0] == "--list-sdks", let v = parts.first { out.append(Component(name: "sdk", python: nil, condaPackages: nil, version: String(v))) }
+                    if args[0] == "--list-runtimes", parts.count >= 2 { out.append(Component(name: String(parts[0]), python: nil, condaPackages: nil, version: String(parts[1]))) }
+                }
+            }
+        }
+        return out
+    }
+}
+
+/// Flutter checkout (with Dart SDK and engine artifacts) and PUB_CACHE on the volume.
+public struct FlutterAdapter: CopyableAdapter {
+    public let ref = AdapterRef(id: "flutter", version: "0.1.0")
+    public let supportsImport = false
+    public let knownWarnings = ["Android SDK, Xcode and CocoaPods stay host dependencies; app builds for devices are not covered by verification."]
+    public let layout = ["pub-cache", "state/home", "tmp"]
+    public let dataClasses = [
+        DataClass(id: "sdk", paths: ["flutter"], rebuildable: false, backup: true),
+        DataClass(id: "cacheCostly", paths: ["pub-cache", "flutter/bin/cache/artifacts"], rebuildable: true, backup: false),
+        DataClass(id: "state", paths: ["state"], rebuildable: false, backup: true),
+        DataClass(id: "tmp", paths: ["tmp"], rebuildable: true, backup: false),
+    ]
+    public init() {}
+    public func copySources(home: String) -> [CopySource] {
+        [CopySource(from: home + "/.local/flutter", to: "flutter", required: true),
+         CopySource(from: home + "/.pub-cache", to: "pub-cache", required: false),
+         CopySource(from: home + "/.flutter", to: "state/home/.flutter", required: false),
+         CopySource(from: home + "/.dart-tool", to: "state/home/.dart-tool", required: false)]
+    }
+    public func sessionEnvironment(mount: String) -> [String: String] {
+        ["HOME": mount + "/state/home", "USER": NSUserName(), "LOGNAME": NSUserName(), "LANG": "en_US.UTF-8",
+         "PATH": mount + "/flutter/bin:" + mount + "/pub-cache/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+         "PUB_CACHE": mount + "/pub-cache", "FLUTTER_SUPPRESS_ANALYTICS": "true", "TMPDIR": mount + "/tmp",
+         "DEVSTORE_ENVIRONMENT": mount]
+    }
+    public func originPathsToDeny(home: String) -> [String] { [home + "/.local/flutter", home + "/.pub-cache"] }
+    public func builtMountPath(volumeRoot: String) -> String? { nil }
+    public func discoverComponents(mount: String) -> [Component] {
+        let env = sessionEnvironment(mount: mount)
+        guard let r = try? Shell.run(mount + "/flutter/bin/flutter", ["--version", "--machine"], environment: env), r.status == 0,
+              let d = (try? JSONSerialization.jsonObject(with: r.stdoutData)) as? [String: Any] else { return [] }
+        return [Component(name: "flutter", python: nil, condaPackages: nil, version: d["frameworkVersion"] as? String),
+                Component(name: "dart", python: nil, condaPackages: nil, version: d["dartSdkVersion"] as? String)]
     }
 }

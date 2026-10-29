@@ -215,6 +215,36 @@ final class GoInstallTests: XCTestCase {
     }
 }
 
+/// copy-sdk from the real local installations into temporary volumes, then each suite.
+/// Set DEVSTORE_COPY_ADAPTERS=rust,dotnet,flutter to run.
+final class CopySDKTests: XCTestCase {
+    func testCopyAndVerify() throws {
+        guard let list = ProcessInfo.processInfo.environment["DEVSTORE_COPY_ADAPTERS"] else { throw XCTSkip("set DEVSTORE_COPY_ADAPTERS") }
+        let root = URL(fileURLWithPath: "/private/tmp/dsc-\(newId().prefix(8))")
+        let paths = DevStorePaths(hostRoot: root.appendingPathComponent("host"), slotRoot: root.appendingPathComponent("slots"))
+        let ops = Operations(library: Library(paths: paths)) { $0 }
+        defer {
+            for k in list.split(separator: ",") {
+                let slot = root.path + "/slots/\(k)/t1"
+                if DiskImage.isMountPoint(slot) { try? DiskImage.detach(mountPoint: slot) }
+            }
+            try? FileManager.default.removeItem(at: root)
+        }
+        let store = try ops.library.addStore(path: root.appendingPathComponent("store").path, create: true)
+        for k in list.split(separator: ",").map(String.init) {
+            _ = try ops.execute(try ops.planCreate(storeQuery: store.storeId, kind: k, slot: "t1", name: k, sizeGiB: 12))
+            _ = try ops.execute(try ops.planMount("\(k)/t1"))
+            print(try ops.execute(try ops.planCopySDK("\(k)/t1", adapter: k)))
+            let r = try ops.library.resolve("\(k)/t1")
+            XCTAssertEqual(r.environment.adapter.id, k)
+            print("components:", r.image?.components.map { "\($0.name) \($0.version ?? "")" } ?? [], "warnings:", r.image?.knownWarnings ?? [])
+            let run = try Verifier(library: ops.library).verify(r, stage: "test") { n, ok in print(ok ? "✓" : "✗", k, n) }
+            XCTAssertEqual(run.passed, run.total, "\(k): \(run.checks.filter { !$0.passed }.map { ($0.name, ($0.stderr ?? "") + ($0.stdout ?? "")) })")
+            _ = try ops.execute(try ops.planUnmount("\(k)/t1"))
+        }
+    }
+}
+
 /// Builds a throwaway demo registry for UI screenshots. Set DEVSTORE_DEMO_HOME=<dir> to run;
 /// leaves `<dir>/slots/go/current` mounted — detach and delete <dir> afterwards.
 final class DemoDataTests: XCTestCase {

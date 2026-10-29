@@ -41,6 +41,9 @@ public struct Verifier: Sendable {
         case "miniconda": return try verifyMiniconda(r, stage: stage, progress: progress)
         case "empty": return try verifyEmpty(r, stage: stage, progress: progress)
         case "go": return try verifyGo(r, stage: stage, progress: progress)
+        case "rust": return try withoutActuallyEscaping(progress) { try verifyRust(r, stage: stage, progress: $0) }
+        case "dotnet": return try withoutActuallyEscaping(progress) { try verifyDotnet(r, stage: stage, progress: $0) }
+        case "flutter": return try withoutActuallyEscaping(progress) { try verifyFlutter(r, stage: stage, progress: $0) }
         default: throw DevStoreError("no verification suite for adapter \(r.environment.adapter.id)")
         }
     }

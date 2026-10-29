@@ -104,6 +104,10 @@ public struct MCPServer {
          "description": "Create a plan to install an SDK (Miniconda installer .sh with its published SHA-256) into a mounted empty environment. Does not install.",
          "inputSchema": schema(["environment": envProp, "installer": ["type": "string"], "sha256": ["type": "string"]],
                                required: ["environment", "installer", "sha256"])],
+        ["name": "devstore_plan_copy_sdk",
+         "description": "Create a plan to copy an existing local SDK installation (rust, dotnet or flutter) into a mounted empty environment. Does not copy.",
+         "inputSchema": schema(["environment": envProp, "adapter": ["type": "string", "enum": ["rust", "dotnet", "flutter"]]],
+                               required: ["environment", "adapter"])],
         ["name": "devstore_plan_compact",
          "description": "Create a plan to reclaim free space of an unmounted environment (compacts a clone, verifies identical content, swaps).",
          "inputSchema": schema(["environment": envProp], required: ["environment"])],
@@ -197,6 +201,8 @@ public struct MCPServer {
         case "devstore_plan_install_sdk":
             return try planResponse(try ops.planInstallSDK(try string(a, "environment"), installer: try string(a, "installer"),
                                                            sha256: try string(a, "sha256")))
+        case "devstore_plan_copy_sdk":
+            return try planResponse(try ops.planCopySDK(try string(a, "environment"), adapter: try string(a, "adapter")))
         case "devstore_plan_compact":
             return try planResponse(try ops.planCompact(try string(a, "environment")))
         case "devstore_plan_archive":
