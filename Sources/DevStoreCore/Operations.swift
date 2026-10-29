@@ -171,6 +171,7 @@ public struct Operations: Sendable {
         switch plan.action {
         case .importImage: try importChecks(plan.targets)
         case .create: try createChecks(plan.targets)
+        case .installSDK: try installSDKChecks(plan.targets)
         case .mount: try mountChecks(plan.targets)
         case .unmount: try unmountChecks(plan.targets)
         case .delete: try deleteChecks(plan.targets)
@@ -190,6 +191,7 @@ public struct Operations: Sendable {
             switch plan.action {
             case .importImage: result = try executeImport(plan, journal)
             case .create: result = try executeCreate(plan, journal)
+            case .installSDK: result = try executeInstallSDK(plan, journal)
             case .mount: result = try executeMount(plan, journal)
             case .unmount: result = try executeUnmount(plan, journal)
             case .delete: result = try executeDelete(plan, journal)

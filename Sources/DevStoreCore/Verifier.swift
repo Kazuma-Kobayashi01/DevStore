@@ -27,7 +27,8 @@ public struct VerificationRun: Codable, Sendable {
     public var notCovered: [String]
 }
 
-/// Miniconda core suite (23 checks), ported from the 2026-10-29 experiment script.
+/// Miniconda core suite, ported from the 2026-10-29 experiment script (23 checks on that image;
+/// the count follows the environments present).
 /// Every check runs under sandbox-exec: no network, origin installs unreadable, writes only
 /// to the volume and /private/tmp. The negative control must pass or the run is invalid.
 public struct Verifier: Sendable {
@@ -133,7 +134,12 @@ public struct Verifier: Sendable {
         }
         guard checks[0].passed else { throw DevStoreError("negative control failed; run invalid") }
 
-        let names = ["base", "llama-cpp", "neocloud", "python3.10"]
+        // Check every environment that exists on the volume (probe environments excluded).
+        let envNames = ((try? FileManager.default.contentsOfDirectory(atPath: base + "/envs")) ?? [])
+            .filter { !$0.hasPrefix("__") && !$0.hasPrefix(".") && FileManager.default.fileExists(atPath: base + "/envs/\($0)/conda-meta") }
+            .sorted()
+        let names = ["base"] + envNames
+        func hasEnv(_ n: String) -> Bool { envNames.contains(n) }
         let deniedJSON = String(decoding: try JSONSerialization.data(withJSONObject: denied), as: UTF8.self)
         let stdlib = """
         import sys,sysconfig,os,json,ssl,sqlite3,lzma,ctypes
@@ -165,16 +171,24 @@ public struct Verifier: Sendable {
             guard let found = json(r)?["envs"] as? [String] else { return false }
             return names.dropFirst().allSatisfy { found.contains(base + "/envs/" + $0) } && found.allSatisfy { $0.hasPrefix(mount) }
         }
-        let neo = base + "/envs/neocloud"
+        // Activate / run in the first user environment, or base when there is none yet.
+        let target = envNames.first.map { base + "/envs/" + $0 } ?? base
         run("conda-shell-activate", ["/bin/bash", "--noprofile", "--norc", "-e", "-c",
-            "eval \"$(\"\(base)/bin/conda\" shell.bash hook)\"\nconda activate \"\(neo)\"\npython -B -c 'import sys; assert sys.prefix == \"\(neo)\"; print(sys.prefix)'\nconda deactivate\n"])
-        run("conda-run", [base + "/bin/conda", "run", "-p", base + "/envs/llama-cpp", "--no-capture-output",
+            "eval \"$(\"\(base)/bin/conda\" shell.bash hook)\"\nconda activate \"\(target)\"\npython -B -c 'import sys; assert sys.prefix == \"\(target)\"; print(sys.prefix)'\nconda deactivate\n"])
+        run("conda-run", [base + "/bin/conda", "run", "-p", target, "--no-capture-output",
                           "python", "-B", "-c", "import sys; print(sys.prefix)"])
-        run("neocloud-packages", [neo + "/bin/python", "-I", "-B", "-c",
-            "import fastapi,pydantic,requests; print(fastapi.__version__,pydantic.__version__,requests.__version__)"])
-        run("llama-cpp-httpx", [base + "/envs/llama-cpp/bin/python", "-I", "-B", "-c", "import httpx; print(httpx.__version__)"])
-        run("python3.10-numpy-pytorch", [base + "/envs/python3.10/bin/python", "-I", "-B", "-c",
-            "import numpy as np,torch; assert float(np.arange(4).sum())==6; assert torch.tensor([2,3]).sum().item()==5; print(np.__version__,torch.__version__)"])
+        // Package checks for the environments of the 2026-10-29 experiment image, only when present.
+        if hasEnv("neocloud") {
+            run("neocloud-packages", [base + "/envs/neocloud/bin/python", "-I", "-B", "-c",
+                "import fastapi,pydantic,requests; print(fastapi.__version__,pydantic.__version__,requests.__version__)"])
+        }
+        if hasEnv("llama-cpp") {
+            run("llama-cpp-httpx", [base + "/envs/llama-cpp/bin/python", "-I", "-B", "-c", "import httpx; print(httpx.__version__)"])
+        }
+        if hasEnv("python3.10") {
+            run("python3.10-numpy-pytorch", [base + "/envs/python3.10/bin/python", "-I", "-B", "-c",
+                "import numpy as np,torch; assert float(np.arange(4).sum())==6; assert torch.tensor([2,3]).sum().item()==5; print(np.__version__,torch.__version__)"])
+        }
 
         // Data-only local package: proves offline install, cache and removal stay on this volume.
         let package = tmp + "/dev-volume-probe-0.0.1-0.tar.bz2"

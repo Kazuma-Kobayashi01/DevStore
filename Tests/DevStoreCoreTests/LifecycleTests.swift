@@ -88,4 +88,41 @@ final class LifecycleTests: XCTestCase {
         XCTAssertFalse(FileManager.default.fileExists(atPath: r.slotPath), "empty placeholder removed")
         XCTAssertThrowsError(try ops.execute(del), "plan cannot run twice")
     }
+
+    func testInstallerHeaderAndChecksumRefusal() throws {
+        let fake = root.appendingPathComponent("fake.sh")
+        try "#!/bin/sh\n# NAME:  Miniconda3\n# VER:   py314_26.9.4-0\n# PLAT:  osx-arm64\nexit 0\n".write(to: fake, atomically: true, encoding: .utf8)
+        let h = Operations.installerHeader(fake.path)
+        XCTAssertEqual(h["NAME"], "Miniconda3")
+        XCTAssertEqual(h["VER"], "py314_26.9.4-0")
+        XCTAssertEqual(try Operations.sha256(file: fake.path).count, 64)
+        XCTAssertEqual(PlanAction.installSDK.level, .mutate)
+    }
+
+    /// Real Miniconda install into a temporary volume. Set DEVSTORE_INSTALLER=<path> and
+    /// DEVSTORE_INSTALLER_SHA256=<hex> to run (takes a few minutes).
+    func testInstallSDKIntoEmptyEnvironment() throws {
+        let envVars = ProcessInfo.processInfo.environment
+        guard let installer = envVars["DEVSTORE_INSTALLER"], let sum = envVars["DEVSTORE_INSTALLER_SHA256"] else {
+            throw XCTSkip("set DEVSTORE_INSTALLER and DEVSTORE_INSTALLER_SHA256")
+        }
+        let lib = ops.library
+        _ = try ops.execute(try ops.planCreate(storeQuery: storeRef.storeId, kind: "miniconda", slot: "t1", name: "Miniconda test", sizeGiB: 8))
+        XCTAssertThrowsError(try ops.planInstallSDK("miniconda/t1", installer: installer, sha256: sum), "must be mounted")
+        _ = try ops.execute(try ops.planMount("miniconda/t1"))
+        XCTAssertThrowsError(try ops.planInstallSDK("miniconda/t1", installer: installer, sha256: String(repeating: "0", count: 64)),
+                             "wrong checksum is refused")
+        let plan = try ops.planInstallSDK("miniconda/t1", installer: installer, sha256: sum)
+        print(try ops.execute(plan))
+        let r = try lib.resolve("miniconda/t1")
+        XCTAssertEqual(r.environment.adapter.id, "miniconda")
+        XCTAssertEqual(lib.readManifest(mount: r.slotPath)?.adapter.id, "miniconda")
+        XCTAssertNotNil(r.image?.sdk)
+        XCTAssertEqual(lib.status(r).verification, "unverified")
+        let run = try Verifier(library: lib).verify(r, stage: "test") { name, ok in print(ok ? "✓" : "✗", name) }
+        XCTAssertEqual(run.passed, run.total, "\(run.checks.filter { !$0.passed }.map { ($0.name, $0.stderr ?? "") })")
+        XCTAssertThrowsError(try ops.execute(plan), "plan cannot run twice")
+        _ = try ops.execute(try ops.planUnmount("miniconda/t1"))
+        _ = try ops.execute(try ops.planDelete("miniconda/t1"))
+    }
 }

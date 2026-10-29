@@ -48,12 +48,14 @@ struct Snapshot: Sendable {
 enum ActiveSheet: Identifiable {
     case create
     case importImage
+    case installSDK(String)
     case plan(Plan, fromAgent: Bool)
 
     var id: String {
         switch self {
         case .create: "create"
         case .importImage: "import"
+        case let .installSDK(id): "install-\(id)"
         case let .plan(p, _): p.planId
         }
     }
@@ -205,6 +207,7 @@ final class AppModel {
         switch a {
         case .importImage: "导入"
         case .create: "新建空环境"
+        case .installSDK: "写入 SDK"
         case .mount: "挂载"
         case .unmount: "卸载"
         case .delete: "删除"

@@ -170,3 +170,53 @@ struct ImportSheet: View {
         if panel.runModal() == .OK { source = panel.url }
     }
 }
+
+struct InstallSDKSheet: View {
+    @Environment(AppModel.self) private var model
+    var environmentId: String
+    @State private var installer: URL?
+    @State private var sha256 = ""
+
+    var header: [String: String] { installer.map { Operations.installerHeader($0.path) } ?? [:] }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("写入 SDK").font(.title2.bold())
+            Text("在卷内以批处理模式安装 Miniconda（不运行 conda init，不修改 shell 配置）。安装器在沙箱中运行：禁网、不能读原安装、只能写这个卷。")
+                .foregroundStyle(.secondary)
+            Form {
+                LabeledContent("安装器") {
+                    HStack {
+                        Text(installer?.lastPathComponent ?? "未选择").lineLimit(1).truncationMode(.middle)
+                        Button("选择…") { choose() }
+                    }
+                }
+                if installer != nil {
+                    LabeledContent("版本") { Text("\(header["NAME"] ?? "?") \(header["VER"] ?? "?") · \(header["PLAT"] ?? "?")") }
+                }
+                TextField("官方公布的 SHA-256", text: $sha256, prompt: Text("从 repo.anaconda.com/miniconda 复制"))
+                    .monospaced()
+            }
+            .formStyle(.grouped)
+            HStack {
+                Spacer()
+                Button("取消") { model.sheet = nil }.keyboardShortcut(.cancelAction)
+                Button("生成计划…") {
+                    let (id, path, sum) = (environmentId, installer!.path, sha256.trimmingCharacters(in: .whitespaces))
+                    Task { await model.prepare("正在核对安装器…") { try $0.planInstallSDK(id, installer: path, sha256: sum) } }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(installer == nil || sha256.trimmingCharacters(in: .whitespaces).count != 64)
+                .keyboardShortcut(.defaultAction)
+            }
+        }
+        .padding(20)
+        .frame(width: 600)
+    }
+
+    func choose() {
+        let panel = NSOpenPanel()
+        panel.allowedContentTypes = [UTType(filenameExtension: "sh") ?? .item]
+        if panel.runModal() == .OK { installer = panel.url }
+    }
+}

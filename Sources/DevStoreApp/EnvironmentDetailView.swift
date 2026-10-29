@@ -30,6 +30,11 @@ struct EnvironmentDetailView: View {
                     Button(s.mounted ? "卸载" : "挂载") { Task { await model.toggleMount(row) } }
                         .buttonStyle(.borderedProminent)
                         .disabled(model.busy != nil || !s.storeOnline)
+                    if row.environment.adapter.id == "empty" {
+                        Button("写入 SDK…") { model.sheet = .installSDK(row.id) }
+                            .disabled(model.busy != nil || s.identityVerified != true)
+                            .help(s.identityVerified == true ? "在卷内安装 Miniconda" : "请先挂载")
+                    }
                     Button("运行验证") { Task { await model.verify(row) } }
                         .disabled(model.busy != nil || s.identityVerified != true)
                     Button("复制环境变量") { Task { await model.copySessionEnvironment(row) } }
@@ -53,6 +58,15 @@ struct EnvironmentDetailView: View {
                     get: { row.policyAllowsMount },
                     set: { allow in Task { await model.setPolicy(row, allow: allow) } }))
                 Text("只覆盖挂载与卸载。导入、新建、删除始终需要逐次批准。").font(.caption).foregroundStyle(.secondary)
+            }
+
+            if let sdk = row.image?.sdk {
+                Section("SDK") {
+                    LabeledContent(sdk.name) { Text(sdk.version) }
+                    LabeledContent("安装器") { Text(sdk.installer).textSelection(.enabled) }
+                    LabeledContent("SHA-256") { Text(sdk.installerSHA256).monospaced().textSelection(.enabled).lineLimit(1).truncationMode(.middle) }
+                    LabeledContent("安装时间") { Text(sdk.installedAt) }
+                }
             }
 
             Section("位置与身份") {

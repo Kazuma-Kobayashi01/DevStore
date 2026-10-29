@@ -7,7 +7,7 @@ struct DevStore: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "devstore",
         abstract: "Manage development environments that live in mountable APFS volumes.",
-        subcommands: [StoreCommand.self, Create.self, Import.self, Status.self, Inspect.self, Mount.self, Unmount.self,
+        subcommands: [StoreCommand.self, Create.self, InstallSDK.self, Import.self, Status.self, Inspect.self, Mount.self, Unmount.self,
                       Delete.self, Plans.self, Approve.self, Reject.self, Apply.self, Policy.self, Run.self, Env.self,
                       Verify.self, JournalCommand.self])
 }
@@ -182,6 +182,20 @@ struct Create: ParsableCommand {
     func run() throws {
         let ops = Operations()
         try handle(try ops.planCreate(storeQuery: store, kind: kind, slot: slot, name: name, sizeGiB: size), options, ops)
+    }
+}
+
+struct InstallSDK: ParsableCommand {
+    static let configuration = CommandConfiguration(
+        commandName: "install-sdk",
+        abstract: "Install an SDK (Miniconda installer) into a mounted empty environment.")
+    @Argument var environment: String
+    @Option(help: "Path to the downloaded installer (.sh).") var installer: String
+    @Option(help: "Expected SHA-256 of the installer, from the vendor's published list.") var sha256: String
+    @OptionGroup var options: PlanOptions
+    func run() throws {
+        let ops = Operations()
+        try handle(try ops.planInstallSDK(environment, installer: installer, sha256: sha256), options, ops)
     }
 }
 

@@ -100,6 +100,10 @@ public struct MCPServer {
          "inputSchema": schema(["store": ["type": "string"], "kind": ["type": "string"],
                                 "slot": ["type": "string", "default": "current"], "name": ["type": "string"],
                                 "sizeGiB": ["type": "integer", "default": 20]], required: ["store", "kind", "name"])],
+        ["name": "devstore_plan_install_sdk",
+         "description": "Create a plan to install an SDK (Miniconda installer .sh with its published SHA-256) into a mounted empty environment. Does not install.",
+         "inputSchema": schema(["environment": envProp, "installer": ["type": "string"], "sha256": ["type": "string"]],
+                               required: ["environment", "installer", "sha256"])],
         ["name": "devstore_plan_delete",
          "description": "Create a plan to delete an unmounted environment (moves it to the Trash). Destructive: only the user can approve, in the app or a terminal; no policy covers it.",
          "inputSchema": schema(["environment": envProp], required: ["environment"])],
@@ -178,6 +182,9 @@ public struct MCPServer {
             return try planResponse(try ops.planCreate(storeQuery: try string(a, "store"), kind: try string(a, "kind"),
                                                        slot: a["slot"] as? String ?? "current", name: try string(a, "name"),
                                                        sizeGiB: a["sizeGiB"] as? Int ?? 20))
+        case "devstore_plan_install_sdk":
+            return try planResponse(try ops.planInstallSDK(try string(a, "environment"), installer: try string(a, "installer"),
+                                                           sha256: try string(a, "sha256")))
         case "devstore_plan_delete":
             return try planResponse(try ops.planDelete(try string(a, "environment")))
         case "devstore_plans":

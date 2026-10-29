@@ -69,6 +69,7 @@ struct ContentView: View {
             switch sheet {
             case .create: CreateSheet()
             case .importImage: ImportSheet()
+            case let .installSDK(id): InstallSDKSheet(environmentId: id)
             case let .plan(plan, fromAgent): PlanSheet(plan: plan, fromAgent: fromAgent)
             }
         }

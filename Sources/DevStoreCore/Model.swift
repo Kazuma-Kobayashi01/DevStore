@@ -58,6 +58,15 @@ public struct Component: Codable, Sendable {
     public var condaPackages: Int?
 }
 
+/// SDK written into an empty environment by `install-sdk`.
+public struct SDKRecord: Codable, Sendable {
+    public var name: String
+    public var version: String
+    public var installer: String
+    public var installerSHA256: String
+    public var installedAt: String
+}
+
 public struct VerificationRef: Codable, Sendable {
     public var runId: String
     public var stage: String
@@ -80,6 +89,7 @@ public struct ImageRecord: Codable, Sendable {
     public var hostBinding: HostBinding
     public var components: [Component] = []
     public var knownWarnings: [String] = []
+    public var sdk: SDKRecord?
     public var lastVerification: VerificationRef?
     public var mutatedSinceVerification = false
     public var createdAt: String
@@ -151,13 +161,14 @@ public enum CapabilityLevel: String, Codable, Sendable, Comparable {
 public enum PlanAction: String, Codable, Sendable, CaseIterable {
     case importImage = "import"
     case create
+    case installSDK = "install-sdk"
     case mount
     case unmount
     case delete
 
     public var level: CapabilityLevel {
         switch self {
-        case .importImage, .create: .mutate
+        case .importImage, .create, .installSDK: .mutate
         case .mount, .unmount: .mount
         case .delete: .destructive
         }
