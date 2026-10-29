@@ -170,3 +170,11 @@
   - 在原位置建符号链接，指向卷内的 `sdk`、`gradle`、`android-user`。
   - 之后验证 16/16，三条链接都确认指向卷内。
 - shell：在 `~/.zshrc` 加 Android 块时，被 Claude Code 的 auto mode 判定为持久化改动而拦截。用户随后明确授权，于 17:08 加入（备份为 `~/.zshrc.devstore-backup-20261029-170823`）。这个块在卷未挂载时自动挂载，把 `ANDROID_HOME` 设为兼容路径 `~/Library/Android/sdk`，并把 platform-tools、emulator、cmdline-tools 加进 PATH；不设 `GRADLE_USER_HOME` 和 `JAVA_HOME`。实测：先卸载再开新登录 shell，会自动挂载，adb、emulator、sdkmanager 都可用，AVD 可以列出。
+
+### 2026-10-29 17:35：缓存清理（用户要求清理 A、B 级）
+
+- 磁盘可用 40.6 GB → 45.5 GB（+4.9 GB）。用户目录缓存释放约 5.6 GB；卷内缓存释放约 3.8 GB，但映像文件不会自动变小，要卸载后 `devstore compact` 才会还给磁盘。
+- 卷内缓存：Gradle `caches`（2.9 GB，保留 `wrapper`）、conda `clean --all`（tarball 与索引，约 0.36 GB；`pkgs` 里仍在被环境硬链接的包不能清）、NuGet 全局包（0.3 GB）、Go 模块与编译缓存（0.2 GB，之后补回 `cache/go-build/devstore-marker` 和空的 `gopath/pkg/mod`，否则 Go 验证的持久化检查会失败）。
+- 其他：pnpm 仓库、npm 缓存、Xcode DerivedData、Android Studio 缓存、`labserver-dashboard` 与 NetBar 里被 git 忽略的构建产物（先确认未被 git 跟踪）、`DevStore/.build`、`artifacts/installers` 里的两个安装包（要重装时重新下载并核对官方 SHA-256：Miniconda `266fdc66…cd0bec`，Go 1.27.3 `dd3908cf…99c2`）。
+- 因相关程序正在运行而跳过：Chrome 缓存、Claude 桌面版缓存、Codex 缓存与 `~/.cache/codex-runtimes`、iCloud 邮件缓存、系统临时目录里不足一天的文件、`~/Library/Logs`。
+- 清理后复验：Miniconda 23/23、Go 13/13、.NET 10/10、Android 16/16。
