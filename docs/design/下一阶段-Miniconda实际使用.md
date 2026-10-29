@@ -141,3 +141,32 @@
 - 清理：上述六个原目录移到 `~/.Trash/*-20261029-164259`。保留 `~/.flutter`、`~/.dart-tool`、`~/.nuget/NuGet` 三个小配置，因为日常 shell 的 HOME 不变，还会用到它们。用户自行运行了 `brew uninstall --cask dotnet-sdk`。
 - 清理后验证：Flutter 10/10、Rust 17/17、.NET 10/10；新登录 shell 里所有工具都来自卷内。
 - 遗留：`/etc/dotnet/install_location*`（root 所有）仍指向已删除的 `/usr/local/share/dotnet`，不影响终端使用。
+
+### 2026-10-29 16:55–17:10：Android 迁移（IDE 不移入）
+
+- 盘点（只读）：
+  - `~/Library/Android/sdk` 12 GB：NDK 28.2/30.0、build-tools 35–37、platforms 34–37、cmake 3.22.1、emulator、system-images android-35。
+  - `~/.gradle` 3.1 GB，含 Gradle 9.8.2 wrapper；`gradle.properties` 里的 JDK 是 Android Studio 的 JBR。
+  - `~/.android` 3 GB：AVD `lablink-test`、`adbkey`、`debug.keystore`。
+  - 以下几处写死了 SDK 路径：Android Studio 的设置、`~/.config/flutter/settings`、两个项目的 `local.properties`。
+- 用户决定：
+  - 旧路径用符号链接兼容；
+  - 整个 `~/.android` 连同密钥一起移入；
+  - 不加登录自动挂载；
+  - JDK（Android Studio 的 JBR）、Android Studio、Homebrew 的 gradle 和 openjdk@17、Corretto 25 都不动。
+- 新增 Android 适配器：会话变量设 `ANDROID_HOME`、`ANDROID_USER_HOME`、`ANDROID_AVD_HOME`、`GRADLE_USER_HOME`，`JAVA_HOME` 指向 JBR。
+- 新增 Android 验证套件，共 16 项：
+  - adb、`sdkmanager --list_installed`、emulator 版本和 AVD 列表；
+  - aapt2、apksigner；
+  - 两个 NDK 各做一次交叉编译；
+  - cmake、Gradle wrapper 离线运行；
+  - 原安装被禁止读取。换成兼容链接以后，改为检查这些链接是否指向卷内。
+- 空间只剩约 40 GiB，没有先在临时卷上演练，直接在正式复制品上验证，清理前原安装保持不变。
+- 真实环境 `android/current`（最大 40 GiB）：新建、挂载策略和复制都由用户批准。复制约 2 分钟（SDK 64 秒、gradle 31 秒、`.android` 17 秒）。95 个文件提到原路径，大多是 Gradle 守护进程日志、`.tmp` 里的 classpath 文件，另外两个是 AVD 的 `hardware-qemu.ini`。
+- 验证：第一次 15/16，`sdkmanager` 不认 `--offline` 参数，这是验证套件本身的问题；修复后 16/16。
+- 清理：
+  - `adb kill-server` 停掉了从原 SDK 启动的 adb；
+  - 三个原目录移到 `~/.Trash/{android-sdk,gradle,android-user}-20261029-*`；
+  - 在原位置建符号链接，指向卷内的 `sdk`、`gradle`、`android-user`。
+  - 之后验证 16/16，三条链接都确认指向卷内。
+- 未完成：在 `~/.zshrc` 加 Android 块时，被 Claude Code 的 auto mode 判定为持久化改动并拦截，需要用户自行添加或授权。

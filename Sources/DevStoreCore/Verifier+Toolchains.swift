@@ -217,7 +217,7 @@ extension Verifier {
         try s.negativeControls(origins)
         s.add("host-jdk-present", fm.isExecutableFile(atPath: AndroidAdapter.studioJDK + "/bin/java"), AndroidAdapter.studioJDK)
         s.run("adb-version", [sdk + "/platform-tools/adb", "version"], cwd: dir) { $0.status == 0 && $0.stdout.contains(sdk + "/platform-tools/adb") }
-        s.run("sdkmanager-list-installed", [sdk + "/cmdline-tools/latest/bin/sdkmanager", "--list_installed", "--offline", "--sdk_root=" + sdk], cwd: dir) {
+        s.run("sdkmanager-list-installed", [sdk + "/cmdline-tools/latest/bin/sdkmanager", "--list_installed", "--sdk_root=" + sdk], cwd: dir) {
             $0.status == 0 && $0.stdout.contains("platform-tools")
         }
         s.run("emulator-version", [sdk + "/emulator/emulator", "-version"], cwd: dir) { $0.status == 0 && $0.stdout.contains("Android emulator version") }
