@@ -125,4 +125,4 @@ claude mcp add devstore -- /Users/jackson-hao/Documents/Code/DevStore/.build/rel
 
 ## 尚未实现
 
-检查点与归档恢复、compact（需走临时副本流程）、转移、跨槽重定位、导入已受管的副本、多存储库切换 active、陈旧租约接管、数据分类清理、Miniconda 以外的导入适配器、应用图标与公证。
+从归档恢复为可写映像、存储库间转移（外置 SSD）、跨槽重定位、导入已受管的副本、多存储库切换 active、陈旧租约接管、按数据分类清理缓存、加密口令存钥匙串、Miniconda 以外的适配器、应用公证、计划文字本地化。
