@@ -42,21 +42,24 @@ struct KindIcon: View {
                     .font(.system(size: size * 0.5, weight: .semibold))
                     .foregroundStyle(.white)
             }
-            .shadow(color: KindStyle.colors(kind)[1].opacity(0.35), radius: size * 0.12, y: size * 0.05)
+            // Specular rim like macOS 26 icons instead of a drop shadow.
+            .overlay(RoundedRectangle(cornerRadius: size * 0.28, style: .continuous)
+                .strokeBorder(LinearGradient(colors: [.white.opacity(0.45), .white.opacity(0.05)],
+                                             startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 0.75))
     }
 }
 
-/// Rounded card background used across the app.
+/// Content container. Glass is reserved for the navigation and control layer, so cards stay a plain,
+/// borderless fill with the larger continuous corners of macOS 26.
 struct Card<Content: View>: View {
-    var padding: CGFloat = 14
+    var padding: CGFloat = 16
     @ViewBuilder var content: Content
 
     var body: some View {
         content
             .padding(padding)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.background.secondary, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(.separator.opacity(0.6)))
+            .background(.fill.quinary, in: .rect(cornerRadius: 18))
     }
 }
 
@@ -77,7 +80,7 @@ struct StatTile: View {
                         .font(.system(size: 13, weight: .semibold))
                         .foregroundStyle(tint)
                         .frame(width: 26, height: 26)
-                        .background(tint.opacity(0.15), in: RoundedRectangle(cornerRadius: 7, style: .continuous))
+                        .background(tint.opacity(0.15), in: .circle)
                 }
                 Text(value).font(.system(size: 26, weight: .semibold, design: .rounded)).monospacedDigit()
                     .lineLimit(1).minimumScaleFactor(0.7)
@@ -100,6 +103,7 @@ enum ActivityStyle {
         case .archive: "archivebox"
         case .export: "square.and.arrow.up"
         case .delete: "trash"
+        case .clearLease: "lock.open"
         }
     }
 
@@ -116,13 +120,23 @@ extension EnvRow {
     var stateLabel: String {
         if !status.storeOnline { return "存储库离线" }
         if status.mounted { return status.identityVerified == true ? "已挂载" : "身份未核实" }
-        return "未挂载"
+        switch status.leaseState {
+        case .foreign: return "他机租约"
+        case .stale: return "残留租约"
+        case .pending: return "挂载中"
+        case .none, .active: return "未挂载"
+        }
     }
 
     var stateColor: Color {
         if !status.storeOnline { return .orange }
         if status.mounted { return status.identityVerified == true ? .green : .red }
-        return .secondary
+        switch status.leaseState {
+        case .foreign: return .orange
+        case .stale: return .yellow
+        case .pending: return .blue
+        case .none, .active: return .secondary
+        }
     }
 
     var verificationLabel: (String, Color) {

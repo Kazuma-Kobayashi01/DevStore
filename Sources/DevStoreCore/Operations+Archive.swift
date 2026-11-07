@@ -87,13 +87,12 @@ extension Operations {
     // MARK: shared
 
     func unmountedImageChecks(_ r: ResolvedEnvironment) -> [Precondition] {
-        let leased = r.leaseURL.map { fm.fileExists(atPath: $0.path) } ?? true
         let mounted = (try? DiskImage.mountedImageVolumeUUIDs())?[r.image?.volumeUUID ?? "-"] != nil
         return [
             Precondition(description: "store \(r.store.storeId) is online", ok: library.isOnline(r.store)),
             Precondition(description: "environment has an active image bundle", ok: r.bundlePath.map(DiskImage.isSparseBundle) ?? false),
             Precondition(description: "environment is not mounted (slot and volume UUID)", ok: !DiskImage.isMountPoint(r.slotPath) && !mounted),
-            Precondition(description: "image holds no lease", ok: !leased),
+            library.leaseAssessment(r).precondition,
         ]
     }
 
@@ -136,7 +135,7 @@ extension Operations {
         return try finish(Plan(
             planId: newId(), action: .compact, level: PlanAction.compact.level, targets: targets,
             preconditions: checks.map(\.description),
-            effects: [
+            effects: reclaimEffects(activeImageLease(r)) + [
                 "APFS-clone the image to a temporary bundle and run `hdiutil compact` on the clone only",
                 "attach the clone read-only at a private temporary mount point before and after compaction and compare content digests",
                 "if identical and smaller: move the original bundle to the Trash and put the compacted clone in its place",
@@ -155,6 +154,7 @@ extension Operations {
 
     func executeCompact(_ plan: Plan, _ journal: Journal) throws -> String {
         let r = try library.resolve(plan.targets["environmentId"]!)
+        try reclaimStaleLeases(activeImageLease(r), journal)
         let bundle = r.bundlePath!
         let work = r.imageDir!.appendingPathComponent("compact-\(journal.transactionId.prefix(8)).sparsebundle").path
         var cleanup = true
@@ -202,7 +202,7 @@ extension Operations {
         return try finish(Plan(
             planId: newId(), action: .archive, level: PlanAction.archive.level, targets: targets,
             preconditions: checks.map(\.description),
-            effects: [
+            effects: reclaimEffects(activeImageLease(r)) + [
                 "attach the image read-only at a private temporary mount point and record a content digest",
                 "convert it to a compressed read-only disk image (\(format == "ULFO" ? "LZFSE" : "LZMA")) at \(targets["destination"]!)"
                     + (encrypt ? ", AES-256 encrypted with a passphrase entered at execution (never stored)" : ""),
@@ -233,6 +233,7 @@ extension Operations {
             }
         }
         let r = try library.resolve(t["environmentId"]!)
+        try reclaimStaleLeases(activeImageLease(r), journal)
         let bundle = t["bundle"]!, dest = t["destination"]!
         try fm.createDirectory(atPath: (dest as NSString).deletingLastPathComponent, withIntermediateDirectories: true)
         do {

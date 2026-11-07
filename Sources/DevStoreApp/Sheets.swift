@@ -27,7 +27,10 @@ struct PlanSheet: View {
                     .font(.callout).foregroundStyle(.secondary)
             }
             if plan.level == .destructive {
-                Label("破坏性操作：需要 Touch ID 或登录密码。环境目录会被移到废纸篓。", systemImage: "exclamationmark.octagon.fill")
+                Label(plan.action == .clearLease
+                      ? "破坏性操作：需要 Touch ID 或登录密码。将删除另一台主机留下的租约；只有确认那台主机已经卸载该映像后才能执行，否则两台主机可能同时写入同一个卷。"
+                      : "破坏性操作：需要 Touch ID 或登录密码。环境目录会被移到废纸篓。",
+                      systemImage: "exclamationmark.octagon.fill")
                     .foregroundStyle(.red)
             }
             ScrollView {

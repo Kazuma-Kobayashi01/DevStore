@@ -123,6 +123,9 @@ public struct MCPServer {
         ["name": "devstore_plan_delete",
          "description": "Create a plan to delete an unmounted environment (moves it to the Trash). Destructive: only the user can approve, in the app or a terminal; no policy covers it.",
          "inputSchema": schema(["environment": envProp], required: ["environment"])],
+        ["name": "devstore_plan_clear_lease",
+         "description": "Create a plan to remove a lease this host is not using (leaseState foreign, or stale). Stale leases of this host are reclaimed automatically by mount/compact/archive/delete; use this for another host's lease after the user confirmed that host unmounted the image. Destructive: only the user can approve.",
+         "inputSchema": schema(["environment": envProp], required: ["environment"])],
         ["name": "devstore_plans", "description": "Saved plans that have not run or been rejected, with their approval state.",
          "inputSchema": schema([:], required: []), "annotations": ["readOnlyHint": true]],
         ["name": "devstore_apply",
@@ -215,6 +218,8 @@ public struct MCPServer {
             return try jsonObject(try ops.checkpoints(environmentId: envId))
         case "devstore_plan_delete":
             return try planResponse(try ops.planDelete(try string(a, "environment")))
+        case "devstore_plan_clear_lease":
+            return try planResponse(try ops.planClearLease(try string(a, "environment")))
         case "devstore_plans":
             return try ops.pendingPlans().map { ["state": $0.state.rawValue, "plan": try jsonObject($0.plan)] }
         case "devstore_apply":

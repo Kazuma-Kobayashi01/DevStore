@@ -60,6 +60,8 @@ public struct EnvironmentStatus: Codable, Sendable {
     public var mounted: Bool
     public var identityVerified: Bool?
     public var lease: Lease?
+    public var leaseState: LeaseState
+    public var leaseSummary: String?
     public var verification: String
     public var lastVerification: VerificationRef?
     public var knownWarnings: [String]
@@ -178,7 +180,7 @@ public struct Library: Sendable {
 
     public func status(_ r: ResolvedEnvironment) -> EnvironmentStatus {
         let mounted = DiskImage.isMountPoint(r.slotPath)
-        let lease = r.leaseURL.flatMap { try? JSONIO.readIfPresent(Lease.self, from: $0) }
+        let lease = leaseAssessment(r)
         let verification: String
         if let v = r.image?.lastVerification {
             verification = r.image?.mutatedSinceVerification == true ? "stale" : (v.passed == v.total ? "passed" : "failed")
@@ -190,7 +192,8 @@ public struct Library: Sendable {
             displayName: r.environment.displayName, slotPath: r.slotPath, storeId: r.store.storeId,
             storeOnline: isOnline(r.store), imageId: r.image?.imageId, role: r.image?.role,
             volumeUUID: r.image?.volumeUUID, mounted: mounted,
-            identityVerified: mounted ? identityVerified(r) : nil, lease: lease,
+            identityVerified: mounted ? identityVerified(r) : nil, lease: lease.lease,
+            leaseState: lease.state, leaseSummary: lease.summary,
             verification: verification, lastVerification: r.image?.lastVerification,
             knownWarnings: r.image?.knownWarnings ?? [])
     }

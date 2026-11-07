@@ -65,12 +65,15 @@ devstore approve <id> && devstore apply <id>
 | 压缩归档 | `archive <env> [--encrypt] [--lzma]` | 已卸载；**加密归档只能由用户在终端/应用执行**（口令） |
 | 导出冷备份 | `export <checkpointId> --to <dir>` | 复制后校验 SHA-256 |
 | 删除环境 | `delete <env>` | 已卸载；移到废纸篓；破坏性，终端确认需输入 `kind/slot`，应用需 Touch ID |
+| 清除他机租约 | `lease clear <env>` | `leaseState` 为 `foreign`（或 `stale`）且本机未挂载；破坏性，先请用户确认那台主机已卸载该映像 |
 
 安装包必须来自官方渠道，并用官方公布的校验值；下载前先告诉用户文件名、来源和大小并取得同意。
 
 ## 典型流程
 
-**环境不可用（终端提示"未挂载"）**：`devstore status` → `devstore mount <env>` → 仍失败看 `devstore journal`；存储库离线时提示用户接上存储库所在的盘。
+**环境不可用（终端提示"未挂载"）**：终端会在提示下一行打印 `mount` 的实际错误。`devstore status` → `devstore mount <env>` → 仍失败看 `devstore journal`；存储库离线时提示用户接上存储库所在的盘。
+
+**租约**：`status` 的 `leaseState` 为 `stale`（本机重启或在 DevStore 外卸载留下）时，下一次 `mount`/`compact`/`archive`/`delete` 会自动回收并记 `lease-reclaimed`，不需要手动处理，**不要手动删除 `lease.json`**。`pending` 表示另一个进程正在挂载，稍后再试。`foreign` 是其他主机的租约，不会自动回收：告诉用户主机 id 和时间，由用户确认那台主机已卸载后生成 `lease clear` 计划，请用户批准。
 
 **新增一种语言环境**：`create` → 用户批准 → 请用户 `devstore policy allow <env>` → `mount` → `install-sdk` 或 `copy-sdk` → 用户批准 → `verify` → 再讨论 shell 接入（修改 shell 配置前先给用户看要加的内容）。
 
@@ -80,7 +83,7 @@ devstore approve <id> && devstore apply <id>
 
 ## MCP
 
-同一套能力也通过 MCP Server `devstore`（`~/.local/bin/devstore-mcp`）提供：`devstore_status`、`devstore_inspect`、`devstore_run`、`devstore_env`、`devstore_verify`、`devstore_plans`、`devstore_checkpoints`、`devstore_journal`，以及 `devstore_plan_{create,install_sdk,copy_sdk,mount,unmount,compact,archive,export,import,delete}` 和 `devstore_apply`。MCP 可用时优先用 MCP；`devstore_apply` 只有在用户已批准（或常驻策略覆盖挂载/卸载）时才会执行。
+同一套能力也通过 MCP Server `devstore`（`~/.local/bin/devstore-mcp`）提供：`devstore_status`、`devstore_inspect`、`devstore_run`、`devstore_env`、`devstore_verify`、`devstore_plans`、`devstore_checkpoints`、`devstore_journal`，以及 `devstore_plan_{create,install_sdk,copy_sdk,mount,unmount,compact,archive,export,import,delete,clear_lease}` 和 `devstore_apply`。MCP 可用时优先用 MCP；`devstore_apply` 只有在用户已批准（或常驻策略覆盖挂载/卸载）时才会执行。
 
 ## 不要做
 

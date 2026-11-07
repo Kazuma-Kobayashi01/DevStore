@@ -7,13 +7,13 @@
 ```bash
 swift build            # 调试版：.build/debug/devstore、.build/debug/devstore-mcp
 swift build -c release # 发布版：.build/release/…
-swift test             # 18 个测试；DEVSTORE_INTEGRATION=1 时额外用真实 hdiutil 跑新建→挂载→验证→卸载→删除
+swift test             # 30 个测试；DEVSTORE_INTEGRATION=1 时额外用真实 hdiutil 跑新建→挂载→验证→卸载→删除、绕过 DevStore 卸载后再挂载（回收残留租约）等
 scripts/install-agents.sh  # 把 skills/devstore/SKILL.md 装到 ~/.claude/skills 和 ~/.codex/skills，并为 Claude Code（用户级）与 Codex 注册 devstore MCP
 scripts/install.sh     # 构建并安装：/Applications/DevStore.app、~/.local/bin/devstore 与 devstore-mcp（MCP 已注册到后者）
 scripts/build-app.sh   # 生成 build/DevStore.app（ad-hoc 签名，未公证），内含 Contents/Helpers/devstore 与 devstore-mcp
 ```
 
-依赖：Swift 6.2、macOS 14+、swift-argument-parser 1.5.0（MCP Server 不依赖它）。
+依赖：Swift 6.2+（tools-version 6.2）、macOS 26+（桌面应用使用 Liquid Glass；开发机为 macOS 27.2 / Xcode 27.2）、swift-argument-parser 1.5.0（MCP Server 不依赖它）。
 
 ## 文件位置
 
@@ -33,17 +33,18 @@ scripts/build-app.sh   # 生成 build/DevStore.app（ad-hoc 签名，未公证�
 | 命令 | 级别 | 说明 |
 |---|---|---|
 | `store add <path> [--create]`、`store list` | 登记 | 注册存储库 |
-| `status [--json]`、`inspect <env>`、`journal` | inspect | 只读 |
+| `status [--json]`、`inspect <env>`、`journal` | inspect | 只读。`status` 带 `leaseState`（`none`/`active`/`pending`/`stale`/`foreign`）与 `leaseSummary`；文本输出在非 `none`/`active` 时标出 `lease=…` 和实际状态 |
 | `install-sdk <env> --installer <sh> --sha256 <hex>` | mutate | 环境须已挂载且使用 empty 适配器。安装器名称/平台/SHA-256 核对通过后，以批处理模式在沙箱中安装（禁网、禁读原安装、只写卷）；装完写入卷内 condarc，转为 miniconda 适配器 |
 | `create --store <s> --kind <k> --name <n> [--slot current] [--size 20]` | mutate | 新建空的 APFS sparse bundle（按需增长），建立 `bin deps state/{home,config,share} cache tmp` 布局与卷内清单，登记槽位 |
-| `compact <env>` | mutate | 环境须已卸载、无租约。先 APFS 克隆映像，只对克隆执行 `hdiutil compact`；在临时挂载点只读挂载克隆，比较压实前后的内容摘要。内容一致且确实变小，才把原映像移到废纸篓、换上克隆；否则删除克隆，原映像不变 |
+| `compact <env>` | mutate | 环境须已卸载、无租约（本机残留租约会先回收）。先 APFS 克隆映像，只对克隆执行 `hdiutil compact`；在临时挂载点只读挂载克隆，比较压实前后的内容摘要。内容一致且确实变小，才把原映像移到废纸篓、换上克隆；否则删除克隆，原映像不变 |
 | `archive <env> [--encrypt] [--lzma]` | mutate | 环境须已卸载。记录内容摘要后转换为压缩只读 DMG（默认 LZFSE），存到 `<store>/checkpoints/<envId>/<id>.dmg` 并附 `.json` 记录。加密为 AES-256，口令只在执行时从终端或应用输入，经 stdin 传给 hdiutil，不保存。记录 SHA-256，并跑 `hdiutil verify` |
 | `checkpoints [env]` | inspect | 列出在线存储库中的归档 |
 | `export <checkpoint> --to <dir>` | mutate | 复制归档及其记录到冷备份目录，重新计算 SHA-256 比对，不一致就删除副本；不覆盖已有文件；导出记录写回归档 |
-| `delete <env>` | destructive | 环境必须未挂载、无租约。把整个环境目录（所有映像、记录、验证结果）**移到废纸篓**，解除槽位，删除空占位目录。终端确认需输入 `kind/slot` |
+| `delete <env>` | destructive | 环境必须未挂载、无租约（本机残留租约会先回收）。把整个环境目录（所有映像、记录、验证结果）**移到废纸篓**，解除槽位，删除空占位目录。终端确认需输入 `kind/slot` |
+| `lease clear <env>` | destructive | 删除本机没有在用的租约（他机租约，或本机残留租约）。计划绑定当时那份租约的事务号；他机租约只应在确认那台主机已卸载后清除。终端确认需输入 `kind/slot`，任何策略都不覆盖 |
 | `plans`、`reject <planId>` | — | 列出未执行的计划；拒绝后计划永远不能执行（拒绝仅限交互式终端或应用） |
 | `import <bundle> --store <s> --name <n> [--kind miniconda] [--slot current]` | mutate | 把未挂载的映像 APFS 克隆进存储库，写入卷内清单，登记槽位。内容必须是为该槽位路径构建的 |
-| `mount <env>`、`unmount <env>` | mount | 挂载前检查占位目录、租约、同 UUID 卷和主机绑定；挂载后核对卷 UUID 与清单，不符则立即卸载回滚。卸载从不强制 |
+| `mount <env>`、`unmount <env>` | mount | 挂载前检查占位目录、租约、同 UUID 卷和主机绑定；挂载后核对卷 UUID 与清单，不符则立即卸载回滚。卸载从不强制。租约规则见下文 |
 | `approve <planId>` | — | **只能在交互式终端**中批准计划；授权 10 分钟内有效，一次有效 |
 | `apply <planId>` | — | 执行已批准的计划，或由策略覆盖的挂载/卸载 |
 | `policy allow\|revoke\|show <env>` | — | 为单个环境设置常驻挂载/卸载策略；修改只能在交互式终端 |
@@ -68,6 +69,20 @@ scripts/build-app.sh   # 生成 build/DevStore.app（ad-hoc 签名，未公证�
 
 局限：判断"交互式"依赖 `isatty`。能伪造终端的程序可以冒充用户确认，所以这只能防止 Agent 意外自批，不能防止恶意本地进程。将来 GUI 的批准界面应改用系统级确认，例如本地身份验证。
 
+### 租约
+
+`executeMount` 写入 `images/<imageId>/lease.json`（主机 id、挂载时间、事务号），`unmount` 删除它。重启或在 DevStore 之外卸载（`hdiutil detach`）时租约会留下。每次检查时按以下规则判断（`LeaseAssessment`）：
+
+| 状态 | 条件 | 处理 |
+|---|---|---|
+| `none` | 没有租约 | 通过 |
+| `active` | 本机租约，同 UUID 卷已挂载或槽位是挂载点 | 阻塞 |
+| `pending` | 本机租约，未挂载，事务尚无 committed/failed/rolledBack 记录且不到 10 分钟 | 阻塞（另一个进程正在挂载） |
+| `stale` | 本机租约，未挂载，且租约早于 `kern.boottime`、或事务已结束、或超过 10 分钟 | `mount`/`compact`/`archive`/`delete` 的计划在效果里写明“reclaim stale lease”，执行时删除并记 `step lease-reclaimed`（含原事务号） |
+| `foreign` | 其他主机的租约 | 阻塞，提示主机 id、时间与 `devstore lease clear`；不自动回收 |
+
+失败提示直接描述实际状态，例如 `✗ image holds a lease from host 39014920-… (another host) since …`；CLI、MCP 和桌面应用显示同一句话。
+
 ## MCP Server
 
 `devstore-mcp` 是 stdio 上的 JSON-RPC 2.0（每行一条消息），协议版本 `2025-06-18`。工具：
@@ -77,7 +92,7 @@ scripts/build-app.sh   # 生成 build/DevStore.app（ad-hoc 签名，未公证�
 | `devstore_status`、`devstore_inspect`、`devstore_env`、`devstore_journal` | 只读 |
 | `devstore_plan_mount`、`devstore_plan_unmount`、`devstore_plan_import` | 只生成计划，并告诉 Agent 需要用户执行什么 |
 | `devstore_plan_compact`、`devstore_plan_archive`、`devstore_plan_export`、`devstore_checkpoints` | 回收、归档、导出计划与归档列表；**加密归档不能经 `devstore_apply` 执行**（需要用户输入口令） |
-| `devstore_plan_create`、`devstore_plan_delete`、`devstore_plans` | 新建/删除计划与待批准列表；删除为破坏性，任何策略都不覆盖 |
+| `devstore_plan_create`、`devstore_plan_delete`、`devstore_plan_clear_lease`、`devstore_plans` | 新建/删除/清除租约计划与待批准列表；删除和清除租约为破坏性，任何策略都不覆盖 |
 | `devstore_apply` | 只在有用户授权或策略时执行，返回 `authorizedBy` |
 | `devstore_run` | 捕获输出（各取最后 64 KB），默认 `confine: true` |
 | `devstore_verify` | 运行验证并记录 |
@@ -103,7 +118,7 @@ claude mcp add devstore -- /Users/jackson-hao/Documents/Code/DevStore/.build/rel
 
 ## 桌面应用（SwiftUI）
 
-`build/DevStore.app`，与 CLI/MCP 共用 `DevStoreCore`，每 4 秒刷新一次。图标由 `scripts/make-icon.swift` 渲染（`Resources/AppIcon.icns`）。
+`build/DevStore.app`，与 CLI/MCP 共用 `DevStoreCore`，每 4 秒刷新一次。图标由 `scripts/make-icon.swift` 渲染（`Resources/AppIcon.icns`）。最低系统 macOS 26，按 Liquid Glass 设计：侧栏、工具栏、表单和弹出面板用系统玻璃；工具栏分组（忙碌指示不带玻璃底、新建/导入一组、刷新单独一组，`ToolbarSpacer` 分隔）；浮层（底部通知）和环境详情的操作栏、菜单栏面板底部按钮用 `glassEffect` / `.glass`、`.glassProminent` 按钮并放在 `GlassEffectContainer` 中；内容卡片不用玻璃，改为无描边的浅填充、18pt 连续圆角；类型图标去掉投影，改为高光描边。
 
 - 总览（默认页）：统计卡片（环境数、已挂载、映像占用、归档数）、待批准提示、环境卡片（渐变类型图标、状态与验证徽章、占用、挂载/卸载、详情）。
 - 环境详情：头部卡片；操作栏（挂载/卸载、写入 SDK、验证、复制环境变量、Finder、删除）；卡片区：存储与空间（回收剩余空间、上次回收量）、归档与冷备份（压缩归档、每个归档的导出）、SDK、组件与最近验证、挂载授权、位置与身份、已知警告。
@@ -111,7 +126,8 @@ claude mcp add devstore -- /Users/jackson-hao/Documents/Code/DevStore/.build/rel
 - 归档页：所有归档的大小、压缩前后对比、SHA-256、最近导出位置。
 - 加密归档的计划确认页要求输入两次口令（≥ 8 个字符）后才能执行，且不提供"仅批准"。
 
-- 侧栏：环境（状态点：绿=已挂载且身份核实，红=挂载但身份不符，灰=未挂载，橙=存储库离线）、待批准计划（带角标）、存储库、事务日志。
+- 侧栏：环境（状态点：绿=已挂载且身份核实，红=挂载但身份不符，灰=未挂载，黄=残留租约，橙=他机租约或存储库离线，蓝=挂载中）、待批准计划（带角标）、存储库、事务日志。
+- 租约：环境详情在残留、他机或挂载中的租约时显示租约卡片（核心给出的原文 + 说明）；他机租约带“清除租约…”按钮，生成 `clear-lease` 计划，确认时需 Touch ID 或登录密码。菜单栏面板的展开详情也显示该原文。
 - 环境详情：挂载/卸载、运行验证（逐项进度）、复制会话环境变量（export 语句）、在 Finder 中显示、挂载策略开关、删除；位置与身份、组件、最近验证、已知警告。
 - 工具栏：新建空环境、导入映像（只支持 Miniconda）、刷新；存储库页可登记文件夹为存储库。
 - 计划确认页展示核心生成的原始计划（目标、前置条件、影响、不触碰清单、摘要）。按钮：取消；对 Agent/CLI 生成的计划还有"拒绝""仅批准"（交给 Agent 用 `devstore_apply` 执行）。
@@ -128,4 +144,4 @@ claude mcp add devstore -- /Users/jackson-hao/Documents/Code/DevStore/.build/rel
 
 ## 尚未实现
 
-从归档恢复为可写映像、存储库间转移（外置 SSD）、跨槽重定位、导入已受管的副本、多存储库切换 active、陈旧租约接管、按数据分类清理缓存、加密口令存钥匙串、Miniconda 以外的适配器、应用公证、计划文字本地化。
+从归档恢复为可写映像、存储库间转移（外置 SSD）、跨槽重定位、导入已受管的副本、多存储库切换 active、按数据分类清理缓存、加密口令存钥匙串、Miniconda 以外的适配器、应用公证、计划文字本地化。

@@ -133,7 +133,8 @@ final class AppModel {
     func approve(_ plan: Plan, execute: Bool, passphrase: String? = nil) async {
         sheet = nil
         if plan.level == .destructive {
-            guard await authenticate("确认删除 \(plan.targets["kind"] ?? "")/\(plan.targets["slot"] ?? "")") else {
+            let target = "\(plan.targets["kind"] ?? "")/\(plan.targets["slot"] ?? "")"
+            guard await authenticate(plan.action == .clearLease ? "确认清除 \(target) 的租约" : "确认删除 \(target)") else {
                 errorMessage = "未通过身份验证，已取消。"
                 return
             }
@@ -260,6 +261,7 @@ final class AppModel {
         case .compact: "回收空间"
         case .archive: "压缩归档"
         case .export: "导出"
+        case .clearLease: "清除租约"
         case .delete: "删除"
         }
     }

@@ -49,7 +49,7 @@ struct MenuBarPanel: View {
                             ForEach(model.snapshot.stores) { s in CapacityRow(store: s) }
                         }
                         .padding(10)
-                        .background(.quinary, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        .background(.fill.quinary, in: .rect(cornerRadius: 14))
                     }
                 }
                 .padding(12)
@@ -94,7 +94,7 @@ struct MenuBarPanel: View {
                 Text("打开").font(.callout).foregroundStyle(.tint)
             }
             .padding(10)
-            .background(Color.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .background(Color.orange.opacity(0.12), in: .rect(cornerRadius: 14))
         }
         .buttonStyle(.plain)
     }
@@ -107,19 +107,22 @@ struct MenuBarPanel: View {
             Button(action: dismiss) { Image(systemName: "xmark").font(.caption) }.buttonStyle(.borderless)
         }
         .padding(10)
-        .background(tint.opacity(0.10), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .background(tint.opacity(0.10), in: .rect(cornerRadius: 14))
     }
 
     var footer: some View {
         VStack(spacing: 8) {
-            HStack {
-                Button { Task { await model.mountAll() } } label: { Label("全部挂载", systemImage: "externaldrive.fill.badge.plus") }
-                    .disabled(model.busy != nil || mounted == envs.count)
-                Button { Task { await model.unmountAll() } } label: { Label("全部弹出", systemImage: "eject.fill") }
-                    .disabled(model.busy != nil || mounted == 0)
-                Spacer()
+            GlassEffectContainer(spacing: 8) {
+                HStack {
+                    Button { Task { await model.mountAll() } } label: { Label("全部挂载", systemImage: "externaldrive.fill.badge.plus") }
+                        .disabled(model.busy != nil || mounted == envs.count)
+                    Button { Task { await model.unmountAll() } } label: { Label("全部弹出", systemImage: "eject.fill") }
+                        .disabled(model.busy != nil || mounted == 0)
+                    Spacer()
+                }
+                .buttonStyle(.glass)
+                .controlSize(.small)
             }
-            .controlSize(.small)
             HStack {
                 Toggle("登录时启动", isOn: Binding(get: { launchAtLogin }, set: { on in setLaunchAtLogin(on) }))
                     .toggleStyle(.switch).controlSize(.mini).font(.caption)
@@ -169,9 +172,10 @@ struct EnvironmentMenuRow: View {
                 Circle().fill(row.stateColor).frame(width: 7, height: 7).help(row.stateLabel)
                 Button { Task { await model.toggleMount(row) } } label: {
                     Image(systemName: s.mounted ? "eject.fill" : "externaldrive.fill.badge.plus")
-                        .frame(width: 22, height: 22)
                 }
-                .buttonStyle(.borderless)
+                .buttonStyle(.glass)
+                .buttonBorderShape(.circle)
+                .controlSize(.small)
                 .disabled(model.busy != nil || !s.storeOnline)
                 .help(s.mounted ? "弹出（不强制）" : "挂载")
                 Image(systemName: "chevron.right")
@@ -184,8 +188,8 @@ struct EnvironmentMenuRow: View {
             if isOpen { details.transition(.opacity) }
         }
         .padding(10)
-        .background(hovering || isOpen ? AnyShapeStyle(.quaternary) : AnyShapeStyle(.quinary),
-                    in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .background(hovering || isOpen ? AnyShapeStyle(.fill.tertiary) : AnyShapeStyle(.fill.quinary),
+                    in: .rect(cornerRadius: 14))
         .onHover { hovering = $0 }
     }
 
@@ -196,7 +200,12 @@ struct EnvironmentMenuRow: View {
             detail("SDK", row.sdkLabel)
             detail("挂载点", s.slotPath)
             detail("卷 UUID", s.volumeUUID ?? "—")
-            if let lease = s.lease { detail("租约", "\(lease.hostId.prefix(8)) · \(lease.mountedAt.prefix(16))") }
+            if let summary = s.leaseSummary {
+                GridRow {
+                    Text("租约").foregroundStyle(.secondary)
+                    Text(summary).textSelection(.enabled).lineLimit(4).fixedSize(horizontal: false, vertical: true)
+                }
+            }
             GridRow {
                 Text("")
                 HStack(spacing: 12) {

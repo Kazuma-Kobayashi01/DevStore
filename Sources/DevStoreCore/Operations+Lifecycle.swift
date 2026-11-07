@@ -113,10 +113,12 @@ extension Operations {
         let checks = try deleteChecks(targets)
         try requireAll(checks)
         let images = (try? fm.contentsOfDirectory(atPath: r.environmentDir.path + "/images")) ?? []
+        let leases = imageLeases(environmentDir: r.environmentDir.path, slotPath: r.slotPath,
+                                 environment: "\(r.environment.kind)/\(r.environment.slot)")
         return try finish(Plan(
             planId: newId(), action: .delete, level: PlanAction.delete.level, targets: targets,
             preconditions: checks.map(\.description),
-            effects: [
+            effects: reclaimEffects(leases) + [
                 "move \(r.environmentDir.path) to the Trash — \(images.count) image(s), records and verification results",
                 "unbind slot \(r.environment.kind)/\(r.environment.slot) from the host registry",
                 "remove the empty slot placeholder \(r.slotPath)",
@@ -129,18 +131,20 @@ extension Operations {
         let reg = try library.loadRegistry()
         let envDir = t["environmentDir"]!, slotPath = t["slotPath"]!
         let store = reg.stores.first { $0.storeId == t["storeId"] }
-        let images = (try? fm.contentsOfDirectory(atPath: envDir + "/images")) ?? []
-        let leased = images.filter { fm.fileExists(atPath: "\(envDir)/images/\($0)/lease.json") }
+        let leases = imageLeases(environmentDir: envDir, slotPath: slotPath, environment: "\(t["kind"]!)/\(t["slot"]!)")
+            .map(\.assessment).filter { $0.state != .none }
         return [
             Precondition(description: "store \(t["storeId"]!) is online", ok: store.map(library.isOnline) ?? false),
             Precondition(description: "environment directory exists", ok: fm.fileExists(atPath: envDir + "/environment.json")),
             Precondition(description: "slot \(slotPath) is not mounted", ok: !DiskImage.isMountPoint(slotPath)),
-            Precondition(description: "no image of the environment holds a lease", ok: leased.isEmpty),
-        ]
+        ] + (leases.isEmpty ? [Precondition(description: "no image of the environment holds a lease", ok: true)]
+                            : leases.map(\.precondition))
     }
 
     func executeDelete(_ plan: Plan, _ journal: Journal) throws -> String {
         let t = plan.targets
+        try reclaimStaleLeases(imageLeases(environmentDir: t["environmentDir"]!, slotPath: t["slotPath"]!,
+                                           environment: "\(t["kind"]!)/\(t["slot"]!)"), journal)
         let trashed = try trash(URL(fileURLWithPath: t["environmentDir"]!))
         journal.log("step", step: "trash", detail: trashed.path)
         var reg = try library.loadRegistry()

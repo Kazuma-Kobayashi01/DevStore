@@ -171,12 +171,13 @@ public enum PlanAction: String, Codable, Sendable, CaseIterable {
     case archive
     case export
     case delete
+    case clearLease = "clear-lease"
 
     public var level: CapabilityLevel {
         switch self {
         case .importImage, .create, .installSDK, .copySDK, .compact, .archive, .export: .mutate
         case .mount, .unmount: .mount
-        case .delete: .destructive
+        case .delete, .clearLease: .destructive
         }
     }
 }

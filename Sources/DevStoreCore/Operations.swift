@@ -119,15 +119,16 @@ public struct Operations: Sendable {
         return try finish(Plan(
             planId: newId(), action: .mount, level: PlanAction.mount.level, targets: targets,
             preconditions: checks.map(\.description),
-            effects: ["write lease \(r.leaseURL!.path)", "attach \(bundle) at \(r.slotPath)",
-                      "verify volume UUID and .devstore/manifest.json; detach again on mismatch"],
+            effects: reclaimEffects(activeImageLease(r)) + [
+                "write lease \(r.leaseURL!.path)", "attach \(bundle) at \(r.slotPath)",
+                "verify volume UUID and .devstore/manifest.json; detach again on mismatch"],
             notTouched: ["original installations", "global shell configuration"], createdAt: timestamp()))
     }
 
     func mountChecks(_ t: [String: String]) throws -> [Precondition] {
         let r = try library.resolve(t["environmentId"]!)
         let slotPath = t["slotPath"]!
-        let leaseExists = r.leaseURL.map { fm.fileExists(atPath: $0.path) } ?? true
+        let lease = library.leaseAssessment(r)
         let mountedUUIDs = (try? DiskImage.mountedImageVolumeUUIDs()) ?? [:]
         let entries = (try? fm.contentsOfDirectory(atPath: slotPath)) ?? ["?"]
         return [
@@ -140,7 +141,7 @@ public struct Operations: Sendable {
                          ok: r.image?.hostBinding.compatible(with: .current()) ?? false),
             Precondition(description: "slot placeholder exists, is empty and is not a mount point",
                          ok: !DiskImage.isMountPoint(slotPath) && entries.isEmpty),
-            Precondition(description: "no lease on the image (not mounted by any host)", ok: !leaseExists),
+            lease.precondition,
             Precondition(description: "no mounted volume has UUID \(t["volumeUUID"]!)",
                          ok: !(t["volumeUUID"] ?? "").isEmpty && mountedUUIDs[t["volumeUUID"]!] == nil),
         ]
@@ -179,6 +180,7 @@ public struct Operations: Sendable {
         case .archive: try archiveChecks(plan.targets)
         case .export: try exportChecks(plan.targets)
         case .delete: try deleteChecks(plan.targets)
+        case .clearLease: try clearLeaseChecks(plan.targets)
         }
     }
 
@@ -204,6 +206,7 @@ public struct Operations: Sendable {
             case .archive: result = try executeArchive(plan, journal, passphrase: passphrase)
             case .export: result = try executeExport(plan, journal)
             case .delete: result = try executeDelete(plan, journal)
+            case .clearLease: result = try executeClearLease(plan, journal)
             }
             journal.log("committed")
             return result
@@ -284,6 +287,7 @@ public struct Operations: Sendable {
         let r = try library.resolve(plan.targets["environmentId"]!)
         let reg = try library.loadRegistry()
         let leaseURL = r.leaseURL!
+        try reclaimStaleLeases(activeImageLease(r), journal)
         try JSONIO.writeAtomically(Lease(hostId: reg.hostId, imageId: r.image!.imageId, mountedAt: timestamp(),
                                          transactionId: journal.transactionId), to: leaseURL)
         journal.log("step", step: "lease")

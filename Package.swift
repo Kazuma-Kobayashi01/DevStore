@@ -1,9 +1,9 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 import PackageDescription
 
 let package = Package(
     name: "DevStore",
-    platforms: [.macOS(.v14)],
+    platforms: [.macOS(.v26)],
     products: [
         .executable(name: "devstore", targets: ["devstore"]),
         .executable(name: "devstore-mcp", targets: ["devstore-mcp"]),

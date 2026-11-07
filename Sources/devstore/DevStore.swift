@@ -9,7 +9,7 @@ struct DevStore: ParsableCommand {
         abstract: "Manage development environments that live in mountable APFS volumes.",
         subcommands: [StoreCommand.self, Create.self, InstallSDK.self, CopySDK.self, Compact.self, Archive.self, Checkpoints.self,
                       ExportCheckpoint.self, Import.self, Status.self, Inspect.self, Mount.self, Unmount.self,
-                      Delete.self, Plans.self, Approve.self, Reject.self, Apply.self, Policy.self, Run.self, Env.self,
+                      Delete.self, LeaseCommand.self, Plans.self, Approve.self, Reject.self, Apply.self, Policy.self, Run.self, Env.self,
                       Verify.self, JournalCommand.self])
 }
 
@@ -295,6 +295,22 @@ struct Delete: ParsableCommand {
     }
 }
 
+struct LeaseCommand: ParsableCommand {
+    static let configuration = CommandConfiguration(
+        commandName: "lease", abstract: "Manage image leases.", subcommands: [Clear.self])
+
+    struct Clear: ParsableCommand {
+        static let configuration = CommandConfiguration(
+            abstract: "Remove a lease this host is not using (another host's, or a stale one). Destructive; only the user can approve.")
+        @Argument var environment: String
+        @OptionGroup var options: PlanOptions
+        func run() throws {
+            let ops = Operations()
+            try handle(try ops.planClearLease(environment), options, ops)
+        }
+    }
+}
+
 struct Plans: ParsableCommand {
     static let configuration = CommandConfiguration(abstract: "List saved plans that have not run or been rejected.")
     @Flag var json = false
@@ -369,7 +385,11 @@ struct Status: ParsableCommand {
         if all.isEmpty { print("no environments; import one with `devstore import`") }
         for s in all {
             let mount = s.mounted ? (s.identityVerified == true ? "mounted" : "mounted(UNVERIFIED IDENTITY)") : "unmounted"
-            print("\(s.kind)/\(s.slot)  \(s.displayName)  \(mount)  verification=\(s.verification)  env=\(s.environmentId.prefix(8))  store=\(s.storeOnline ? "online" : "offline")")
+            print("\(s.kind)/\(s.slot)  \(s.displayName)  \(mount)  verification=\(s.verification)  env=\(s.environmentId.prefix(8))  store=\(s.storeOnline ? "online" : "offline")"
+                  + (s.leaseState == .none || s.leaseState == .active ? "" : "  lease=\(s.leaseState.rawValue)"))
+            if s.leaseState != .none && s.leaseState != .active, let summary = s.leaseSummary {
+                print("    \(summary)" + (s.leaseState == .stale ? " (reclaimed by the next mount)" : ""))
+            }
         }
     }
 }

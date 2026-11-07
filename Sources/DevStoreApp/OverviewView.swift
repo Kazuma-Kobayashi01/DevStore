@@ -74,8 +74,7 @@ struct OverviewView: View {
                 Image(systemName: "chevron.right").foregroundStyle(.tertiary)
             }
             .padding(14)
-            .background(Color.orange.opacity(0.10), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Color.orange.opacity(0.35)))
+            .background(Color.orange.opacity(0.12), in: .rect(cornerRadius: 18))
         }
         .buttonStyle(.plain)
     }
@@ -260,7 +259,6 @@ struct EnvironmentCard: View {
     @Environment(AppModel.self) private var model
     var row: EnvRow
     var open: () -> Void
-    @State private var hovering = false
 
     var body: some View {
         Card(padding: 16) {
@@ -291,11 +289,7 @@ struct EnvironmentCard: View {
                 .controlSize(.small)
             }
         }
-        .scaleEffect(hovering ? 1.01 : 1)
-        .shadow(color: .black.opacity(hovering ? 0.18 : 0), radius: 10, y: 4)
-        .animation(.easeOut(duration: 0.15), value: hovering)
-        .onHover { hovering = $0 }
-        .contentShape(Rectangle())
+        .contentShape(.rect(cornerRadius: 18))
         .onTapGesture(count: 2) { open() }
     }
 }

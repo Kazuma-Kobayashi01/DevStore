@@ -61,20 +61,29 @@ struct ContentView: View {
             }
         }
         .toolbar {
-            ToolbarItemGroup {
-                if let busy = model.busy {
+            if let busy = model.busy {
+                ToolbarItem {
                     HStack(spacing: 6) {
                         ProgressView().controlSize(.small)
                         Text(busy).foregroundStyle(.secondary).lineLimit(1)
                     }
                     .padding(.horizontal, 6)
                 }
+                .sharedBackgroundVisibility(.hidden)
+                ToolbarSpacer(.fixed)
+            }
+            ToolbarItemGroup {
                 Button { model.sheet = .create } label: { Label("新建空环境", systemImage: "plus.rectangle.on.folder") }
                     .disabled(model.snapshot.stores.isEmpty)
                     .help(model.snapshot.stores.isEmpty ? "请先登记一个存储库" : "新建空环境")
                 Button { model.sheet = .importImage } label: { Label("导入映像", systemImage: "square.and.arrow.down") }
                     .disabled(model.snapshot.stores.isEmpty)
+                    .help("导入映像")
+            }
+            ToolbarSpacer(.fixed)
+            ToolbarItem {
                 Button { Task { await model.refresh() } } label: { Label("刷新", systemImage: "arrow.clockwise") }
+                    .help("刷新")
             }
         }
         .sheet(item: $model.sheet) { sheet in
@@ -99,9 +108,9 @@ struct ContentView: View {
                     Spacer()
                     Button { model.notice = nil } label: { Image(systemName: "xmark") }.buttonStyle(.borderless)
                 }
-                .padding(.horizontal, 14).padding(.vertical, 10)
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .padding(10)
+                .padding(.horizontal, 16).padding(.vertical, 11)
+                .glassEffect(.regular, in: .rect(cornerRadius: 20))
+                .padding(12)
                 .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }

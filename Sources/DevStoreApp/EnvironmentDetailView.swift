@@ -14,6 +14,7 @@ struct EnvironmentDetailView: View {
             VStack(alignment: .leading, spacing: 16) {
                 header
                 actions
+                if s.leaseState == .foreign || s.leaseState == .stale || s.leaseState == .pending { leaseCard }
                 if let progress = model.verifyProgress[row.id], !progress.isEmpty { verifyProgress(progress) }
                 HStack(alignment: .top, spacing: 16) {
                     VStack(spacing: 16) {
@@ -54,36 +55,72 @@ struct EnvironmentDetailView: View {
         }
     }
 
+    /// Floating control strip: glass buttons grouped in one container so neighbouring shapes blend.
     var actions: some View {
-        HStack(spacing: 8) {
-            Button { Task { await model.toggleMount(row) } } label: {
-                Label(s.mounted ? "卸载" : "挂载", systemImage: s.mounted ? "eject.fill" : "externaldrive.fill.badge.plus")
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(model.busy != nil || !s.storeOnline)
+        GlassEffectContainer(spacing: 8) {
+            HStack(spacing: 8) {
+                Button { Task { await model.toggleMount(row) } } label: {
+                    Label(s.mounted ? "卸载" : "挂载", systemImage: s.mounted ? "eject.fill" : "externaldrive.fill.badge.plus")
+                }
+                .buttonStyle(.glassProminent)
+                .disabled(model.busy != nil || !s.storeOnline)
 
-            if row.environment.adapter.id == "empty" {
-                Button { model.sheet = .installSDK(row.id) } label: { Label("写入 SDK…", systemImage: "square.and.arrow.down.on.square") }
+                if row.environment.adapter.id == "empty" {
+                    Button { model.sheet = .installSDK(row.id) } label: { Label("写入 SDK…", systemImage: "square.and.arrow.down.on.square") }
+                        .disabled(model.busy != nil || !mountedOK)
+                        .help(mountedOK ? "在卷内安装 Miniconda 或 Go" : "请先挂载")
+                }
+                Button { Task { await model.verify(row) } } label: { Label("验证", systemImage: "checkmark.seal") }
                     .disabled(model.busy != nil || !mountedOK)
-                    .help(mountedOK ? "在卷内安装 Miniconda 或 Go" : "请先挂载")
+                Button { Task { await model.copySessionEnvironment(row) } } label: { Label("复制环境变量", systemImage: "terminal") }
+                    .disabled(!mountedOK)
+                    .help("复制 export 语句，粘贴到终端即可在该环境中工作")
+                Button {
+                    let target = s.mounted ? s.slotPath : (row.bundlePath ?? s.slotPath)
+                    NSWorkspace.shared.activateFileViewerSelecting([URL(fileURLWithPath: target)])
+                } label: { Label("Finder", systemImage: "folder") }
+                Spacer()
+                Button(role: .destructive) {
+                    Task { await model.prepare("正在生成删除计划…") { try $0.planDelete(row.id) } }
+                } label: { Label("删除…", systemImage: "trash") }
+                    .tint(.red)
+                    .disabled(model.busy != nil || s.mounted)
+                    .help(s.mounted ? "请先卸载" : "移到废纸篓并解除槽位")
             }
-            Button { Task { await model.verify(row) } } label: { Label("验证", systemImage: "checkmark.seal") }
-                .disabled(model.busy != nil || !mountedOK)
-            Button { Task { await model.copySessionEnvironment(row) } } label: { Label("复制环境变量", systemImage: "terminal") }
-                .disabled(!mountedOK)
-                .help("复制 export 语句，粘贴到终端即可在该环境中工作")
-            Button {
-                let target = s.mounted ? s.slotPath : (row.bundlePath ?? s.slotPath)
-                NSWorkspace.shared.activateFileViewerSelecting([URL(fileURLWithPath: target)])
-            } label: { Label("Finder", systemImage: "folder") }
-            Spacer()
-            Button(role: .destructive) {
-                Task { await model.prepare("正在生成删除计划…") { try $0.planDelete(row.id) } }
-            } label: { Label("删除…", systemImage: "trash") }
-                .disabled(model.busy != nil || s.mounted)
-                .help(s.mounted ? "请先卸载" : "移到废纸篓并解除槽位")
+            .buttonStyle(.glass)
+            .controlSize(.large)
         }
-        .controlSize(.large)
+    }
+
+    /// Shown while a lease other than this host's live mount sits on the image.
+    var leaseCard: some View {
+        Card {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Label("租约", systemImage: "lock").font(.headline)
+                    Badge(text: row.stateLabel, color: row.stateColor)
+                    Spacer()
+                    if s.leaseState == .foreign {
+                        Button(role: .destructive) {
+                            Task { await model.prepare("正在生成清除租约计划…") { [id = row.id] in try $0.planClearLease(id) } }
+                        } label: { Label("清除租约…", systemImage: "lock.open") }
+                            .disabled(model.busy != nil)
+                            .help("确认那台主机已经卸载该映像后再清除")
+                    }
+                }
+                Text(s.leaseSummary ?? "").font(.callout.monospaced()).textSelection(.enabled)
+                Text(Self.leaseHint(s.leaseState)).font(.caption).foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    static func leaseHint(_ state: LeaseState) -> String {
+        switch state {
+        case .stale: "本机留下的残留租约（重启或在 DevStore 之外卸载）。下次挂载、回收、归档或删除时会自动回收并记入事务日志。"
+        case .foreign: "另一台主机的租约，DevStore 不会自动回收。确认那台主机已经卸载该映像后，再清除租约；否则两台主机可能同时写入同一个卷。"
+        case .pending: "本机正在进行的挂载事务持有该租约，完成后状态会自动更新。"
+        case .none, .active: ""
+        }
     }
 
     func verifyProgress(_ items: [(name: String, ok: Bool)]) -> some View {
@@ -198,7 +235,7 @@ struct EnvironmentDetailView: View {
                     row("映像 ID", s.imageId ?? "—")
                     row("卷 UUID", s.volumeUUID ?? "—")
                     row("存储库", s.storeId)
-                    if let lease = s.lease { row("租约", "主机 \(lease.hostId.prefix(8)) · \(lease.mountedAt)") }
+                    if let lease = s.lease { row("租约", "主机 \(lease.hostId.prefix(8)) · \(lease.mountedAt) · \(s.leaseState.rawValue)") }
                     row("来源", row.image?.lineage.reason ?? row.environment.origin.type)
                 }
             }
