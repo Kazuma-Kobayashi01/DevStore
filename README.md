@@ -1,27 +1,144 @@
+<div align="center">
+
+
 # DevStore
 
-Swift 原生 macOS 开发环境管理器的规划与实验项目。目标：每个受管理环境用一个可写 APFS 卷保存 SDK/runtime、工具管理器、状态、依赖和缓存；支持固定路径挂载、跨盘转移、检查点、回滚和停用压缩归档。
+**Native macOS manager for development environments that live in their own mountable APFS volumes.**
 
-当前有 0.1.0 版的 Swift CLI `devstore`、MCP Server `devstore-mcp` 和 SwiftUI 桌面应用（`scripts/build-app.sh` 生成 `build/DevStore.app`），支持导入 Miniconda、新建空环境、挂载/卸载、验证、删除（移到废纸篓）与计划审批，见 [CLI、MCP 与桌面应用](docs/CLI与MCP.md)。Miniconda 在本机固定挂载点的单卷副本通过三轮各 23 项验证；原安装未切换，实验卷已卸载。
+English | [简体中文](README.zh-CN.md)
 
-## 开始阅读
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+![Swift](https://img.shields.io/badge/Swift-6.2+-F05138?style=flat-square&logo=swift&logoColor=white)
+![Platform](https://img.shields.io/badge/macOS-26+-000000?style=flat-square&logo=apple&logoColor=white)
 
-1. [Claude 入口](CLAUDE.md)
-2. [完整移交说明](docs/CLAUDE_HANDOFF.md)
-3. [当前单卷方案 v3](docs/reports/单卷独立环境挂载方案-v3.md)
-   - [v3 数据模型草案](docs/design/v3数据模型.md)
-4. [Miniconda 实验报告](docs/reports/Miniconda单卷实验结果-20261029.md)
-5. [CLI 与 MCP](docs/CLI与MCP.md)
-6. [文档索引](docs/README.md)
+</div>
 
-## 目录
+SDKs, package managers and their caches usually spread across your home folder and your main disk. DevStore keeps each environment in one writable APFS sparse bundle, mounted at a fixed path. An environment can sit on an external SSD, be unmounted when you are not using it, and be compacted or archived as a single unit.
 
-| 目录 | 内容 |
+DevStore comes with a command line tool, an MCP server for coding agents, and a SwiftUI app.
+
+## Features
+
+- **One volume per environment.** The SDK, tools, state and caches stay together in a writable APFS volume, mounted at `~/.local/dev/<kind>/<slot>`.
+- **Multiple slots.** Keep several slots of the same kind and mount them at the same time. The default slot is `current`.
+- **Space recovery.** `compact` works on an APFS clone, compares a content digest and only then swaps the images. If anything differs, the original stays untouched.
+- **Checkpoints.** `archive` creates a compressed read-only DMG, with optional AES-256 encryption. `export` copies it to cold storage and verifies its SHA-256.
+- **Verification.** Each adapter has a test suite that runs sandboxed and offline, and the result is recorded with the image.
+- **Plans before changes.** Every change starts as a hashed plan. Only you can approve it, in an interactive terminal, so an agent cannot approve its own plan.
+- **Leases.** Leases stop two hosts from using one image. A lease left behind by a reboot is reclaimed automatically; a lease from another host is never removed without your approval.
+
+## Supported environments
+
+| Adapter | Environment | How it gets its SDK |
+|---|---|---|
+| `miniconda` | Miniconda / conda | `install-sdk`, or `import` an existing image |
+| `go` | Go | `copy-sdk` |
+| `rust` | Rust / cargo | `copy-sdk` |
+| `dotnet` | .NET | `copy-sdk` |
+| `flutter` | Flutter / Dart | `copy-sdk` |
+| `android` | Android SDK, NDK and Gradle | `copy-sdk` |
+| `empty` | A new empty environment | `create` |
+
+`copy-sdk` only reads the original installation.
+
+## Requirements
+
+- macOS 26 or later
+- Swift 6.2 or later, to build from source
+
+## Install
+
+```bash
+git clone https://github.com/Kazuma-Kobayashi01/DevStore.git
+cd DevStore
+scripts/install.sh
+```
+
+This builds a release and installs `/Applications/DevStore.app`, plus `devstore` and `devstore-mcp` in `~/.local/bin`. Quit DevStore first if it is running. The app is ad-hoc signed and not notarized.
+
+To register the skill and MCP server with Claude Code and Codex:
+
+```bash
+scripts/install-agents.sh
+```
+
+## Quick start
+
+```bash
+# Register a store: any folder, including one on an external SSD
+devstore store add /Volumes/SSD/DevStore --create
+
+# Create an empty environment and mount it
+devstore create --store /Volumes/SSD/DevStore --kind go --name "Go" --size 20
+devstore mount go/current
+
+# Run a command with the environment's variables
+devstore run go/current -- go version
+
+# See what is managed
+devstore status
+```
+
+An environment can be named by its ID, its `kind/slot` or its display name.
+
+### Approving agent requests
+
+Agents create plans but cannot approve them. Run these yourself in a terminal:
+
+```bash
+devstore plans
+devstore approve <planId>
+```
+
+To allow an agent to mount and unmount one environment without asking each time:
+
+```bash
+devstore policy allow go/current
+```
+
+## Commands
+
+| Command | Purpose |
 |---|---|
-| `docs/reports` | 原始扫描、各版方案、实验报告；保留设计历史 |
-| `docs/experiments/miniconda-20261029` | 实验摘要、成功与失败测试记录、完整性清单 |
-| `artifacts/miniconda-20261029` | 两个可写实验映像和一个压缩检查点；不同时挂载 |
-| `artifacts/experiment-support/miniconda-20261029` | 临时验证脚本、打包日志、conda-pack wheel 及工具来源记录，仅供复核 |
-| `TRANSFER_MANIFEST.json` | 本次交接的文件大小与 SHA-256 校验清单 |
+| `store add`, `store list` | Register and list stores |
+| `create`, `import`, `delete` | Add or remove environments; `delete` moves files to the Trash |
+| `install-sdk`, `copy-sdk` | Fill a mounted empty environment |
+| `mount`, `unmount` | Attach or detach an environment; unmounting is never forced |
+| `run`, `env` | Run a command with the session variables, or print them |
+| `verify` | Run the adapter's verification suite |
+| `compact`, `archive`, `checkpoints`, `export` | Reclaim space and manage backups |
+| `status`, `inspect`, `journal` | Read the current state and history |
+| `plans`, `approve`, `reject`, `apply`, `policy` | Manage plans and authorization |
+| `lease clear` | Remove a lease that is not in use on this host |
 
-大型映像不应提交到普通 Git 历史。当前没有初始化 Git 仓库或发布项目；原始 Codex 工作目录保留，项目拷贝不是独立物理备份。
+Any command that makes a change accepts `--plan-only [--json]`, which prints the plan without running it. See [CLI and MCP](docs/CLI与MCP.md) (in Chinese) for details.
+
+## Agent integration
+
+`devstore-mcp` speaks JSON-RPC 2.0 over stdio. It exposes read-only tools, tools that create plans, and `devstore_apply`, which only runs with your approval or a policy. No tool can approve a plan.
+
+`devstore run` is not a security boundary. `--confine` blocks reads of the original installs, and the approval check relies on `isatty`, so it stops accidental self-approval rather than a malicious local process.
+
+## Development
+
+```bash
+swift build
+swift test
+DEVSTORE_INTEGRATION=1 swift test   # also runs against real hdiutil
+scripts/build-app.sh                # builds build/DevStore.app
+```
+
+| Path | Contents |
+|---|---|
+| `Sources/DevStoreCore` | Data model, adapters, operations, authorization and verification |
+| `Sources/devstore` | Command line tool |
+| `Sources/DevStoreMCP`, `Sources/devstore-mcp` | MCP server |
+| `Sources/DevStoreApp` | SwiftUI app |
+| `skills/devstore` | Agent skill |
+| `docs` | Design records, experiment reports and issues (in Chinese) |
+
+Start with the [documentation index](docs/README.md) and the [current design](docs/reports/单卷独立环境挂载方案-v3.md).
+
+## License
+
+[MIT](LICENSE)
