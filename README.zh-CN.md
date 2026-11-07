@@ -31,7 +31,7 @@ DevStore 包含命令行工具、供编码 Agent 使用的 MCP Server 和 SwiftU
 | 适配器 | 环境 | SDK 来源 |
 |---|---|---|
 | `miniconda` | Miniconda / conda | `install-sdk`，或 `import` 已有映像 |
-| `go` | Go | `copy-sdk` |
+| `go` | Go | `install-sdk` 配合官方 `.tar.gz` |
 | `rust` | Rust / cargo | `copy-sdk` |
 | `dotnet` | .NET | `copy-sdk` |
 | `flutter` | Flutter / Dart | `copy-sdk` |
@@ -70,6 +70,9 @@ devstore store add /Volumes/SSD/DevStore --create
 # 新建空环境并挂载
 devstore create --store /Volumes/SSD/DevStore --kind go --name "Go" --size 20
 devstore mount go/current
+
+# 安装下载好的官方 SDK，并核对 SHA-256
+devstore install-sdk go/current --installer go1.27.3.darwin-arm64.tar.gz --sha256 <sha256>
 
 # 用环境变量运行命令
 devstore run go/current -- go version

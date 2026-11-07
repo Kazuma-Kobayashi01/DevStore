@@ -32,7 +32,7 @@ DevStore comes with a command line tool, an MCP server for coding agents, and a 
 | Adapter | Environment | How it gets its SDK |
 |---|---|---|
 | `miniconda` | Miniconda / conda | `install-sdk`, or `import` an existing image |
-| `go` | Go | `copy-sdk` |
+| `go` | Go | `install-sdk` with an official `.tar.gz` |
 | `rust` | Rust / cargo | `copy-sdk` |
 | `dotnet` | .NET | `copy-sdk` |
 | `flutter` | Flutter / Dart | `copy-sdk` |
@@ -71,6 +71,9 @@ devstore store add /Volumes/SSD/DevStore --create
 # Create an empty environment and mount it
 devstore create --store /Volumes/SSD/DevStore --kind go --name "Go" --size 20
 devstore mount go/current
+
+# Install the official SDK you downloaded, checked against its SHA-256
+devstore install-sdk go/current --installer go1.27.3.darwin-arm64.tar.gz --sha256 <sha256>
 
 # Run a command with the environment's variables
 devstore run go/current -- go version
